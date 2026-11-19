@@ -1,6 +1,6 @@
 ---
-title: "Trust, Source Verification & Peer Benchmarks"
-subtitle: "Reflecting on Governance Concerns Alongside Primary Records—and Comparing CSU Across 7 Land-Grant & Colorado Peers"
+title: "Governance Context, Source Checks & Peer Benchmarks"
+subtitle: "Reviewing Recent Leadership Payouts and Personnel Claims Against Public Records—and Comparing CSU Across 7 Peer Universities"
 ---
 
 ```{r setup}
@@ -10,29 +10,32 @@ peers  <- load_proc("peer_benchmarks_2023.csv")
 audits <- load_proc("real_audits_fy15_fy25.csv")
 ```
 
-Working through a multi-year budget transition constructively depends on both listening to sincere campus concerns about institutional trust and checking circulating claims carefully against primary public records.
+Addressing a multi-year budget gap requires examining both institutional governance transparency and interstate peer context using verifiable public records.
 
 ---
 
-## 1. Governance & Trust Context vs. Source Verification
+## 1. Leadership Transition Payouts, Football Contracts & Personnel Record Checks
 
-### Why Governance Transparency Matters Alongside the Math
+### Verified Executive Settlements & Athletics Commitments
 
-1. **Late-2026 Presidential Transition Settlement (\$1.1M):** On Oct. 28, 2026, CSU announced President Amy Parsons' resignation effective Dec. 31, 2026 (prior contract ran to Jan. 2028 at \$600k/yr; Rick Miranda steps in as Interim President Jan. 1, 2027), alongside a **\$1.1M transition payout and mutual non-disparagement terms** criticized by AAUP-CSU on Nov. 5 (`aaupcsu.org`). While **\$1.1M** one-time equals **1.7%** of one year's \$66.0M FY28 operating projection, confidentiality terms around senior transitions understandably strain confidence when units across campus have just absorbed 160.58 permanent FTE reductions.
-2. **Football Coaching Contract Scale (\$2.4M Base):** Head football coaching compensation (`$2.4M` starting base pay escalating to `$2.8M` over five years) and public post-game commentary drew understandable attention during a general-fund hiring slowdown—even though reducing coaching pay alone would address `<4%` of Ledger A.
+1. **Combined FY26–FY27 Executive Transition Payouts (\$1.43M One-Time Total):**
+   - **Presidential Settlement (\$1.10M):** On Oct. 28, 2026, CSU announced President Amy Parsons' resignation effective Dec. 31, 2026 (prior contract ran through Jan. 2028; Rick Miranda assumes Interim Presidency Jan. 1, 2027), alongside a **\$1.10M transition payout** (due by Jan. 5, 2027, covering the remaining contract period plus roughly five additional months of salary) and a mutual non-disparagement agreement—prompting criticism from AAUP-CSU on Nov. 5 (`aaupcsu.org`) and student reporting in *The Rocky Mountain Collegian*.
+   - **Provost Settlement (\$325,000):** Former Provost & EVP Marion Underwood departed the role in early 2026 with a **\$325,000 settlement agreement** documented in CSU public reporting before later becoming provost at George Mason University.
+   - **Fiscal Scale Context:** Combined, the **\$1.425M** in recent senior leadership settlements raises legitimate governance and confidentiality concerns, yet as a non-recurring expense it represents **2.2% of one year's \$66.0M FY28 operating gap** and **\$0** in ongoing base savings.
+2. **Football Coaching Transition Package (\$2.4M Starting Base):** Head football coach Jim Mora Jr. was hired Dec. 1, 2025 on a 5-year contract escalating from **\$2.4M (2026) to \$2.8M (2030)**, alongside a \$150k signing bonus, a \$1.5M UConn buyout paid by CSU, and an expanded assistant salary pool reported around \$5M ahead of CSU's Pac-12 transition. Reducing head coaching base pay alone resolves less than 4% of Ledger A, whereas overall Athletics net institutional support (`~$15.57M/yr`) and bonded debt (`$206.96M`) are examined in **[Athletics & Debt](athletics-audit.qmd)**.
 
-### Source Verification Note: Title IX Investigator `Jeffrey Lamoureaux`
+### Independent Record Check: Title IX Consultant `Jeff Lamoureux`
 
 ::: {.callout-context}
-**Helpful Check Ahead of Late-2026 Meetings:** In fast-moving campus email discussions, it is easy for secondary summaries of national investigative reporting to get compressed. Several notes on campus have cited the hiring of Title IX investigator **Jeffrey Lamoureaux**, pointing to *San Francisco Chronicle* reporting as an example of local vetting failures. **Primary public records audited for this project do not show an employment link between Jeffrey Lamoureaux and CSU Fort Collins.**
+**Source Verification Note:** Several campus emails and organizing discussions cited the hiring of Title IX investigator **Jeff Lamoureux** (also spelled *Lamoureaux*) alongside *San Francisco Chronicle* reporting as evidence of executive vetting lapses at CSU. **Independent verification across CSU directories and public news archives does not confirm a CSU employment tie:**
 
-- **What *San Francisco Chronicle* / UC Berkeley IRP reporting actually covered:** Former Burbank Police Sgt. Jeffrey Lamoureaux left law enforcement under a California "clean-record agreement" and subsequently worked as a Title IX investigator at **the University of Nebraska-Lincoln (UNL), Eastern Washington University, Appalachian State, Goodwin University, Auburn University, and the University of San Francisco**. Colorado appeared in that coverage because Colorado lawmakers passed legislation curbing similar police clean-record agreements—not because of CSU employment.
-- **Why careful attribution helps everyone:** Grounding governance questions in verified Colorado filings—such as the \$1.1M non-disparagement payout, System debt trends (\$1.33B), and FY22–FY25 E&G hiring patterns (`Table 128`)—helps ensure valid institutional concerns are taken seriously across campus.
+- **Public records:** External Title IX consultant Jeff Lamoureux (`CIXE`) previously held Title IX coordination roles at universities outside Colorado (including Appalachian State University). Meanwhile, CSU's official **Office of Title IX Programs and Gender Equity** leadership and staff roster—alongside *The Rocky Mountain Collegian* archives—does not list Jeff Lamoureux (note that a separate CSU student disability spokesperson, Anicee Lamoreaux, shares a similar surname). Separately, *San Francisco Chronicle* photojournalism involving CSU and Title IX in 2024–2025 covered Mountain West volleyball litigation rather than an investigator hire.
+- **Why precision helps:** Anchoring campus oversight discussions in documented local records—such as the \$1.43M combined transition settlements, mutual non-disparagement clauses, `B2`/`OSA` Athletics support (`$17.15M` / `~$15.57M` net + `$206.96M` debt), and post-FY22 E&G Admin Pro hiring (`+30.6%`)—keeps shared governance centered on undisputed facts.
 :::
 
 ---
 
-## 2. How CSU Compares Across Colorado & Land-Grant R1 Peers (IPEDS FY23)
+## 2. Peer Context Across Colorado & Land-Grant R1 Universities (IPEDS FY23)
 
 ::: {.figure-panel}
 ![IPEDS FY23 Structural Benchmarks: CSU vs. CU Boulder, Colorado School of Mines, and 5 Land-Grant R1 Peers](outputs/figures/fig06_peer_landgrant_benchmarks.png){width=100%}
@@ -61,17 +64,17 @@ peers |>
 
 Three comparative patterns emerge from IPEDS FY23:
 
-1. **Colorado State Funding Per FTE Trails Out-of-State Land-Grants:** At **\$7,314** in state appropriations and grants per student FTE, CSU receives roughly **half** the per-student state support of **Washington State (\$17,679/FTE)**, **Utah State (\$16,171/FTE)**, and **Kansas State (\$15,112/FTE)**—while still receiving more than 3× **CU Boulder (\$2,326/FTE)**. All three Colorado institutions rely substantially on tuition revenue (`27.6%` of current revenue at CSU; `39.5%` at CU Boulder; `40.0%` at Mines).
-2. **CSU Carried Relatively High Long-Term Debt Per FTE (\$38,915/FTE):** Among comprehensive R1 land-grants in the peer group, CSU's \$38,915/FTE (`$1,118.6M` FY23 IPEDS debt) sits above Oregon State (`$31,252/FTE`), Kansas State (`$23,638/FTE`), Washington State (`$21,804/FTE`), CU Boulder (`$20,634/FTE`), Utah State (`$16,632/FTE`), and Iowa State (`$15,507/FTE`), trailing only specialized Colorado School of Mines (`$106,552/FTE`).
-3. **CSU's All-Funds Staff Ratio (3.29x) Sits Mid-Pack:** CU Boulder (`3.93x`), Kansas State (`3.90x`), Iowa State (`3.43x`), and Washington State (`3.41x`) all report higher non-instructional-to-instructional IPEDS headcount ratios than CSU (`3.29x`). That reinforces why examining **general-fund (E&G) staffing patterns since FY22**—rather than all-funds IPEDS totals that mix externally funded research, clinical, and extension personnel—provides a fairer basis for discussion.
+1. **Colorado State Funding Per FTE Trails Out-of-State Land-Grants:** At **\$7,314** in state appropriations and grants per student FTE, CSU receives roughly **half** the per-student state support of **Washington State (\$17,679/FTE)**, **Utah State (\$16,171/FTE)**, and **Kansas State (\$15,112/FTE)**—while still receiving more than 3× **CU Boulder (\$2,326/FTE)**. All three Colorado campuses rely substantially on tuition revenue (`27.6%` of current revenue at CSU; `39.5%` at CU Boulder; `40.0%` at Mines).
+2. **CSU Carried Relatively High Long-Term Debt Per FTE (\$38,915/FTE):** Among comprehensive R1 land-grants in this group, CSU's \$38,915/FTE (`$1,118.6M` FY23 IPEDS debt) exceeds Oregon State (`$31,252/FTE`), Kansas State (`$23,638/FTE`), Washington State (`$21,804/FTE`), CU Boulder (`$20,634/FTE`), Utah State (`$16,632/FTE`), and Iowa State (`$15,507/FTE`), trailing only specialized Colorado School of Mines (`$106,552/FTE`).
+3. **CSU's All-Funds Staff Ratio (3.29x) Sits Mid-Pack:** CU Boulder (`3.93x`), Kansas State (`3.90x`), Iowa State (`3.43x`), and Washington State (`3.41x`) all report higher non-instructional-to-instructional IPEDS headcount ratios than CSU (`3.29x`), confirming why examining **general-fund (E&G) staffing patterns since FY22**—rather than all-funds totals containing externally funded research, clinical, and extension personnel—provides the clearer institutional benchmark.
 
 ---
 
 ## 3. Constructive Questions Ahead of the FY28 Hybrid RCM Transition
 
-In their Oct. 26, 2026 memo (alongside Faculty Fellows Rob Mitchell and Jennifer Martin), campus leadership noted candidly: ***"Changing the budget model will not by itself close a budget shortfall, nor does it produce new funding."*** With FY27 serving as the Parallel Year ahead of July 1, 2027 implementation, shared governance, deans, and administration have practical opportunities to focus questions on the structural drivers:
+In their Oct. 26, 2026 memo (alongside Faculty Fellows Rob Mitchell and Jennifer Martin), university leadership stated directly that changing the budget model will not by itself close a budget shortfall or generate new revenue. With FY27 serving as the Parallel Year ahead of July 1, 2027 implementation, campus discussions can focus productively on four areas:
 
-1. **Disaggregate Post-FY22 E&G Central VP Hiring (`864.8` FTE = `62.1%` of E&G AP):** Share clearer breakdowns showing how much of the `+326` E&G Admin Pro increase between FY22 and FY25 reflects student retention, compliance, IT security, or classified-to-AP conversions versus central administrative expansion—keeping externally funded research, clinical, and extension staff clearly separated.
-2. **Co-Design Transparent FY28 Hybrid RCM Rules:** Publish clear parameters ahead of Dec. 3–4 BOG review covering "off-the-top" central assessments (`XA Debt Service $31.86M`, `CSU Spur $15.00M`), instructional credit-hour weights, and subvention mechanisms for foundational disciplines.
-3. **Align Long-Term Athletics & Debt Planning With E&G Capacity:** Evaluate multi-year glide paths for CSU's ~\$15.6M net Athletics operating support (`B2 $17.15M` FY26 base) alongside cautious policies on any new bonded or internal treasury debt while general funds remain tight.
+1. **Disaggregate Post-FY22 E&G Central VP Hiring (`864.8` FTE = `62.1%` of E&G AP):** Share clearer breakdowns showing how much of the `+326` E&G Admin Pro increase between FY22 and FY25 reflects student retention, mental-health, compliance, IT security, or classified-to-AP conversions versus central administrative expansion—keeping externally funded research, clinical, and extension staff clearly separate.
+2. **Co-Design Transparent FY28 Hybrid RCM Rules:** Publish clear parameters ahead of Dec. 3–4 BOG review covering "off-the-top" central assessments (`XA Debt Service $31.86M`, `CSU Spur $15.00M`), credit-hour allocation weights, and instructional subvention rules for foundational disciplines.
+3. **Align Long-Term Athletics & Debt Planning With E&G Capacity:** Evaluate multi-year glide paths for CSU's ~\$15.6M net Athletics operating support (`B2 $17.15M` FY26 base) alongside prudent policies on any new bonded or internal treasury debt while general funds remain tight.
 4. **Track Net Tuition Yield Alongside Enrollment Headcounts:** As campus recruits both resident and non-resident cohorts (`-9.7%` Dom NR UG in Fall 2026), evaluate net revenue per seat after institutional discounting (`$174.1M` System allowance / `21.3%` discount rate) alongside gross headcount goals.

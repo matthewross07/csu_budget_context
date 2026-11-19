@@ -44,8 +44,8 @@ website:
         text: "GitHub"
         href: https://github.com/matthewross07/csu_budget_context
   page-footer:
-    left: "Compiled by Matthew R.V. Ross with Antigravity AI (R + Quarto) · 70 public primary sources"
-    right: "Every figure traced to `data/sources_manifest.csv` · Corrections welcomed"
+    left: "Reproducible R + Quarto Analysis · Independent Primary-Source Reference (Nov. 2026)"
+    right: "All figures traced to `data/sources_manifest.csv` · Corrections welcomed on GitHub"
 
 format:
   html:

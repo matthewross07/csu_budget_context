@@ -60,8 +60,8 @@
 <circle cx='343.03' cy='179.36' r='3.34' style='stroke-width: 0.71; stroke: #FFFFFF; fill: #FFFFFF;' />
 <circle cx='315.65' cy='251.09' r='3.34' style='stroke-width: 0.71; stroke: #FFFFFF; fill: #FFFFFF;' />
 <circle cx='310.18' cy='322.82' r='3.34' style='stroke-width: 0.71; stroke: #FFFFFF; fill: #FFFFFF;' />
-<text x='506.18' y='104.84' style='font-size: 8.39px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='252.02px' lengthAdjust='spacingAndGlyphs'>40-50%  |  E&amp;G Admin Pro +62% &amp; E&amp;G Faculty +43% (FY15-25)</text>
-<text x='506.18' y='116.42' style='font-size: 8.39px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='218.45px' lengthAdjust='spacingAndGlyphs'>while Resident FTE fell -5%; 3% comp pool = $33.7M/yr</text>
+<text x='506.18' y='104.84' style='font-size: 8.39px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='290.95px' lengthAdjust='spacingAndGlyphs'>40-50%  |  E&amp;G Admin Pro +62% (+31% post-FY22) vs. CDHE Faculty +7%</text>
+<text x='506.18' y='116.42' style='font-size: 8.39px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='239.02px' lengthAdjust='spacingAndGlyphs'>Resident FTE -5%; every 3% campus comp pool = $33.7M/yr</text>
 <text x='369.31' y='176.57' style='font-size: 8.39px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='248.86px' lengthAdjust='spacingAndGlyphs'>20-25%  |  System debt doubled $672M (FY13) -&gt; $1.33B (FY25)</text>
 <text x='369.31' y='188.15' style='font-size: 8.39px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='249.77px' lengthAdjust='spacingAndGlyphs'>E&amp;G Central Debt Service more than tripled ($10.2M -&gt; $31.9M)</text>
 <text x='341.93' y='248.30' style='font-size: 8.39px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='279.17px' lengthAdjust='spacingAndGlyphs'>15-20%  |  $75.2M gross -&gt; $26.0M Univ support - $10.9M aid flow-back</text>
@@ -85,19 +85,18 @@
 <text x='468.95' y='377.41' text-anchor='middle' style='font-size: 9.24px;fill: #495057; font-family: "Arial";' textLength='18.48px' lengthAdjust='spacingAndGlyphs'>45%</text>
 <text x='551.07' y='377.41' text-anchor='middle' style='font-size: 9.24px;fill: #495057; font-family: "Arial";' textLength='18.48px' lengthAdjust='spacingAndGlyphs'>60%</text>
 <text x='524.14' y='389.02' text-anchor='middle' style='font-size: 9.68px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='373.44px' lengthAdjust='spacingAndGlyphs'>Illustrative Share of Multi-Year Structural Pressure (Midpoint &amp; Sensitivity Range)</text>
-<text x='13.95' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='56.78px' lengthAdjust='spacingAndGlyphs'>Approximate</text>
-<text x='73.54' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='85.98px' lengthAdjust='spacingAndGlyphs'>order-of-magnitude</text>
-<text x='162.34' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='30.36px' lengthAdjust='spacingAndGlyphs'>shares</text>
-<text x='195.51' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='44.39px' lengthAdjust='spacingAndGlyphs'>(summing</text>
-<text x='242.71' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='8.44px' lengthAdjust='spacingAndGlyphs'>to</text>
-<text x='253.96' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='29.22px' lengthAdjust='spacingAndGlyphs'>100%)</text>
-<text x='285.99' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='28.11px' lengthAdjust='spacingAndGlyphs'>paired</text>
-<text x='316.92' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='17.98px' lengthAdjust='spacingAndGlyphs'>with</text>
-<text x='337.71' y='37.91' style='font-size: 10.12px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='35.94px' lengthAdjust='spacingAndGlyphs'>audited</text>
-<text x='376.46' y='37.91' style='font-size: 10.12px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='37.09px' lengthAdjust='spacingAndGlyphs'>primary</text>
-<text x='416.37' y='37.91' style='font-size: 10.12px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='40.47px' lengthAdjust='spacingAndGlyphs'>baseline</text>
-<text x='459.65' y='37.91' style='font-size: 10.12px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='33.70px' lengthAdjust='spacingAndGlyphs'>figures</text>
-<text x='493.35' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='2.81px' lengthAdjust='spacingAndGlyphs'>.</text>
+<text x='13.95' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='88.22px' lengthAdjust='spacingAndGlyphs'>Order-of-magnitude</text>
+<text x='104.98' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='45.55px' lengthAdjust='spacingAndGlyphs'>illustration</text>
+<text x='153.34' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='44.39px' lengthAdjust='spacingAndGlyphs'>(summing</text>
+<text x='200.54' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='8.44px' lengthAdjust='spacingAndGlyphs'>to</text>
+<text x='211.79' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='29.22px' lengthAdjust='spacingAndGlyphs'>100%)</text>
+<text x='243.82' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='28.11px' lengthAdjust='spacingAndGlyphs'>paired</text>
+<text x='274.74' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='17.98px' lengthAdjust='spacingAndGlyphs'>with</text>
+<text x='295.54' y='37.91' style='font-size: 10.12px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='35.94px' lengthAdjust='spacingAndGlyphs'>audited</text>
+<text x='334.29' y='37.91' style='font-size: 10.12px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='37.09px' lengthAdjust='spacingAndGlyphs'>primary</text>
+<text x='374.20' y='37.91' style='font-size: 10.12px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='40.47px' lengthAdjust='spacingAndGlyphs'>baseline</text>
+<text x='417.48' y='37.91' style='font-size: 10.12px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='33.70px' lengthAdjust='spacingAndGlyphs'>figures</text>
+<text x='451.18' y='37.91' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='2.81px' lengthAdjust='spacingAndGlyphs'>.</text>
 <text x='13.95' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='53.98px' lengthAdjust='spacingAndGlyphs'>Reasonable</text>
 <text x='70.74' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='44.41px' lengthAdjust='spacingAndGlyphs'>observers</text>
 <text x='117.96' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='19.11px' lengthAdjust='spacingAndGlyphs'>may</text>
@@ -109,8 +108,8 @@
 <text x='329.17' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='21.94px' lengthAdjust='spacingAndGlyphs'>each</text>
 <text x='353.92' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='23.62px' lengthAdjust='spacingAndGlyphs'>plays</text>
 <text x='380.35' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='5.62px' lengthAdjust='spacingAndGlyphs'>a</text>
-<text x='388.79' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='49.48px' lengthAdjust='spacingAndGlyphs'>meaningful</text>
-<text x='441.09' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='19.67px' lengthAdjust='spacingAndGlyphs'>role.</text>
+<text x='388.79' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='52.84px' lengthAdjust='spacingAndGlyphs'>measurable</text>
+<text x='444.45' y='50.51' style='font-size: 10.12px;fill: #495057; font-family: "Arial";' textLength='19.67px' lengthAdjust='spacingAndGlyphs'>role.</text>
 <text x='13.95' y='23.79' style='font-size: 13.75px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='381.92px' lengthAdjust='spacingAndGlyphs'>Ledger B: Multi-Year Structural Cost &amp; Revenue Pressures</text>
 <text x='13.95' y='406.92' style='font-size: 8.25px;fill: #6E7B85; font-family: "Arial";' textLength='555.36px' lengthAdjust='spacingAndGlyphs'>Methodology note: Attribution weights synthesize permanent E&amp;G expenditure shares and fixed obligation rigidities; audited dollar anchors come directly</text>
 <text x='13.95' y='418.31' style='font-size: 8.25px;fill: #6E7B85; font-family: "Arial";' textLength='599.53px' lengthAdjust='spacingAndGlyphs'>from CSU Fact Book FY27 (Tables 107-128), CDHE Budget Data Books (FY15-27), CSU System Audits (FY15-25), and Colorado OSA NCAA AUP FY25 (2516F-B).</text>

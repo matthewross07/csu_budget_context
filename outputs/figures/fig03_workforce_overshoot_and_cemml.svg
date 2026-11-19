@@ -64,112 +64,111 @@
 </defs>
 <g clip-path='url(#cpMjA2Ljk0fDg1Ni45OHw2OC40OXwzMzkuNDc=)'>
 <rect x='206.94' y='68.49' width='650.04' height='270.98' style='stroke-width: 1.02; stroke: none; fill: #FFFFFF;' />
-<polyline points='206.94,304.42 856.98,304.42 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
-<polyline points='206.94,266.52 856.98,266.52 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
-<polyline points='206.94,228.62 856.98,228.62 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
-<polyline points='206.94,190.72 856.98,190.72 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
-<polyline points='206.94,152.82 856.98,152.82 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
-<polyline points='206.94,114.92 856.98,114.92 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
-<polyline points='206.94,77.02 856.98,77.02 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
-<line x1='206.94' y1='228.62' x2='856.98' y2='228.62' style='stroke-width: 1.28; stroke: #6E7B85; stroke-dasharray: 1.71,5.12; stroke-linecap: butt;' />
-<polyline points='428.35,235.95 620.22,313.07 ' style='stroke-width: 1.92; stroke: #6E7B85; stroke-opacity: 0.70; stroke-dasharray: 10.24,10.24; stroke-linecap: butt;' />
-<polyline points='236.48,228.62 274.86,214.00 313.23,206.14 351.60,200.29 389.98,189.38 428.35,183.88 466.72,182.29 505.10,182.64 543.47,150.00 581.84,114.38 620.22,110.58 ' style='stroke-width: 2.67; stroke: #C04B35; stroke-linecap: butt;' />
-<polyline points='236.48,228.62 274.86,231.94 313.23,237.87 351.60,237.54 389.98,233.43 428.35,235.95 ' style='stroke-width: 2.67; stroke: #6E7B85; stroke-linecap: butt;' />
-<polyline points='236.48,228.62 274.86,227.62 313.23,222.78 351.60,223.68 389.98,221.31 428.35,214.96 466.72,217.63 505.10,223.08 543.47,223.87 581.84,219.37 620.22,224.42 ' style='stroke-width: 2.67; stroke: #2E6F40; stroke-linecap: butt;' />
-<polyline points='236.48,228.62 274.86,226.28 313.23,223.55 351.60,223.11 389.98,190.47 428.35,146.99 466.72,149.45 505.10,154.40 543.47,149.03 581.84,142.26 620.22,146.59 ' style='stroke-width: 2.67; stroke: #1E4D2B; stroke-linecap: butt;' />
-<polyline points='236.48,228.62 274.86,204.53 313.23,188.44 351.60,175.44 389.98,159.40 428.35,152.14 466.72,169.04 505.10,151.74 543.47,141.05 581.84,136.08 620.22,127.85 658.59,150.14 ' style='stroke-width: 2.67; stroke: #3E6B89; stroke-linecap: butt;' />
-<polyline points='236.48,228.62 274.86,213.62 313.23,193.44 351.60,193.89 389.98,190.03 428.35,189.35 466.72,213.23 505.10,215.70 543.47,226.54 581.84,220.54 620.22,220.34 ' style='stroke-width: 2.67; stroke: #9A7B1C; stroke-linecap: butt;' />
-<polyline points='236.48,228.62 274.86,225.22 313.23,224.74 351.60,224.85 389.98,230.16 428.35,232.83 466.72,242.73 505.10,248.24 543.47,248.19 581.84,246.96 620.22,244.71 658.59,238.03 ' style='stroke-width: 2.67; stroke: #2C3539; stroke-linecap: butt;' />
-<circle cx='236.48' cy='228.62' r='2.47' style='stroke-width: 0.68; stroke: #C04B35; fill: #C04B35;' />
-<circle cx='236.48' cy='228.62' r='2.47' style='stroke-width: 0.68; stroke: #6E7B85; fill: #6E7B85;' />
-<circle cx='236.48' cy='228.62' r='2.47' style='stroke-width: 0.68; stroke: #2E6F40; fill: #2E6F40;' />
-<circle cx='428.35' cy='183.88' r='2.47' style='stroke-width: 0.68; stroke: #C04B35; fill: #C04B35;' />
-<circle cx='428.35' cy='235.95' r='2.47' style='stroke-width: 0.68; stroke: #6E7B85; fill: #6E7B85;' />
-<circle cx='428.35' cy='214.96' r='2.47' style='stroke-width: 0.68; stroke: #2E6F40; fill: #2E6F40;' />
-<circle cx='620.22' cy='110.58' r='2.47' style='stroke-width: 0.68; stroke: #C04B35; fill: #C04B35;' />
-<circle cx='620.22' cy='313.07' r='2.47' style='stroke-width: 0.68; stroke: #6E7B85; fill: #6E7B85;' />
-<circle cx='620.22' cy='224.42' r='2.47' style='stroke-width: 0.68; stroke: #2E6F40; fill: #2E6F40;' />
-<circle cx='236.48' cy='228.62' r='2.47' style='stroke-width: 0.68; stroke: #1E4D2B; fill: #1E4D2B;' />
-<circle cx='428.35' cy='146.99' r='2.47' style='stroke-width: 0.68; stroke: #1E4D2B; fill: #1E4D2B;' />
-<circle cx='620.22' cy='146.59' r='2.47' style='stroke-width: 0.68; stroke: #1E4D2B; fill: #1E4D2B;' />
-<circle cx='236.48' cy='228.62' r='2.47' style='stroke-width: 0.68; stroke: #2C3539; fill: #2C3539;' />
-<circle cx='236.48' cy='228.62' r='2.47' style='stroke-width: 0.68; stroke: #3E6B89; fill: #3E6B89;' />
-<circle cx='428.35' cy='232.83' r='2.47' style='stroke-width: 0.68; stroke: #2C3539; fill: #2C3539;' />
-<circle cx='428.35' cy='152.14' r='2.47' style='stroke-width: 0.68; stroke: #3E6B89; fill: #3E6B89;' />
-<circle cx='620.22' cy='244.71' r='2.47' style='stroke-width: 0.68; stroke: #2C3539; fill: #2C3539;' />
-<circle cx='620.22' cy='127.85' r='2.47' style='stroke-width: 0.68; stroke: #3E6B89; fill: #3E6B89;' />
-<circle cx='658.59' cy='238.03' r='2.47' style='stroke-width: 0.68; stroke: #2C3539; fill: #2C3539;' />
-<circle cx='658.59' cy='150.14' r='2.47' style='stroke-width: 0.68; stroke: #3E6B89; fill: #3E6B89;' />
-<circle cx='236.48' cy='228.62' r='2.47' style='stroke-width: 0.68; stroke: #9A7B1C; fill: #9A7B1C;' />
-<circle cx='428.35' cy='189.35' r='2.47' style='stroke-width: 0.68; stroke: #9A7B1C; fill: #9A7B1C;' />
-<circle cx='620.22' cy='220.34' r='2.47' style='stroke-width: 0.68; stroke: #9A7B1C; fill: #9A7B1C;' />
-<text x='627.12' y='111.39' style='font-size: 8.68px; font-weight: bold;fill: #C04B35; font-family: "Arial";' textLength='122.33px' lengthAdjust='spacingAndGlyphs'>E&amp;G Admin Pro: 162 (+62.3%)</text>
-<text x='627.12' y='315.10' style='font-size: 8.68px; font-weight: bold;fill: #6E7B85; font-family: "Arial";' textLength='136.44px' lengthAdjust='spacingAndGlyphs'>E&amp;G State Classified: 55 (-44.6%)</text>
-<text x='627.12' y='229.83' style='font-size: 8.68px; font-weight: bold;fill: #2E6F40; font-family: "Arial";' textLength='119.61px' lengthAdjust='spacingAndGlyphs'>E&amp;G Tenured/TT: 102 (+2.2%)</text>
-<text x='627.12' y='142.66' style='font-size: 8.68px; font-weight: bold;fill: #1E4D2B; font-family: "Arial";' textLength='122.36px' lengthAdjust='spacingAndGlyphs'>E&amp;G All Faculty: 143 (+43.3%)</text>
-<text x='665.50' y='159.71' style='font-size: 8.68px; font-weight: bold;fill: #3E6B89; font-family: "Arial";' textLength='167.48px' lengthAdjust='spacingAndGlyphs'>Non-Resident Student FTE: 141 (+41.4%)</text>
-<text x='627.12' y='213.72' style='font-size: 8.68px; font-weight: bold;fill: #9A7B1C; font-family: "Arial";' textLength='118.17px' lengthAdjust='spacingAndGlyphs'>Real Net Tuition: 104 (+4.4%)</text>
-<text x='665.50' y='246.88' style='font-size: 8.68px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='135.91px' lengthAdjust='spacingAndGlyphs'>Resident Student FTE: 95 (-5.0%)</text>
-<polygon points='278.35,120.56 516.95,120.56 516.89,120.56 517.13,120.55 517.36,120.50 517.58,120.42 517.78,120.30 517.96,120.15 518.12,119.98 518.24,119.78 518.34,119.56 518.39,119.33 518.41,119.10 518.41,119.10 518.41,88.00 518.41,88.00 518.39,87.77 518.34,87.54 518.24,87.32 518.12,87.13 517.96,86.95 517.78,86.80 517.58,86.68 517.36,86.60 517.13,86.55 516.95,86.54 278.35,86.54 278.53,86.55 278.29,86.54 278.06,86.57 277.83,86.64 277.62,86.74 277.43,86.87 277.26,87.03 277.12,87.22 277.01,87.43 276.93,87.65 276.90,87.88 276.89,88.00 276.89,119.10 276.90,118.98 276.90,119.22 276.93,119.45 277.01,119.67 277.12,119.88 277.26,120.07 277.43,120.23 277.62,120.36 277.83,120.46 278.06,120.53 278.29,120.56 ' style='stroke-width: 0.64; stroke: #2C3539; fill: #FAFBF9;' />
-<text x='397.65' y='94.77' text-anchor='middle' style='font-size: 8.11px;fill: #2C3539; font-family: "Arial";' textLength='236.66px' lengthAdjust='spacingAndGlyphs'>Key Context: Both E&amp;G Faculty (+43%) &amp; E&amp;G Admin Pro (+62%)</text>
-<text x='397.65' y='106.45' text-anchor='middle' style='font-size: 8.11px;fill: #2C3539; font-family: "Arial";' textLength='205.95px' lengthAdjust='spacingAndGlyphs'>grew over FY15-FY25 while Resident FTE declined (-5%)</text>
-<text x='397.65' y='118.13' text-anchor='middle' style='font-size: 8.11px;fill: #2C3539; font-family: "Arial";' textLength='119.00px' lengthAdjust='spacingAndGlyphs'>and Real Net Tuition rose +4.4%.</text>
+<polyline points='206.94,303.47 856.98,303.47 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
+<polyline points='206.94,256.10 856.98,256.10 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
+<polyline points='206.94,208.72 856.98,208.72 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
+<polyline points='206.94,161.35 856.98,161.35 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
+<polyline points='206.94,113.97 856.98,113.97 ' style='stroke-width: 0.96; stroke: #ECEFEF; stroke-linecap: butt;' />
+<line x1='236.48' y1='208.72' x2='641.64' y2='208.72' style='stroke-width: 1.28; stroke: #6E7B85; stroke-dasharray: 1.71,5.12; stroke-linecap: butt;' />
+<polyline points='370.79,206.19 594.63,307.54 ' style='stroke-width: 1.92; stroke: #6E7B85; stroke-opacity: 0.70; stroke-dasharray: 10.24,10.24; stroke-linecap: butt;' />
+<polyline points='236.48,208.72 281.25,203.75 326.02,200.35 370.79,189.74 415.56,194.40 460.33,201.67 505.10,196.51 549.87,190.58 594.63,192.62 639.40,191.69 ' style='stroke-width: 2.67; stroke: #1E4D2B; stroke-linecap: butt;' />
+<polyline points='236.48,208.72 281.25,202.18 326.02,189.99 370.79,183.85 415.56,182.07 460.33,182.47 505.10,145.99 549.87,106.19 594.63,101.95 ' style='stroke-width: 2.67; stroke: #C04B35; stroke-linecap: butt;' />
+<polyline points='236.48,208.72 281.25,208.29 326.02,202.88 370.79,206.19 ' style='stroke-width: 2.67; stroke: #6E7B85; stroke-linecap: butt;' />
+<polyline points='236.48,208.72 281.25,209.82 326.02,206.95 370.79,199.25 415.56,202.48 460.33,209.09 505.10,210.04 549.87,204.59 594.63,210.72 ' style='stroke-width: 2.67; stroke: #2E6F40; stroke-linecap: butt;' />
+<polyline points='236.48,208.72 281.25,195.31 326.02,178.77 370.79,171.28 415.56,188.72 460.33,170.87 505.10,159.84 549.87,154.72 594.63,146.23 639.40,169.22 ' style='stroke-width: 2.67; stroke: #3E6B89; stroke-linecap: butt;' />
+<polyline points='236.48,208.72 281.25,209.20 326.02,205.13 370.79,204.41 415.56,229.59 460.33,232.19 505.10,243.62 549.87,237.29 594.63,237.08 ' style='stroke-width: 2.67; stroke: #9A7B1C; stroke-linecap: butt;' />
+<polyline points='236.48,208.72 281.25,208.86 326.02,215.37 370.79,218.63 415.56,230.76 460.33,237.51 505.10,237.45 549.87,235.94 594.63,233.19 639.40,225.00 ' style='stroke-width: 2.67; stroke: #2C3539; stroke-linecap: butt;' />
+<circle cx='236.48' cy='208.72' r='2.47' style='stroke-width: 0.68; stroke: #C04B35; fill: #C04B35;' />
+<circle cx='236.48' cy='208.72' r='2.47' style='stroke-width: 0.68; stroke: #6E7B85; fill: #6E7B85;' />
+<circle cx='236.48' cy='208.72' r='2.47' style='stroke-width: 0.68; stroke: #2E6F40; fill: #2E6F40;' />
+<circle cx='370.79' cy='183.85' r='2.47' style='stroke-width: 0.68; stroke: #C04B35; fill: #C04B35;' />
+<circle cx='370.79' cy='206.19' r='2.47' style='stroke-width: 0.68; stroke: #6E7B85; fill: #6E7B85;' />
+<circle cx='370.79' cy='199.25' r='2.47' style='stroke-width: 0.68; stroke: #2E6F40; fill: #2E6F40;' />
+<circle cx='594.63' cy='101.95' r='2.47' style='stroke-width: 0.68; stroke: #C04B35; fill: #C04B35;' />
+<circle cx='594.63' cy='307.54' r='2.47' style='stroke-width: 0.68; stroke: #6E7B85; fill: #6E7B85;' />
+<circle cx='594.63' cy='210.72' r='2.47' style='stroke-width: 0.68; stroke: #2E6F40; fill: #2E6F40;' />
+<circle cx='236.48' cy='208.72' r='2.47' style='stroke-width: 0.68; stroke: #1E4D2B; fill: #1E4D2B;' />
+<circle cx='370.79' cy='189.74' r='2.47' style='stroke-width: 0.68; stroke: #1E4D2B; fill: #1E4D2B;' />
+<circle cx='594.63' cy='192.62' r='2.47' style='stroke-width: 0.68; stroke: #1E4D2B; fill: #1E4D2B;' />
+<circle cx='639.40' cy='191.69' r='2.47' style='stroke-width: 0.68; stroke: #1E4D2B; fill: #1E4D2B;' />
+<circle cx='236.48' cy='208.72' r='2.47' style='stroke-width: 0.68; stroke: #2C3539; fill: #2C3539;' />
+<circle cx='236.48' cy='208.72' r='2.47' style='stroke-width: 0.68; stroke: #3E6B89; fill: #3E6B89;' />
+<circle cx='370.79' cy='218.63' r='2.47' style='stroke-width: 0.68; stroke: #2C3539; fill: #2C3539;' />
+<circle cx='370.79' cy='171.28' r='2.47' style='stroke-width: 0.68; stroke: #3E6B89; fill: #3E6B89;' />
+<circle cx='594.63' cy='233.19' r='2.47' style='stroke-width: 0.68; stroke: #2C3539; fill: #2C3539;' />
+<circle cx='594.63' cy='146.23' r='2.47' style='stroke-width: 0.68; stroke: #3E6B89; fill: #3E6B89;' />
+<circle cx='639.40' cy='225.00' r='2.47' style='stroke-width: 0.68; stroke: #2C3539; fill: #2C3539;' />
+<circle cx='639.40' cy='169.22' r='2.47' style='stroke-width: 0.68; stroke: #3E6B89; fill: #3E6B89;' />
+<circle cx='236.48' cy='208.72' r='2.47' style='stroke-width: 0.68; stroke: #9A7B1C; fill: #9A7B1C;' />
+<circle cx='370.79' cy='204.41' r='2.47' style='stroke-width: 0.68; stroke: #9A7B1C; fill: #9A7B1C;' />
+<circle cx='594.63' cy='237.08' r='2.47' style='stroke-width: 0.68; stroke: #9A7B1C; fill: #9A7B1C;' />
+<text x='650.60' y='191.64' style='font-size: 8.54px; font-weight: bold;fill: #1E4D2B; font-family: "Arial";' textLength='142.23px' lengthAdjust='spacingAndGlyphs'>CDHE E&amp;G All Faculty: 107 (+7.2%)</text>
+<text x='650.60' y='104.95' style='font-size: 8.54px; font-weight: bold;fill: #C04B35; font-family: "Arial";' textLength='120.41px' lengthAdjust='spacingAndGlyphs'>E&amp;G Admin Pro: 145 (+45.1%)</text>
+<text x='650.60' y='310.55' style='font-size: 8.54px; font-weight: bold;fill: #6E7B85; font-family: "Arial";' textLength='134.28px' lengthAdjust='spacingAndGlyphs'>E&amp;G State Classified: 58 (-41.7%)</text>
+<text x='650.60' y='209.88' style='font-size: 8.54px; font-weight: bold;fill: #2E6F40; font-family: "Arial";' textLength='110.84px' lengthAdjust='spacingAndGlyphs'>E&amp;G Tenured/TT: 99 (-0.8%)</text>
+<text x='650.60' y='170.32' style='font-size: 8.54px; font-weight: bold;fill: #3E6B89; font-family: "Arial";' textLength='164.41px' lengthAdjust='spacingAndGlyphs'>Non-Resident Student FTE: 117 (+16.7%)</text>
+<text x='650.60' y='248.49' style='font-size: 8.54px; font-weight: bold;fill: #9A7B1C; font-family: "Arial";' textLength='114.19px' lengthAdjust='spacingAndGlyphs'>Real Net Tuition: 88 (-12.0%)</text>
+<text x='650.60' y='228.83' style='font-size: 8.54px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='133.80px' lengthAdjust='spacingAndGlyphs'>Resident Student FTE: 93 (-6.9%)</text>
+<polygon points='226.44,140.05 479.33,140.05 479.27,140.05 479.50,140.04 479.72,140.00 479.93,139.92 480.13,139.80 480.30,139.66 480.45,139.49 480.58,139.30 480.66,139.09 480.72,138.87 480.74,138.64 480.74,138.64 480.74,98.78 480.74,98.78 480.72,98.55 480.66,98.33 480.58,98.12 480.45,97.93 480.30,97.76 480.13,97.62 479.93,97.50 479.72,97.42 479.50,97.38 479.33,97.37 226.44,97.37 226.61,97.38 226.38,97.37 226.15,97.40 225.94,97.46 225.73,97.56 225.54,97.69 225.38,97.84 225.25,98.02 225.14,98.23 225.07,98.44 225.03,98.66 225.03,98.78 225.03,138.64 225.03,138.53 225.03,138.76 225.07,138.98 225.14,139.19 225.25,139.40 225.38,139.58 225.54,139.73 225.73,139.86 225.94,139.96 226.15,140.02 226.38,140.05 ' style='stroke-width: 0.64; stroke: #2C3539; fill: #FAFBF9;' />
+<text x='352.88' y='105.31' text-anchor='middle' style='font-size: 7.82px;fill: #2C3539; font-family: "Arial";' textLength='84.22px' lengthAdjust='spacingAndGlyphs'>Key Reconciled Finding:</text>
+<text x='352.88' y='116.11' text-anchor='middle' style='font-size: 7.82px;fill: #2C3539; font-family: "Arial";' textLength='244.48px' lengthAdjust='spacingAndGlyphs'>Using continuous CDHE Format 30 definitions (removing 2018-19 rank</text>
+<text x='352.88' y='126.91' text-anchor='middle' style='font-size: 7.82px;fill: #2C3539; font-family: "Arial";' textLength='241.62px' lengthAdjust='spacingAndGlyphs'>renaming), E&amp;G Faculty rose +7.2% (FY17-26), while E&amp;G Admin Pro</text>
+<text x='352.88' y='137.70' text-anchor='middle' style='font-size: 7.82px;fill: #2C3539; font-family: "Arial";' textLength='251.02px' lengthAdjust='spacingAndGlyphs'>jumped +45.1% (incl. +30.6% after FY22, partially from Classified shifts).</text>
 </g>
 <g clip-path='url(#cpMC4wMHw4NzguNDB8MC4wMHw3NzcuNjA=)'>
-<text x='202.23' y='307.57' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='9.81px' lengthAdjust='spacingAndGlyphs'>60</text>
-<text x='202.23' y='269.67' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='9.81px' lengthAdjust='spacingAndGlyphs'>80</text>
-<text x='202.23' y='231.77' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='14.72px' lengthAdjust='spacingAndGlyphs'>100</text>
-<text x='202.23' y='193.87' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='14.72px' lengthAdjust='spacingAndGlyphs'>120</text>
-<text x='202.23' y='155.97' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='14.72px' lengthAdjust='spacingAndGlyphs'>140</text>
-<text x='202.23' y='118.07' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='14.72px' lengthAdjust='spacingAndGlyphs'>160</text>
-<text x='202.23' y='80.17' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='14.72px' lengthAdjust='spacingAndGlyphs'>180</text>
+<text x='202.23' y='306.62' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='9.81px' lengthAdjust='spacingAndGlyphs'>60</text>
+<text x='202.23' y='259.25' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='9.81px' lengthAdjust='spacingAndGlyphs'>80</text>
+<text x='202.23' y='211.87' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='14.72px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text x='202.23' y='164.50' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='14.72px' lengthAdjust='spacingAndGlyphs'>120</text>
+<text x='202.23' y='117.13' text-anchor='end' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='14.72px' lengthAdjust='spacingAndGlyphs'>140</text>
 <polyline points='206.94,339.47 856.98,339.47 ' style='stroke-width: 1.07; stroke: #DCE2DF; stroke-linecap: butt;' />
-<text x='236.48' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2015</text>
-<text x='274.86' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2016</text>
-<text x='313.23' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2017</text>
-<text x='351.60' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2018</text>
-<text x='389.98' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2019</text>
-<text x='428.35' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2020</text>
-<text x='466.72' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2021</text>
-<text x='505.10' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2022</text>
-<text x='543.47' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2023</text>
-<text x='581.84' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2024</text>
-<text x='620.22' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2025</text>
-<text x='658.59' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2026</text>
+<text x='236.48' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2017</text>
+<text x='281.25' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2018</text>
+<text x='326.02' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2019</text>
+<text x='370.79' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2020</text>
+<text x='415.56' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2021</text>
+<text x='460.33' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2022</text>
+<text x='505.10' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2023</text>
+<text x='549.87' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2024</text>
+<text x='594.63' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2025</text>
+<text x='639.40' y='350.49' text-anchor='middle' style='font-size: 8.82px;fill: #495057; font-family: "Arial";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>2026</text>
 <text x='531.96' y='361.57' text-anchor='middle' style='font-size: 9.24px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='48.09px' lengthAdjust='spacingAndGlyphs'>Fiscal Year</text>
-<text transform='translate(26.04,203.98) rotate(-90)' text-anchor='middle' style='font-size: 9.24px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='91.14px' lengthAdjust='spacingAndGlyphs'>Index (FY2015 = 100)</text>
-<text x='19.43' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='35.98px' lengthAdjust='spacingAndGlyphs'>Isolating</text>
-<text x='58.10' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='20.39px' lengthAdjust='spacingAndGlyphs'>E&amp;G</text>
-<text x='81.18' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='32.23px' lengthAdjust='spacingAndGlyphs'>general</text>
-<text x='116.10' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='23.64px' lengthAdjust='spacingAndGlyphs'>funds</text>
-<text x='142.43' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='27.38px' lengthAdjust='spacingAndGlyphs'>shows</text>
-<text x='172.49' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='20.92px' lengthAdjust='spacingAndGlyphs'>E&amp;G</text>
-<text x='196.10' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='30.03px' lengthAdjust='spacingAndGlyphs'>Admin</text>
-<text x='228.82' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='16.09px' lengthAdjust='spacingAndGlyphs'>Pro</text>
-<text x='247.60' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='39.48px' lengthAdjust='spacingAndGlyphs'>(+62.3%)</text>
-<text x='289.77' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='16.12px' lengthAdjust='spacingAndGlyphs'>and</text>
-<text x='308.58' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='53.11px' lengthAdjust='spacingAndGlyphs'>CCA-driven</text>
-<text x='364.38' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='20.92px' lengthAdjust='spacingAndGlyphs'>E&amp;G</text>
-<text x='387.99' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='33.81px' lengthAdjust='spacingAndGlyphs'>Faculty</text>
-<text x='424.49' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='39.48px' lengthAdjust='spacingAndGlyphs'>(+43.3%)</text>
-<text x='466.66' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='20.94px' lengthAdjust='spacingAndGlyphs'>grew</text>
-<text x='19.43' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='24.17px' lengthAdjust='spacingAndGlyphs'>faster</text>
-<text x='46.29' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='18.81px' lengthAdjust='spacingAndGlyphs'>than</text>
-<text x='67.79' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='38.12px' lengthAdjust='spacingAndGlyphs'>Resident</text>
-<text x='108.60' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='33.31px' lengthAdjust='spacingAndGlyphs'>Student</text>
-<text x='144.60' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='18.22px' lengthAdjust='spacingAndGlyphs'>FTE</text>
-<text x='165.51' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='34.38px' lengthAdjust='spacingAndGlyphs'>(-5.0%),</text>
-<text x='202.57' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='19.86px' lengthAdjust='spacingAndGlyphs'>Real</text>
-<text x='225.11' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='15.03px' lengthAdjust='spacingAndGlyphs'>Net</text>
-<text x='242.83' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='28.62px' lengthAdjust='spacingAndGlyphs'>Tuition</text>
-<text x='274.15' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='36.80px' lengthAdjust='spacingAndGlyphs'>(+4.4%),</text>
-<text x='313.63' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='16.12px' lengthAdjust='spacingAndGlyphs'>and</text>
-<text x='332.44' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='23.08px' lengthAdjust='spacingAndGlyphs'>FY26</text>
-<text x='358.21' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='59.06px' lengthAdjust='spacingAndGlyphs'>Non-Resident</text>
-<text x='419.96' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='18.22px' lengthAdjust='spacingAndGlyphs'>FTE</text>
-<text x='440.86' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='28.47px' lengthAdjust='spacingAndGlyphs'>(-7.7%</text>
-<text x='472.02' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='23.27px' lengthAdjust='spacingAndGlyphs'>YoY).</text>
-<text x='19.43' y='28.82' style='font-size: 13.12px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='610.91px' lengthAdjust='spacingAndGlyphs'>A. Ten-Year E&amp;G Workforce &amp; Enrollment Trends (FY2015 = 100, Education &amp; General Funds Only)</text>
+<text transform='translate(26.04,203.98) rotate(-90)' text-anchor='middle' style='font-size: 9.24px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='91.14px' lengthAdjust='spacingAndGlyphs'>Index (FY2017 = 100)</text>
+<text x='19.43' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='49.92px' lengthAdjust='spacingAndGlyphs'>Reconciling</text>
+<text x='72.04' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='46.73px' lengthAdjust='spacingAndGlyphs'>continuous</text>
+<text x='121.46' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='27.34px' lengthAdjust='spacingAndGlyphs'>CDHE</text>
+<text x='151.49' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='20.92px' lengthAdjust='spacingAndGlyphs'>E&amp;G</text>
+<text x='175.10' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='33.81px' lengthAdjust='spacingAndGlyphs'>Faculty</text>
+<text x='211.60' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='33.58px' lengthAdjust='spacingAndGlyphs'>(+7.2%,</text>
+<text x='247.86' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='40.27px' lengthAdjust='spacingAndGlyphs'>FY17-26)</text>
+<text x='290.82' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='41.36px' lengthAdjust='spacingAndGlyphs'>alongside</text>
+<text x='334.86' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='20.92px' lengthAdjust='spacingAndGlyphs'>E&amp;G</text>
+<text x='358.47' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='30.03px' lengthAdjust='spacingAndGlyphs'>Admin</text>
+<text x='391.19' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='16.09px' lengthAdjust='spacingAndGlyphs'>Pro</text>
+<text x='409.97' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='36.27px' lengthAdjust='spacingAndGlyphs'>(+45.1%</text>
+<text x='448.93' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='24.70px' lengthAdjust='spacingAndGlyphs'>since</text>
+<text x='476.32' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='26.30px' lengthAdjust='spacingAndGlyphs'>FY17;</text>
+<text x='505.30' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='33.05px' lengthAdjust='spacingAndGlyphs'>+30.6%</text>
+<text x='541.04' y='42.48' style='font-size: 9.66px; font-weight: bold;fill: #495057; font-family: "Arial";' textLength='49.89px' lengthAdjust='spacingAndGlyphs'>post-FY22)</text>
+<text x='590.93' y='42.48' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='2.69px' lengthAdjust='spacingAndGlyphs'>,</text>
+<text x='19.43' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='59.06px' lengthAdjust='spacingAndGlyphs'>Non-Resident</text>
+<text x='81.18' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='18.22px' lengthAdjust='spacingAndGlyphs'>FTE</text>
+<text x='102.08' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='38.95px' lengthAdjust='spacingAndGlyphs'>(+16.7%,</text>
+<text x='143.72' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='25.25px' lengthAdjust='spacingAndGlyphs'>-7.7%</text>
+<text x='171.66' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='23.08px' lengthAdjust='spacingAndGlyphs'>FY26</text>
+<text x='197.43' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='25.25px' lengthAdjust='spacingAndGlyphs'>drop),</text>
+<text x='225.36' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='38.12px' lengthAdjust='spacingAndGlyphs'>Resident</text>
+<text x='266.18' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='18.22px' lengthAdjust='spacingAndGlyphs'>FTE</text>
+<text x='287.08' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='34.38px' lengthAdjust='spacingAndGlyphs'>(-6.9%),</text>
+<text x='324.15' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='16.12px' lengthAdjust='spacingAndGlyphs'>and</text>
+<text x='342.96' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='19.86px' lengthAdjust='spacingAndGlyphs'>Real</text>
+<text x='365.51' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='32.20px' lengthAdjust='spacingAndGlyphs'>System</text>
+<text x='400.40' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='15.03px' lengthAdjust='spacingAndGlyphs'>Net</text>
+<text x='418.11' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='28.62px' lengthAdjust='spacingAndGlyphs'>Tuition</text>
+<text x='449.43' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='33.84px' lengthAdjust='spacingAndGlyphs'>(-12.0%</text>
+<text x='485.96' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='22.55px' lengthAdjust='spacingAndGlyphs'>since</text>
+<text x='511.19' y='54.51' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='28.98px' lengthAdjust='spacingAndGlyphs'>FY17).</text>
+<text x='19.43' y='28.82' style='font-size: 13.12px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='639.97px' lengthAdjust='spacingAndGlyphs'>A. General-Fund Workforce &amp; Enrollment Trends (FY2017 = 100, Continuous CDHE + Fact Book Series)</text>
 </g>
 <defs>
   <clipPath id='cpMjA2Ljk0fDg1Ni45OHw0NzIuMzd8NzA4LjAw'>
@@ -274,8 +273,8 @@
 <text x='537.60' y='424.50' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='27.38px' lengthAdjust='spacingAndGlyphs'>Admin</text>
 <text x='567.66' y='424.50' style='font-size: 9.66px;fill: #495057; font-family: "Arial";' textLength='23.09px' lengthAdjust='spacingAndGlyphs'>units.</text>
 <text x='19.43' y='398.81' style='font-size: 13.12px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='612.91px' lengthAdjust='spacingAndGlyphs'>B. Disaggregating Campus Staff by Funding Source: 69.7% of Admin Pro FTE Are Non-E&amp;G (FY25)</text>
-<text x='19.43' y='747.64' style='font-size: 7.88px;fill: #6E7B85; font-family: "Arial";' textLength='620.09px' lengthAdjust='spacingAndGlyphs'>Sources: CSU Fact Book FY27 (Tables 107-128 &amp; Table 124, pp. 114-140); CDHE Budget Data Books Format 30 (FY15-FY26); CSU System Audits (FY15-FY25) CPI-U adjusted.</text>
-<text x='19.43' y='758.51' style='font-size: 7.88px;fill: #6E7B85; font-family: "Arial";' textLength='672.38px' lengthAdjust='spacingAndGlyphs'>Note: E&amp;G State Classified FTE FY21-24 omitted from Fact Book Table 128 breakdown (plotted dashed to FY25 Table 126 actual = 316.7 FTE). E&amp;G NTT/CCA Faculty rose from 84 to 456 FTE.</text>
+<text x='19.43' y='747.64' style='font-size: 7.88px;fill: #6E7B85; font-family: "Arial";' textLength='620.09px' lengthAdjust='spacingAndGlyphs'>Sources: CSU Fact Book FY27 (Tables 107-128 &amp; Table 124, pp. 114-140); CDHE Budget Data Books Format 30 (FY17-FY26); CSU System Audits (FY15-FY25) CPI-U adjusted.</text>
+<text x='19.43' y='758.51' style='font-size: 7.88px;fill: #6E7B85; font-family: "Arial";' textLength='699.25px' lengthAdjust='spacingAndGlyphs'>Note: Continuous CDHE E&amp;G Faculty avoids Fact Book FY27's 2018-19 Special/Temp-to-CCA rank migration artifact. E&amp;G Classified FY21-24 omitted in Table 128 (dashed to FY25 Table 126 = 316.7).</text>
 </g>
 </g>
 </svg>

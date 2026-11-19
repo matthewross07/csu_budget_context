@@ -43,6 +43,13 @@ bp <- read_csv(file.path(proc_dir, "structural_blame_pie.csv"), show_col_types =
 stopifnot(sum(bp$mid_pct) == 100)
 message("[PASS] Ledger B structural blame pie midpoints sum to 100%.")
 
+# 5B. Topline E&G and FY28 scale check
+top_tbl <- read_csv(file.path(proc_dir, "topline_takeaway_summary.csv"), show_col_types = FALSE)
+top_eg  <- top_tbl |> filter(section == "FY26 E&G Budget")
+stopifnot(abs(sum(top_eg$amount_m) - 885.156) < 0.05)
+stopifnot(abs(sum(top_eg$share_pct) - 1.0) < 0.002)
+message("[PASS] Topline FY26 E&G partition ($885.16M) & FY28 flashpoint math verified.")
+
 # 6. Athletics FY25 OSA reconciliation
 ath <- read_csv(file.path(proc_dir, "athletics_ncaa_csu_fy19_fy25.csv"), show_col_types = FALSE) |>
   filter(fiscal_year == 2025L)
@@ -50,8 +57,9 @@ stopifnot(abs(ath$total_revenues - ath$total_expenses - ath$excess_deficit) < 5)
 stopifnot(ath$athletics_debt == 206960000)
 message("[PASS] FY25 OSA Athletics statement balances & debt ($206.96M) verified.")
 
-# 7. All 6 figures rendered (PNG + SVG > 5KB)
+# 7. All 7 figures rendered (PNG + SVG > 5KB)
 expected_figs <- c(
+  "fig00_topline_takeaway",
   "fig01_fy28_shortfall_bridge",
   "fig02_structural_blame_pie",
   "fig03_workforce_overshoot_and_cemml",
@@ -65,5 +73,5 @@ for (fn in expected_figs) {
   stopifnot(file.exists(p_png) && file.info(p_png)$size > 5000)
   stopifnot(file.exists(p_svg) && file.info(p_svg)$size > 5000)
 }
-message("[PASS] All 6 PNG and 6 SVG figures exist and are non-empty.")
+message("[PASS] All 7 PNG and 7 SVG figures exist and are non-empty.")
 message("ALL AUDIT CHECKS PASSED")

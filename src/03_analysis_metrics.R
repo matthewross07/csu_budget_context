@@ -16,6 +16,7 @@ eg_div    <- read_csv(file.path(proc_dir, "eg_division_budgets_fy17_fy26.csv"), 
 audits    <- read_csv(file.path(proc_dir, "audits_system_fy15_fy25.csv"), show_col_types = FALSE)
 ath_csu   <- read_csv(file.path(proc_dir, "athletics_ncaa_csu_fy19_fy25.csv"), show_col_types = FALSE)
 ipeds     <- read_csv(file.path(proc_dir, "peer_ipeds_panel_2015_2023.csv"), show_col_types = FALSE)
+fy28_b    <- read_csv(file.path(proc_dir, "fy28_shortfall_bridge.csv"), show_col_types = FALSE)
 
 # ==============================================================================
 # 1. E&G WORKFORCE VS. NON-E&G (CEMML/RESEARCH) VS. STUDENT DEMAND (2015-2025/26)
@@ -241,11 +242,11 @@ write_csv(black_swan_math, file.path(proc_dir, "black_swan_math.csv"))
 # 5. LEDGER B: MULTI-YEAR STRUCTURAL COST & REVENUE PRESSURES
 # ==============================================================================
 message("--- Computing 5: Ledger B Structural Attribution Ranges ---")
-# Separates AUDITED BASELINE FACTS from TRANSPARENT ATTRIBUTION WEIGHTS (sum of midpoints = 100%)
+# Separates AUDITED BASELINE FACTS from ILLUSTRATIVE WEIGHTS (sum of midpoints = 100%)
 structural_blame <- tribble(
   ~bucket_order, ~driver, ~low_pct, ~mid_pct, ~high_pct, ~audited_anchor, ~methodology_note,
   1L, "E&G Workforce Growth & Incremental Budgeting", 40, 45, 50,
-      "E&G Admin Pro FTE +62.3% (858 -> 1,393, FY15-25) & E&G CCA/Contract Faculty +368 FTE (FY15-25) while Resident FTE fell -5.0% (FY15-26) and NR FTE plateaued. Excludes externally/self-funded research, clinical & auxiliary staff. 3% comp pool = $33.7M/yr.",
+      "E&G Admin Pro FTE +62.3% (858 -> 1,393, FY15-25; +326 FTE post-FY22) while continuous CDHE E&G Faculty grew +7.2% (FY17-26) & Resident FTE fell -5.0% (FY15-26). Excludes externally/self-funded staff. 3% comp pool = $33.7M/yr.",
       "Order-of-magnitude illustration reflecting permanent payroll share of E&G expenditures (~70%+) shaped by legacy incremental budgeting.",
   2L, "Long-Term Capital Commitments & Debt Service", 20, 22, 25,
       "CSU System Debt doubled from $671.9M (FY13) to $1,449.3M peak (FY23) / $1,330.7M (FY25) + $79.1M FY25 STRATA Laser bond. E&G Central Debt Service more than tripled from $10.2M (FY15) to $31.9M (FY26).",
@@ -258,6 +259,44 @@ structural_blame <- tribble(
       "Reflects state structural cap under TABOR/Medicaid crowding + institutional merit aid competition for non-resident students."
 )
 write_csv(structural_blame, file.path(proc_dir, "structural_blame_pie.csv"))
+
+# ==============================================================================
+# 5B. TOPLINE TAKEAWAY SUMMARY (HEADLINE FLASHPOINTS VS. TOTAL E&G & FY28 GAP)
+# ==============================================================================
+message("--- Computing 5B: Topline Takeaway Scale Summary ---")
+d15 <- eg_div |> filter(fiscal_year == 2015L)
+d26 <- eg_div |> filter(fiscal_year == 2026L)
+
+fy26_total_m   <- d26$grand_total / 1e6
+fy26_ath_m     <- d26$b2_athletics_eg / 1e6
+fy26_debt_m    <- d26$xa_debt_service / 1e6
+fy26_acad_m    <- (d26$colleges_total + d26$pvm_agencies_total + d26$academic_support_ex_aid + (d26$student_support_total - d26$b2_athletics_eg)) / 1e6
+fy26_admin_m   <- (d26$support_div_total + d26$presidents_div_total) / 1e6
+fy26_aid_m     <- d26$inst_aid_budget_eg / 1e6
+fy26_central_m <- fy26_total_m - (fy26_ath_m + fy26_debt_m + fy26_acad_m + fy26_admin_m + fy26_aid_m)
+
+tot_grow_m     <- (d26$grand_total - d15$grand_total) / 1e6
+ath_grow_m     <- (d26$b2_athletics_eg - d15$b2_athletics_eg) / 1e6
+debt_grow_m    <- (d26$xa_debt_service - d15$xa_debt_service) / 1e6
+
+fy28_mid_m     <- fy28_b$mid_m[fy28_b$step_order == 4L]
+exec_payouts_m <- 1.10 + 0.325
+net_ath_sup_m  <- -(ath_recon_fy25$amount_m[ath_recon_fy25$step_id == 7L])
+rem_recur_m    <- fy28_mid_m - net_ath_sup_m
+
+topline_tbl <- tribble(
+  ~section, ~item, ~amount_m, ~share_pct, ~growth_share_pct, ~source_citation,
+  "FY26 E&G Budget", "Academic Colleges, Agencies & Student Support (incl. fringe)", fy26_acad_m,    fy26_acad_m / fy26_total_m, NA_real_, "ColOBS FY26",
+  "FY26 E&G Budget", "Central Admin, VP Ops, IT, HR & Pres. (incl. fringe)",       fy26_admin_m,   fy26_admin_m / fy26_total_m, NA_real_, "ColOBS FY26",
+  "FY26 E&G Budget", "Institutional Financial Aid (E&G Discounting)",             fy26_aid_m,     fy26_aid_m / fy26_total_m, NA_real_, "ColOBS FY26",
+  "FY26 E&G Budget", "Central Utilities, Insurance & Reserves",                   fy26_central_m, fy26_central_m / fy26_total_m, NA_real_, "ColOBS FY26",
+  "FY26 E&G Budget", "Central E&G Capital Debt Service (XA)",                     fy26_debt_m,    fy26_debt_m / fy26_total_m, debt_grow_m / tot_grow_m, "ColOBS FY15 & FY26",
+  "FY26 E&G Budget", "Athletics E&G Base Allocation (B2)",                        fy26_ath_m,     fy26_ath_m / fy26_total_m, ath_grow_m / tot_grow_m, "ColOBS FY15 & FY26",
+  "FY28 Gap Scale",  "Combined Exec Transition Payouts (Pres $1.10M + Prov $0.33M, 1x)", exec_payouts_m, exec_payouts_m / fy28_mid_m, NA_real_, "Public Settlements (2026)",
+  "FY28 Gap Scale",  "Net Institutional Athletics Operating Support (FY25 OSA)",   net_ath_sup_m,  net_ath_sup_m / fy28_mid_m, NA_real_, "Colorado OSA 2516F-B",
+  "FY28 Gap Scale",  "Remaining Recurring FY28 Operating Gap",                    rem_recur_m,    rem_recur_m / fy28_mid_m, NA_real_, "Oct 7 Memo ($66M mid) less Net Ath"
+)
+write_csv(topline_tbl, file.path(proc_dir, "topline_takeaway_summary.csv"))
 
 # ==============================================================================
 # 6. PEER BENCHMARK SNAPSHOT (2023 IPEDS)
