@@ -1,0 +1,70 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - ledger-a-fy28-cliff.qmd
+    - ledger-b-structural.qmd
+    - athletics-audit.qmd
+    - governance-and-peers.qmd
+    - methodology-sources.qmd
+  resources:
+    - robots.txt
+    - .nojekyll
+    - outputs/figures/*.png
+    - outputs/figures/*.svg
+    - outputs/pdf/CSU_Budget_Context_FY27_28.pdf
+    - data/sources_manifest.csv
+
+website:
+  title: "Understanding CSU's FY27–28 Budget Gap"
+  search: true
+  page-navigation: true
+  navbar:
+    background: "#1E4D2B"
+    foreground: "#FFFFFF"
+    left:
+      - text: "Overview"
+        href: index.qmd
+      - text: "Ledger A: FY28 Gap"
+        href: ledger-a-fy28-cliff.qmd
+      - text: "Ledger B: Structural Context"
+        href: ledger-b-structural.qmd
+      - text: "Athletics & Debt"
+        href: athletics-audit.qmd
+      - text: "Governance & Peers"
+        href: governance-and-peers.qmd
+      - text: "How This Was Built"
+        href: methodology-sources.qmd
+    right:
+      - icon: file-earmark-pdf
+        text: "PDF Brief"
+        href: outputs/pdf/CSU_Budget_Context_FY27_28.pdf
+      - icon: github
+        text: "GitHub"
+        href: https://github.com/matthewross07/csu_budget_context
+  page-footer:
+    left: "Reproducible R + Quarto Context Brief | Built with Antigravity AI & Verified Against 70 Public Primary Sources"
+    right: "Every figure traced to `data/sources_manifest.csv` · Open to factual corrections"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles.scss
+    include-in-header:
+      text: |
+        <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+        <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+        <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-fold: true
+    smooth-scroll: true
+    embed-resources: false
+
+execute:
+  echo: false
+  warning: false
+  message: false

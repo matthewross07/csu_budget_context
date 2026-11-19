@@ -1,0 +1,8 @@
+step_id,component,amount_m,category,note
+1,Total Athletics Operating Expenses,-75.239068,Gross Outflow,"FY25 OSA NCAA AUP total operating expenses ($75.24M; includes $14.34M debt service/leases, $12.75M coaching, $10.15M staff, $10.93M student aid)."
+2,Self-Generated External Revenue,42.595373,Earned Offset,"Tickets ($8.17M), Contributions ($12.01M), Sponsorships/Royalties ($6.70M), Conf/Media/NCAA ($8.17M), Concessions/Guarantees/Other ($7.54M)."
+3,Mandatory Student Athletics Fees,6.144563,Student Fee Offset,"Dedicated student athletics fees ($6.14M, 8.2% of total revenue)."
+4,Direct & Indirect Institutional Support,25.99719,University Support,"Direct support ($23.85M, incl. $16.91M E&G base B2 allocation + transfers) + Indirect support ($2.15M)."
+5,Reported Operating Deficit (FY25),-0.501942,Net Accounting Balance,Excess (Deficit) of Revenues over Expenses (-$0.50M).
+6,Memo: Scholarship Tuition Flow-Back,10.931301,Internal Campus Return,Athletic Student Aid ($10.93M) paid back to campus for tuition/fees/room/board (reduces net economic cash drain).
+7,Estimated Net Institutional Operating Drag,-15.567831,Net Economic Drag,Gross Institutional Support ($26.00M) + Deficit ($0.50M) minus Tuition/Aid Flow-Back ($10.93M) = ~$15.57M net cash/indirect burden (excl. student fees; ~$21.71M incl. student fees).

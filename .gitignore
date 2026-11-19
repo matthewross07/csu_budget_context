@@ -1,0 +1,12 @@
+.quarto/
+_site/
+data/raw/
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+*.tex
+*.log
+
+/.quarto/
+**/*.quarto_ipynb

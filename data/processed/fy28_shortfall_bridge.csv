@@ -1,0 +1,5 @@
+step_order,driver,low_m,mid_m,high_m,type,source_citation
+1,Enrollment & Net Tuition Mix Drop,25,25,25,Structural Driver,"Oct. 7, 2026 Presidential Memo; Oct. 14 Slides 4-6 (-2.5% RI, -9.7% Dom NR UG, -11.1% Intl)"
+2,Expiring FY27 One-Time Stopgap Funds,15.11,15.11,15.11,Structural Driver,"May 13, 2026 V4 Slide 6 ($15.112M); Oct. 14, 2026 Slide 13 ('One-time funds from FY27 expire in FY28')"
+3,"Mandatory Costs, Comp & State Squeeze",21.19,25.89,30.59,Scenario Driver,Residual to Oct. 7 Memo total ($61.3M-$70.7M under 0%/1%/3% state & comp scenarios; OSPB -$1.5B state gap)
+4,Projected FY28 Operating Gap,61.3,66,70.7,Total Gap,"Oct. 7, 2026 Presidential Budget Message (V1.0 BOG review)"

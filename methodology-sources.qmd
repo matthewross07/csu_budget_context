@@ -1,0 +1,129 @@
+---
+title: "How This Was Built, Reality Checks & Primary Sources"
+subtitle: "AI Tooling Disclosure, Six Verification Guardrails, Accounting Notes, Data Gaps, and All 70 Archived Sources"
+---
+
+```{r setup}
+source("src/report_helpers.R")
+
+manifest <- load_manifest()
+cpi      <- load_proc("macro_cpiu_fy.csv")
+```
+
+---
+
+## 1. How This Site Was Built (AI + Reproducible Pipeline Disclosure)
+
+This website and companion PDF brief were scoped, steered, and reviewed by **Matthew R.V. Ross** (CSU faculty) using **Google DeepMind’s Antigravity** agentic coding environment to build an end-to-end reproducible **R (`4.5.2`) + Quarto (`1.10`)** pipeline ([`src/00_setup_theme.R`](https://github.com/matthewross07/csu_budget_context) through `src/05_verify_audit.R`).
+
+Rather than relying on unverified AI summaries or back-of-the-envelope estimates, every chart, metric, and table on this site is computed directly in R from archived primary public files. Equally important, **six explicit reality checks** were added during construction to catch both AI mistakes and common misconceptions in campus budget debates:
+
+1. **Primary-Source-Only Data Provenance (70 SHA-256 Checksummed Files):** Script `01_fetch_sources.R` archived 70 public PDFs, HTML governance memos, and federal/BLS API tables across CSU Office of Budgets, CSU IRP&E Fact Books, CDHE Format 30/20 Budget Data Books, CSU System Audited Financial Statements (`FY15–FY25`), Colorado Office of the State Auditor (OSA) statutory NCAA Agreed-Upon Procedures reports (`2516F-B`, `2505F-B`), BLS CPI-U (`CUUR0000SA0`), and Urban Institute IPEDS (`2015–2023`), logging exact URLs, byte counts, and SHA-256 digests in `data/sources_manifest.csv`.
+2. **Visual Slide Inspection (Zero Estimation on Blank Online Exports):** Automated PDF text extraction missed embedded images in 2026 campus budget forum decks, so every slide was rasterized and inspected visually. That check caught that Slides 14–15 of the posted Oct. 14, 2026 PDF contained blank white table placeholders online—so the pipeline drew the `$61.3M–$70.7M` shortfall and `~$25.0M` enrollment drop exclusively from the Oct. 7, 2026 campus memo and May 13 V4 Slide 6 (`$15.112M` expiring one-time stopgaps) instead of guessing missing numbers.
+3. **Domain Reality Check on Soft-Money Research Staff (CEMML / CIRA / VTH):** Early exploratory drafts risked treating CSU's campus-wide staff growth (~3:1 ratio) as uniform "administrative overhead." Human domain review explicitly required separating self-funding sponsored research and enterprise units (`Table 123` and `Table 124`), establishing that **69.7% (`3,205.5` of `4,597.7`) of FY25 Administrative Professional FTE sit outside E&G**—including `96.3%` non-E&G in WCNR (home to CEMML) and `82.1%` non-E&G in Engineering (CIRA).
+4. **Controls for Cross-Year Accounting Shifts:** CSU's Office of Budgets ColOBS files reflect two major structural accounting reclassifications: moving **\$41.64M** of financial aid from `XA Central` into `P1 Enrollment & Access` in FY19, and decentralizing **~\$111.26M** of pooled `XA Employee Fringe Benefits` into individual divisions in FY26. Both shifts are documented and controlled in Figure 5 so accounting transfers are not misread as sudden administrative spending surges.
+5. **Two-Way Claim Verification & Non-Interpolation:** Circulating claims from multiple perspectives were audited symmetrically against public filings—verifying Parsons' `$1.1M` settlement/non-disparagement terms, Coach Jim Mora Jr.'s `$2.4M` base contract, Athletics' `$75.24M` gross vs. `~$15.57M` net operating support, and `$206.96M` Athletics debt; documenting that public *San Francisco Chronicle* reporting on Title IX investigator Jeffrey Lamoureaux involved universities outside CSU; and leaving omitted `FY21–FY24` E&G State Classified rows in Fact Book Table 128 as `NA` rather than interpolating.
+6. **Automated Reconciliation Suite (`src/05_verify_audit.R`) & Visual Layout Checks:** Seven automated assertions verify ledger balances (`$54.272M` V4 closeout sums to `$0`; `$61.3M–$70.7M` FY28 steps sum cleanly; FY27 unit cuts equal `160.58` FTE; Table 124 AP FTE reconciles to `1,392.2` E&G / `3,205.5` non-E&G; OSA revenues/expenses/debt tie out), followed by automated HTML DOM checks (zero accidental math mode, zero broken links) and visual inspection of rendered figures and PDF tables.
+
+*If any member of the CSU community—faculty, staff, administration, or board—spots an accounting nuance, classification correction, or missing primary record, please open an issue or pull request on [`github.com/matthewross07/csu_budget_context`](https://github.com/matthewross07/csu_budget_context).*
+
+---
+
+## 2. Accounting Scope & Deflation Notes
+
+1. **CSU System vs. Fort Collins Standalone Scope (`finstmt2015–2025` vs. `BDB`/`ColOBS`/`OSA`):**
+   - **CSU System Audited Statements** combine Fort Collins, CSU Pueblo, and System/SPUR (`$644.9M` net tuition, `21.3%` discount rate, `$1,330.7M` long-term debt in FY25 + `$79.1M` STRATA ATLAS Laser bonds issued June 26, 2025).
+   - **Fort Collins Standalone Scope** comes from CDHE Format 30/20 Budget Data Books (`FINAL_BDB`), CSU Office of Budgets Operating Budget Summaries (`ColOBS` + `OBS`), IRP&E Fact Books (`Tables 122–128`), and Note 5 of Colorado OSA Report `2516F-B` (`$1,118.77M` Fort Collins total debt, including `$206.96M` Athletics debt).
+2. **Real-Dollar Deflation (`CPI-U`, `macro_cpiu_fy.csv`):**
+   - Monthly BLS CPI-U All Urban Consumers (`CUUR0000SA0`, 2014–Oct 2026) is averaged across CSU's July–June fiscal calendar so multi-year net tuition and debt series are evaluated in constant FY25 or FY26 purchasing power (`FY27` covers `Jul–Oct 2026`).
+
+---
+
+## 3. Documented Data Gaps & Portal Blocks (`DATA_GAPS.md`)
+
+```{r tbl-gaps}
+gaps_tbl <- tibble::tibble(
+  `Source / Dataset` = c(
+    "Knight-Newhouse Athletics Database",
+    "U.S. GAO Report GAO-26-108640",
+    "IRP&E Bare Domain (ir.colostate.edu)",
+    "Oct. 14, 2026 Fall Forum PDF (Slides 14–15)",
+    "CSU Fact Book FY27 Table 128",
+    "Urban Institute IPEDS Panel"
+  ),
+  `Observed Constraint` = c(
+    "HTTP 403 Forbidden to automated requests (anti-bot gate).",
+    "HTTP 403 Forbidden when requesting full PDF from gao.gov.",
+    "Bare hostname fails DNS resolution without www prefix.",
+    "Public online PDF exports Slides 14–15 with blank white scenario table areas.",
+    "Omits FY21–FY24 E&G-only State Classified FTE rows (reports FY15–FY20 and FY25).",
+    "Harmonized Finance & HR API data run through FY23."
+  ),
+  `Primary Fallback / Mitigation Used` = c(
+    "Colorado OSA Statutory NCAA AUP PDFs (csu_ncaa_aup_fy19..fy25, 2516F-B, and cub_ncaa_aup_fy25, 2505F-B)—the audited filings Knight-Newhouse ingests.",
+    "Published summary figures (nocap_gao_26_108640_summary.html: Power-4 $120.3M vs. G5 $21.0M) paired with OSA Note 5 debt.",
+    "Retrieved directly via https://www.ir.colostate.edu/.",
+    "Exact $61.3M–$70.7M shortfall, ~$25M enrollment drop, and $15.112M stopgap cliff sourced from Oct. 7 Memo & May 13 V4 Slide 6.",
+    "Left uninterpolated (NA); longitudinal comparisons anchor on FY15 vs. FY25 E&G endpoints alongside all-funds Table 122/123.",
+    "Anchored 8-institution peer panel on FY23 IPEDS alongside FY25 statutory OSA AUP debt benchmarks."
+  ),
+  `Manual Reference / Verification` = c(
+    "https://knightnewhousedata.org/fbs/mwc/colorado-state-university",
+    "https://www.gao.gov/assets/gao-26-108640.pdf",
+    "https://www.ir.colostate.edu/",
+    "source_oct07_2026_early_look_budget.html; Campus-V4-5-13-2026_a-1.pdf",
+    "CSU_Factbook_FY27_2026-10-22.pdf (pp. 142–147)",
+    "data/processed/peer_benchmarks_2023.csv"
+  )
+)
+
+csu_gt(
+  gaps_tbl,
+  title = "Audit Log of Upstream Portal Blocks, Posting Gaps & Accounting Boundaries",
+  subtitle = "Documented in DATA_GAPS.md Without Bypassing Access Controls or Silently Interpolating Missing Cells"
+)
+```
+
+---
+
+## 4. Complete Primary Source Manifest (`r nrow(manifest)` Verified Files & APIs)
+
+```{r tbl-manifest}
+manifest |>
+  dplyr::mutate(
+    `Size (KB)` = formatC(file_bytes / 1024, format = "f", digits = 1, big.mark = ","),
+    `SHA-256 (Prefix)` = substr(sha256, 1, 12)
+  ) |>
+  dplyr::select(
+    ID = source_id,
+    Category = category,
+    Title = title,
+    `Fiscal Years` = fiscal_years,
+    `Local Path` = rel_path,
+    `Size (KB)`,
+    `SHA-256 (Prefix)`,
+    Status = status
+  ) |>
+  csu_gt(
+    title = paste0("Complete Primary Source Ledger (N = ", nrow(manifest), " Verified Files & APIs)"),
+    subtitle = "Every archived source is SHA-256 checksummed in data/sources_manifest.csv"
+  )
+```
+
+---
+
+## 5. Reproducibility Commands
+
+To re-run the entire pipeline from scratch inside `CSU_finance/`:
+
+```bash
+# 1. Fetch/verify all 70 primary sources, parse PDFs/APIs, generate figures, and run 7 audit assertions
+Rscript src/run_all.R
+
+# 2. Render standalone PDF brief into outputs/pdf/
+quarto render report.qmd --to pdf
+mv CSU_Budget_Context_FY27_28.pdf outputs/pdf/CSU_Budget_Context_FY27_28.pdf
+
+# 3. Render static Quarto website into docs/ (configured with robots.txt + noindex headers)
+quarto render
+```
