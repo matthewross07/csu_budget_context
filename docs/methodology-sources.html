@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">How This Was Built, Reality Checks &amp; Primary Sources</h1>
-<p class="subtitle lead">AI Tooling Disclosure, Six Verification Guardrails, Accounting Notes, Data Gaps, and All 70 Archived Sources</p>
+<p class="subtitle lead">AI Tooling Disclosure, Verification Guardrails, Accounting Notes, Data Gaps, and All 70 Archived Sources</p>
 </div>
 
 
@@ -219,17 +219,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <section id="how-this-site-was-built-ai-reproducible-pipeline-disclosure" class="level2">
 <h2 class="anchored" data-anchor-id="how-this-site-was-built-ai-reproducible-pipeline-disclosure">1. How This Site Was Built (AI + Reproducible Pipeline Disclosure)</h2>
-<p>This website and companion PDF brief were scoped, steered, and reviewed by <strong>Matthew R.V. Ross</strong> (CSU faculty) using <strong>Google DeepMind’s Antigravity</strong> agentic coding environment to build an end-to-end reproducible <strong>R (<code>4.5.2</code>) + Quarto (<code>1.10</code>)</strong> pipeline (<a href="https://github.com/matthewross07/csu_budget_context"><code>src/00_setup_theme.R</code></a> through <code>src/05_verify_audit.R</code>).</p>
-<p>Rather than relying on unverified AI summaries or back-of-the-envelope estimates, every chart, metric, and table on this site is computed directly in R from archived primary public files. Equally important, <strong>six explicit reality checks</strong> were added during construction to catch both AI mistakes and common misconceptions in campus budget debates:</p>
+<p>This website and companion PDF brief were initiated, steered, and reviewed by <strong>Matthew R.V. Ross</strong> (CSU faculty) using <strong>Google DeepMind’s Antigravity</strong> coding agent to build an open-source, reproducible <strong>R (<code>4.5.2</code>) + Quarto (<code>1.10</code>)</strong> pipeline (<code>src/00_setup_theme.R</code> through <code>src/05_verify_audit.R</code>). They are shared humbly ahead of late-2026 governance meetings in the hope that having verified numbers in one transparent repository helps colleagues across faculty, staff, and administration discuss the same baseline—and quickly spot anything we should refine or correct.</p>
+<p>Because both automated tools and fast-moving campus commentary can easily introduce errors or blind spots, <strong>six explicit reality checks</strong> were built into the workflow:</p>
 <ol type="1">
-<li><strong>Primary-Source-Only Data Provenance (70 SHA-256 Checksummed Files):</strong> Script <code>01_fetch_sources.R</code> archived 70 public PDFs, HTML governance memos, and federal/BLS API tables across CSU Office of Budgets, CSU IRP&amp;E Fact Books, CDHE Format 30/20 Budget Data Books, CSU System Audited Financial Statements (<code>FY15–FY25</code>), Colorado Office of the State Auditor (OSA) statutory NCAA Agreed-Upon Procedures reports (<code>2516F-B</code>, <code>2505F-B</code>), BLS CPI-U (<code>CUUR0000SA0</code>), and Urban Institute IPEDS (<code>2015–2023</code>), logging exact URLs, byte counts, and SHA-256 digests in <code>data/sources_manifest.csv</code>.</li>
-<li><strong>Visual Slide Inspection (Zero Estimation on Blank Online Exports):</strong> Automated PDF text extraction missed embedded images in 2026 campus budget forum decks, so every slide was rasterized and inspected visually. That check caught that Slides 14–15 of the posted Oct.&nbsp;14, 2026 PDF contained blank white table placeholders online—so the pipeline drew the <code>$61.3M–$70.7M</code> shortfall and <code>~$25.0M</code> enrollment drop exclusively from the Oct.&nbsp;7, 2026 campus memo and May 13 V4 Slide 6 (<code>$15.112M</code> expiring one-time stopgaps) instead of guessing missing numbers.</li>
-<li><strong>Domain Reality Check on Soft-Money Research Staff (CEMML / CIRA / VTH):</strong> Early exploratory drafts risked treating CSU’s campus-wide staff growth (~3:1 ratio) as uniform “administrative overhead.” Human domain review explicitly required separating self-funding sponsored research and enterprise units (<code>Table 123</code> and <code>Table 124</code>), establishing that <strong>69.7% (<code>3,205.5</code> of <code>4,597.7</code>) of FY25 Administrative Professional FTE sit outside E&amp;G</strong>—including <code>96.3%</code> non-E&amp;G in WCNR (home to CEMML) and <code>82.1%</code> non-E&amp;G in Engineering (CIRA).</li>
-<li><strong>Controls for Cross-Year Accounting Shifts:</strong> CSU’s Office of Budgets ColOBS files reflect two major structural accounting reclassifications: moving <strong>$41.64M</strong> of financial aid from <code>XA Central</code> into <code>P1 Enrollment &amp; Access</code> in FY19, and decentralizing <strong>~$111.26M</strong> of pooled <code>XA Employee Fringe Benefits</code> into individual divisions in FY26. Both shifts are documented and controlled in Figure 5 so accounting transfers are not misread as sudden administrative spending surges.</li>
-<li><strong>Two-Way Claim Verification &amp; Non-Interpolation:</strong> Circulating claims from multiple perspectives were audited symmetrically against public filings—verifying Parsons’ <code>$1.1M</code> settlement/non-disparagement terms, Coach Jim Mora Jr.’s <code>$2.4M</code> base contract, Athletics’ <code>$75.24M</code> gross vs.&nbsp;<code>~$15.57M</code> net operating support, and <code>$206.96M</code> Athletics debt; documenting that public <em>San Francisco Chronicle</em> reporting on Title IX investigator Jeffrey Lamoureaux involved universities outside CSU; and leaving omitted <code>FY21–FY24</code> E&amp;G State Classified rows in Fact Book Table 128 as <code>NA</code> rather than interpolating.</li>
-<li><strong>Automated Reconciliation Suite (<code>src/05_verify_audit.R</code>) &amp; Visual Layout Checks:</strong> Seven automated assertions verify ledger balances (<code>$54.272M</code> V4 closeout sums to <code>$0</code>; <code>$61.3M–$70.7M</code> FY28 steps sum cleanly; FY27 unit cuts equal <code>160.58</code> FTE; Table 124 AP FTE reconciles to <code>1,392.2</code> E&amp;G / <code>3,205.5</code> non-E&amp;G; OSA revenues/expenses/debt tie out), followed by automated HTML DOM checks (zero accidental math mode, zero broken links) and visual inspection of rendered figures and PDF tables.</li>
+<li><strong>Primary-Source-Only Ingestion (70 SHA-256 Checksummed Files):</strong> Script <code>01_fetch_sources.R</code> archived 70 public PDFs, governance memos, and federal/BLS API datasets from CSU Office of Budgets, CSU IRP&amp;E Fact Books, CDHE Format 30/20 Budget Data Books, CSU System Audited Financial Statements (<code>FY15–FY25</code>), Colorado Office of the State Auditor (OSA) statutory NCAA Agreed-Upon Procedures reports (<code>2516F-B</code>, <code>2505F-B</code>), BLS CPI-U (<code>CUUR0000SA0</code>), and Urban Institute IPEDS (<code>2015–2023</code>), logging exact URLs, byte sizes, and SHA-256 digests in <code>data/sources_manifest.csv</code>.</li>
+<li><strong>Visual Slide Inspection (Zero Estimation on Blank Online Exports):</strong> Automated PDF text extraction missed embedded images in 2026 campus budget forum decks, so slide pages were rasterized and inspected visually. That check revealed that Slides 14–15 of the posted Oct.&nbsp;14, 2026 PDF contained blank white scenario table areas online—so Ledger A draws exclusively from the Oct.&nbsp;7, 2026 campus memo and May 13 V4 Slide 6 (<code>$15.112M</code> expiring one-time stopgaps) rather than estimating missing values.</li>
+<li><strong>Separating Sponsored Research, Clinical &amp; Auxiliary Staff:</strong> Early exploratory summaries risked grouping CSU’s all-funds staff ratio (~3:1) under general administrative overhead. Domain review explicitly separated externally and self-funded roles (<code>Table 123</code> and <code>Table 124</code>), documenting that <strong>69.7% (<code>3,205.5</code> of <code>4,597.7</code>) of FY25 Administrative Professional FTE are funded outside E&amp;G</strong> across research centers, clinical services, extension, forestry, housing, and auxiliaries (such as CIRA, CEMML, VTH, AES, Extension, and CSFS).</li>
+<li><strong>Controls for Cross-Year Accounting Shifts:</strong> CSU Office of Budgets ColOBS tables include two structural accounting shifts: moving <strong>$41.64M</strong> of financial aid from <code>XA Central</code> into <code>P1 Enrollment &amp; Access</code> in FY19, and decentralizing <strong>~$111.26M</strong> of pooled <code>XA Employee Fringe Benefits</code> into individual divisions in FY26. Both shifts are documented and controlled in Figure 5 so accounting transfers are not mistaken for sudden spending increases.</li>
+<li><strong>Symmetrical Fact-Checking, Humility &amp; Non-Interpolation:</strong> Circulating claims from multiple perspectives were checked against public filings (confirming Parsons’ <code>$1.1M</code> settlement terms, Coach Mora’s <code>$2.4M</code> base contract, Athletics’ <code>$75.24M</code> gross vs.&nbsp;<code>~$15.57M</code> net operating support, and <code>$206.96M</code> Athletics debt; clarifying that <em>San Francisco Chronicle</em> Title IX reporting on Jeffrey Lamoureaux involved universities outside CSU; leaving omitted <code>FY21–FY24</code> E&amp;G State Classified rows in Fact Book Table 128 as <code>NA</code> without interpolation; and noting openly that aggregate FTE tables cannot judge the operational value of student support, compliance, or continuing faculty career stabilization).</li>
+<li><strong>Automated Reconciliation Suite (<code>src/05_verify_audit.R</code>) &amp; Layout Audits:</strong> Seven programmatic assertions check ledger balances (<code>$54.272M</code> V4 closeout sums to <code>$0</code>; <code>$61.3M–$70.7M</code> FY28 steps reconcile; FY27 unit cuts equal <code>160.58</code> FTE; Table 124 AP FTE reconciles to <code>1,392.2</code> E&amp;G / <code>3,205.5</code> non-E&amp;G; OSA revenues/expenses/debt balance), alongside HTML DOM checks and visual inspection of figures and PDF tables.</li>
 </ol>
-<p><em>If any member of the CSU community—faculty, staff, administration, or board—spots an accounting nuance, classification correction, or missing primary record, please open an issue or pull request on <a href="https://github.com/matthewross07/csu_budget_context"><code>github.com/matthewross07/csu_budget_context</code></a>.</em></p>
+<p><em>If any colleague across faculty, staff, administration, or the Board sees a nuance, accounting detail, or primary source that would improve this reference, feedback or pull requests at <a href="https://github.com/matthewross07/csu_budget_context"><code>github.com/matthewross07/csu_budget_context</code></a> are warmly welcomed.</em></p>
 <hr>
 </section>
 <section id="accounting-scope-deflation-notes" class="level2">
@@ -257,23 +257,23 @@ Table&nbsp;1
 </figcaption>
 <div aria-describedby="tbl-gaps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="wbizihvkod" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wbizihvkod table {
+<div id="elvakftzpf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#elvakftzpf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wbizihvkod thead, #wbizihvkod tbody, #wbizihvkod tfoot, #wbizihvkod tr, #wbizihvkod td, #wbizihvkod th {
+#elvakftzpf thead, #elvakftzpf tbody, #elvakftzpf tfoot, #elvakftzpf tr, #elvakftzpf td, #elvakftzpf th {
   border-style: none;
 }
 
-#wbizihvkod p {
+#elvakftzpf p {
   margin: 0;
   padding: 0;
 }
 
-#wbizihvkod .gt_table {
+#elvakftzpf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -299,12 +299,12 @@ Table&nbsp;1
   border-left-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_caption {
+#elvakftzpf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wbizihvkod .gt_title {
+#elvakftzpf .gt_title {
   color: #FFFFFF;
   font-size: 15px;
   font-weight: bold;
@@ -316,7 +316,7 @@ Table&nbsp;1
   border-bottom-width: 0;
 }
 
-#wbizihvkod .gt_subtitle {
+#elvakftzpf .gt_subtitle {
   color: #FFFFFF;
   font-size: 12px;
   font-weight: initial;
@@ -328,7 +328,7 @@ Table&nbsp;1
   border-top-width: 0;
 }
 
-#wbizihvkod .gt_heading {
+#elvakftzpf .gt_heading {
   background-color: #1E4D2B;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -340,13 +340,13 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_bottom_border {
+#elvakftzpf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_col_headings {
+#elvakftzpf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -361,7 +361,7 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_col_heading {
+#elvakftzpf .gt_col_heading {
   color: #333333;
   background-color: #EFF3F0;
   font-size: 12px;
@@ -381,7 +381,7 @@ Table&nbsp;1
   overflow-x: hidden;
 }
 
-#wbizihvkod .gt_column_spanner_outer {
+#elvakftzpf .gt_column_spanner_outer {
   color: #333333;
   background-color: #EFF3F0;
   font-size: 12px;
@@ -393,15 +393,15 @@ Table&nbsp;1
   padding-right: 4px;
 }
 
-#wbizihvkod .gt_column_spanner_outer:first-child {
+#elvakftzpf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wbizihvkod .gt_column_spanner_outer:last-child {
+#elvakftzpf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wbizihvkod .gt_column_spanner {
+#elvakftzpf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -413,11 +413,11 @@ Table&nbsp;1
   width: 100%;
 }
 
-#wbizihvkod .gt_spanner_row {
+#elvakftzpf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wbizihvkod .gt_group_heading {
+#elvakftzpf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -443,7 +443,7 @@ Table&nbsp;1
   text-align: left;
 }
 
-#wbizihvkod .gt_empty_group_heading {
+#elvakftzpf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -458,15 +458,15 @@ Table&nbsp;1
   vertical-align: middle;
 }
 
-#wbizihvkod .gt_from_md > :first-child {
+#elvakftzpf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wbizihvkod .gt_from_md > :last-child {
+#elvakftzpf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wbizihvkod .gt_row {
+#elvakftzpf .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -485,7 +485,7 @@ Table&nbsp;1
   overflow-x: hidden;
 }
 
-#wbizihvkod .gt_stub {
+#elvakftzpf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -498,7 +498,7 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#wbizihvkod .gt_stub_row_group {
+#elvakftzpf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -512,15 +512,15 @@ Table&nbsp;1
   vertical-align: top;
 }
 
-#wbizihvkod .gt_row_group_first td {
+#elvakftzpf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wbizihvkod .gt_row_group_first th {
+#elvakftzpf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wbizihvkod .gt_summary_row {
+#elvakftzpf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -530,16 +530,16 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#wbizihvkod .gt_first_summary_row {
+#elvakftzpf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_first_summary_row.thick {
+#elvakftzpf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wbizihvkod .gt_last_summary_row {
+#elvakftzpf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -549,7 +549,7 @@ Table&nbsp;1
   border-bottom-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_grand_summary_row {
+#elvakftzpf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -559,7 +559,7 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#wbizihvkod .gt_first_grand_summary_row {
+#elvakftzpf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -569,7 +569,7 @@ Table&nbsp;1
   border-top-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_last_grand_summary_row_top {
+#elvakftzpf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -579,11 +579,11 @@ Table&nbsp;1
   border-bottom-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_striped {
+#elvakftzpf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wbizihvkod .gt_table_body {
+#elvakftzpf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -592,7 +592,7 @@ Table&nbsp;1
   border-bottom-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_footnotes {
+#elvakftzpf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -606,7 +606,7 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_footnote {
+#elvakftzpf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -615,7 +615,7 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#wbizihvkod .gt_sourcenotes {
+#elvakftzpf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -629,7 +629,7 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#wbizihvkod .gt_sourcenote {
+#elvakftzpf .gt_sourcenote {
   font-size: 11px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -637,72 +637,72 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#wbizihvkod .gt_left {
+#elvakftzpf .gt_left {
   text-align: left;
 }
 
-#wbizihvkod .gt_center {
+#elvakftzpf .gt_center {
   text-align: center;
 }
 
-#wbizihvkod .gt_right {
+#elvakftzpf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wbizihvkod .gt_font_normal {
+#elvakftzpf .gt_font_normal {
   font-weight: normal;
 }
 
-#wbizihvkod .gt_font_bold {
+#elvakftzpf .gt_font_bold {
   font-weight: bold;
 }
 
-#wbizihvkod .gt_font_italic {
+#elvakftzpf .gt_font_italic {
   font-style: italic;
 }
 
-#wbizihvkod .gt_super {
+#elvakftzpf .gt_super {
   font-size: 65%;
 }
 
-#wbizihvkod .gt_footnote_marks {
+#elvakftzpf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wbizihvkod .gt_asterisk {
+#elvakftzpf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wbizihvkod .gt_indent_1 {
+#elvakftzpf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wbizihvkod .gt_indent_2 {
+#elvakftzpf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wbizihvkod .gt_indent_3 {
+#elvakftzpf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wbizihvkod .gt_indent_4 {
+#elvakftzpf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wbizihvkod .gt_indent_5 {
+#elvakftzpf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wbizihvkod .katex-display {
+#elvakftzpf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wbizihvkod div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#elvakftzpf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -744,7 +744,7 @@ Table&nbsp;1
 <tr class="even">
 <td class="gt_row gt_left" headers="Source-/-Dataset">Oct. 14, 2026 Fall Forum PDF (Slides 14–15)</td>
 <td class="gt_row gt_left" headers="Observed-Constraint">Public online PDF exports Slides 14–15 with blank white scenario table areas.</td>
-<td class="gt_row gt_left" headers="Primary-Fallback-/-Mitigation-Used">Exact $61.3M–$70.7M shortfall, ~$25M enrollment drop, and $15.112M stopgap cliff sourced from Oct. 7 Memo &amp; May 13 V4 Slide 6.</td>
+<td class="gt_row gt_left" headers="Primary-Fallback-/-Mitigation-Used">Exact $61.3M–$70.7M shortfall, ~$25M enrollment drop, and $15.112M stopgap gap sourced from Oct. 7 Memo &amp; May 13 V4 Slide 6.</td>
 <td class="gt_row gt_left" headers="Manual-Reference-/-Verification">source_oct07_2026_early_look_budget.html; Campus-V4-5-13-2026_a-1.pdf</td>
 </tr>
 <tr class="odd">
@@ -780,23 +780,23 @@ Table&nbsp;2
 </figcaption>
 <div aria-describedby="tbl-manifest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="mmygxfnrxw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mmygxfnrxw table {
+<div id="lmekajzisk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lmekajzisk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mmygxfnrxw thead, #mmygxfnrxw tbody, #mmygxfnrxw tfoot, #mmygxfnrxw tr, #mmygxfnrxw td, #mmygxfnrxw th {
+#lmekajzisk thead, #lmekajzisk tbody, #lmekajzisk tfoot, #lmekajzisk tr, #lmekajzisk td, #lmekajzisk th {
   border-style: none;
 }
 
-#mmygxfnrxw p {
+#lmekajzisk p {
   margin: 0;
   padding: 0;
 }
 
-#mmygxfnrxw .gt_table {
+#lmekajzisk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -822,12 +822,12 @@ Table&nbsp;2
   border-left-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_caption {
+#lmekajzisk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mmygxfnrxw .gt_title {
+#lmekajzisk .gt_title {
   color: #FFFFFF;
   font-size: 15px;
   font-weight: bold;
@@ -839,7 +839,7 @@ Table&nbsp;2
   border-bottom-width: 0;
 }
 
-#mmygxfnrxw .gt_subtitle {
+#lmekajzisk .gt_subtitle {
   color: #FFFFFF;
   font-size: 12px;
   font-weight: initial;
@@ -851,7 +851,7 @@ Table&nbsp;2
   border-top-width: 0;
 }
 
-#mmygxfnrxw .gt_heading {
+#lmekajzisk .gt_heading {
   background-color: #1E4D2B;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -863,13 +863,13 @@ Table&nbsp;2
   border-right-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_bottom_border {
+#lmekajzisk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_col_headings {
+#lmekajzisk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -884,7 +884,7 @@ Table&nbsp;2
   border-right-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_col_heading {
+#lmekajzisk .gt_col_heading {
   color: #333333;
   background-color: #EFF3F0;
   font-size: 12px;
@@ -904,7 +904,7 @@ Table&nbsp;2
   overflow-x: hidden;
 }
 
-#mmygxfnrxw .gt_column_spanner_outer {
+#lmekajzisk .gt_column_spanner_outer {
   color: #333333;
   background-color: #EFF3F0;
   font-size: 12px;
@@ -916,15 +916,15 @@ Table&nbsp;2
   padding-right: 4px;
 }
 
-#mmygxfnrxw .gt_column_spanner_outer:first-child {
+#lmekajzisk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mmygxfnrxw .gt_column_spanner_outer:last-child {
+#lmekajzisk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mmygxfnrxw .gt_column_spanner {
+#lmekajzisk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -936,11 +936,11 @@ Table&nbsp;2
   width: 100%;
 }
 
-#mmygxfnrxw .gt_spanner_row {
+#lmekajzisk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mmygxfnrxw .gt_group_heading {
+#lmekajzisk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -966,7 +966,7 @@ Table&nbsp;2
   text-align: left;
 }
 
-#mmygxfnrxw .gt_empty_group_heading {
+#lmekajzisk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -981,15 +981,15 @@ Table&nbsp;2
   vertical-align: middle;
 }
 
-#mmygxfnrxw .gt_from_md > :first-child {
+#lmekajzisk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mmygxfnrxw .gt_from_md > :last-child {
+#lmekajzisk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mmygxfnrxw .gt_row {
+#lmekajzisk .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -1008,7 +1008,7 @@ Table&nbsp;2
   overflow-x: hidden;
 }
 
-#mmygxfnrxw .gt_stub {
+#lmekajzisk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1021,7 +1021,7 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#mmygxfnrxw .gt_stub_row_group {
+#lmekajzisk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1035,15 +1035,15 @@ Table&nbsp;2
   vertical-align: top;
 }
 
-#mmygxfnrxw .gt_row_group_first td {
+#lmekajzisk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mmygxfnrxw .gt_row_group_first th {
+#lmekajzisk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mmygxfnrxw .gt_summary_row {
+#lmekajzisk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1053,16 +1053,16 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#mmygxfnrxw .gt_first_summary_row {
+#lmekajzisk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_first_summary_row.thick {
+#lmekajzisk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mmygxfnrxw .gt_last_summary_row {
+#lmekajzisk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1072,7 +1072,7 @@ Table&nbsp;2
   border-bottom-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_grand_summary_row {
+#lmekajzisk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1082,7 +1082,7 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#mmygxfnrxw .gt_first_grand_summary_row {
+#lmekajzisk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1092,7 +1092,7 @@ Table&nbsp;2
   border-top-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_last_grand_summary_row_top {
+#lmekajzisk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1102,11 +1102,11 @@ Table&nbsp;2
   border-bottom-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_striped {
+#lmekajzisk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mmygxfnrxw .gt_table_body {
+#lmekajzisk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1115,7 +1115,7 @@ Table&nbsp;2
   border-bottom-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_footnotes {
+#lmekajzisk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1129,7 +1129,7 @@ Table&nbsp;2
   border-right-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_footnote {
+#lmekajzisk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1138,7 +1138,7 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#mmygxfnrxw .gt_sourcenotes {
+#lmekajzisk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1152,7 +1152,7 @@ Table&nbsp;2
   border-right-color: #D3D3D3;
 }
 
-#mmygxfnrxw .gt_sourcenote {
+#lmekajzisk .gt_sourcenote {
   font-size: 11px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1160,72 +1160,72 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#mmygxfnrxw .gt_left {
+#lmekajzisk .gt_left {
   text-align: left;
 }
 
-#mmygxfnrxw .gt_center {
+#lmekajzisk .gt_center {
   text-align: center;
 }
 
-#mmygxfnrxw .gt_right {
+#lmekajzisk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mmygxfnrxw .gt_font_normal {
+#lmekajzisk .gt_font_normal {
   font-weight: normal;
 }
 
-#mmygxfnrxw .gt_font_bold {
+#lmekajzisk .gt_font_bold {
   font-weight: bold;
 }
 
-#mmygxfnrxw .gt_font_italic {
+#lmekajzisk .gt_font_italic {
   font-style: italic;
 }
 
-#mmygxfnrxw .gt_super {
+#lmekajzisk .gt_super {
   font-size: 65%;
 }
 
-#mmygxfnrxw .gt_footnote_marks {
+#lmekajzisk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mmygxfnrxw .gt_asterisk {
+#lmekajzisk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mmygxfnrxw .gt_indent_1 {
+#lmekajzisk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mmygxfnrxw .gt_indent_2 {
+#lmekajzisk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mmygxfnrxw .gt_indent_3 {
+#lmekajzisk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mmygxfnrxw .gt_indent_4 {
+#lmekajzisk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mmygxfnrxw .gt_indent_5 {
+#lmekajzisk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mmygxfnrxw .katex-display {
+#lmekajzisk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mmygxfnrxw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lmekajzisk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2382,13 +2382,13 @@ Table&nbsp;2
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Reproducible R + Quarto Context Brief | Built with Antigravity AI &amp; Verified Against 70 Public Primary Sources</p>
+<p>Compiled by Matthew R.V. Ross with Antigravity AI (R + Quarto) · 70 public primary sources</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Every figure traced to <code>data/sources_manifest.csv</code> · Open to factual corrections</p>
+<p>Every figure traced to <code>data/sources_manifest.csv</code> · Corrections welcomed</p>
 </div>
   </div>
 </footer>

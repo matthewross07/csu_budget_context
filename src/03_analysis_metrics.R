@@ -114,14 +114,14 @@ write_csv(eg_totals_summary, file.path(proc_dir, "eg_vs_noneg_workforce_totals.c
 ap_unit_summary <- ap_unit |>
   mutate(
     macro_bucket = case_when(
-      unit == "Warner College of Natural Resources" ~ "WCNR (incl. CEMML)",
-      unit == "Veterinary Medicine & Biomedical Sci" ~ "CVMBS (incl. VTH / Research)",
-      unit == "Walter Scott Jr College of Engr" ~ "Engineering (incl. CIRA)",
+      unit == "Warner College of Natural Resources" ~ "Warner College of Natural Resources",
+      unit == "Veterinary Medicine & Biomedical Sci" ~ "Veterinary Med. & Biomedical Sci.",
+      unit == "Walter Scott Jr College of Engr" ~ "Walter Scott, Jr. College of Engineering",
       unit %in% c("Agricultural Sciences", "Agric Sciences-Agric Experiment Station",
-                  "CSU Extension", "Natural Resources-Colo State Forest Svc") ~ "Ag Sciences / AES / Ext / CSFS",
+                  "CSU Extension", "Natural Resources-Colo State Forest Svc") ~ "Ag Sciences, AES, Extension & CSFS",
       unit %in% c("Business", "Liberal Arts", "Natural Sciences", "Health and Human Sciences", "Libraries") ~ "Other Academic Colleges & Libraries",
       unit %in% c("President's Office-Athletics", "President's Office-Athletic Compliance") ~ "Athletics & Compliance",
-      grepl("^VPSA", unit) ~ "Student Affairs / Housing / Rec",
+      grepl("^VPSA", unit) ~ "Student Affairs, Housing & Rec",
       TRUE ~ "Central VP Divisions, Admin & SPUR"
     )
   ) |>
@@ -211,8 +211,8 @@ ath_recon_fy25 <- tribble(
       "Excess (Deficit) of Revenues over Expenses (-$0.50M).",
   6L, "Memo: Scholarship Tuition Flow-Back",      ath25$athletic_student_aid / 1e6, "Internal Campus Return",
       "Athletic Student Aid ($10.93M) paid back to campus for tuition/fees/room/board (reduces net economic cash drain).",
-  7L, "Estimated Net Institutional Operating Drag", -(ath25$direct_inst_support + ath25$indirect_inst_support - ath25$athletic_student_aid - ath25$excess_deficit) / 1e6, "Net Economic Drag",
-      "Gross Institutional Support ($26.00M) + Deficit ($0.50M) minus Tuition/Aid Flow-Back ($10.93M) = ~$15.57M net cash/indirect burden (excl. student fees; ~$21.71M incl. student fees)."
+  7L, "Estimated Net Institutional Operating Support", -(ath25$direct_inst_support + ath25$indirect_inst_support - ath25$athletic_student_aid - ath25$excess_deficit) / 1e6, "Net University Support",
+      "Gross Institutional Support ($26.00M) + Deficit ($0.50M) minus Tuition/Aid Flow-Back ($10.93M) = ~$15.57M net operating support (excl. student fees; ~$21.71M incl. student fees)."
 )
 write_csv(ath_recon_fy25, file.path(proc_dir, "athletics_gross_to_net_fy25.csv"))
 
@@ -227,13 +227,13 @@ ath_debt_peers <- tribble(
 )
 write_csv(ath_debt_peers, file.path(proc_dir, "athletics_debt_peers.csv"))
 
-# Black Swan / Cinderella NCAA Tournament Math vs. Recurring Operating Deficit
+# Counterfactual Athletics & Postseason Scenarios vs. Recurring Operating Gap
 black_swan_math <- tribble(
   ~scenario, ~units_earned, ~annual_pool_payout_m, ~conference_split_members, ~annual_to_csu_m, ~pct_of_66m_gap, ~explanation,
   "NCAA Men's Basketball 1st Round Win (2 units)",        2, 0.340 * 2, 12, (0.340 * 2) / 12, ((0.340 * 2) / 12) / 66.0, "1st round appearance + 1 win = 2 units; paid over 6 yrs, split equally across ~12 conference members.",
   "NCAA Men's Basketball Final Four Run (5 units)",       5, 0.340 * 5, 12, (0.340 * 5) / 12, ((0.340 * 5) / 12) / 66.0, "5 games played/won prior to Final Four (pre-2026 rule) or up to 6-7 units under 2026 expansion: ~$0.14M/yr per campus.",
   "Hypothetical: Retaining 100% of 5 NCAA Units",         5, 0.340 * 5,  1, 0.340 * 5,        (0.340 * 5) / 66.0,        "Even without conference revenue sharing, 5 NCAA units yield ~$1.70M/yr for 6 years (~2.6% of FY28 gap).",
-  "Eliminating Football Operations (Annual Operating)",  NA,        NA, NA, 15.6,             15.6 / 66.0,               "Frees ~$15.6M net institutional support (or $17.2M B2 E&G) BUT leaves $207.0M stadium/athletic bond debt service ($10.0M/yr) unpaid (~$45M-$50M residual FY28 gap)."
+  "Hypothetical: Discontinuing Football Operations",     NA,        NA, NA, 15.6,             15.6 / 66.0,               "Frees ~$15.6M net institutional support (or $17.2M B2 E&G) BUT leaves $207.0M stadium/athletic bond debt service ($10.0M/yr) unpaid (~$45M-$50M residual FY28 gap)."
 )
 write_csv(black_swan_math, file.path(proc_dir, "black_swan_math.csv"))
 
@@ -245,8 +245,8 @@ message("--- Computing 5: Ledger B Structural Attribution Ranges ---")
 structural_blame <- tribble(
   ~bucket_order, ~driver, ~low_pct, ~mid_pct, ~high_pct, ~audited_anchor, ~methodology_note,
   1L, "E&G Workforce Growth & Incremental Budgeting", 40, 45, 50,
-      "E&G Admin Pro FTE +62.3% (858 -> 1,393, FY15-25) & E&G CCA/Contract Faculty +368 FTE (FY15-25) while Resident FTE fell -7.6% (FY17-26) and NR FTE plateaued. Excludes soft-money research staff (CEMML/CIRA). 3% comp pool = $33.7M/yr.",
-      "Attribution weight reflects permanent recurring payroll share of E&G base (~70%+ of E&G expenditures) shaped by legacy incremental budgeting.",
+      "E&G Admin Pro FTE +62.3% (858 -> 1,393, FY15-25) & E&G CCA/Contract Faculty +368 FTE (FY15-25) while Resident FTE fell -5.0% (FY15-26) and NR FTE plateaued. Excludes externally/self-funded research, clinical & auxiliary staff. 3% comp pool = $33.7M/yr.",
+      "Order-of-magnitude illustration reflecting permanent payroll share of E&G expenditures (~70%+) shaped by legacy incremental budgeting.",
   2L, "Long-Term Capital Commitments & Debt Service", 20, 22, 25,
       "CSU System Debt doubled from $671.9M (FY13) to $1,449.3M peak (FY23) / $1,330.7M (FY25) + $79.1M FY25 STRATA Laser bond. E&G Central Debt Service more than tripled from $10.2M (FY15) to $31.9M (FY26).",
       "Captures hard bond covenants, debt service, and new building O&M/utilities that remain fixed during enrollment dips.",

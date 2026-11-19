@@ -17,7 +17,7 @@ c25 <- census |> dplyr::filter(fall_year == 2025)
 c26 <- census |> dplyr::filter(fall_year == 2026)
 ```
 
-Before weighing long-term structural reforms, it helps to examine **what creates the immediate \$61.3M–\$70.7M (\$66.0M midpoint) gap projected for FY28**. Every figure on this page draws directly from CSU's Oct. 7, 2026 campus budget update, Oct. 14, 2026 Fall Budget Forum census slides, and May 13, 2026 Campus V4 FY27 budget materials.
+Before evaluating long-term structural choices, it helps to examine **what drives the immediate \$61.3M–\$70.7M (\$66.0M midpoint) projected operating gap in FY28**. Every figure on this page is traced directly to CSU's Oct. 7, 2026 campus budget update, Oct. 14, 2026 Fall Budget Forum census slides, and May 13, 2026 Campus V4 FY27 budget materials.
 
 ::: {.figure-panel}
 ![Ledger A Waterfall: Three Primary Drivers Accounting for CSU's Immediate FY28 Operating Gap Projection](outputs/figures/fig01_fy28_shortfall_bridge.png){width=100%}
@@ -49,11 +49,11 @@ fy28 |>
 
 ## 1. Enrollment Shifts & Higher-Margin Non-Resident Mix (~\$25.00M)
 
-CSU's Fall 2026 census highlights an important nuance: **campus welcomed a record incoming class of Colorado resident students and raised its 4-year graduation rate from 51.1% to 55.1%, even as total Resident Instruction (RI) tuition revenue declined.**
+CSU's Fall 2026 census reflects an important underlying dynamic: **campus welcomed a record incoming class of Colorado resident students and lifted its 4-year graduation rate from 51.1% to 55.1%, even as total Resident Instruction (RI) tuition revenue declined.**
 
-Two overlapping trends explain that result:
-1. **Faster Degree Completion:** Graduating more students in four years (`51.1% → 55.1%`) is a clear academic success, while mechanically reducing the pool of continuing 5th-year tuition-paying undergraduates.
-2. **Non-Resident & International Contraction:** Non-resident students pay roughly triple in-state rates and contributed **48.7% of CSU's Format 30 E&G tuition (\$268.9M in FY26) on 33.1% of student FTE**. In Fall 2026, **Domestic Non-Resident Undergraduates declined -9.7% (-685 students)**, **International Undergraduates fell -6.7%**, and **International Graduate enrollment fell -13.9%**, yielding an estimated **~\$25.00M** revenue impact (`Oct. 7 Memo`; `Oct. 14 Slides 4–6`).
+Two overlapping forces explain that pattern:
+1. **Stronger 4-Year Completion:** Graduating more students within four years (`51.1% → 55.1%`) is a clear educational milestone for students and families, while mechanically reducing the number of continuing fifth-year tuition-paying undergraduates.
+2. **Non-Resident & International Contraction:** Non-resident students pay roughly triple in-state rates and contributed **48.7% of CSU's Format 30 E&G tuition (\$268.9M in FY26) on 33.1% of student FTE**. In Fall 2026, **Domestic Non-Resident Undergraduates declined -9.7% (-685 students)**, **International Undergraduates fell -6.7%**, and **International Graduate enrollment fell -13.9%**, yielding an estimated **~\$25.00M** revenue shortfall (`Oct. 7 Memo`; `Oct. 14 Slides 4–6`).
 
 ```{r tbl-fall-census}
 census |>
@@ -81,11 +81,11 @@ census |>
 
 ## 2. Expiring FY27 One-Time Bridge Funds (\$15.11M)
 
-Examining how CSU balanced FY27's **\$54.272M** V4 budget shortfall (`Campus-V4-5-13-2026_a-1.pdf`, Slides 5–6) clarifies why FY28 starts with a recurring carry-forward gap:
+Examining how CSU closed FY27's **\$54.272M** V4 budget gap (`Campus-V4-5-13-2026_a-1.pdf`, Slides 5–6) clarifies why FY28 begins with a substantial recurring carry-forward need:
 
 - FY27 new expenses totaled **\$61.103M** (including **\$33.665M** for the 3% faculty/AP/GA compensation pool, state classified mandates, and fringe benefits; **\$8.826M** multi-year strategic investments; **\$8.120M** academic incentives; and **\$8.678M** mandatory cost escalation).
 - Net new resources provided **\$6.831M** (`$11.860M` net rate/enrollment impact minus `-$5.029M` institutional aid offset), leaving **-\$54.272M** to resolve.
-- Campus closed **\$39.160M** via ongoing adjustments (`$7.406M` central savings, `$28.754M` campus unit reductions, and `$3.000M` vacant line reductions) and bridged the remaining **\$15.112M with one-time savings** that expire on June 30, 2027.
+- Campus resolved **\$39.160M** through recurring adjustments (`$7.406M` central savings, `$28.754M` campus unit reductions, and `$3.000M` vacant line reductions) and bridged the remaining **\$15.112M with one-time savings** that expire on June 30, 2027.
 
 ```{r tbl-fy27-v4}
 fy27 |>
@@ -114,9 +114,9 @@ Meanwhile, Colorado's September 2026 OSPB economic forecast projects a state gen
 
 ---
 
-## Where FY27's 160.58 Permanent FTE Reductions Occurred
+## Distribution of FY27's 160.58 Permanent FTE Reductions
 
-May 13 V4 Forum disclosures (Slides 7–8) also clarify how FY27 reductions were distributed across campus: **160.58 permanent FTE** were eliminated across 30 units, comprising **91.84 Admin Pro FTE (57.2%)**, 28.60 State Classified (17.8%), 22.62 Non-TTF (14.1%), and 17.52 TTF (10.9%). Academic colleges and administrative/athletics support divisions both participated in those reductions (`Liberal Arts 18.59 FTE`, `CVMBS & PVM 14.85 FTE`, `Engineering 14.17 FTE`, alongside `VP University Operations 10.35 FTE`, `VP Marketing & Comms 7.20 FTE`, and `Athletics 4.40 AP FTE`).
+May 13 V4 Forum disclosures (Slides 7–8) also show that FY27 permanent reductions touched units across campus rather than falling on only one employee group: **160.58 permanent FTE** were reduced across 30 units, comprising **91.84 Admin Pro FTE (57.2%)**, 28.60 State Classified (17.8%), 22.62 Non-TTF (14.1%), and 17.52 TTF (10.9%)—spanning academic colleges (`Liberal Arts 18.59 FTE`, `CVMBS & PVM 14.85 FTE`, `Engineering 14.17 FTE`) as well as administrative and athletics units (`VP University Operations 10.35 FTE`, `VP Marketing & Comms 7.20 FTE`, `Athletics 4.40 AP FTE`).
 
 ```{r tbl-fy27-cuts}
 cuts |>
@@ -137,5 +137,5 @@ cuts |>
 ```
 
 ::: {.callout-audit}
-**Ledger A Takeaway:** Even holding one-time executive settlements and coaching contracts at \$0, FY28's enrollment mix impact (~\$25.0M), expiring FY27 one-time bridge funds (\$15.11M), and mandatory compensation/utility escalation (\$21.19M–\$30.59M) account for **virtually the entire \$61.3M–\$70.7M incremental projection**.
+**Ledger A Takeaway:** Even holding one-time executive settlements and coaching contracts at \$0, FY28's enrollment mix impact (~\$25.0M), expiring FY27 one-time bridge funds (\$15.11M), and mandatory compensation/utility escalation (\$21.19M–\$30.59M) account for **nearly the entire \$61.3M–\$70.7M incremental projection**.
 :::

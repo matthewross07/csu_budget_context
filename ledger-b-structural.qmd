@@ -1,6 +1,6 @@
 ---
-title: "Ledger B: Multi-Year Structural Context & Soft-Money Research"
-subtitle: "Why CSU's General Fund Has Limited Shock Absorbers—and Why Research Staff Like CEMML Must Be Separated from E&G Overhead"
+title: "Ledger B: Multi-Year Structural Context & Non-E&G Research Staffing"
+subtitle: "How Ten-Year General-Fund Commitments Developed—and Why Externally Funded Research, Clinical & Auxiliary Staff Should Be Separated"
 ---
 
 ```{r setup}
@@ -21,20 +21,20 @@ f22 <- wf |> dplyr::filter(fiscal_year == 2022)
 f25 <- wf |> dplyr::filter(fiscal_year == 2025)
 ```
 
-While Ledger A explains the immediate FY28 gap, **Ledger B** examines the longer-term constraints between FY15 and FY26 that left CSU's Education & General (E&G) operating base with thin reserves to absorb a -2.5% fall enrollment decline.
+While Ledger A tracks year-over-year changes entering FY28, **Ledger B** examines the longer-term trends between FY15 and FY26 that narrowed CSU's Education & General (E&G) operating flexibility. The illustrative weights below are offered modestly as **approximate, order-of-magnitude guides** paired with audited primary numbers; reasonable observers may assign different relative importance to each factor.
 
 ::: {.figure-panel}
-![Ledger B: Four Multi-Year Structural Pressures Shaping CSU's Financial Position](outputs/figures/fig02_structural_blame_pie.png){width=100%}
+![Ledger B: Illustrative Order-of-Magnitude Pressures Shaping CSU's Multi-Year Budget Position](outputs/figures/fig02_structural_blame_pie.png){width=100%}
 :::
 
 ```{r tbl-blame-pie}
 pie |>
   dplyr::mutate(
-    `Estimated Weight` = paste0(low_pct, "% – ", high_pct, "% (mid ", mid_pct, "%)")
+    `Illustrative Range` = paste0(low_pct, "% – ", high_pct, "% (mid ", mid_pct, "%)")
   ) |>
-  dplyr::select(Group = bucket_order, `Structural Factor` = driver, `Estimated Weight`, `Audited Primary Anchor` = audited_anchor, `Accounting Scope` = methodology_note) |>
+  dplyr::select(Group = bucket_order, `Structural Factor` = driver, `Illustrative Range`, `Audited Primary Anchor` = audited_anchor, `Accounting Scope` = methodology_note) |>
   csu_gt(
-    title = "Ledger B: Multi-Year Structural Pressure Weights",
+    title = "Ledger B: Multi-Year Structural Context (Illustrative Order-of-Magnitude Ranges)",
     subtitle = "Strictly Partitioned So Capital Debt and Operating Subsidies Are Not Double-Counted",
     source_note = "Sources: CSU Fact Book FY27, CDHE Format 30 BDBs, Audits FY15–FY25, Colorado OSA Report 2516F-B."
   )
@@ -42,13 +42,13 @@ pie |>
 
 ---
 
-## 1. Workforce Context & Separating Soft-Money Research (CEMML / CIRA / VTH)
+## 1. Workforce Context & Separating Externally Funded Research, Clinical & Auxiliary Staff
 
-### Why All-Funds Headcount Ratios Require Fund Disaggregation
+### Why All-Funds Headcount Ratios Need Fund Disaggregation
 
-Broad critiques pointing to CSU's all-funds staff-to-faculty ratio (~3:1 in IPEDS and campus totals) often combine **grant-funded research staff** with **general-fund (E&G) administrative roles**. At a major R1 land-grant institution, large self-supporting research and clinical units—such as Warner College's **Center for Environmental Management of Military Lands (CEMML)**, Engineering's **CIRA**, the **Veterinary Teaching Hospital (VTH)**, and Extension/Forest Service units—expand and contract directly alongside external contracts and federal/state awards rather than drawing on undergraduate tuition.
+Public comparisons that cite CSU's all-funds staff-to-faculty ratio (~3:1 in IPEDS and campus totals) combine **externally and self-funded personnel** with **general-fund (E&G) positions**. As a Carnegie R1 land-grant institution, CSU operates major research institutes, clinical services, and state service agencies—such as Engineering's Cooperative Institute for Research in the Atmosphere (CIRA), Warner College's Center for Environmental Management of Military Lands (CEMML), CVMBS's Veterinary Teaching Hospital and diagnostic laboratories, the Agricultural Experiment Station, CSU Extension, and the Colorado State Forest Service—whose employees scale directly up and down with external grants, federal/state contracts, and fee-for-service revenues rather than drawing on general tuition dollars.
 
-CSU Fact Book FY27 (Tables 122–124 & 128) allows a clean separation between **E&G** general funds and **Non-E&G** enterprise/grant funds:
+CSU Fact Book FY27 (Tables 122–124 & 128) lets us separate **E&G** general funds cleanly from **Non-E&G** enterprise, auxiliary, and sponsored-program funds:
 
 ```{r tbl-ap-fund}
 ap_fund |>
@@ -71,34 +71,34 @@ cemml |>
     `E&G AP FTE` = fmt_n(eg_fte, 1),
     `Non-E&G AP FTE` = fmt_n(other_funds_fte, 1),
     `Total AP FTE` = fmt_n(total_fte, 1),
-    `% Non-E&G (Grant/Self-Funded)` = fmt_pct(non_eg_share, 1),
+    `% Non-E&G (Externally/Self-Funded)` = fmt_pct(non_eg_share, 1),
     `Share of Campus E&G AP` = fmt_pct(eg_share_of_campus_eg, 1)
   ) |>
-  dplyr::select(`Organizational Group` = macro_bucket, `E&G AP FTE`, `Non-E&G AP FTE`, `Total AP FTE`, `% Non-E&G (Grant/Self-Funded)`, `Share of Campus E&G AP`) |>
+  dplyr::select(`Organizational Group` = macro_bucket, `E&G AP FTE`, `Non-E&G AP FTE`, `Total AP FTE`, `% Non-E&G (Externally/Self-Funded)`, `Share of Campus E&G AP`) |>
   csu_gt(
-    title = "Where CSU's Administrative Professional Personnel Sit by Unit & Fund (Fact Book FY27 Table 124)",
-    subtitle = "WCNR/CEMML Is 96.3% Non-E&G; Central VP Divisions & SPUR Hold 62.1% of Campus E&G AP Capacity",
+    title = "FY25 Administrative Professional Personnel by College/Division and Fund Source (Fact Book FY27 Table 124)",
+    subtitle = "Academic Research, Clinical & State Agency Units Are Predominantly Non-E&G; 62.1% of E&G AP Sit in Central VP Divisions & SPUR",
     source_note = "Source: CSU_Factbook_FY27_2026-10-22.pdf, Table 124."
   )
 ```
 
 ::: {.callout-context}
-**Key Distinction on Research Units:** In FY25, **WCNR (including CEMML)** employs `792.5` AP FTE, of whom **`762.9` FTE (`96.3%`) are non-E&G funded** and just `29.6` FTE (`2.1%` of campus E&G AP) sit on E&G. Likewise, CVMBS (`91.4%` non-E&G), Ag Sciences/AES/Ext/CSFS (`92.1%`), and Engineering/CIRA (`82.1%`) are predominantly externally or clinically funded. Meanwhile, **Central VP Divisions, Administration & CSU Spur** house **`864.8` of CSU's `1,392.2` E&G AP FTE (`62.1%`)**.
+**Accounting Note on Sponsored & Clinical Units:** Across research-intensive colleges and state service divisions—Warner College of Natural Resources (`96.3%` non-E&G), Ag Sciences / AES / Extension / CSFS (`92.1%` non-E&G), Veterinary Medicine & Biomedical Sciences (`91.4%` non-E&G), Student Affairs / Housing / Rec (`95.2%` non-E&G), and Walter Scott, Jr. College of Engineering (`82.1%` non-E&G)—most AP personnel are self-supporting outside the E&G budget. Conversely, **Central VP Divisions, Administration & CSU Spur house `864.8` of CSU's `1,392.2` E&G AP FTE (`62.1%`)**.
 :::
 
 ---
 
 ### What E&G-Only Trends Show Across Both Administrative and Academic Units
 
-Once externally funded staff are set aside and we examine **E&G general-fund positions alone** between FY15 and FY25, the data reveal a shared pattern across both administration and academic instruction:
+Once non-E&G positions are set aside, looking strictly at **Education & General (E&G)** general-fund headcount over FY15–FY25 highlights growth on **both** the administrative and instructional sides—while inviting thoughtful context rather than simple blame:
 
 ::: {.figure-panel}
-![Ten-Year E&G Workforce Growth vs. Student Demand and the FY25 AP Fund Split](outputs/figures/fig03_workforce_overshoot_and_cemml.png){width=100%}
+![Ten-Year E&G Workforce Trends vs. Enrollment and the FY25 AP Fund Split](outputs/figures/fig03_workforce_overshoot_and_cemml.png){width=100%}
 :::
 
-1. **E&G Admin Pro Rose +62.3% (+534.5 FTE, 858.1 → 1,392.6), Including +326.3 FTE (+30.6%) After FY22:** Part of this increase reflects state-classified-to-AP conversions (as E&G State Classified FTE declined by -254.6 FTE, from 571.3 to 316.7), while post-FY22 hiring added +326.3 E&G AP FTE between FY22 and FY25 (`1,066.3 → 1,392.6`).
-2. **E&G Faculty Expanded +43.3% (+390.0 FTE, 901.0 → 1,291.0) Through NTT/CCA Formalization:** Tenured and tenure-track E&G faculty remained nearly steady (`817.3 → 835.4`, `+2.2%`), while **Non-Tenure-Track / CCA & Adjunct E&G faculty grew from 83.7 to 455.6 FTE (+444.3%)** as continuing and contract faculty appointments were formalized, alongside +249.7 E&G graduate assistant FTE (`+35.4%`).
-3. **Enrollment & Real Net Tuition Grew Much More Slowly:** Over FY15–FY26 actuals, CDHE Resident Student FTE declined **-5.0%** (`17,535.0 → 16,664.2`), while CPI-adjusted **CSU System real net tuition ended FY25 +4.4% above FY15** (`$617.9M → $644.9M` in `FY25$`, down `-13.5%` from FY20's real peak of `$746.0M`). Under CSU's legacy incremental budget model (`Oct. 26 Memo`; `Operations guide`), historical headcount bases rolled forward year-to-year with limited responsiveness to credit-hour shifts.
+1. **E&G Admin Pro Rose +62.3% (+534.5 FTE, 858.1 → 1,392.6), Including +326.3 FTE (+30.6%) After FY22:** Part of this ten-year change reflects classified-to-AP job reclassifications (while E&G State Classified FTE fell by -254.6 FTE, from 571.3 to 316.7), and post-FY22 investments also included student retention, mental-health, IT security, and compliance functions. Still, aggregate central E&G growth was substantial (`1,066.3 → 1,392.6` over FY22–FY25).
+2. **E&G Faculty Expanded +43.3% (+390.0 FTE, 901.0 → 1,291.0) Through NTT/CCA Formalization:** Tenured and tenure-track E&G faculty remained nearly steady (`817.3 → 835.4`, `+2.2%`), while **Non-Tenure-Track / CCA & Adjunct E&G faculty grew from 83.7 to 455.6 FTE (+444.3%)** as continuing and contract teaching appointments were formalized to reflect instructional workloads and improve instructor stability, alongside +249.7 E&G graduate assistant FTE (`+35.4%`).
+3. **Enrollment & Real Net Tuition Grew Much More Slowly:** Over FY15–FY26 actuals, CDHE Resident Student FTE shifted **-5.0%** (`17,535.0 → 16,664.2`), while CPI-adjusted **CSU System real net tuition ended FY25 +4.4% above FY15** (`$617.9M → $644.9M` in `FY25$`, `-13.5%` below FY20's real peak of `$746.0M`). Under CSU's legacy incremental budget model (`Oct. 26 Memo`), prior-year staffing commitments tended to carry forward automatically even when credit hours or mix shifted. High-level budget tables cannot tell us *which* of those administrative or faculty additions were mission-critical—only that permanent E&G payroll commitments grew faster than inflation-adjusted tuition.
 
 ```{r tbl-eg-wf-long}
 wf |>
@@ -115,7 +115,7 @@ wf |>
   dplyr::select(`Fiscal Year` = fiscal_year, `E&G Admin Pro`, `E&G Total Faculty`, `E&G TTT`, `E&G NTT/CCA`, `E&G Classified*`, `E&G Total (incl. GA)`, `Non-E&G All Funds`, `All-Funds FTE`) |>
   csu_gt(
     title = "10-Year CSU Fort Collins Workforce Trajectory by Fund Type (FY15–FY25)",
-    subtitle = "E&G Payroll Growth vs. Non-E&G Grant/Auxiliary Staff (*Table 128 omits FY21–FY24 E&G Classified rows; left NA)",
+    subtitle = "E&G Payroll Trends vs. Non-E&G Research/Auxiliary Staff (*Table 128 omits FY21–FY24 E&G Classified rows; left NA)",
     source_note = "Source: CSU_Factbook_FY27_2026-10-22.pdf, Tables 122, 123, and 128."
   )
 ```
@@ -146,14 +146,14 @@ ap_units |>
 ## 2. State Funding Limits, Tuition Discounting & Research F&A Mechanics
 
 ::: {.figure-panel}
-![Accounting-Adjusted E&G Division Trends (FY15–FY26), Institutional Discounting Rate, and Non-Resident Share](outputs/figures/fig05_division_shares_discounting.png){width=100%}
+![Accounting-Adjusted E&G Division Trends (FY15–FY26), Institutional Discounting Rate, and Non-Resident Mix](outputs/figures/fig05_division_shares_discounting.png){width=100%}
 :::
 
-Three structural revenue constraints help explain why strong campus activity—like rising grant totals and full teaching loads—does not automatically eliminate an E&G operating gap:
+Three structural revenue dynamics also help explain why strong campus activity—like rising grant volume and full teaching schedules—does not automatically resolve an E&G operating gap:
 
-1. **Higher Institutional Tuition Discounting:** In CSU System audited financial statements (`audits_system_fy15_fy25`), scholarship allowances increased from \$114.4M (19.9% discount rate in FY15; 17.9% in FY17) to **\$174.1M (21.3% discount rate) in FY25**. Within Fort Collins E&G budgets (`bdb_real_fy17_fy27`), institutional aid grew from \$47.2M (FY15) to \$88.5M (FY26) and **\$96.3M estimated for FY27**, offsetting part of headline tuition rate increases (`3.5%` resident / `4.0%` NR / `3.5%` differential in FY27).
+1. **Rising Institutional Tuition Discounting:** In CSU System audited financial statements (`audits_system_fy15_fy25`), scholarship allowances increased from \$114.4M (19.9% discount rate in FY15; 17.9% in FY17) to **\$174.1M (21.3% discount rate) in FY25**. Within Fort Collins E&G budgets (`bdb_real_fy17_fy27`), institutional aid grew from \$47.2M (FY15) to \$88.5M (FY26) and **\$96.3M estimated for FY27**, offsetting a portion of nominal tuition rate increases (`3.5%` resident / `4.0%` NR / `3.5%` differential in FY27).
 2. **State Funding Constraints:** In FY27 (`obs_state_approp_fy24_fy27`), State Fee-for-Service (\$161.60M) and COF stipends (\$49.45M) supply **\$211.05M (23.4% of the \$900.98M State Appropriated / E&G budget)**—virtually flat versus FY26 (\$210.94M) under Colorado's TABOR limits and state Medicaid pressures.
-3. **Why Sponsored Research Grants Do Not Directly Cross-Subsidize E&G Instruction:** CSU System grants and contracts reached **\$548.0M** in FY25 (`audits`) and Fort Collins Indirect Cost Recovery (IDCR) reached **\$76.0M** (`obs`). However, federal F&A recovery partially reimburses dedicated research compliance, startup packages, cost-share commitments, and lab infrastructure rather than generating surplus cash for general undergraduate instruction. Similarly, higher teaching loads in discounted resident programs add instructional workload with lower net margin than non-resident enrollment.
+3. **Why Sponsored Research Grants Do Not Directly Cross-Subsidize E&G Instruction:** CSU System grants and contracts reached **\$548.0M** in FY25 (`audits`) and Fort Collins Indirect Cost Recovery (IDCR) reached **\$76.0M** (`obs`). However, federal F&A recovery only partially reimburses dedicated research compliance, startup packages, cost-share commitments, and lab infrastructure rather than generating discretionary cash for general undergraduate instruction. Similarly, higher course counts in discounted resident programs add instructional workload with lower net margin than non-resident enrollment.
 
 ```{r tbl-colobs-breaks}
 obs |>

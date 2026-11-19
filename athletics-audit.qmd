@@ -19,7 +19,7 @@ d26 <- divs |> dplyr::filter(fiscal_year == 2026)
 d15 <- divs |> dplyr::filter(fiscal_year == 2015)
 ```
 
-Placing a **\$75.24M gross Athletics budget** alongside a **\$61.3M–\$70.7M E&G operating gap** makes it natural to ask whether restructuring or reducing Athletics could close the university's shortfall. Audited filings from the Colorado Office of the State Auditor (`csu_ncaa_aup_fy19.pdf`–`fy25.pdf`, Report `2516F-B`) clarify both sides of that question: Athletics represents a real ongoing subsidy (`~15–20%` of Ledger B's multi-year structural pressures), yet gross expenditure numbers substantially overstate how much general-fund cash could be freed quickly.
+Placing a **\$75.24M gross Athletics budget** alongside a **\$61.3M–\$70.7M E&G operating gap** makes it natural to ask whether restructuring or reducing Athletics could close the university's shortfall. Audited filings from the Colorado Office of the State Auditor (`csu_ncaa_aup_fy19.pdf`–`fy25.pdf`, Report `2516F-B`) clarify both perspectives: Athletics receives meaningful ongoing institutional support (`~15–20%` of Ledger B's multi-year structural pressures), yet gross expenditure numbers substantially overstate how much general-fund cash could be freed quickly.
 
 ::: {.figure-panel}
 ![CSU Athletics FY25 Gross-to-Net Reconciliation and Long-Term Debt Benchmarks](outputs/figures/fig04_athletics_gross_vs_net.png){width=100%}
@@ -68,9 +68,9 @@ ath_hist |>
 
 ---
 
-## 2. Capital Debt Context: \$206.96M Athletics Debt Within a \$1.33B System Total
+## 2. Long-Term Debt Commitments: \$206.96M Athletics Debt Within a \$1.33B System Total
 
-A defining feature of CSU's capital structure is long-term fixed debt incurred across both campus and auxiliary projects—including Canvas Stadium, CSU Spur, campus facilities, and FY25's **\$79.1M** STRATA ATLAS Laser bonds:
+A central constraint across CSU's capital structure is long-term fixed debt incurred across both campus and auxiliary projects—including Canvas Stadium, CSU Spur, campus facilities, and FY25's **\$79.1M** STRATA ATLAS Laser bonds:
 
 - **Fort Collins Debt Composition (`OSA 2516F-B`, Note 5, p. 26):** Of Fort Collins' \$1,118.77M total campus debt in FY25, **\$206.96M (18.5%)** is allocated to Athletics facilities (\$302.63M in total remaining principal + interest through maturity, with \$14.34M in FY25 debt service and leases; \$19.61M including direct facilities maintenance and equipment).
 - **Comparative Scale:** **CU Boulder** (`OSA 2505F-B`, Note 5, p. 35) reported \$138.83M in external Athletics bonds (\$177.02M including a \$38.19M internal Treasury loan)—**9.6% of CU's \$1,850.29M debt** on \$161.67M in Athletics revenue. Federal **GAO-26-108640** data report AY23–24 medians of \$120.3M for Power-4 programs and \$21.0M for Other FBS / Group of 5 programs.
@@ -89,10 +89,10 @@ ath_debt |>
 
 ---
 
-## 3. Common Campus Counterfactuals: Canceling Football or Winning an NCAA Run
+## 3. Common Campus Counterfactuals: Discontinuing Football or Postseason Runs
 
 ::: {.callout-context}
-**Why Neither Extreme Solves the FY28 Operating Gap:** Bond covenants remain legally payable regardless of football schedules, while NCAA tournament distributions are shared across conference members over six years.
+**Why Neither Extreme Resolves the FY28 Operating Gap:** Bond covenants remain legally payable regardless of football schedules, while NCAA tournament distributions are shared across conference members over six years.
 :::
 
 ```{r tbl-black-swan-site}
@@ -109,5 +109,5 @@ black_swan |>
   )
 ```
 
-- **Eliminating Football Operations:** Ending football would stop \$42.60M in self-generated revenues while recovering roughly ~\$15.6M in net institutional operating support (or up to \$17.2M `B2` E&G), **but \$206.96M in stadium/athletics bonded obligations (~\$10M+/yr debt service) would remain**, leaving roughly ~\$45M–\$50M of the FY28 E&G gap unresolved.
-- **Postseason Tournament Success ("Cinderella Run"):** Reaching a Men's Basketball Final Four earns roughly 5 NCAA tournament units paid over six years (`~$1.70M/yr` at `~$340k/unit`), **divided equally across ~12 conference members**—roughly **\$142k/year net to CSU (`0.2%` of a \$66M gap)**. Even retaining 100% of 5 units without conference sharing (`~$1.70M/yr`) would offset `2.6%` of one year's shortfall.
+- **Hypothetical: Discontinuing Football Operations:** Ending football would forego \$42.60M in self-generated revenues while recovering roughly ~\$15.6M in net institutional operating support (or up to \$17.2M `B2` E&G), **but \$206.96M in stadium/athletics bonded obligations (~\$10M+/yr debt service) would remain**, leaving roughly ~\$45M–\$50M of the FY28 E&G gap unresolved.
+- **Extended NCAA Tournament Run:** Reaching a Men's Basketball Final Four earns roughly 5 NCAA tournament units paid over six years (`~$1.70M/yr` at `~$340k/unit`), **divided equally across ~12 conference members**—roughly **\$142k/year net to CSU (`0.2%` of a \$66M gap)**. Even retaining 100% of 5 units without conference sharing (`~$1.70M/yr`) would offset `2.6%` of one year's shortfall.

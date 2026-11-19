@@ -104,13 +104,13 @@ bp_df <- blame_pie |>
   mutate(
     driver_wrap = factor(
       case_when(
-        bucket_order == 1L ~ "1. E&G Workforce Growth &\n    Incremental Budgeting (Excl. CEMML)",
+        bucket_order == 1L ~ "1. E&G Workforce Growth &\n    Incremental Budgeting (General Fund Only)",
         bucket_order == 2L ~ "2. Long-Term Capital Commitments &\n    Debt Service (Canvas, Spur, Campus)",
         bucket_order == 3L ~ "3. Athletics Net Operating Subsidy\n    (Excl. Stadium Debt to Avoid Double-Count)",
         bucket_order == 4L ~ "4. State Funding Constraints, Tuition\n    Discounting & Research F&A Limits"
       ),
       levels = rev(c(
-        "1. E&G Workforce Growth &\n    Incremental Budgeting (Excl. CEMML)",
+        "1. E&G Workforce Growth &\n    Incremental Budgeting (General Fund Only)",
         "2. Long-Term Capital Commitments &\n    Debt Service (Canvas, Spur, Campus)",
         "3. Athletics Net Operating Subsidy\n    (Excl. Stadium Debt to Avoid Double-Count)",
         "4. State Funding Constraints, Tuition\n    Discounting & Research F&A Limits"
@@ -140,8 +140,8 @@ fig2 <- ggplot(bp_df, aes(y = driver_wrap, x = mid_pct)) +
   ) +
   labs(
     title = "Ledger B: Multi-Year Structural Cost & Revenue Pressures",
-    subtitle = "Bars & brackets show estimated structural weights (summing to 100%); right-hand text cites **audited primary anchors**.<br>Both permanent E&G payroll commitments and capital/state constraints shape CSU's multi-year position.",
-    x = "Estimated Share of Multi-Year Structural Pressure (Midpoint & Sensitivity Range)",
+    subtitle = "Approximate order-of-magnitude shares (summing to 100%) paired with **audited primary baseline figures**.<br>Reasonable observers may weight these multi-year factors differently; each plays a meaningful role.",
+    x = "Illustrative Share of Multi-Year Structural Pressure (Midpoint & Sensitivity Range)",
     y = NULL,
     caption = paste(
       "Methodology note: Attribution weights synthesize permanent E&G expenditure shares and fixed obligation rigidities; audited dollar anchors come directly",
@@ -265,15 +265,15 @@ p3a <- ggplot(panel_a_df, aes(x = fiscal_year, y = idx_val, color = series)) +
 ap_plot_df <- ap_summary |>
   mutate(macro_bucket = fct_reorder(macro_bucket, total_fte)) |>
   select(macro_bucket, `Education & General (Tuition/State Base)` = eg_fte,
-         `Non-E&G (Grants/CEMML, Recharge, Auxiliaries)` = other_funds_fte,
+         `Non-E&G (Sponsored Research, Recharge, Auxiliaries, Other)` = other_funds_fte,
          total_fte, non_eg_share) |>
   pivot_longer(
-    cols = c(`Education & General (Tuition/State Base)`, `Non-E&G (Grants/CEMML, Recharge, Auxiliaries)`),
+    cols = c(`Education & General (Tuition/State Base)`, `Non-E&G (Sponsored Research, Recharge, Auxiliaries, Other)`),
     names_to = "fund_type",
     values_to = "fte"
   ) |>
   mutate(fund_type = factor(fund_type, levels = c(
-    "Non-E&G (Grants/CEMML, Recharge, Auxiliaries)",
+    "Non-E&G (Sponsored Research, Recharge, Auxiliaries, Other)",
     "Education & General (Tuition/State Base)"
   )))
 
@@ -282,21 +282,21 @@ p3b <- ggplot(ap_plot_df, aes(y = macro_bucket, x = fte, fill = fund_type)) +
   geom_text(
     data = ap_summary |> mutate(macro_bucket = fct_reorder(macro_bucket, total_fte)),
     aes(x = total_fte + 18, y = macro_bucket,
-        label = sprintf("%.0f total  (%.0f E&G / %.0f Non-E&G | %.0f%% self/grant)",
+        label = sprintf("%.0f total  (%.0f E&G / %.0f Non-E&G | %.0f%% non-E&G)",
                         total_fte, eg_fte, other_funds_fte, 100 * non_eg_share)),
     inherit.aes = FALSE, hjust = 0, size = 2.95, fontface = "bold", color = csu_colors$slate
   ) +
   scale_fill_manual(
     values = c(
-      "Non-E&G (Grants/CEMML, Recharge, Auxiliaries)" = csu_colors$sage,
-      "Education & General (Tuition/State Base)"       = csu_colors$rust
+      "Non-E&G (Sponsored Research, Recharge, Auxiliaries, Other)" = csu_colors$sage,
+      "Education & General (Tuition/State Base)"                   = csu_colors$rust
     ),
     name = "FY25 Funding Source:"
   ) +
-  scale_x_continuous(limits = c(0, 2250), breaks = seq(0, 1500, 300), labels = comma) +
+  scale_x_continuous(limits = c(0, 2350), breaks = seq(0, 1500, 300), labels = comma) +
   labs(
     title = "B. Disaggregating Campus Staff by Funding Source: 69.7% of Admin Pro FTE Are Non-E&G (FY25)",
-    subtitle = "Sponsored research and self-funded units like **WCNR/CEMML (96.3% non-E&G)**, **CVMBS (91.4%)**, and **Engineering/CIRA (82.1%)**<br>scale directly with external grants rather than E&G tuition; **62.1% of campus E&G Admin Pro** sit in Central VP Divisions & SPUR.",
+    subtitle = "Externally and self-funded units—across **Natural Resources (96.3% non-E&G)**, **Ag/Ext/CSFS (92.1%)**, **CVMBS (91.4%)**, and **Engineering (82.1%)**—<br>scale with sponsored awards and service revenue rather than E&G tuition; **62.1% of E&G Admin Pro** sit in Central VP & Admin units.",
     x = "FY2025 Administrative Professional FTE (by Actual Salary Distribution)",
     y = NULL,
     caption = paste(
@@ -567,10 +567,10 @@ p6_4 <- make_peer_panel(peer_long, "Non-Instructional / Inst. Staff Ratio", func
 fig6 <- (p6_1 + p6_2) / (p6_3 + p6_4) +
   plot_annotation(
     title = "Peer Context (2023 IPEDS): State Funding, Debt Load, Tuition Reliance & Staffing",
-    subtitle = "Across 5 R1 land-grants and 2 Colorado peers, CSU receives less than half the state support/FTE of WA/UT/KS,<br>carries ~$38.9k/FTE in debt, and sits mid-pack on all-funds staff ratio (3.29x, reflecting research units like CEMML).",
+    subtitle = "Across 5 R1 land-grants and 2 Colorado peers, CSU receives less than half the state support/FTE of WA/UT/KS,<br>carries ~$38.9k/FTE in debt, and sits mid-pack on all-funds staff ratio (3.29x, which includes sponsored research & extension).",
     caption = paste(
       "Source: U.S. Dept. of Education IPEDS (2023 Finance, FTE Enrollment, and Human Resources via Urban Institute Education Data Portal).",
-      "Note: Non-instructional staff headcount includes all non-instructional grant/research employees (e.g., CSU's WCNR/CEMML and CVMBS VTH).",
+      "Note: IPEDS non-instructional headcount combines general-fund staff with externally funded research, clinical, extension, and auxiliary employees.",
       sep = "\n"
     ),
     theme = theme(

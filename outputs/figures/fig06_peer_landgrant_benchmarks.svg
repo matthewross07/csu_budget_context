@@ -289,7 +289,7 @@
 <text x='759.81' y='506.55' text-anchor='middle' style='font-size: 7.98px;fill: #495057; font-family: "Arial";' textLength='8.42px' lengthAdjust='spacingAndGlyphs'>4x</text>
 <text x='431.55' y='306.34' style='font-size: 10.50px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='172.70px' lengthAdjust='spacingAndGlyphs'>Non-Instructional / Inst. Staff Ratio</text>
 <text x='19.43' y='531.40' style='font-size: 8.00px;fill: #6E7B85; font-family: "Arial";' textLength='491.17px' lengthAdjust='spacingAndGlyphs'>Source: U.S. Dept. of Education IPEDS (2023 Finance, FTE Enrollment, and Human Resources via Urban Institute Education Data Portal).</text>
-<text x='19.43' y='540.04' style='font-size: 8.00px;fill: #6E7B85; font-family: "Arial";' textLength='508.27px' lengthAdjust='spacingAndGlyphs'>Note: Non-instructional staff headcount includes all non-instructional grant/research employees (e.g., CSU's WCNR/CEMML and CVMBS VTH).</text>
+<text x='19.43' y='540.04' style='font-size: 8.00px;fill: #6E7B85; font-family: "Arial";' textLength='519.55px' lengthAdjust='spacingAndGlyphs'>Note: IPEDS non-instructional headcount combines general-fund staff with externally funded research, clinical, extension, and auxiliary employees.</text>
 <text x='19.43' y='30.26' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='29.03px' lengthAdjust='spacingAndGlyphs'>Across</text>
 <text x='51.10' y='30.26' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='5.28px' lengthAdjust='spacingAndGlyphs'>5</text>
 <text x='59.02' y='30.26' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='12.14px' lengthAdjust='spacingAndGlyphs'>R1</text>
@@ -320,11 +320,12 @@
 <text x='269.90' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='17.78px' lengthAdjust='spacingAndGlyphs'>staff</text>
 <text x='290.32' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='18.47px' lengthAdjust='spacingAndGlyphs'>ratio</text>
 <text x='311.43' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='29.03px' lengthAdjust='spacingAndGlyphs'>(3.29x,</text>
-<text x='343.10' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='38.53px' lengthAdjust='spacingAndGlyphs'>reflecting</text>
-<text x='384.27' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='36.94px' lengthAdjust='spacingAndGlyphs'>research</text>
-<text x='423.85' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='20.06px' lengthAdjust='spacingAndGlyphs'>units</text>
-<text x='446.55' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='14.25px' lengthAdjust='spacingAndGlyphs'>like</text>
-<text x='463.44' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='40.09px' lengthAdjust='spacingAndGlyphs'>CEMML).</text>
+<text x='343.10' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='24.28px' lengthAdjust='spacingAndGlyphs'>which</text>
+<text x='370.02' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='34.84px' lengthAdjust='spacingAndGlyphs'>includes</text>
+<text x='407.51' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='44.34px' lengthAdjust='spacingAndGlyphs'>sponsored</text>
+<text x='454.49' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='36.94px' lengthAdjust='spacingAndGlyphs'>research</text>
+<text x='494.07' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='6.34px' lengthAdjust='spacingAndGlyphs'>&amp;</text>
+<text x='503.05' y='42.09' style='font-size: 9.50px;fill: #495057; font-family: "Arial";' textLength='46.45px' lengthAdjust='spacingAndGlyphs'>extension).</text>
 <text x='19.43' y='15.14' style='font-size: 13.50px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='520.52px' lengthAdjust='spacingAndGlyphs'>Peer Context (2023 IPEDS): State Funding, Debt Load, Tuition Reliance &amp; Staffing</text>
 </g>
 </g>

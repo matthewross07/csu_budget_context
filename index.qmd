@@ -1,6 +1,6 @@
 ---
 title: "Understanding CSU's FY27–28 Operating Budget Gap"
-subtitle: "A Neutral, Primary-Source Guide to the Immediate Cliff, Multi-Year Structural Context, and Research vs. General-Fund Accounting"
+subtitle: "A Reflective, Primary-Source Reference on Near-Term Drivers, Multi-Year Context, and Externally Funded vs. General-Fund Accounting"
 ---
 
 ```{r setup}
@@ -27,28 +27,28 @@ noneg_ap_share <- sum(apf$fte_fy25[!apf$is_eg]) / sum(apf$fte_fy25)
 ```
 
 ::: {.callout-context}
-**Purpose & Shared Context:** Colorado State University (Fort Collins) enters late 2026 governance discussions—including the Nov. 30 AAUP chapter meeting, Dec. 1 Faculty Council, and Dec. 3–4 Board of Governors meetings—facing a projected **\$61.3M–\$70.7M FY28 Education & General (E&G) budget gap**. Recent leadership transitions, including Former President Amy Parsons' **\$1.1M** transition settlement/non-disparagement agreement and high-profile athletics contracts, have raised fair questions about governance, priorities, and communication. At the same time, primary public financial records show that the FY28 shortfall reflects deeper multi-year trends—non-resident enrollment shifts, expiring one-time stopgaps, state funding constraints, permanent E&G payroll commitments across both administrative and academic units, and capital debt service—that affect CSU regardless of individual personnel decisions.
+**Shared Context & Intent:** Colorado State University (Fort Collins) enters late-2026 governance conversations—ahead of the Nov. 30 AAUP chapter meeting, Dec. 1 Faculty Council, and Dec. 3–4 Board of Governors meetings—facing a projected **\$61.3M–\$70.7M FY28 Education & General (E&G) operating gap**. Recent leadership transitions, including the **\$1.1M** presidential transition settlement with mutual non-disparagement terms and public discussion of high-profile athletics contracts, have raised sincere questions across campus about governance transparency and institutional priorities. At the same time, primary public financial filings suggest the FY28 shortfall reflects broader multi-year pressures—enrollment mix shifts, expiring one-time stopgaps, state funding limits, general-fund payroll commitments across both administrative and academic units, and capital debt service—that affect CSU regardless of any single personnel decision.
 :::
 
-To make productive campus dialogue easier, this resource separates **short-run FY28 budget mechanics (Ledger A)** from **multi-year structural pressures (Ledger B)** using **`r nrow(man)` archived public documents** logged in [`data/sources_manifest.csv`](data/sources_manifest.csv). Rather than assigning blame to any single constituency, the goal is to ensure faculty, staff, deans, VPs, and board members are working from the same audited numbers.
+These notes were put together to offer an open-minded, shared factual starting point. By separating **near-term FY28 operating mechanics (Ledger A)** from **multi-year structural context (Ledger B)** using **`r nrow(man)` archived public documents** logged in [`data/sources_manifest.csv`](data/sources_manifest.csv), we hope colleagues across faculty, staff, deans' offices, central administration, and the Board can examine the same underlying numbers—while recognizing that high-level accounting tables never tell the full human or operational story of any campus unit.
 
 ::: {.kpi-grid}
 ::: {.kpi-card .alert}
 <div class="kpi-label">Projected FY28 E&amp;G Gap</div>
 <div class="kpi-value">&#36;61.3M–&#36;70.7M</div>
-<div class="kpi-sub">Reflects ~&#36;25.0M enrollment/mix decline, &#36;15.11M expiring FY27 one-time funds &amp; &#36;21.2M–&#36;30.6M cost/comp escalation (Oct. 7 Memo).</div>
+<div class="kpi-sub">Reflects ~&#36;25.0M enrollment/mix shift, &#36;15.11M expiring FY27 one-time funds &amp; &#36;21.2M–&#36;30.6M cost/comp escalation (Oct. 7 Memo).</div>
 :::
 
 ::: {.kpi-card}
 <div class="kpi-label">Non-E&amp;G Admin Pro Share</div>
 <div class="kpi-value">`r fmt_pct(noneg_ap_share, 1)`</div>
-<div class="kpi-sub">Of 4,597.7 FY25 AP FTE, 3,205.5 are externally or self-funded (96.3% in WCNR/CEMML); 1,392.2 sit on E&amp;G (FB27 Table 124).</div>
+<div class="kpi-sub">Of 4,597.7 FY25 AP FTE, 3,205.5 are externally or self-funded across sponsored research, clinical, extension &amp; auxiliary units; 1,392.2 sit on E&amp;G (FB27 Table 124).</div>
 :::
 
 ::: {.kpi-card .gold}
 <div class="kpi-label">10-Yr E&amp;G Workforce vs. Demand</div>
 <div class="kpi-value">+62.3% / +43.3%</div>
-<div class="kpi-sub">FY15–FY25 E&amp;G Admin Pro (+62.3%) and E&amp;G Faculty (+43.3%, mainly CCA/NTT) expanded while Resident Student FTE fell -5.0% (FY15–FY26).</div>
+<div class="kpi-sub">FY15–FY25 E&amp;G Admin Pro (+62.3%) and E&amp;G Faculty (+43.3%, mainly CCA/NTT) expanded while Resident Student FTE shifted -5.0% (FY15–FY26).</div>
 :::
 
 ::: {.kpi-card .alert}
@@ -60,9 +60,9 @@ To make productive campus dialogue easier, this resource separates **short-run F
 
 ---
 
-## Why Campus Conversations Often Talk Past Each Other: Ledger A vs. Ledger B
+## Separating Near-Term Variance from Long-Term Context: Ledger A vs. Ledger B
 
-Many disagreements on campus stem from mixing **one-year operating variances** with **decade-scale budget structure**. Looking at the two ledgers separately clarifies how each factor fits.
+Campus budget debates can easily talk past one another when **one-year operating adjustments** and **multi-year cost structures** are placed on the same ledger. Looking at both ledgers side by side clarifies how different pieces fit together.
 
 ```{r tbl-two-ledgers}
 ledger_cmp <- tibble::tibble(
@@ -72,30 +72,30 @@ ledger_cmp <- tibble::tibble(
     "Primary Drivers",
     "Presidential Transition ($1.1M)",
     "Athletics ($75.2M Gross Budget)",
-    "Grant-Funded Staff (e.g., CEMML)"
+    "Externally & Self-Funded Staff"
   ),
   `Ledger A: Immediate FY28 Gap` = c(
     "What changes CSU's E&G budget from FY27 ($901.0M) to FY28?",
     "$61.3M – $70.7M ($66.0M midpoint)",
     "1) Enrollment/NR tuition drop (~$25.0M); 2) Expiring FY27 one-time bridge funds ($15.11M); 3) Comp/benefits/utilities under flat state support ($21.2M–$30.6M).",
     "One-time $1.1M settlement equals ~1.7% of one year's midpoint FY28 gap.",
-    "Minimal year-over-year change unless net institutional transfers shift.",
-    "Not part of the E&G deficit; self-funded on external grants & contracts."
+    "Small year-over-year delta unless net university transfers expand.",
+    "Do not drive the E&G shortfall; funded by grants, contracts, clinical fees & auxiliaries."
   ),
   `Ledger B: Multi-Year Structural Context` = c(
     "Why is CSU's general fund tightly constrained during a -2.5% enrollment dip?",
-    "~45% E&G Workforce/Budget Model; ~22% Capital Debt; ~17% Athletics Net; ~16% State/Discounting",
-    "Long-term expansion across both E&G Admin Pro (+62.3%) and E&G Faculty (+43.3%), doubled System debt ($1.33B), and a 21.3% tuition discount rate.",
-    "Primarily a governance & institutional trust issue rather than a core budget driver.",
+    "Illustrative: ~45% E&G Payroll/Model; ~22% Debt; ~17% Athletics Net; ~16% State/Aid",
+    "Ten-year expansion across both E&G Admin Pro (+62.3%) and E&G Faculty (+43.3%), doubled System debt ($1.33B), and a 21.3% tuition discount rate.",
+    "Important governance & institutional trust concern rather than a core budget driver.",
     "Meaningful ~17% structural pressure (~$15.6M net operating support) + $206.96M bonded debt.",
-    "Must be separated out (~69.7% of all AP FTE) so E&G discussions stay accurate."
+    "Account for 69.7% of all AP FTE; separating them keeps E&G comparisons fair and accurate."
   )
 )
 
 csu_gt(
   ledger_cmp,
   title = "Two Separate Ledgers for Understanding CSU's Budget Position",
-  subtitle = "Distinguishing Near-Term FY28 Drivers from Long-Term Structural Constraints",
+  subtitle = "Distinguishing Near-Term FY28 Drivers from Multi-Year Structural Pressures",
   source_note = "Sources: Oct. 7, 2026 Campus Budget Update; May 13, 2026 Campus V4 Forum; CSU Fact Book FY27; OSA Report 2516F-B."
 ) |>
   gt::cols_width(
@@ -107,17 +107,17 @@ csu_gt(
 
 ---
 
-## How This Site Was Built & Reality Checks Applied
+## How This Site Was Built & Reality Checks Put In
 
 ::: {.callout-audit}
-**Transparency & Build Disclosure:** This site was initiated and reviewed by Matthew R.V. Ross (CSU faculty) using **Google DeepMind’s Antigravity** agentic coding environment to assemble a fully reproducible **R (`4.5.2`) + Quarto (`1.10`)** pipeline ([`src/00`–`src/05`](methodology-sources.qmd)). Because automated tools and public commentary can both make mistakes, **six explicit reality checks** were built into the workflow:
+**Transparency & Build Disclosure:** Compiled by **Matthew R.V. Ross** (CSU faculty) using **Google DeepMind’s Antigravity** coding agent in **R (`4.5.2`) + Quarto (`1.10`)** as an open-source effort to understand CSU’s primary financial documents ahead of late-2026 campus meetings—shared humbly with full code and data so colleagues across faculty, staff, and administration can inspect, question, or improve any part of it. Six practical reality checks were built into the workflow:
 
-1. **Primary-Source-Only Ingestion:** Every chart and table is computed programmatically from **70 downloaded primary PDFs and public federal APIs** archived with SHA-256 hashes in [`data/sources_manifest.csv`](data/sources_manifest.csv).
-2. **Visual Inspection of Posted Slides (Zero Guessing):** Rasterized slide decks revealed that Slides 14–15 of the posted Oct. 14, 2026 PDF had blank scenario table placeholders online; rather than estimating values, Ledger A relies strictly on the Oct. 7, 2026 memo and May 13 V4 Slide 6.
-3. **Soft-Money Research Distinction (CEMML / CIRA / VTH):** Human domain review explicitly required splitting non-E&G research/enterprise AP roles (`69.7%` campus-wide; `96.3%` in WCNR/CEMML) from general-fund E&G lines (`Table 124`) so self-funding grant staff are not lumped into structural E&G overhead.
-4. **Accounting Reclassification Controls:** Historical ColOBS series isolate both FY19's `$41.64M` financial-aid shift (`XA` to `P1`) and FY26's `~$111.26M` fringe decentralization so accounting moves are not mistaken for sudden spending spikes.
-5. **Two-Way Claim Verification & Non-Interpolation:** Both leadership statements and circulating faculty claims were cross-checked against public records—flagging, for instance, that public *San Francisco Chronicle* reporting on Title IX investigator Jeffrey Lamoureaux involved other universities rather than CSU, and leaving omitted `FY21–FY24` E&G State Classified rows in Fact Book Table 128 as `NA` without interpolation.
-6. **Automated Reconciliation Checks (`src/05_verify_audit.R`):** Seven programmatic verification checks validate all sums, splits, and outputs on every run. Full methodology and data limitations appear on **[How This Was Built](methodology-sources.qmd)**.
+1. **Primary-Source-Only Ingestion:** Every chart and table is computed programmatically from **70 downloaded public PDFs, memos, and federal/BLS APIs** archived with SHA-256 digests in [`data/sources_manifest.csv`](data/sources_manifest.csv).
+2. **Visual Inspection of Posted Slides (Zero Guessing):** Rasterized slide decks revealed that Slides 14–15 of the posted Oct. 14, 2026 PDF had blank white scenario table areas online; rather than estimating values, Ledger A relies strictly on the Oct. 7, 2026 memo and May 13 V4 Slide 6.
+3. **Separating Sponsored Research, Clinical & Auxiliary Staff:** Domain review required separating non-E&G research, clinical, extension, and auxiliary AP roles (`69.7%` of all AP FTE in `Table 123–124`) from general-fund E&G lines so externally funded growth is not misread as E&G overhead.
+4. **Controls for Accounting Reclassifications:** Historical ColOBS series isolate both FY19's `$41.64M` financial-aid shift (`XA` to `P1`) and FY26's `~$111.26M` fringe decentralization so accounting moves are not mistaken for sudden spending spikes.
+5. **Symmetrical Fact-Checking & Non-Interpolation:** Claims from multiple viewpoints were checked against primary filings—noting where national media reporting on a Title IX investigator involved universities outside CSU, leaving omitted `FY21–FY24` E&G State Classified rows in Fact Book Table 128 as `NA`, and acknowledging that top-level headcount numbers cannot reflect specific operational needs like student support or instructor career-track stabilization.
+6. **Automated Reconciliation Suite (`src/05_verify_audit.R`):** Seven programmatic checks validate all sums, fund splits, and outputs on every build. Full details appear on **[How This Was Built](methodology-sources.qmd)**.
 :::
 
 ---
@@ -128,12 +128,12 @@ csu_gt(
 ![Ledger A Overview: Immediate Drivers of CSU's Projected \$61.3M–\$70.7M FY28 Operating Gap](outputs/figures/fig01_fy28_shortfall_bridge.png){width=100%}
 :::
 
-1. **[Ledger A: FY28 Gap](ledger-a-fy28-cliff.qmd)** reviews the `$61.3M–$70.7M` projection alongside Fall 2026 census shifts (`-2.5%` RI enrollment, `-9.7%` Domestic Non-Resident UG, 4-year graduation rising to `55.1%`) and FY27 V4 closeout figures (`$15.112M` expiring one-time savings and `160.58` permanent FTE reductions across colleges and support units).
-2. **[Ledger B: Structural Context](ledger-b-structural.qmd)** disaggregates E&G personnel from externally funded research staff like **WCNR/CEMML (`96.3%` non-E&G)**, examines 10-year E&G growth across both admin (`+62.3%`) and faculty (`+43.3%`, primarily CCA/NTT), and reviews tuition discounting (`21.3%`) and Colorado funding constraints.
-3. **[Athletics & Debt](athletics-audit.qmd)** reconciles the `$75.24M` gross Athletics budget down to `~$15.57M` net operating support, details CSU's `$206.96M` Athletics bonded debt (`18.5%` of campus debt), and evaluates football cancellation and NCAA tournament scenarios objectively.
-4. **[Governance & Peers](governance-and-peers.qmd)** examines trust-related governance questions, documents a factual source check on Title IX hiring claims, benchmarks CSU against 7 Colorado and land-grant R1 peers (`IPEDS FY23`), and outlines constructive questions ahead of the FY28 Hybrid RCM transition.
-5. **[How This Was Built](methodology-sources.qmd)** documents the full build pipeline, AI/human verification safeguards, accounting scope notes, upstream portal blocks (`DATA_GAPS.md`), and all 70 primary sources.
+1. **[Ledger A: FY28 Gap](ledger-a-fy28-cliff.qmd)** walks through the `$61.3M–$70.7M` projection alongside Fall 2026 census shifts (`-2.5%` RI enrollment, `-9.7%` Domestic Non-Resident UG, 4-year graduation rising to `55.1%`) and FY27 V4 closeout figures (`$15.112M` expiring one-time stopgaps and `160.58` permanent FTE reductions across colleges and support units).
+2. **[Ledger B: Structural Context](ledger-b-structural.qmd)** separates externally funded research, clinical, extension, and auxiliary staff (`69.7%` of AP FTE) from general-fund E&G trends across both admin (`+62.3%`) and faculty (`+43.3%`, mainly CCA/NTT), while reviewing tuition discounting (`21.3%`) and Colorado funding constraints.
+3. **[Athletics & Debt](athletics-audit.qmd)** reconciles the `$75.24M` gross Athletics budget down to `~$15.57M` net institutional support, details CSU's `$206.96M` Athletics bonded debt (`18.5%` of campus debt), and evaluates hypothetical football cancellation and NCAA tournament scenarios calmly.
+4. **[Governance & Peers](governance-and-peers.qmd)** considers trust and transparency questions alongside a careful source verification note on Title IX hiring claims, benchmarks CSU across 7 Colorado and land-grant R1 peers (`IPEDS FY23`), and offers constructive questions ahead of the FY28 Hybrid RCM transition.
+5. **[How This Was Built](methodology-sources.qmd)** shares the full reproducible pipeline, AI and human verification checks, accounting scope notes, documented data gaps (`DATA_GAPS.md`), and all 70 primary sources.
 
 ::: {.callout-audit}
-**Downloadable Brief:** A formatted 12-page **[PDF Brief (Understanding CSU's FY27–28 Operating Budget Gap)](outputs/pdf/CSU_Budget_Context_FY27_28.pdf)** is also available for committee packets or offline reading.
+**Downloadable Brief:** A formatted 11-page **[PDF Brief (Understanding CSU's FY27–28 Budget Gap)](outputs/pdf/CSU_Budget_Context_FY27_28.pdf)** is also available for committee packets or offline reading.
 :::
