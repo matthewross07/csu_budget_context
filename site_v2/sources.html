@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sources, methods and corrections: CSU FY28 budget gap</title>
+<meta name="description" content="Who made this analysis, how AI was used, every figure with its source document, and corrections to the first version.">
+<style>
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb;
+  --surface-2: #f3f2ee;
+  --surface-3: #e9e7e1;
+  --text: #0b0b0b;
+  --text-2: #52514e;
+  --text-3: #6f6e69;
+  --rule: #dcdad3;
+  --link: #1c5cab;
+  --s1: #2a78d6;      /* nonresident */
+  --s2: #eb6834;      /* resident */
+  --s3: #1baf7a;      /* state */
+  --gap: #c9403f;     /* the gap */
+  --gap-soft: #efb1ae;
+  --gap-done: #9a9892;
+  --gray: #a9a79f;
+  --cost: #184f95;
+  --g1: #8f2423; --g2: #c9403f; --g3: #e89b97;
+  --a1: #2a78d6; --b1: #eb6834;
+  --tag-csu-bg: #e3edf9; --tag-csu-fg: #123f78;
+  --tag-state-bg: #e2f2ea; --tag-state-fg: #0d5a3d;
+  --tag-news-bg: #f4e9d4; --tag-news-fg: #6b4a05;
+  --tag-calc-bg: #ebe9f8; --tag-calc-fg: #3b2f8f;
+  --tag-infer-bg: #f8e4e0; --tag-infer-fg: #8a2a1c;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #1a1a19; --surface-2: #242422; --surface-3: #30302d;
+    --text: #f0efec; --text-2: #c3c2b7; --text-3: #a09f95; --rule: #3a3a36; --link: #86b6ef;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    --gap: #e66767; --gap-soft: #7a3534; --gap-done: #77756e; --gray: #6b6a64; --cost: #6da7ec;
+    --g1: #f0a3a3; --g2: #e66767; --g3: #8e3d3c;
+    --a1: #3987e5; --b1: #d95926;
+    --tag-csu-bg: #1b304b; --tag-csu-fg: #b7d3f6;
+    --tag-state-bg: #173528; --tag-state-fg: #a9dcc5;
+    --tag-news-bg: #3a2f17; --tag-news-fg: #ecd49a;
+    --tag-calc-bg: #2a2650; --tag-calc-fg: #cdc8f5;
+    --tag-infer-bg: #472220; --tag-infer-fg: #f3c2ba;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #1a1a19; --surface-2: #242422; --surface-3: #30302d;
+  --text: #f0efec; --text-2: #c3c2b7; --text-3: #a09f95; --rule: #3a3a36; --link: #86b6ef;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  --gap: #e66767; --gap-soft: #7a3534; --gap-done: #77756e; --gray: #6b6a64; --cost: #6da7ec;
+  --g1: #f0a3a3; --g2: #e66767; --g3: #8e3d3c;
+  --a1: #3987e5; --b1: #d95926;
+  --tag-csu-bg: #1b304b; --tag-csu-fg: #b7d3f6;
+  --tag-state-bg: #173528; --tag-state-fg: #a9dcc5;
+  --tag-news-bg: #3a2f17; --tag-news-fg: #ecd49a;
+  --tag-calc-bg: #2a2650; --tag-calc-fg: #cdc8f5;
+  --tag-infer-bg: #472220; --tag-infer-fg: #f3c2ba;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--surface); color: var(--text);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--link); text-underline-offset: 2px; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; font-size: .92em; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+p { margin: 0 0 1em; }
+
+/* top bars */
+.disclosure-bar {
+  background: var(--text); color: var(--surface); font-size: 13.5px; line-height: 1.4;
+  padding: 8px 20px; text-align: center;
+}
+.disclosure-bar a { color: inherit; margin-left: 6px; }
+header.site { border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: var(--surface); z-index: 5; }
+header.site .wrap { display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: center; padding-top: 10px; padding-bottom: 10px; }
+.sitename { font-weight: 700; font-size: 15px; margin-right: auto; }
+header.site nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 14.5px; }
+header.site nav a { color: var(--text-2); text-decoration: none; padding: 2px 0; border-bottom: 2px solid transparent; }
+header.site nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--text); }
+header.site nav a:hover { color: var(--text); }
+
+/* hero */
+.hero { padding: 44px 0 28px; }
+.hero.small { padding-bottom: 6px; }
+.eyebrow { font-size: 13.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+h1 { font-size: clamp(30px, 5.2vw, 46px); margin: 0 0 18px; letter-spacing: -0.015em; }
+.lede { font-size: clamp(18px, 2.2vw, 20.5px); color: var(--text-2); max-width: 46em; }
+.herofig { margin: 30px 0 28px; padding: 22px 0 20px; border-top: 3px solid var(--gap); border-bottom: 1px solid var(--rule); }
+.heronum { font-size: clamp(44px, 10vw, 92px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.02; }
+.herocap { color: var(--text-2); margin-top: 10px; max-width: 40em; }
+
+.disclosure { background: var(--surface-2); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 22px 12px; }
+.disclosure h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 10px; color: var(--text-2); }
+.disclosure ul { margin: 0 0 10px; padding-left: 1.1em; font-size: 15.5px; }
+.disclosure li { margin-bottom: 7px; }
+.taglegend { font-size: 14px; color: var(--text-2); margin: 0 0 6px; line-height: 2; }
+
+/* sections */
+section { padding: 38px 0 14px; }
+section + section { border-top: 1px solid var(--rule); }
+.secnum {
+  display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px;
+  border-radius: 50%; background: var(--text); color: var(--surface); font-weight: 700; font-size: 15px; margin: 0 0 10px;
+}
+h2 { font-size: clamp(25px, 3.6vw, 32px); margin: 0 0 8px; letter-spacing: -0.01em; }
+.answer { font-size: clamp(18px, 2.3vw, 21px); font-weight: 600; margin-bottom: 22px; max-width: 36em; }
+h3.sub { font-size: 20px; margin: 34px 0 10px; }
+
+/* tags */
+.tag {
+  display: inline-block; font-size: 11.5px; font-weight: 600; line-height: 1.2; letter-spacing: .01em;
+  padding: 2px 7px 3px; border-radius: 99px; white-space: nowrap; vertical-align: 1px;
+}
+.tag-csu { background: var(--tag-csu-bg); color: var(--tag-csu-fg); }
+.tag-state { background: var(--tag-state-bg); color: var(--tag-state-fg); }
+.tag-news { background: var(--tag-news-bg); color: var(--tag-news-fg); }
+.tag-calc { background: var(--tag-calc-bg); color: var(--tag-calc-fg); }
+.tag-infer { background: var(--tag-infer-bg); color: var(--tag-infer-fg); }
+.tag-assume { background: var(--tag-infer-bg); color: var(--tag-infer-fg); }
+
+/* stat tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 0 0 26px; }
+.tile { background: var(--surface-2); border-radius: 10px; padding: 16px 16px 12px; display: flex; flex-direction: column; }
+.tv { font-size: 27px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.tl { font-size: 14.5px; color: var(--text-2); margin: 8px 0 10px; line-height: 1.4; flex: 1; }
+
+/* figures */
+figure.chart { margin: 26px 0 28px; padding: 20px 20px 12px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.chart-title { font-weight: 700; font-size: 17.5px; margin-bottom: 16px; line-height: 1.3; }
+.chart-note { font-size: 14.5px; color: var(--text-2); margin: 14px 0 8px; }
+.chart-src { font-size: 12.5px; color: var(--text-3); margin: 0 0 6px; line-height: 1.9; }
+.chart-src a { color: var(--text-3); }
+.srcline { margin-left: 4px; }
+
+/* horizontal bars */
+.hbars { display: grid; gap: 12px; }
+.hb-row { display: grid; grid-template-columns: minmax(120px, 230px) 1fr; gap: 6px 14px; align-items: center; border-radius: 6px; outline-offset: 3px; }
+.hb-label { display: flex; flex-direction: column; line-height: 1.25; }
+.hb-name { font-weight: 600; font-size: 15px; }
+.hb-sub { font-size: 12.5px; color: var(--text-3); }
+.hb-track { display: flex; align-items: center; min-width: 0; padding-right: 118px; position: relative; }
+.bar { display: block; height: 22px; border-radius: 0 4px 4px 0; flex: none; }
+.hbars.compact .bar { height: 14px; }
+.hbars.compact { gap: 7px; }
+.hbars.compact .hb-row { grid-template-columns: 78px 1fr; }
+.hbars.compact .hb-name { font-weight: 500; font-size: 14px; }
+.bar.range { margin-left: 2px; opacity: .38; }
+.bar + .bar.range { border-radius: 0 4px 4px 0; }
+.bar:has(+ .bar.range) { border-radius: 0; }
+.hb-val { margin-left: 8px; font-size: 14.5px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.c-gap { background: var(--gap); } .c-gap-done { background: var(--gap-done); }
+.c-gray { background: var(--gray); } .c-rev { background: var(--s3); } .c-cost { background: var(--cost); }
+.c-s1 { background: var(--s1); } .c-s3 { background: var(--s3); } .c-a { background: var(--a1); } .c-b { background: var(--b1); }
+@media (max-width: 600px) {
+  .hb-row { grid-template-columns: 1fr; gap: 3px; }
+  .hbars.compact .hb-row { grid-template-columns: 70px 1fr; }
+  .hb-track { padding-right: 104px; }
+}
+
+/* segmented bar */
+.segbar { display: flex; gap: 2px; height: 28px; margin: 10px 0 4px; }
+.seg { display: flex; align-items: center; border-radius: 4px; min-width: 2px; outline-offset: 2px; }
+.seg-val { font-size: 13px; font-weight: 600; padding-left: 8px; white-space: nowrap; }
+.seg.g1 { background: var(--g1); color: #fff; } .seg.g2 { background: var(--g2); color: #fff; } .seg.g3 { background: var(--g3); color: #0b0b0b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .seg.g1 { color: #0b0b0b; } :root:not([data-theme="light"]) .seg.g3 { color: #fff; } }
+.legend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 0; margin: 0 0 8px; font-size: 13.5px; color: var(--text-2); }
+.legend li { display: flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: none; }
+.sw.g1 { background: var(--g1); } .sw.g2 { background: var(--g2); } .sw.g3 { background: var(--g3); }
+.sw.s1 { background: var(--s1); } .sw.s2 { background: var(--s2); } .sw.s3 { background: var(--s3); }
+.sw.a1 { background: var(--a1); } .sw.b1 { background: var(--b1); } .sw.gapc { background: var(--gap); } .sw.grayc { background: var(--gray); }
+
+/* line chart */
+.lc svg { width: 100%; height: auto; display: block; }
+.lc svg.compact { display: none; }
+@media (max-width: 600px) { .lc svg.wide { display: none; } .lc svg.compact { display: block; } }
+svg .grid { stroke: var(--rule); stroke-width: 1; }
+svg .axis { fill: var(--text-3); font-variant-numeric: tabular-nums; }
+svg .line { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+svg .line.s1, svg .line.a1 { stroke: var(--s1); } svg .line.s2, svg .line.b1 { stroke: var(--s2); } svg .line.s3 { stroke: var(--s3); }
+svg .line.hist { stroke: var(--text-2); }
+svg .line.dash { stroke-dasharray: 2 5; }
+svg .dot { stroke: var(--surface); stroke-width: 2; }
+svg .dot.s1, svg .dot.a1 { fill: var(--s1); } svg .dot.s2, svg .dot.b1 { fill: var(--s2); } svg .dot.s3 { fill: var(--s3); } svg .dot.hist { fill: var(--text-2); }
+svg .endlabel { fill: var(--text); font-weight: 600; }
+svg .endval, svg .note { fill: var(--text-2); }
+svg .hit { fill: transparent; outline: none; }
+svg .hit:hover, svg .hit:focus { fill: var(--text); fill-opacity: .05; }
+svg .band { fill: var(--text); fill-opacity: .04; }
+
+/* tables */
+.tablewrap { overflow-x: auto; margin: 10px 0 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+caption { text-align: left; font-size: 13px; color: var(--text-3); padding-bottom: 6px; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+thead th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); font-weight: 600; }
+tbody th { font-weight: 500; }
+td { font-variant-numeric: tabular-nums; }
+details.datatable { margin: 10px 0 0; font-size: 14px; }
+details.datatable summary { cursor: pointer; color: var(--text-2); }
+
+/* point cards */
+.points, .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 22px 0; }
+.point { border-top: 3px solid var(--text); padding-top: 12px; }
+.point h3 { font-size: 18px; margin: 0 0 6px; }
+.point p { font-size: 15.5px; color: var(--text-2); margin: 0; }
+.card { border: 1px solid var(--rule); border-radius: 12px; padding: 18px 18px 8px; background: var(--surface); }
+.card h3 { font-size: 18px; margin: 0 0 10px; }
+.cardsub { display: block; font-size: 13px; font-weight: 500; color: var(--text-3); margin-top: 3px; }
+.cardnum { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 0; line-height: 1.1; }
+.cardcap { font-size: 13.5px; color: var(--text-2); margin: 4px 0 12px; }
+.card p { font-size: 15px; }
+.fine { font-size: 13.5px; color: var(--text-3); }
+.fine a { color: var(--text-3); }
+
+.rootbox { background: var(--text); color: var(--surface); border-radius: 12px; padding: 22px 24px 10px; margin: 28px 0 18px; }
+.rootbox h3 { margin: 0 0 8px; font-size: 15px; text-transform: uppercase; letter-spacing: .05em; opacity: .8; }
+.rootbox p { font-size: clamp(17px, 2.1vw, 19.5px); line-height: 1.5; }
+.callout { background: var(--surface-2); border-left: 4px solid var(--text-2); border-radius: 0 10px 10px 0; padding: 16px 20px 6px; margin: 22px 0; }
+.callout h3 { margin: 0 0 6px; font-size: 17px; }
+.callout p { font-size: 15.5px; }
+
+.qa details { border-top: 1px solid var(--rule); padding: 12px 0 4px; }
+.qa details:last-child { border-bottom: 1px solid var(--rule); }
+.qa summary { font-weight: 700; font-size: 17.5px; cursor: pointer; padding: 2px 0 8px; }
+.qa p { font-size: 15.5px; }
+
+ul.unknowns, ol.agree { padding-left: 1.2em; }
+ul.unknowns li, ol.agree li { margin-bottom: 10px; }
+ol.agree { font-size: 17px; }
+ol.agree li::marker { font-weight: 700; }
+ol.corrections { font-size: 15.5px; }
+
+/* scenario page */
+.scen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 22px 0; }
+.scen { border: 1px solid var(--rule); border-radius: 12px; padding: 20px 20px 8px; border-top: 5px solid var(--a1); }
+.scen.b { border-top-color: var(--b1); }
+.scen h3 { margin: 0 0 4px; font-size: 21px; }
+.scen .scen-tag { font-size: 13px; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 12px; }
+.scen ul { padding-left: 1.1em; font-size: 15.5px; }
+.scen li { margin-bottom: 7px; }
+.scen dl { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; font-size: 15px; margin: 14px 0; }
+.scen dt { color: var(--text-2); } .scen dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.warnbox { border: 2px solid var(--gap); border-radius: 12px; padding: 16px 20px 6px; margin: 20px 0; }
+.warnbox h2, .warnbox h3 { font-size: 16px; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 8px; }
+.warnbox p, .warnbox li { font-size: 15.5px; }
+
+footer.site { border-top: 1px solid var(--rule); margin-top: 30px; padding: 24px 0 40px; font-size: 14px; color: var(--text-2); }
+
+#tip {
+  position: fixed; z-index: 20; max-width: 300px; background: var(--text); color: var(--surface);
+  font-size: 13px; line-height: 1.4; padding: 7px 10px; border-radius: 6px; pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+}
+@media print {
+  .disclosure-bar { background: none; color: #000; border-bottom: 1px solid #000; }
+  header.site { position: static; }
+  details { display: block; } details > * { display: block !important; }
+  figure.chart, .card, .scen { break-inside: avoid; }
+}
+.tag-ext { background: var(--tag-news-bg); color: var(--tag-news-fg); }
+.tag-scen { background: var(--surface-3); color: var(--text); }
+
+</style>
+</head>
+<body>
+<div class="disclosure-bar" role="note">
+  <strong>Independent analysis, not a CSU publication.</strong>
+  Drafted with AI tools from public documents. Figures as of November 20, 2026.
+  <a href="sources.html#disclosure">How this was made</a>
+</div>
+<header class="site">
+  <div class="wrap">
+    <span class="sitename">CSU budget, FY 2027&ndash;28</span>
+    <nav aria-label="Pages"><a href="index.html">The budget gap</a><a href="csu-2030.html">CSU in 2030: two scenarios</a><a href="sources.html" aria-current="page">Sources and corrections</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero small">
+  <div class="wrap">
+    <p class="eyebrow">Sources, methods and corrections</p>
+    <h1>How this was made, and how to check it</h1>
+    <p class="lede">Everything on the main page traces to a public document. This page says who made the
+    analysis and how, lists every figure with its source, and records what was wrong in the first version.</p>
+  </div>
+</section>
+
+<section id="disclosure">
+  <div class="wrap">
+    <h2>Disclosure</h2>
+    <ul class="unknowns">
+      <li><strong>Author.</strong> Matthew R. V. Ross, acting as an individual. This is not a publication of
+      Colorado State University or the CSU System, and no one at the university reviewed it.</li>
+      <li><strong>Use of AI.</strong> AI coding agents did most of the work. The first version (November 19,
+      2026) was built with Google's Gemini in the Antigravity agent: it downloaded the source documents, wrote
+      the code that reads them, and drafted the pages. On November 20, 2026, Anthropic's Claude re-read the source
+      documents, checked each claim against them, searched news coverage for facts not in the archive, removed
+      what could not be supported, and rewrote the site. The author directed both passes and is responsible
+      for what is published.</li>
+      <li><strong>What "checked" means.</strong> For each figure, the AI located the number in the source
+      document (or computed it from numbers located there) and recorded the page. Budget slides that exist
+      only as images were read from the rendered image. A person has not independently re-keyed every figure.
+      AI systems make transcription and reading errors; the ledger below exists so that anyone can check any
+      number in a minute.</li>
+      <li><strong>Limits.</strong> The analysis uses only public documents. CSU has internal data that could
+      change the picture. Election results are unofficial until certified. Facts sourced to news reports rely
+      on those outlets' reporting.</li>
+      <li><strong>No recommendation.</strong> The site describes the problem. It does not propose or endorse
+      any solution.</li>
+      <li><strong>Corrections.</strong> Report errors at <a href="https://github.com/matthewross07/csu_budget_context/issues">https://github.com/matthewross07/csu_budget_context/issues</a>.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="labels">
+  <div class="wrap">
+    <h2>What the labels mean</h2>
+    <div class="tablewrap"><table><thead><tr><th>Label</th><th>Meaning</th></tr></thead><tbody><tr><th scope='row'><span class="tag tag-csu">CSU document</span></th><td>The number is printed in a CSU budget document, filing or Fact Book.</td></tr><tr><th scope='row'><span class="tag tag-state">State document</span></th><td>The number is printed in a State of Colorado document (ballot booklet, state auditor report).</td></tr><tr><th scope='row'><span class="tag tag-news">News report</span></th><td>Reported by a news outlet. We do not hold the underlying record.</td></tr><tr><th scope='row'><span class="tag tag-calc">Our arithmetic</span></th><td>We added, subtracted or divided numbers of the kinds above. The inputs are in the ledger.</td></tr><tr><th scope='row'><span class="tag tag-infer">Our inference</span></th><td>We concluded this from the documents, but no document states it. Treat it as our reading.</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section id="ledger">
+  <div class="wrap">
+    <h2>Figure ledger</h2>
+    <p>Every number used on the main page. The same list is available as
+    <a href="figures.csv">figures.csv</a>. The annual series behind the tuition chart are in the table under
+    that chart and in <code>data.py</code> in the <a href="https://github.com/matthewross07/csu_budget_context">repository</a>.</p>
+    <div class="tablewrap"><table><thead><tr><th>Figure</th><th>Value</th><th>Kind</th><th>Document</th><th>Where in it</th></tr></thead><tbody><tr><th scope='row'>Projected FY28 gap, low end of CSU&#x27;s range</th><td>$61.3M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a></td><td>paragraph &#x27;Where we are starting&#x27;</td></tr><tr><th scope='row'>Projected FY28 gap, high end of CSU&#x27;s range</th><td>$70.7M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a></td><td>paragraph &#x27;Where we are starting&#x27;</td></tr><tr><th scope='row'>FY28 gap attributed by CSU to enrollment shifts (&#x27;about $25 million&#x27;)</th><td>$25.0M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a></td><td>paragraph &#x27;What we know&#x27;</td></tr><tr><th scope='row'>FY27 new expenses before balancing actions (sum of slide lines 26-31)</th><td>$61.103M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, lines 26-31</td></tr><tr><th scope='row'>FY27 net new resources after financial aid</th><td>$6.831M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 5, line 24</td></tr><tr><th scope='row'>FY27 gap closed (new expenses minus net new resources); CSU&#x27;s memo rounds to $54 million</th><td>$54.272M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slides 5-6</td></tr><tr><th scope='row'>FY27 university base savings</th><td>$7.406M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, line 32</td></tr><tr><th scope='row'>FY27 campus reduction target (permanent unit cuts)</th><td>$28.754M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, line 33</td></tr><tr><th scope='row'>FY27 vacant position reductions</th><td>$3.0M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, line 34</td></tr><tr><th scope='row'>FY27 permanent reductions (base savings + campus cuts + vacant positions)</th><td>$39.160M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, lines 32-34</td></tr><tr><th scope='row'>FY27 one-time savings used to balance</th><td>$15.112M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, line 35</td></tr><tr><th scope='row'>Permanent positions reduced for FY27</th><td>160.58 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 10, grand total</td></tr><tr><th scope='row'>FY27 tuition change from undergraduate enrollment</th><td>$-7.834M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 5, line 5</td></tr><tr><th scope='row'>FY27 tuition change from graduate enrollment</th><td>$-4.846M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 5, line 6</td></tr><tr><th scope='row'>FY27 tuition change from enrollment, undergraduate plus graduate</th><td>$-12.680M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 5, lines 5-6</td></tr><tr><th scope='row'>FY27 revenue from tuition rate increases (resident 3.5%, nonresident 4%, graduate 3%, vet med, differential)</th><td>$23.963M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 5, lines 8-14</td></tr><tr><th scope='row'>FY27 change in state funding (fee-for-service and specialty education)</th><td>$-0.858M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 5, lines 16-17</td></tr><tr><th scope='row'>FY27 other new resources (board-prioritized funding, overhead recovery)</th><td>$1.435M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 5, lines 18-19</td></tr><tr><th scope='row'>FY27 added financial aid, netted against new resources</th><td>$-5.029M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 5, line 23</td></tr><tr><th scope='row'>FY27 faculty/staff compensation (3% pool, classified raises, promotions, fringe)</th><td>$33.665M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, line 27</td></tr><tr><th scope='row'>FY27 mandatory costs (bond payments, new facilities, insurance, utilities, library)</th><td>$8.678M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, line 29</td></tr><tr><th scope='row'>FY27 multi-year central investments in strategic initiatives</th><td>$8.826M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, line 26</td></tr><tr><th scope='row'>FY27 academic incentive funding (differential tuition, tuition sharing)</th><td>$8.120M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, line 28</td></tr><tr><th scope='row'>FY27 quality enhancements plus board-prioritized mental health funding</th><td>$1.814M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></td><td>slide 6, lines 30-31</td></tr><tr><th scope='row'>&#x27;Reducible&#x27; budget as CSU defined it for FY27 cuts</th><td>$551.0M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/04/Budget-Forum-4-13-2026.pdf">FY27 Budget Update, Draft V4 (forum slides, April 13, 2026)</a></td><td>slide 12</td></tr><tr><th scope='row'>FY26 &#x27;State Appropriated&#x27; budget (general campus plus vet med, Experiment Station, Extension, Forest Service)</th><td>$885.156M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY26_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2025-26</a></td><td>grand total</td></tr><tr><th scope='row'>College of Liberal Arts general-fund (EG sub-fund) budget, FY26</th><td>$57.810M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY26_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2025-26</a></td><td>line KA</td></tr><tr><th scope='row'>Fall 2026 Resident Instruction enrollment</th><td>27,491 students</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 5</td></tr><tr><th scope='row'>Change in RI enrollment, Fall 2025 to Fall 2026 (-2.5%)</th><td>-703 students</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 5</td></tr><tr><th scope='row'>Change in domestic nonresident undergraduates (-9.7%)</th><td>-685 students</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 5</td></tr><tr><th scope='row'>Change in resident undergraduates (+1.1%)</th><td>184 students</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 5</td></tr><tr><th scope='row'>Change in international undergraduates (-6.7%)</th><td>-42 students</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 5</td></tr><tr><th scope='row'>Change in international graduate students (-13.9%)</th><td>-113 students</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 5</td></tr><tr><th scope='row'>Four-year graduation rate, prior cohort</th><td>51.1%</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 6</td></tr><tr><th scope='row'>Four-year graduation rate, latest cohort</th><td>55.1%</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 6</td></tr><tr><th scope='row'>Nonresident RI headcount, Fall 2024</th><td>9,997 students</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2026/10/CSU_Factbook_FY27_2026-10-22.pdf">CSU Fact Book FY 2026-27 (Oct. 22, 2026)</a></td><td>Table 3</td></tr><tr><th scope='row'>Nonresident RI headcount, Fall 2026</th><td>8,422 students</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2026/10/CSU_Factbook_FY27_2026-10-22.pdf">CSU Fact Book FY 2026-27 (Oct. 22, 2026)</a></td><td>Table 3</td></tr><tr><th scope='row'>FY27 state fee-for-service plus College Opportunity Fund, all state-funded Fort Collins units</th><td>$211.052M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://www.budgets.colostate.edu/Forms/OperatingBudgetSummaries/FY27_Operating_Budget_Summary.pdf">Operating Budget Summary, FY 2026-27</a></td><td>page 4 (revenue budget)</td></tr><tr><th scope='row'>FY26 state support to the general campus budget (fee-for-service + COF stipend, actual)</th><td>$110.090M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></td><td>FY26-27 book, Format 20 lines 14-15</td></tr><tr><th scope='row'>Amendment 87 estimated new revenue, FY 2027-28</th><td>$1,972.0M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible.pdf">2026 State Ballot Information Booklet (Blue Book)</a></td><td>p. 38</td></tr><tr><th scope='row'>Proposition NN estimated revenue retained, FY 2027-28</th><td>$521.0M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible.pdf">2026 State Ballot Information Booklet (Blue Book)</a></td><td>p. 46</td></tr><tr><th scope='row'>Proposition NN: amount moved out of the general state budget in each of FY27 and FY28</th><td>$153.1M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible.pdf">2026 State Ballot Information Booklet (Blue Book)</a></td><td>p. 47, Table 2</td></tr><tr><th scope='row'>Proposition 137 estimated transfer to conservation programs, FY 2027-28</th><td>$175.0M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible.pdf">2026 State Ballot Information Booklet (Blue Book)</a></td><td>p. 67</td></tr><tr><th scope='row'>Proposition 137: maximum to the Colorado State Forest Service, FY 2027-28</th><td>$36.5M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible.pdf">2026 State Ballot Information Booklet (Blue Book)</a></td><td>p. 68, Table 1</td></tr><tr><th scope='row'>Amendment 87 yes vote (unofficial, as reported Nov. 20)</th><td>51.72%</td><td><span class="tag tag-news">News report</span></td><td><a href="https://www.chalkbeat.org/colorado/2026/11/20/advance-colorado-files-lawsuit-to-overturn-amendment-87-education-ballot-measure/">Conservative group files lawsuit to stop Amendment 87 (Nov. 20, 2026)</a></td><td>second paragraph</td></tr><tr><th scope='row'>Projected state budget shortfall for FY 2027-28 as reported with the governor&#x27;s Nov. 2 proposal</th><td>$1.6B</td><td><span class="tag tag-news">News report</span></td><td><a href="https://www.denver7.com/news/politics/gov-polis-presents-final-budget-proposal-for-2027-28-ahead-of-projected-1-6-billion-deficit">Gov. Polis presents final budget proposal for 2027-28 ahead of projected $1.6 billion deficit (Nov. 2, 2026)</a></td><td>third paragraph</td></tr><tr><th scope='row'>General campus &#x27;Institutional Support&#x27; spending, FY26 actual (central administration: executive, finance, HR, legal, etc.)</th><td>$47.495M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></td><td>FY26-27 book, Format 20 line 6</td></tr><tr><th scope='row'>General campus &#x27;Institutional Support&#x27; staff, FY26 actual</th><td>239.14 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></td><td>FY26-27 book, Format 20 line 6</td></tr><tr><th scope='row'>Debt service paid from the general-fund budget, FY26</th><td>$31.864M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY26_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2025-26</a></td><td>line XA Debt Service</td></tr><tr><th scope='row'>Debt service paid from the general-fund budget, FY15</th><td>$10.169M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY15_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2014-15</a></td><td>line XA Debt Service</td></tr><tr><th scope='row'>Athletics general-fund allocation, FY26</th><td>$17.151M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY26_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2025-26</a></td><td>line B2</td></tr><tr><th scope='row'>Athletics general-fund allocation, FY15</th><td>$9.687M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY15_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2014-15</a></td><td>line B2</td></tr><tr><th scope='row'>Athletics total revenues, FY25</th><td>$74.737M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/documents/audits/2516F-B_csu_ncaa_aup_fy_25.pdf">CSU Department of Intercollegiate Athletics, NCAA agreed-upon procedures report, FY2025 (2516F-B)</a></td><td>p. 20 (PDF p. 24)</td></tr><tr><th scope='row'>Athletics direct institutional support, FY25</th><td>$23.851M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/documents/audits/2516F-B_csu_ncaa_aup_fy_25.pdf">CSU Department of Intercollegiate Athletics, NCAA agreed-upon procedures report, FY2025 (2516F-B)</a></td><td>p. 20</td></tr><tr><th scope='row'>Athletics indirect institutional support, FY25</th><td>$2.147M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/documents/audits/2516F-B_csu_ncaa_aup_fy_25.pdf">CSU Department of Intercollegiate Athletics, NCAA agreed-upon procedures report, FY2025 (2516F-B)</a></td><td>p. 20</td></tr><tr><th scope='row'>Athletics student fee revenue, FY25</th><td>$6.145M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/documents/audits/2516F-B_csu_ncaa_aup_fy_25.pdf">CSU Department of Intercollegiate Athletics, NCAA agreed-upon procedures report, FY2025 (2516F-B)</a></td><td>p. 20</td></tr><tr><th scope='row'>Athletic student aid expense, FY25</th><td>$10.931M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/documents/audits/2516F-B_csu_ncaa_aup_fy_25.pdf">CSU Department of Intercollegiate Athletics, NCAA agreed-upon procedures report, FY2025 (2516F-B)</a></td><td>p. 20</td></tr><tr><th scope='row'>Athletics outstanding debt, June 30, 2025 (18.5% of university debt)</th><td>$206.960M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/documents/audits/2516F-B_csu_ncaa_aup_fy_25.pdf">CSU Department of Intercollegiate Athletics, NCAA agreed-upon procedures report, FY2025 (2516F-B)</a></td><td>Note 5, p. 22</td></tr><tr><th scope='row'>Athletics bond principal and interest paid, FY25</th><td>$10.942M</td><td><span class="tag tag-state">State document</span></td><td><a href="https://content.leg.colorado.gov/sites/default/files/documents/audits/2516F-B_csu_ncaa_aup_fy_25.pdf">CSU Department of Intercollegiate Athletics, NCAA agreed-upon procedures report, FY2025 (2516F-B)</a></td><td>Note 5, p. 22</td></tr><tr><th scope='row'>Reported resignation payment to President Amy Parsons</th><td>$1.1M</td><td><span class="tag tag-news">News report</span></td><td><a href="https://collegian.com/articles/news/2026/11/category-news-students-faculty-react-to-parsons-resignation-express-concerns-around-transparency-accountability/">Faculty, students react to Parsons&#x27; resignation (Nov. 2026)</a></td><td>citing The Coloradoan&#x27;s records request</td></tr><tr><th scope='row'>Reported settlement with former Provost Marion Underwood</th><td>$0.325M</td><td><span class="tag tag-news">News report</span></td><td><a href="https://collegian.com/articles/news/2026/11/category-news-students-faculty-react-to-parsons-resignation-express-concerns-around-transparency-accountability/">Faculty, students react to Parsons&#x27; resignation (Nov. 2026)</a></td><td>paragraph on AAUP statement</td></tr><tr><th scope='row'>Reported settlement with former football coach Jay Norvell</th><td>$1.5M</td><td><span class="tag tag-news">News report</span></td><td><a href="https://collegian.com/articles/news/2026/11/category-news-students-faculty-react-to-parsons-resignation-express-concerns-around-transparency-accountability/">Faculty, students react to Parsons&#x27; resignation (Nov. 2026)</a></td><td>paragraph on AAUP statement</td></tr><tr><th scope='row'>General-fund faculty and staff FTE, FY15 (state filing)</th><td>3,506.41 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></td><td>FY15-16 book, Format 20 line 11</td></tr><tr><th scope='row'>General-fund faculty and staff FTE, FY26 (state filing)</th><td>3,751.79 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></td><td>FY26-27 book, Format 20 line 11</td></tr><tr><th scope='row'>General-fund faculty FTE, FY15 (Fact Book)</th><td>1,167.3 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2025/12/CSU_Factbook_FY26.pdf">CSU Fact Book FY 2025-26</a></td><td>pp. 107-110</td></tr><tr><th scope='row'>General-fund faculty FTE, FY25 (Fact Book)</th><td>1,319.1 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2025/12/CSU_Factbook_FY26.pdf">CSU Fact Book FY 2025-26</a></td><td>pp. 107-110</td></tr><tr><th scope='row'>General-fund administrative professional + state classified FTE, FY15 (Fact Book)</th><td>1,429.4 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2025/12/CSU_Factbook_FY26.pdf">CSU Fact Book FY 2025-26</a></td><td>pp. 111-112</td></tr><tr><th scope='row'>General-fund administrative professional + state classified FTE, FY25 (Fact Book)</th><td>1,709.3 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2025/12/CSU_Factbook_FY26.pdf">CSU Fact Book FY 2025-26</a></td><td>pp. 111-112</td></tr><tr><th scope='row'>Administrative professional FTE, all funds, FY25</th><td>4,598.0 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2026/10/CSU_Factbook_FY27_2026-10-22.pdf">CSU Fact Book FY 2026-27 (Oct. 22, 2026)</a></td><td>Table 123</td></tr><tr><th scope='row'>Administrative professional FTE paid from the general fund, FY25</th><td>1,392.6 FTE</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2026/10/CSU_Factbook_FY27_2026-10-22.pdf">CSU Fact Book FY 2026-27 (Oct. 22, 2026)</a></td><td>Table 123</td></tr><tr><th scope='row'>General-fund cost per student FTE, FY15 (state filing)</th><td>$18,137</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></td><td>FY15-16 book, Format 30 line 16</td></tr><tr><th scope='row'>General-fund cost per student FTE, FY26 (state filing)</th><td>$27,815</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></td><td>FY26-27 book, Format 30 line 16</td></tr><tr><th scope='row'>CPI-U, average of July 2014-June 2015</th><td>236.677 index</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://www.bls.gov/cpi/">Consumer Price Index, All Urban Consumers (CUUR0000SA0)</a></td><td>series CUUR0000SA0</td></tr><tr><th scope='row'>CPI-U, average of July 2024-June 2025</th><td>317.731 index</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://www.bls.gov/cpi/">Consumer Price Index, All Urban Consumers (CUUR0000SA0)</a></td><td>series CUUR0000SA0</td></tr><tr><th scope='row'>CPI-U, average of July 2025-May 2026 (11 months available)</th><td>327.668 index</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://www.bls.gov/cpi/">Consumer Price Index, All Urban Consumers (CUUR0000SA0)</a></td><td>series CUUR0000SA0</td></tr><tr><th scope='row'>Nonresident tuition, FY27 estimate filed with the state (general campus)</th><td>$254.058M</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></td><td>FY26-27 book, Format 20 line 19, estimate column</td></tr><tr><th scope='row'>Resident tuition paid by students, FY27 estimate filed with the state (general campus)</th><td>$227.918M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></td><td>FY26-27 book, Format 20 lines 16 and 18, estimate column</td></tr><tr><th scope='row'>Salaries and benefits in the FY27 state-appropriated budget</th><td>$551.198M</td><td><span class="tag tag-calc">Our arithmetic</span></td><td><a href="https://www.budgets.colostate.edu/Forms/OperatingBudgetSummaries/FY27_Operating_Budget_Summary.pdf">Operating Budget Summary, FY 2026-27</a></td><td>page 3, State Appropriated row (professional + support)</td></tr><tr><th scope='row'>Second-year retention rate, prior cohort</th><td>87.9%</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 6</td></tr><tr><th scope='row'>Second-year retention rate, latest cohort</th><td>86.4%</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></td><td>slide 6</td></tr><tr><th scope='row'>Share of budget-cut proposals CSU required to come from personnel in FY27</th><td>60%</td><td><span class="tag tag-csu">CSU document</span></td><td><a href="https://operations.colostate.edu/media/sites/109/2026/01/Budget-Update-V3-1-15-26-Campus-1.pdf">FY27 Budget Update, V3 (forum slides, Jan. 15, 2026)</a></td><td>slide 9</td></tr><tr><th scope='row'>Projected change in U.S. high school graduates, 2025 peak to 2041</th><td>-13%</td><td><span class="tag tag-ext">Outside report</span></td><td><a href="https://www.wiche.edu/knocking/key-findings/graduates/">Knocking at the College Door, 11th edition: projections of high school graduates (Dec. 2024)</a></td><td>key findings</td></tr><tr><th scope='row'>Projected change in Colorado high school graduates, 2025 to 2041 (65,716 to 56,457)</th><td>-14%</td><td><span class="tag tag-news">News report</span></td><td><a href="https://coloradosun.com/2026/07/27/colorado-college-enrollment-cliff-survival-strategies/">The number of high school grads in Colorado is shrinking. Can colleges weather enrollment drops? (July 27, 2026)</a></td><td>citing WICHE projections</td></tr><tr><th scope='row'>Projected change in California high school graduates, 2023 to 2041</th><td>-29%</td><td><span class="tag tag-ext">Outside report</span></td><td><a href="https://www.wiche.edu/knocking/key-findings/graduates/">Knocking at the College Door, 11th edition: projections of high school graduates (Dec. 2024)</a></td><td>press release, Dec. 11, 2024</td></tr><tr><th scope='row'>Projected change in Illinois high school graduates, 2023 to 2041</th><td>-32%</td><td><span class="tag tag-ext">Outside report</span></td><td><a href="https://www.wiche.edu/knocking/key-findings/graduates/">Knocking at the College Door, 11th edition: projections of high school graduates (Dec. 2024)</a></td><td>press release, Dec. 11, 2024</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section id="documents">
+  <div class="wrap">
+    <h2>Documents</h2>
+    <div class="tablewrap"><table><thead><tr><th>Document</th><th>Publisher</th></tr></thead><tbody><tr><th scope='row'><a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a></th><td>CSU, VP for University Operations and CFO</td></tr><tr><th scope='row'><a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a></th><td>CSU Division of University Operations</td></tr><tr><th scope='row'><a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></th><td>CSU Division of University Operations</td></tr><tr><th scope='row'><a href="https://operations.colostate.edu/media/sites/109/2026/04/Budget-Forum-4-13-2026.pdf">FY27 Budget Update, Draft V4 (forum slides, April 13, 2026)</a></th><td>CSU Division of University Operations</td></tr><tr><th scope='row'><a href="https://operations.colostate.edu/media/sites/109/2026/01/Budget-Update-V3-1-15-26-Campus-1.pdf">FY27 Budget Update, V3 (forum slides, Jan. 15, 2026)</a></th><td>CSU Division of University Operations</td></tr><tr><th scope='row'><a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY26_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2025-26</a></th><td>CSU Office of Budgets</td></tr><tr><th scope='row'><a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY15_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2014-15</a></th><td>CSU Office of Budgets</td></tr><tr><th scope='row'><a href="https://www.budgets.colostate.edu/Forms/OperatingBudgetSummaries/FY27_Operating_Budget_Summary.pdf">Operating Budget Summary, FY 2026-27</a></th><td>CSU Office of Budgets</td></tr><tr><th scope='row'><a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a></th><td>CSU Office of Budgets, filed with the Colorado Department of Higher Education</td></tr><tr><th scope='row'><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2026/10/CSU_Factbook_FY27_2026-10-22.pdf">CSU Fact Book FY 2026-27 (Oct. 22, 2026)</a></th><td>CSU Institutional Research, Planning and Effectiveness</td></tr><tr><th scope='row'><a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2025/12/CSU_Factbook_FY26.pdf">CSU Fact Book FY 2025-26</a></th><td>CSU Institutional Research, Planning and Effectiveness</td></tr><tr><th scope='row'><a href="https://content.leg.colorado.gov/sites/default/files/documents/audits/2516F-B_csu_ncaa_aup_fy_25.pdf">CSU Department of Intercollegiate Athletics, NCAA agreed-upon procedures report, FY2025 (2516F-B)</a></th><td>Colorado Office of the State Auditor (CliftonLarsonAllen)</td></tr><tr><th scope='row'><a href="https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible.pdf">2026 State Ballot Information Booklet (Blue Book)</a></th><td>Colorado Legislative Council Staff</td></tr><tr><th scope='row'><a href="https://www.bls.gov/cpi/">Consumer Price Index, All Urban Consumers (CUUR0000SA0)</a></th><td>U.S. Bureau of Labor Statistics</td></tr><tr><th scope='row'><a href="https://www.chalkbeat.org/colorado/2026/11/03/colorado-amendment-87-tax-rate-change-2026-election-results/">Election results: Colorado voters approve Amendment 87, strike down Proposition 136 (updated Nov. 6, 2026)</a></th><td>Chalkbeat Colorado</td></tr><tr><th scope='row'><a href="https://www.chalkbeat.org/colorado/2026/11/20/advance-colorado-files-lawsuit-to-overturn-amendment-87-education-ballot-measure/">Conservative group files lawsuit to stop Amendment 87 (Nov. 20, 2026)</a></th><td>Chalkbeat Colorado</td></tr><tr><th scope='row'><a href="https://www.chalkbeat.org/colorado/2026/11/03/governor-jared-polis-releases-his-final-budget-proposal/">Gov. Jared Polis releases his final budget (Nov. 3, 2026)</a></th><td>Chalkbeat Colorado</td></tr><tr><th scope='row'><a href="https://www.denver7.com/news/politics/gov-polis-presents-final-budget-proposal-for-2027-28-ahead-of-projected-1-6-billion-deficit">Gov. Polis presents final budget proposal for 2027-28 ahead of projected $1.6 billion deficit (Nov. 2, 2026)</a></th><td>Denver7</td></tr><tr><th scope='row'><a href="https://collegian.com/articles/news/2026/11/2026-elections-live-results-colorado-ballot-measures/">2026 Elections live results: Colorado ballot measures (Nov. 2026)</a></th><td>The Rocky Mountain Collegian</td></tr><tr><th scope='row'><a href="https://www.wiche.edu/knocking/key-findings/graduates/">Knocking at the College Door, 11th edition: projections of high school graduates (Dec. 2024)</a></th><td>Western Interstate Commission for Higher Education (WICHE)</td></tr><tr><th scope='row'><a href="https://coloradosun.com/2026/07/27/colorado-college-enrollment-cliff-survival-strategies/">The number of high school grads in Colorado is shrinking. Can colleges weather enrollment drops? (July 27, 2026)</a></th><td>The Colorado Sun</td></tr><tr><th scope='row'><a href="https://collegian.com/articles/news/2026/11/category-news-students-faculty-react-to-parsons-resignation-express-concerns-around-transparency-accountability/">Faculty, students react to Parsons&#x27; resignation (Nov. 2026)</a></th><td>The Rocky Mountain Collegian</td></tr></tbody></table></div>
+    <p class="fine">Terms. <em>Fiscal year 2028 (FY28)</em> runs July 1, 2027 to June 30, 2028.
+    <em>General fund</em> on this site means CSU's Education and General budget. <em>General campus</em> means
+    the main Fort Collins campus as reported to the state, excluding the professional veterinary program and the
+    state agencies CSU operates. <em>FTE</em> is full-time equivalent. Dollar figures are not adjusted for
+    inflation unless stated.</p>
+  </div>
+</section>
+
+<section id="corrections">
+  <div class="wrap">
+    <h2>What the re-audit changed</h2>
+    <p>The first version of this site contained errors and unsupported claims. They are listed here so readers
+    of that version know what not to rely on.</p>
+    <ol class="agree corrections"><li><strong>The claim that no number came from AI memory was not true.</strong> The first version said every figure was computed from archived filings. Several statements had no archived source at all, including contract details for the football coach, terms of the president&#x27;s departure, and the election results. Those that could be confirmed are now cited to news reports and labeled as such. Those that could not were removed.</li><li><strong>A paragraph about a named private individual was removed.</strong> The first version included a &#x27;record check&#x27; asserting that a named Title IX consultant had no connection to CSU. Nothing in the archive supported the paragraph in either direction, and it is not the kind of claim to publish about a person without evidence.</li><li><strong>The FY28 gap was presented as a three-part breakdown that CSU never published.</strong> CSU has published the total ($61.3M-$70.7M) and the enrollment figure (about $25M). The first version showed a third bar, &#x27;mandatory costs, compensation and state squeeze&#x27; of $21.2M-$30.6M, as if it were a finding. It was the remainder after subtracting the other two. Whether the $15.1M of expiring one-time money sits inside CSU&#x27;s total is an inference. The slides that held CSU&#x27;s breakdown (slides 14-15 of the Oct. 14 deck) are blank in the posted PDF. This version labels each piece accordingly.</li><li><strong>Amendment 87 was described as relieving pressure on higher education funding.</strong> The first version said the amendment would absorb K-12 and Medicaid costs and estimated $6.3M-$10.6M more per year for CSU. The state&#x27;s ballot booklet says the new revenue must add to, and not replace, spending on K-12, health care and early childhood. The estimate was speculation and has been removed.</li><li><strong>A pie chart assigned percentage &#x27;weights&#x27; to causes with no calculation behind them.</strong> The &#x27;45% payroll, 22% debt, 17% athletics, 16% state&#x27; chart was labeled illustrative, but the numbers were invented. It has been removed.</li><li><strong>Athletics support was understated, then used to size the remaining gap.</strong> The first version netted athletes&#x27; scholarships out of university support to reach &#x27;$15.6M net&#x27; and concluded that 76% of the gap would remain without athletics. Whether to net out scholarships is a judgment, not a fact. This version reports the figures as filed: $26.0M of direct and indirect support, $6.1M of student fees, and a $17.2M general-fund allocation. The state auditor&#x27;s report is also an agreed-upon-procedures engagement on an unaudited statement, not an audit, and is now described that way.</li><li><strong>The staffing headline used the one data source that showed the least growth.</strong> &#x27;Workforce grew 7.0%, matching enrollment at 6.6%&#x27; came from the state filing. CSU&#x27;s Fact Book shows general-fund faculty up 13.0% and other staff up 19.6% over nearly the same period. The first version also compared staff growth measured from FY15 with faculty growth measured from FY17. Both counts are now shown side by side with the same base year, and the disagreement is stated.</li><li><strong>The &#x27;$885M E&amp;G budget&#x27; includes units with their own appropriations.</strong> That total includes the veterinary program, the Agricultural Experiment Station, Extension and the Forest Service. The general campus budget is about $700M. As a result the first version overstated the state&#x27;s share of the budget where the gap sits (23% rather than 16%) and the value of a 1% state increase to that budget ($2.1M rather than about $1.1M).</li><li><strong>The October 7 budget message was attributed to the president.</strong> It was signed by the Vice President for University Operations and Chief Financial Officer.</li><li><strong>Comparisons that rested on weak or unverified sources were removed.</strong> Athletics debt medians attributed to a federal GAO report came from a third-party blog summary. NCAA tournament payout scenarios used unsourced assumptions. Peer comparisons from federal IPEDS data were not re-verified in this audit. None of these is needed for the argument, so they are gone.</li><li><strong>Two international-enrollment figures from different slides were mixed.</strong> CSU&#x27;s October 14 deck gives different numbers on slides 5 and 6. This version uses slide 5 and says so.</li><li><strong>Data-parsing errors in the first version&#x27;s intermediate files.</strong> For example, the FY15 College Opportunity Fund stipend was read as $15 and FY15 average faculty compensation as $206,154. These did not reach the headline numbers, but the series used here were re-extracted and checked row by row.</li></ol>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Independent analysis by Matthew R. V. Ross. Not affiliated with, reviewed by, or speaking for
+    Colorado State University or the CSU System.</strong> AI tools read the source documents and drafted this
+    site; see <a href="sources.html#disclosure">how this was made</a>. Figures as of November 20, 2026; CSU's projection
+    will change as the state budget develops.</p>
+    <p>Found an error? <a href="https://github.com/matthewross07/csu_budget_context/issues">Report it</a>. Every number on this site is listed with its
+    source in the <a href="sources.html#ledger">figure ledger</a>.</p>
+  </div>
+</footer>
+<div id="tip" role="tooltip" hidden></div>
+<script>
+(function () {
+  var tip = document.getElementById('tip');
+  if (!tip) return;
+  function show(el, x, y) {
+    tip.textContent = el.getAttribute('data-tip');
+    tip.hidden = false;
+    var r = tip.getBoundingClientRect();
+    var left = Math.min(Math.max(8, x + 14), window.innerWidth - r.width - 8);
+    var top = y + 18;
+    if (top + r.height > window.innerHeight - 8) top = y - r.height - 12;
+    tip.style.left = left + 'px';
+    tip.style.top = Math.max(8, top) + 'px';
+  }
+  function hide() { tip.hidden = true; }
+  document.addEventListener('mousemove', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-tip]') : null;
+    if (el) show(el, ev.clientX, ev.clientY); else hide();
+  });
+  document.addEventListener('focusin', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-tip]') : null;
+    if (el) { var b = el.getBoundingClientRect(); show(el, b.left + b.width / 2, b.bottom - 10); }
+  });
+  document.addEventListener('focusout', hide);
+  document.addEventListener('scroll', hide, { passive: true });
+})();
+
+</script>
+</body>
+</html>

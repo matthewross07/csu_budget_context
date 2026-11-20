@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>CSU&#x27;s FY28 budget gap: scale and causes</title>
+<meta name="description" content="An independent, source-linked look at Colorado State University&#x27;s projected FY 2027-28 budget gap: how big it is, where it comes from, and why new state taxes do not close it.">
+<style>
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb;
+  --surface-2: #f3f2ee;
+  --surface-3: #e9e7e1;
+  --text: #0b0b0b;
+  --text-2: #52514e;
+  --text-3: #6f6e69;
+  --rule: #dcdad3;
+  --link: #1c5cab;
+  --s1: #2a78d6;      /* nonresident */
+  --s2: #eb6834;      /* resident */
+  --s3: #1baf7a;      /* state */
+  --gap: #c9403f;     /* the gap */
+  --gap-soft: #efb1ae;
+  --gap-done: #9a9892;
+  --gray: #a9a79f;
+  --cost: #184f95;
+  --g1: #8f2423; --g2: #c9403f; --g3: #e89b97;
+  --a1: #2a78d6; --b1: #eb6834;
+  --tag-csu-bg: #e3edf9; --tag-csu-fg: #123f78;
+  --tag-state-bg: #e2f2ea; --tag-state-fg: #0d5a3d;
+  --tag-news-bg: #f4e9d4; --tag-news-fg: #6b4a05;
+  --tag-calc-bg: #ebe9f8; --tag-calc-fg: #3b2f8f;
+  --tag-infer-bg: #f8e4e0; --tag-infer-fg: #8a2a1c;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #1a1a19; --surface-2: #242422; --surface-3: #30302d;
+    --text: #f0efec; --text-2: #c3c2b7; --text-3: #a09f95; --rule: #3a3a36; --link: #86b6ef;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    --gap: #e66767; --gap-soft: #7a3534; --gap-done: #77756e; --gray: #6b6a64; --cost: #6da7ec;
+    --g1: #f0a3a3; --g2: #e66767; --g3: #8e3d3c;
+    --a1: #3987e5; --b1: #d95926;
+    --tag-csu-bg: #1b304b; --tag-csu-fg: #b7d3f6;
+    --tag-state-bg: #173528; --tag-state-fg: #a9dcc5;
+    --tag-news-bg: #3a2f17; --tag-news-fg: #ecd49a;
+    --tag-calc-bg: #2a2650; --tag-calc-fg: #cdc8f5;
+    --tag-infer-bg: #472220; --tag-infer-fg: #f3c2ba;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #1a1a19; --surface-2: #242422; --surface-3: #30302d;
+  --text: #f0efec; --text-2: #c3c2b7; --text-3: #a09f95; --rule: #3a3a36; --link: #86b6ef;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  --gap: #e66767; --gap-soft: #7a3534; --gap-done: #77756e; --gray: #6b6a64; --cost: #6da7ec;
+  --g1: #f0a3a3; --g2: #e66767; --g3: #8e3d3c;
+  --a1: #3987e5; --b1: #d95926;
+  --tag-csu-bg: #1b304b; --tag-csu-fg: #b7d3f6;
+  --tag-state-bg: #173528; --tag-state-fg: #a9dcc5;
+  --tag-news-bg: #3a2f17; --tag-news-fg: #ecd49a;
+  --tag-calc-bg: #2a2650; --tag-calc-fg: #cdc8f5;
+  --tag-infer-bg: #472220; --tag-infer-fg: #f3c2ba;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--surface); color: var(--text);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--link); text-underline-offset: 2px; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; font-size: .92em; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+p { margin: 0 0 1em; }
+
+/* top bars */
+.disclosure-bar {
+  background: var(--text); color: var(--surface); font-size: 13.5px; line-height: 1.4;
+  padding: 8px 20px; text-align: center;
+}
+.disclosure-bar a { color: inherit; margin-left: 6px; }
+header.site { border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: var(--surface); z-index: 5; }
+header.site .wrap { display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: center; padding-top: 10px; padding-bottom: 10px; }
+.sitename { font-weight: 700; font-size: 15px; margin-right: auto; }
+header.site nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 14.5px; }
+header.site nav a { color: var(--text-2); text-decoration: none; padding: 2px 0; border-bottom: 2px solid transparent; }
+header.site nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--text); }
+header.site nav a:hover { color: var(--text); }
+
+/* hero */
+.hero { padding: 44px 0 28px; }
+.hero.small { padding-bottom: 6px; }
+.eyebrow { font-size: 13.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+h1 { font-size: clamp(30px, 5.2vw, 46px); margin: 0 0 18px; letter-spacing: -0.015em; }
+.lede { font-size: clamp(18px, 2.2vw, 20.5px); color: var(--text-2); max-width: 46em; }
+.herofig { margin: 30px 0 28px; padding: 22px 0 20px; border-top: 3px solid var(--gap); border-bottom: 1px solid var(--rule); }
+.heronum { font-size: clamp(44px, 10vw, 92px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.02; }
+.herocap { color: var(--text-2); margin-top: 10px; max-width: 40em; }
+
+.disclosure { background: var(--surface-2); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 22px 12px; }
+.disclosure h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 10px; color: var(--text-2); }
+.disclosure ul { margin: 0 0 10px; padding-left: 1.1em; font-size: 15.5px; }
+.disclosure li { margin-bottom: 7px; }
+.taglegend { font-size: 14px; color: var(--text-2); margin: 0 0 6px; line-height: 2; }
+
+/* sections */
+section { padding: 38px 0 14px; }
+section + section { border-top: 1px solid var(--rule); }
+.secnum {
+  display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px;
+  border-radius: 50%; background: var(--text); color: var(--surface); font-weight: 700; font-size: 15px; margin: 0 0 10px;
+}
+h2 { font-size: clamp(25px, 3.6vw, 32px); margin: 0 0 8px; letter-spacing: -0.01em; }
+.answer { font-size: clamp(18px, 2.3vw, 21px); font-weight: 600; margin-bottom: 22px; max-width: 36em; }
+h3.sub { font-size: 20px; margin: 34px 0 10px; }
+
+/* tags */
+.tag {
+  display: inline-block; font-size: 11.5px; font-weight: 600; line-height: 1.2; letter-spacing: .01em;
+  padding: 2px 7px 3px; border-radius: 99px; white-space: nowrap; vertical-align: 1px;
+}
+.tag-csu { background: var(--tag-csu-bg); color: var(--tag-csu-fg); }
+.tag-state { background: var(--tag-state-bg); color: var(--tag-state-fg); }
+.tag-news { background: var(--tag-news-bg); color: var(--tag-news-fg); }
+.tag-calc { background: var(--tag-calc-bg); color: var(--tag-calc-fg); }
+.tag-infer { background: var(--tag-infer-bg); color: var(--tag-infer-fg); }
+.tag-assume { background: var(--tag-infer-bg); color: var(--tag-infer-fg); }
+
+/* stat tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 0 0 26px; }
+.tile { background: var(--surface-2); border-radius: 10px; padding: 16px 16px 12px; display: flex; flex-direction: column; }
+.tv { font-size: 27px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.tl { font-size: 14.5px; color: var(--text-2); margin: 8px 0 10px; line-height: 1.4; flex: 1; }
+
+/* figures */
+figure.chart { margin: 26px 0 28px; padding: 20px 20px 12px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.chart-title { font-weight: 700; font-size: 17.5px; margin-bottom: 16px; line-height: 1.3; }
+.chart-note { font-size: 14.5px; color: var(--text-2); margin: 14px 0 8px; }
+.chart-src { font-size: 12.5px; color: var(--text-3); margin: 0 0 6px; line-height: 1.9; }
+.chart-src a { color: var(--text-3); }
+.srcline { margin-left: 4px; }
+
+/* horizontal bars */
+.hbars { display: grid; gap: 12px; }
+.hb-row { display: grid; grid-template-columns: minmax(120px, 230px) 1fr; gap: 6px 14px; align-items: center; border-radius: 6px; outline-offset: 3px; }
+.hb-label { display: flex; flex-direction: column; line-height: 1.25; }
+.hb-name { font-weight: 600; font-size: 15px; }
+.hb-sub { font-size: 12.5px; color: var(--text-3); }
+.hb-track { display: flex; align-items: center; min-width: 0; padding-right: 118px; position: relative; }
+.bar { display: block; height: 22px; border-radius: 0 4px 4px 0; flex: none; }
+.hbars.compact .bar { height: 14px; }
+.hbars.compact { gap: 7px; }
+.hbars.compact .hb-row { grid-template-columns: 78px 1fr; }
+.hbars.compact .hb-name { font-weight: 500; font-size: 14px; }
+.bar.range { margin-left: 2px; opacity: .38; }
+.bar + .bar.range { border-radius: 0 4px 4px 0; }
+.bar:has(+ .bar.range) { border-radius: 0; }
+.hb-val { margin-left: 8px; font-size: 14.5px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.c-gap { background: var(--gap); } .c-gap-done { background: var(--gap-done); }
+.c-gray { background: var(--gray); } .c-rev { background: var(--s3); } .c-cost { background: var(--cost); }
+.c-s1 { background: var(--s1); } .c-s3 { background: var(--s3); } .c-a { background: var(--a1); } .c-b { background: var(--b1); }
+@media (max-width: 600px) {
+  .hb-row { grid-template-columns: 1fr; gap: 3px; }
+  .hbars.compact .hb-row { grid-template-columns: 70px 1fr; }
+  .hb-track { padding-right: 104px; }
+}
+
+/* segmented bar */
+.segbar { display: flex; gap: 2px; height: 28px; margin: 10px 0 4px; }
+.seg { display: flex; align-items: center; border-radius: 4px; min-width: 2px; outline-offset: 2px; }
+.seg-val { font-size: 13px; font-weight: 600; padding-left: 8px; white-space: nowrap; }
+.seg.g1 { background: var(--g1); color: #fff; } .seg.g2 { background: var(--g2); color: #fff; } .seg.g3 { background: var(--g3); color: #0b0b0b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .seg.g1 { color: #0b0b0b; } :root:not([data-theme="light"]) .seg.g3 { color: #fff; } }
+.legend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 0; margin: 0 0 8px; font-size: 13.5px; color: var(--text-2); }
+.legend li { display: flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: none; }
+.sw.g1 { background: var(--g1); } .sw.g2 { background: var(--g2); } .sw.g3 { background: var(--g3); }
+.sw.s1 { background: var(--s1); } .sw.s2 { background: var(--s2); } .sw.s3 { background: var(--s3); }
+.sw.a1 { background: var(--a1); } .sw.b1 { background: var(--b1); } .sw.gapc { background: var(--gap); } .sw.grayc { background: var(--gray); }
+
+/* line chart */
+.lc svg { width: 100%; height: auto; display: block; }
+.lc svg.compact { display: none; }
+@media (max-width: 600px) { .lc svg.wide { display: none; } .lc svg.compact { display: block; } }
+svg .grid { stroke: var(--rule); stroke-width: 1; }
+svg .axis { fill: var(--text-3); font-variant-numeric: tabular-nums; }
+svg .line { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+svg .line.s1, svg .line.a1 { stroke: var(--s1); } svg .line.s2, svg .line.b1 { stroke: var(--s2); } svg .line.s3 { stroke: var(--s3); }
+svg .line.hist { stroke: var(--text-2); }
+svg .line.dash { stroke-dasharray: 2 5; }
+svg .dot { stroke: var(--surface); stroke-width: 2; }
+svg .dot.s1, svg .dot.a1 { fill: var(--s1); } svg .dot.s2, svg .dot.b1 { fill: var(--s2); } svg .dot.s3 { fill: var(--s3); } svg .dot.hist { fill: var(--text-2); }
+svg .endlabel { fill: var(--text); font-weight: 600; }
+svg .endval, svg .note { fill: var(--text-2); }
+svg .hit { fill: transparent; outline: none; }
+svg .hit:hover, svg .hit:focus { fill: var(--text); fill-opacity: .05; }
+svg .band { fill: var(--text); fill-opacity: .04; }
+
+/* tables */
+.tablewrap { overflow-x: auto; margin: 10px 0 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+caption { text-align: left; font-size: 13px; color: var(--text-3); padding-bottom: 6px; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+thead th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); font-weight: 600; }
+tbody th { font-weight: 500; }
+td { font-variant-numeric: tabular-nums; }
+details.datatable { margin: 10px 0 0; font-size: 14px; }
+details.datatable summary { cursor: pointer; color: var(--text-2); }
+
+/* point cards */
+.points, .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 22px 0; }
+.point { border-top: 3px solid var(--text); padding-top: 12px; }
+.point h3 { font-size: 18px; margin: 0 0 6px; }
+.point p { font-size: 15.5px; color: var(--text-2); margin: 0; }
+.card { border: 1px solid var(--rule); border-radius: 12px; padding: 18px 18px 8px; background: var(--surface); }
+.card h3 { font-size: 18px; margin: 0 0 10px; }
+.cardsub { display: block; font-size: 13px; font-weight: 500; color: var(--text-3); margin-top: 3px; }
+.cardnum { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 0; line-height: 1.1; }
+.cardcap { font-size: 13.5px; color: var(--text-2); margin: 4px 0 12px; }
+.card p { font-size: 15px; }
+.fine { font-size: 13.5px; color: var(--text-3); }
+.fine a { color: var(--text-3); }
+
+.rootbox { background: var(--text); color: var(--surface); border-radius: 12px; padding: 22px 24px 10px; margin: 28px 0 18px; }
+.rootbox h3 { margin: 0 0 8px; font-size: 15px; text-transform: uppercase; letter-spacing: .05em; opacity: .8; }
+.rootbox p { font-size: clamp(17px, 2.1vw, 19.5px); line-height: 1.5; }
+.callout { background: var(--surface-2); border-left: 4px solid var(--text-2); border-radius: 0 10px 10px 0; padding: 16px 20px 6px; margin: 22px 0; }
+.callout h3 { margin: 0 0 6px; font-size: 17px; }
+.callout p { font-size: 15.5px; }
+
+.qa details { border-top: 1px solid var(--rule); padding: 12px 0 4px; }
+.qa details:last-child { border-bottom: 1px solid var(--rule); }
+.qa summary { font-weight: 700; font-size: 17.5px; cursor: pointer; padding: 2px 0 8px; }
+.qa p { font-size: 15.5px; }
+
+ul.unknowns, ol.agree { padding-left: 1.2em; }
+ul.unknowns li, ol.agree li { margin-bottom: 10px; }
+ol.agree { font-size: 17px; }
+ol.agree li::marker { font-weight: 700; }
+ol.corrections { font-size: 15.5px; }
+
+/* scenario page */
+.scen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 22px 0; }
+.scen { border: 1px solid var(--rule); border-radius: 12px; padding: 20px 20px 8px; border-top: 5px solid var(--a1); }
+.scen.b { border-top-color: var(--b1); }
+.scen h3 { margin: 0 0 4px; font-size: 21px; }
+.scen .scen-tag { font-size: 13px; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 12px; }
+.scen ul { padding-left: 1.1em; font-size: 15.5px; }
+.scen li { margin-bottom: 7px; }
+.scen dl { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; font-size: 15px; margin: 14px 0; }
+.scen dt { color: var(--text-2); } .scen dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.warnbox { border: 2px solid var(--gap); border-radius: 12px; padding: 16px 20px 6px; margin: 20px 0; }
+.warnbox h2, .warnbox h3 { font-size: 16px; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 8px; }
+.warnbox p, .warnbox li { font-size: 15.5px; }
+
+footer.site { border-top: 1px solid var(--rule); margin-top: 30px; padding: 24px 0 40px; font-size: 14px; color: var(--text-2); }
+
+#tip {
+  position: fixed; z-index: 20; max-width: 300px; background: var(--text); color: var(--surface);
+  font-size: 13px; line-height: 1.4; padding: 7px 10px; border-radius: 6px; pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+}
+@media print {
+  .disclosure-bar { background: none; color: #000; border-bottom: 1px solid #000; }
+  header.site { position: static; }
+  details { display: block; } details > * { display: block !important; }
+  figure.chart, .card, .scen { break-inside: avoid; }
+}
+.tag-ext { background: var(--tag-news-bg); color: var(--tag-news-fg); }
+.tag-scen { background: var(--surface-3); color: var(--text); }
+
+</style>
+</head>
+<body>
+<div class="disclosure-bar" role="note">
+  <strong>Independent analysis, not a CSU publication.</strong>
+  Drafted with AI tools from public documents. Figures as of November 20, 2026.
+  <a href="sources.html#disclosure">How this was made</a>
+</div>
+<header class="site">
+  <div class="wrap">
+    <span class="sitename">CSU budget, FY 2027&ndash;28</span>
+    <nav aria-label="Pages"><a href="index.html" aria-current="page">The budget gap</a><a href="csu-2030.html">CSU in 2030: two scenarios</a><a href="sources.html">Sources and corrections</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Colorado State University, Fort Collins &middot; budget for July 2027 &ndash; June 2028</p>
+    <h1>CSU projects a $61&ndash;71 million gap next year. Here is where it comes from.</h1>
+    <p class="lede">CSU cut $54 million to balance this year's budget. Its first projection for
+    next year shows a bigger gap, and it shows that gap in every scenario it modeled, including one with no
+    raises. This page uses CSU's and the State of Colorado's own documents to show how large the problem is,
+    what drives it, and why the taxes Colorado voters just approved do not fix it.</p>
+
+    <div class="herofig">
+      <div class="heronum">$61.3M&ndash;$70.7M</div>
+      <div class="herocap">Projected gap in CSU's general-fund budget for fiscal year 2028,
+      as CSU announced it on October 7, 2026. <span class="tag tag-csu">CSU document</span></div>
+    </div>
+
+    <aside class="disclosure" aria-label="About this page">
+      <h2>Read this first</h2>
+      <ul>
+        <li><strong>Who made this.</strong> Matthew R. V. Ross, as an individual. It is not a CSU publication
+        and has not been reviewed by the university.</li>
+        <li><strong>How.</strong> AI tools read the public source documents, checked the numbers against them,
+        and drafted the text and charts. The first version was built with Google's Gemini (Antigravity); this
+        version is a re-audit and rewrite done with Anthropic's Claude on November 20, 2026.
+        <a href="sources.html#corrections">What the re-audit changed</a>.</li>
+        <li><strong>How to check it.</strong> Every figure carries a label saying whether it is printed in a
+        CSU or state document, reported by a news outlet, our own arithmetic, or our inference.
+        The <a href="sources.html#ledger">figure ledger</a> lists each one with its document and page.</li>
+        <li><strong>What it cannot tell you.</strong> CSU has published the size of the gap but not the line
+        items behind it. The projection was made before the election and before the governor's budget, and CSU
+        says it will change. <a href="#unknowns">What we do not know</a>.</li>
+      </ul>
+      <p class="taglegend">Labels used on this page: <span class="tag tag-csu">CSU document</span> <span class="tag tag-state">State document</span> <span class="tag tag-news">News report</span> <span class="tag tag-calc">Our arithmetic</span> <span class="tag tag-infer">Our inference</span></p>
+    </aside>
+  </div>
+</section>
+
+
+<section id="scale">
+  <div class="wrap">
+    <p class="secnum">1</p>
+    <h2>How big is it?</h2>
+    <p class="answer">Bigger than last year's, which already took 161 permanent positions.</p>
+
+    <div class="tiles">
+      <div class="tile"><div class="tv">$61.3M&ndash;$70.7M</div>
+        <div class="tl">Projected gap for FY28</div><div class="tt"><span class="tag tag-csu">CSU document</span></div></div>
+      <div class="tile"><div class="tv">$54.3M</div>
+        <div class="tl">Gap closed for FY27: $39.2M in permanent cuts and
+        $15.1M of one-time money</div><div class="tt"><span class="tag tag-csu">CSU document</span></div></div>
+      <div class="tile"><div class="tv">11%&ndash;13%</div>
+        <div class="tl">FY28 gap as a share of the $551M CSU called its
+        &ldquo;reducible&rdquo; budget</div><div class="tt"><span class="tag tag-calc">Our arithmetic</span></div></div>
+      <div class="tile"><div class="tv">160.58</div>
+        <div class="tl">Permanent positions (FTE) eliminated to balance FY27</div><div class="tt"><span class="tag tag-csu">CSU document</span></div></div>
+    </div>
+
+    <figure class="chart">
+  <figcaption class="chart-title">Two budget gaps, back to back</figcaption>
+  <div class="hbars big" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY27 gap closed: $54.3M = $39.2M permanent cuts + $15.1M one-time money"><div class="hb-label"><span class="hb-name">This year (FY27)</span><span class="hb-sub">gap that was closed</span></div><div class="hb-track"><span class="bar c-gap-done" style="width:72.36%"></span><span class="hb-val">$54.3M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY28 projected gap: $61.3M to $70.7M depending on scenario"><div class="hb-label"><span class="hb-name">Next year (FY28)</span><span class="hb-sub">projected, not yet closed</span></div><div class="hb-track"><span class="bar c-gap" style="width:81.73%"></span><span class="bar range c-gap" style="width:12.53%"></span><span class="hb-val">$61.3M–$70.7M</span></div></div>
+</div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Year</th><th>Gap</th><th>How it was or would be closed</th></tr></thead><tbody><tr><th scope='row'>FY27 (current year)</th><td>$54.272M</td><td>$39.160M permanent; $15.112M one-time</td></tr><tr><th scope='row'>FY28 (projected)</th><td>$61.3M–$70.7M</td><td>Not yet decided</td></tr></tbody></table></div></details>
+  <p class="chart-note">The FY27 gap was closed with $39.2M of permanent cuts and $15.1M of one-time money. The lighter end of the FY28 bar is the range across CSU's three scenarios.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a>; <a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a></span></p>
+</figure>
+
+    <div class="points">
+      <div class="point">
+        <h3>No scenario avoids it</h3>
+        <p>CSU modeled state funding rising 0%, 1% or 3%, each paired with a matching assumption for raises
+        (0%, 1%, 3%). The gap is at least $61.3M in all three. <span class="tag tag-csu">CSU document</span></p>
+      </div>
+      <div class="point">
+        <h3>It is larger than any one college</h3>
+        <p>The low end of the range exceeds the entire FY26 general-fund budget of the College of Liberal Arts
+        ($57.8M), the largest college budget at CSU. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+      <div class="point">
+        <h3>Two years, about a fifth of the base</h3>
+        <p>If FY28 is closed with permanent cuts alone, CSU will have removed $100M&ndash;$110M
+        in two years, or 18%&ndash;20% of the
+        $551M it considered reducible. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+    </div>
+    <p class="fine">Sources: <a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a>; <a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a>; <a href="https://operations.colostate.edu/media/sites/109/2026/04/Budget-Forum-4-13-2026.pdf">FY27 Budget Update, Draft V4 (forum slides, April 13, 2026)</a>; <a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY26_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2025-26</a>.
+    &ldquo;General fund&rdquo; here means CSU's Education and General budget: tuition and state support, the
+    money that pays for teaching and campus operations. It does not include research grants, housing, or
+    other self-funded operations.</p>
+  </div>
+</section>
+
+
+<section id="causes">
+  <div class="wrap">
+    <p class="secnum">2</p>
+    <h2>Where does it come from?</h2>
+    <p class="answer">Costs rise every year. The out-of-state tuition that used to cover the increase has stopped
+    growing and started shrinking.</p>
+
+    <h3 class="sub">What CSU has said about next year</h3>
+    <figure class="chart">
+  <figcaption class="chart-title">What is inside the FY28 gap (low end of the range, $61.3M)</figcaption>
+  <ul class="legend"><li><span class="sw g1"></span>Enrollment shifts (CSU&#x27;s figure)</li><li><span class="sw g2"></span>FY27 one-time money that expires (our inference)</li><li><span class="sw g3"></span>Everything else: cost growth beyond new revenue (remainder)</li></ul><div class="segbar" role="img" aria-label="Enrollment shifts $25.0M; One-time money from FY27 that expires $15.1M; Everything else $21.2M">
+<span class="seg g1" style="width:40.78%" tabindex="0" data-tip="Enrollment shifts: about $25M (stated by CSU)"><span class="seg-val">$25.0M</span></span>
+<span class="seg g2" style="width:24.65%" tabindex="0" data-tip="One-time FY27 savings that expire: $15.1M (our inference that this is inside the total)"><span class="seg-val">$15.1M</span></span>
+<span class="seg g3" style="width:34.56%" tabindex="0" data-tip="Everything else: $21.2M at the low end (what is left over; not a published line)"><span class="seg-val">$21.2M</span></span>
+</div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Piece</th><th>Amount</th><th>Basis</th></tr></thead><tbody><tr><th scope='row'>Enrollment shifts</th><td>about $25M</td><td>Stated by CSU</td></tr><tr><th scope='row'>FY27 one-time money that expires</th><td>$15.112M</td><td>Our inference that it is inside the total</td></tr><tr><th scope='row'>Everything else</th><td>$21.2M–$30.6M</td><td>Remainder, not a published line</td></tr><tr><th scope='row'>Total</th><td>$61.3M–$70.7M</td><td>Stated by CSU</td></tr></tbody></table></div></details>
+  <p class="chart-note">CSU has published two numbers: the total and the roughly $25M from enrollment. Its budget notes say FY27's one-time funds expire in FY28, so we infer that $15.1M is inside the total. The last block is simply what is left; the high end of the range adds $9.4M to it. The slides that held CSU's own breakdown are blank in the posted file.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-infer">Our inference</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a>; <a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a>; <a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></span></p>
+</figure>
+    <p>The enrollment piece is specific. At the fall 2026 census CSU had 27,491 on-campus
+    students, 703 fewer than a year earlier. Colorado resident undergraduates were
+    <em>up</em> 184. The losses were students who pay the most: domestic nonresident
+    undergraduates fell by 685 (9.7%), international undergraduates by
+    42 and international graduate students by 113. Part of the
+    decline is good news with a cost attached: the four-year graduation rate rose from
+    51.1% to 55.1%, so fewer students stayed to pay for a fifth year.
+    <span class="tag tag-csu">CSU document</span></p>
+
+    <h3 class="sub">The mechanism, using this year's published line items</h3>
+    <p>CSU has not released line items for FY28, but it did for FY27, and they show how the gap forms.</p>
+    <figure class="chart">
+  <figcaption class="chart-title">This year's budget shows the mechanism: new money versus new costs</figcaption>
+  <div class="hbars big" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY27 net new resources: $6.831M"><div class="hb-label"><span class="hb-name">New money coming in</span><span class="hb-sub">after financial aid</span></div><div class="hb-track"><span class="bar c-rev" style="width:9.11%"></span><span class="hb-val">$6.8M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY27 new expenses: $61.103M"><div class="hb-label"><span class="hb-name">New costs</span><span class="hb-sub">before any cuts</span></div><div class="hb-track"><span class="bar c-cost" style="width:81.47%"></span><span class="hb-val">$61.1M</span></div></div>
+</div><div class="tablewrap"><table><caption>CSU&#x27;s FY27 budget, as presented May 13, 2026</caption><thead><tr><th>FY27 budget line</th><th>Amount</th></tr></thead><tbody><tr><th scope='row'>Tuition rate increases (3.5% resident, 4% nonresident, 3% graduate, plus vet med and differential)</th><td>+$24.0M</td></tr><tr><th scope='row'>Fewer students</th><td>&minus;$12.7M</td></tr><tr><th scope='row'>State funding</th><td>&minus;$0.9M</td></tr><tr><th scope='row'>Other new resources</th><td>+$1.4M</td></tr><tr><th scope='row'>More financial aid</th><td>&minus;$5.0M</td></tr><tr><th scope='row'><strong>New money available</strong></th><td><strong>$6.8M</strong></td></tr><tr><th scope='row'>Pay and benefits (3% pool, classified raises, promotions, fringe)</th><td>$33.7M</td></tr><tr><th scope='row'>Mandatory costs (bond payments, new buildings, insurance, utilities, library)</th><td>$8.7M</td></tr><tr><th scope='row'>Multi-year strategic investments</th><td>$8.8M</td></tr><tr><th scope='row'>Academic incentive funding (differential tuition, tuition sharing)</th><td>$8.1M</td></tr><tr><th scope='row'>Other</th><td>$1.8M</td></tr><tr><th scope='row'><strong>New costs</strong></th><td><strong>$61.1M</strong></td></tr><tr><th scope='row'><strong>Gap that had to be closed</strong></th><td><strong>$54.3M</strong></td></tr></tbody></table></div>
+  
+  <p class="chart-note">Tuition rates went up and raised $24.0M. Falling enrollment, flat state funding and added financial aid took most of that back. Pay and benefits alone ($33.7M) cost about five times the new money that was left.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></span></p>
+</figure>
+    <p>Pay and benefits plus mandatory costs came to $42.3M in FY27. Tuition rate increases at the
+    allowed pace raised $24.0M. So even in a year with no enrollment loss at all, a 3% raise would
+    cost more than a 3&ndash;4% tuition increase brings in. <span class="tag tag-calc">Our arithmetic</span> CSU's budget office put it this way
+    in January 2026: expenditures are growing faster than revenues, and
+    &ldquo;we cannot solely cut our way out of this challenge.&rdquo; <span class="tag tag-csu">CSU document</span></p>
+
+    <h3 class="sub">The root: what paid for the last ten years</h3>
+    <figure class="chart">
+  <figcaption class="chart-title">For a decade, out-of-state tuition paid for CSU's growth. In FY26 it turned down.</figcaption>
+  <ul class="legend"><li><span class="sw s1"></span>Nonresident tuition</li><li><span class="sw s2"></span>Resident tuition (paid by students)</li><li><span class="sw s3"></span>State support (fee-for-service + College Opportunity Fund)</li></ul><div class="lc"><svg viewBox="0 0 760 380" class="linechart wide" role="img" aria-label="Line chart: nonresident tuition, resident tuition and state support, fiscal years 2015 to 2026. Values are in the table below.">
+<line class="grid" x1="44" x2="628" y1="346.0" y2="346.0"/>
+<text class="axis" x="38" y="350.0" text-anchor="end" font-size="13">$0</text>
+<line class="grid" x1="44" x2="628" y1="236.0" y2="236.0"/>
+<text class="axis" x="38" y="240.0" text-anchor="end" font-size="13">$100M</text>
+<line class="grid" x1="44" x2="628" y1="126.0" y2="126.0"/>
+<text class="axis" x="38" y="130.0" text-anchor="end" font-size="13">$200M</text>
+<line class="grid" x1="44" x2="628" y1="16.0" y2="16.0"/>
+<text class="axis" x="38" y="20.0" text-anchor="end" font-size="13">$300M</text>
+<text class="axis" x="44.0" y="368" text-anchor="middle" font-size="13">FY15</text>
+<text class="axis" x="97.1" y="368" text-anchor="middle" font-size="13">FY16</text>
+<text class="axis" x="150.2" y="368" text-anchor="middle" font-size="13">FY17</text>
+<text class="axis" x="203.3" y="368" text-anchor="middle" font-size="13">FY18</text>
+<text class="axis" x="256.4" y="368" text-anchor="middle" font-size="13">FY19</text>
+<text class="axis" x="309.5" y="368" text-anchor="middle" font-size="13">FY20</text>
+<text class="axis" x="362.5" y="368" text-anchor="middle" font-size="13">FY21</text>
+<text class="axis" x="415.6" y="368" text-anchor="middle" font-size="13">FY22</text>
+<text class="axis" x="468.7" y="368" text-anchor="middle" font-size="13">FY23</text>
+<text class="axis" x="521.8" y="368" text-anchor="middle" font-size="13">FY24</text>
+<text class="axis" x="574.9" y="368" text-anchor="middle" font-size="13">FY25</text>
+<text class="axis" x="628.0" y="368" text-anchor="middle" font-size="13">FY26</text>
+<polyline class="line s1" points="44.0,188.8 97.1,169.8 150.2,140.1 203.3,123.6 256.4,103.2 309.5,86.6 362.5,107.2 415.6,88.3 468.7,75.3 521.8,56.8 574.9,39.0 628.0,50.2"/>
+<polyline class="line s2" points="44.0,156.1 97.1,145.7 150.2,135.1 203.3,127.1 256.4,124.3 309.5,123.2 362.5,133.5 415.6,130.8 468.7,126.9 521.8,118.4 574.9,109.1 628.0,91.4"/>
+<polyline class="line s3" points="44.0,280.3 97.1,274.3 150.2,274.3 203.3,273.2 256.4,264.5 309.5,255.9 362.5,317.1 415.6,247.3 468.7,239.0 521.8,226.8 574.9,224.7 628.0,224.9"/>
+<circle class="dot s1" cx="628.0" cy="50.2" r="5"/>
+<text class="endlabel" x="638.0" y="48.2" font-size="13">Nonresident tuition</text>
+<text class="endval" x="638.0" y="64.2" font-size="13">$268.9M</text>
+<circle class="dot s2" cx="628.0" cy="91.4" r="5"/>
+<text class="endlabel" x="638.0" y="89.4" font-size="13">Resident tuition</text>
+<text class="endval" x="638.0" y="105.4" font-size="13">$231.5M</text>
+<circle class="dot s3" cx="628.0" cy="224.9" r="5"/>
+<text class="endlabel" x="638.0" y="222.9" font-size="13">State support</text>
+<text class="endval" x="638.0" y="238.9" font-size="13">$110.1M</text>
+<circle class="dot s1" cx="574.9" cy="39.0" r="5"/>
+<text class="note" x="566.9" y="29.0" text-anchor="end" font-size="13">Peak: $279.1M (FY25)</text>
+<text class="note" x="362.5" y="337.1" text-anchor="middle" font-size="12">FY21: pandemic year</text>
+<rect class="hit" x="17.5" y="16" width="53.1" height="330" tabindex="0" data-tip="FY15 — Nonresident tuition $142.9M · Resident tuition $172.6M · State support $59.7M"/>
+<rect class="hit" x="70.5" y="16" width="53.1" height="330" tabindex="0" data-tip="FY16 — Nonresident tuition $160.2M · Resident tuition $182.1M · State support $65.2M"/>
+<rect class="hit" x="123.6" y="16" width="53.1" height="330" tabindex="0" data-tip="FY17 — Nonresident tuition $187.2M · Resident tuition $191.7M · State support $65.2M"/>
+<rect class="hit" x="176.7" y="16" width="53.1" height="330" tabindex="0" data-tip="FY18 — Nonresident tuition $202.2M · Resident tuition $199.0M · State support $66.2M"/>
+<rect class="hit" x="229.8" y="16" width="53.1" height="330" tabindex="0" data-tip="FY19 — Nonresident tuition $220.7M · Resident tuition $201.6M · State support $74.1M"/>
+<rect class="hit" x="282.9" y="16" width="53.1" height="330" tabindex="0" data-tip="FY20 — Nonresident tuition $235.8M · Resident tuition $202.5M · State support $81.9M"/>
+<rect class="hit" x="336.0" y="16" width="53.1" height="330" tabindex="0" data-tip="FY21 — Nonresident tuition $217.1M · Resident tuition $193.2M · State support $26.3M"/>
+<rect class="hit" x="389.1" y="16" width="53.1" height="330" tabindex="0" data-tip="FY22 — Nonresident tuition $234.3M · Resident tuition $195.6M · State support $89.8M"/>
+<rect class="hit" x="442.2" y="16" width="53.1" height="330" tabindex="0" data-tip="FY23 — Nonresident tuition $246.1M · Resident tuition $199.1M · State support $97.3M"/>
+<rect class="hit" x="495.3" y="16" width="53.1" height="330" tabindex="0" data-tip="FY24 — Nonresident tuition $262.9M · Resident tuition $206.9M · State support $108.3M"/>
+<rect class="hit" x="548.4" y="16" width="53.1" height="330" tabindex="0" data-tip="FY25 — Nonresident tuition $279.1M · Resident tuition $215.4M · State support $110.3M"/>
+<rect class="hit" x="601.5" y="16" width="53.1" height="330" tabindex="0" data-tip="FY26 — Nonresident tuition $268.9M · Resident tuition $231.5M · State support $110.1M"/>
+</svg><svg viewBox="0 0 390 330" class="linechart compact" role="img" aria-label="Line chart: nonresident tuition, resident tuition and state support, fiscal years 2015 to 2026. Values are in the table below.">
+<line class="grid" x1="52" x2="374" y1="296.0" y2="296.0"/>
+<text class="axis" x="46" y="300.0" text-anchor="end" font-size="12">$0</text>
+<line class="grid" x1="52" x2="374" y1="202.7" y2="202.7"/>
+<text class="axis" x="46" y="206.7" text-anchor="end" font-size="12">$100M</text>
+<line class="grid" x1="52" x2="374" y1="109.3" y2="109.3"/>
+<text class="axis" x="46" y="113.3" text-anchor="end" font-size="12">$200M</text>
+<line class="grid" x1="52" x2="374" y1="16.0" y2="16.0"/>
+<text class="axis" x="46" y="20.0" text-anchor="end" font-size="12">$300M</text>
+<text class="axis" x="52.0" y="318" text-anchor="middle" font-size="12">FY15</text>
+<text class="axis" x="139.8" y="318" text-anchor="middle" font-size="12">FY18</text>
+<text class="axis" x="227.6" y="318" text-anchor="middle" font-size="12">FY21</text>
+<text class="axis" x="374.0" y="318" text-anchor="middle" font-size="12">FY26</text>
+<polyline class="line s1" points="52.0,162.6 81.3,146.5 110.5,121.3 139.8,107.3 169.1,90.0 198.4,75.9 227.6,93.4 256.9,77.3 286.2,66.3 315.5,50.6 344.7,35.5 374.0,45.0"/>
+<polyline class="line s2" points="52.0,134.9 81.3,126.1 110.5,117.0 139.8,110.3 169.1,107.9 198.4,107.0 227.6,115.7 256.9,113.4 286.2,110.1 315.5,102.9 344.7,95.0 374.0,79.9"/>
+<polyline class="line s3" points="52.0,240.2 81.3,235.1 110.5,235.1 139.8,234.3 169.1,226.9 198.4,219.5 227.6,271.5 256.9,212.2 286.2,205.2 315.5,194.9 344.7,193.1 374.0,193.2"/>
+<circle class="dot s1" cx="374.0" cy="45.0" r="5"/>
+<circle class="dot s2" cx="374.0" cy="79.9" r="5"/>
+<circle class="dot s3" cx="374.0" cy="193.2" r="5"/>
+<circle class="dot s1" cx="344.7" cy="35.5" r="5"/>
+<text class="note" x="336.7" y="25.5" text-anchor="end" font-size="12">Peak: $279.1M (FY25)</text>
+<text class="note" x="227.6" y="291.5" text-anchor="middle" font-size="11">FY21: pandemic year</text>
+<rect class="hit" x="37.4" y="16" width="29.3" height="280" tabindex="0" data-tip="FY15 — Nonresident tuition $142.9M · Resident tuition $172.6M · State support $59.7M"/>
+<rect class="hit" x="66.6" y="16" width="29.3" height="280" tabindex="0" data-tip="FY16 — Nonresident tuition $160.2M · Resident tuition $182.1M · State support $65.2M"/>
+<rect class="hit" x="95.9" y="16" width="29.3" height="280" tabindex="0" data-tip="FY17 — Nonresident tuition $187.2M · Resident tuition $191.7M · State support $65.2M"/>
+<rect class="hit" x="125.2" y="16" width="29.3" height="280" tabindex="0" data-tip="FY18 — Nonresident tuition $202.2M · Resident tuition $199.0M · State support $66.2M"/>
+<rect class="hit" x="154.5" y="16" width="29.3" height="280" tabindex="0" data-tip="FY19 — Nonresident tuition $220.7M · Resident tuition $201.6M · State support $74.1M"/>
+<rect class="hit" x="183.7" y="16" width="29.3" height="280" tabindex="0" data-tip="FY20 — Nonresident tuition $235.8M · Resident tuition $202.5M · State support $81.9M"/>
+<rect class="hit" x="213.0" y="16" width="29.3" height="280" tabindex="0" data-tip="FY21 — Nonresident tuition $217.1M · Resident tuition $193.2M · State support $26.3M"/>
+<rect class="hit" x="242.3" y="16" width="29.3" height="280" tabindex="0" data-tip="FY22 — Nonresident tuition $234.3M · Resident tuition $195.6M · State support $89.8M"/>
+<rect class="hit" x="271.5" y="16" width="29.3" height="280" tabindex="0" data-tip="FY23 — Nonresident tuition $246.1M · Resident tuition $199.1M · State support $97.3M"/>
+<rect class="hit" x="300.8" y="16" width="29.3" height="280" tabindex="0" data-tip="FY24 — Nonresident tuition $262.9M · Resident tuition $206.9M · State support $108.3M"/>
+<rect class="hit" x="330.1" y="16" width="29.3" height="280" tabindex="0" data-tip="FY25 — Nonresident tuition $279.1M · Resident tuition $215.4M · State support $110.3M"/>
+<rect class="hit" x="359.4" y="16" width="29.3" height="280" tabindex="0" data-tip="FY26 — Nonresident tuition $268.9M · Resident tuition $231.5M · State support $110.1M"/>
+</svg></div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><caption>CSU general campus, actuals reported to the state</caption><thead><tr><th>Year</th><th>Nonresident tuition</th><th>Resident tuition</th><th>State support</th><th>Nonresident student FTE</th><th>Resident student FTE</th></tr></thead><tbody><tr><th scope='row'>FY15</th><td>$142.9M</td><td>$172.6M</td><td>$59.7M</td><td>5,829</td><td>17,535</td></tr><tr><th scope='row'>FY16</th><td>$160.2M</td><td>$182.1M</td><td>$65.2M</td><td>6,570</td><td>17,850</td></tr><tr><th scope='row'>FY17</th><td>$187.2M</td><td>$191.7M</td><td>$65.2M</td><td>7,064</td><td>17,894</td></tr><tr><th scope='row'>FY18</th><td>$202.2M</td><td>$199.0M</td><td>$66.2M</td><td>7,464</td><td>17,884</td></tr><tr><th scope='row'>FY19</th><td>$220.7M</td><td>$201.6M</td><td>$74.1M</td><td>7,958</td><td>17,392</td></tr><tr><th scope='row'>FY20</th><td>$235.8M</td><td>$202.5M</td><td>$81.9M</td><td>8,181</td><td>17,146</td></tr><tr><th scope='row'>FY21</th><td>$217.1M</td><td>$193.2M</td><td>$26.3M</td><td>7,661</td><td>16,229</td></tr><tr><th scope='row'>FY22</th><td>$234.3M</td><td>$195.6M</td><td>$89.8M</td><td>8,193</td><td>15,719</td></tr><tr><th scope='row'>FY23</th><td>$246.1M</td><td>$199.1M</td><td>$97.3M</td><td>8,522</td><td>15,724</td></tr><tr><th scope='row'>FY24</th><td>$262.9M</td><td>$206.9M</td><td>$108.3M</td><td>8,675</td><td>15,838</td></tr><tr><th scope='row'>FY25</th><td>$279.1M</td><td>$215.4M</td><td>$110.3M</td><td>8,928</td><td>16,046</td></tr><tr><th scope='row'>FY26</th><td>$268.9M</td><td>$231.5M</td><td>$110.1M</td><td>8,242</td><td>16,664</td></tr></tbody></table></div></details>
+  <p class="chart-note">General campus budget, actual dollars, not adjusted for inflation. From FY15 to FY25 nonresident tuition grew $136.1M (95%), resident tuition $42.7M (25%) and state support $50.5M (85%). Prices rose 34% over the same years.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a>; inflation from <a href="https://www.bls.gov/cpi/">Consumer Price Index, All Urban Consumers (CUUR0000SA0)</a></span></p>
+</figure>
+    <div class="points">
+      <div class="point">
+        <h3>59% of the growth</h3>
+        <p>Of all the new tuition and state money CSU's general campus gained between FY15 and FY25,
+        59% came from nonresident students. Their numbers grew 53%;
+        resident student numbers fell 8.5%. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+      <div class="point">
+        <h3>$32.6K versus $20.5K</h3>
+        <p>In FY26 each nonresident full-time student brought in about $32,600 of tuition.
+        Each resident brought about $13,900 of tuition plus roughly
+        $6,600 of state support. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+      <div class="point">
+        <h3>The state is 16% of this budget</h3>
+        <p>Students paid 71% of the general campus budget in FY26; nonresidents alone paid
+        38%. State support was 16%. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+    </div>
+    <figure class="chart">
+  <figcaption class="chart-title">Nonresident students on campus: down 15.8% in two years</figcaption>
+  <div class="hbars compact" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2019: 9,220 nonresident students; 19,644 resident"><div class="hb-label"><span class="hb-name">Fall 2019</span></div><div class="hb-track"><span class="bar c-s1" style="width:87.81%"></span><span class="hb-val">9,220</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2020: 8,861 nonresident students; 18,974 resident"><div class="hb-label"><span class="hb-name">Fall 2020</span></div><div class="hb-track"><span class="bar c-s1" style="width:84.39%"></span><span class="hb-val">8,861</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2021: 9,531 nonresident students; 18,423 resident"><div class="hb-label"><span class="hb-name">Fall 2021</span></div><div class="hb-track"><span class="bar c-s1" style="width:90.77%"></span><span class="hb-val">9,531</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2022: 9,756 nonresident students; 18,200 resident"><div class="hb-label"><span class="hb-name">Fall 2022</span></div><div class="hb-track"><span class="bar c-s1" style="width:92.91%"></span><span class="hb-val">9,756</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2023: 9,751 nonresident students; 18,082 resident"><div class="hb-label"><span class="hb-name">Fall 2023</span></div><div class="hb-track"><span class="bar c-s1" style="width:92.87%"></span><span class="hb-val">9,751</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2024: 9,997 nonresident students; 18,211 resident"><div class="hb-label"><span class="hb-name">Fall 2024</span></div><div class="hb-track"><span class="bar c-s1" style="width:95.21%"></span><span class="hb-val">9,997</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2025: 9,330 nonresident students; 18,864 resident"><div class="hb-label"><span class="hb-name">Fall 2025</span></div><div class="hb-track"><span class="bar c-s1" style="width:88.86%"></span><span class="hb-val">9,330</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2026: 8,422 nonresident students; 19,069 resident"><div class="hb-label"><span class="hb-name">Fall 2026</span></div><div class="hb-track"><span class="bar c-s1" style="width:80.21%"></span><span class="hb-val">8,422</span></div></div>
+</div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Fall</th><th>Nonresident</th><th>Resident</th></tr></thead><tbody><tr><th scope='row'>2019</th><td>9,220</td><td>19,644</td></tr><tr><th scope='row'>2020</th><td>8,861</td><td>18,974</td></tr><tr><th scope='row'>2021</th><td>9,531</td><td>18,423</td></tr><tr><th scope='row'>2022</th><td>9,756</td><td>18,200</td></tr><tr><th scope='row'>2023</th><td>9,751</td><td>18,082</td></tr><tr><th scope='row'>2024</th><td>9,997</td><td>18,211</td></tr><tr><th scope='row'>2025</th><td>9,330</td><td>18,864</td></tr><tr><th scope='row'>2026</th><td>8,422</td><td>19,069</td></tr></tbody></table></div></details>
+  <p class="chart-note">Resident Instruction students at fall census. Over the same two years resident enrollment rose from 18,211 to 19,069, but a resident student brings CSU much less revenue.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2026/10/CSU_Factbook_FY27_2026-10-22.pdf">CSU Fact Book FY 2026-27 (Oct. 22, 2026)</a>, Table 3</span></p>
+</figure>
+    <p>The cost side moved in step with that revenue. CSU's reported cost per student rose from
+    $18,137 in FY15 to $27,815 in FY26, an increase of
+    53% while consumer prices rose 38%. Tuition and state revenue per student rose
+    53%, almost exactly as much, and most of that came from the shift toward nonresident
+    students. <span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span></p>
+
+    <div class="rootbox">
+      <h3>The root problem, in one paragraph</h3>
+      <p>CSU's general-fund costs go up by tens of millions of dollars every year, mostly pay and benefits for
+      the people who teach and run the university. For a decade, enrolling more out-of-state students paid for
+      that. Out-of-state enrollment peaked in fall 2024 and has fallen 15.8% since. Resident
+      tuition and state support are too small and grow too slowly to replace it. Each budget year therefore
+      opens with a gap before anyone has made a decision.</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="taxes">
+  <div class="wrap">
+    <p class="secnum">3</p>
+    <h2>Colorado just passed new taxes. Doesn't that fix it?</h2>
+    <p class="answer">No. None of the new money is for university operating budgets, and one measure takes money
+    out of the pool higher education is funded from.</p>
+
+    <p>On November 3, 2026, voters approved three measures that change how much money the state keeps and where
+    it goes. Results are unofficial until certified. Amendment 87 passed with about 51.72% of the vote
+    and was challenged in court on November 19. <span class="tag tag-news">News report</span></p>
+
+    <div class="cards">
+      <article class="card">
+        <h3>Amendment 87 <span class="cardsub">graduated income tax</span></h3>
+        <p class="cardnum">$1.97 billion</p>
+        <p class="cardcap">estimated new revenue in FY 2027&ndash;28 <span class="tag tag-state">State document</span></p>
+        <p><strong>Where it must go:</strong> K-12 education, health care, and early childhood care and
+        education. Higher education is not on the list.</p>
+        <p><strong>The catch:</strong> the state's ballot booklet says of the new money,
+        &ldquo;It must add to, and not replace, spending on those services.&rdquo; So it cannot simply be swapped
+        in to free up existing state dollars for other uses.</p>
+      </article>
+      <article class="card">
+        <h3>Proposition NN <span class="cardsub">keep revenue above the TABOR cap</span></h3>
+        <p class="cardnum">$521M</p>
+        <p class="cardcap">estimated revenue kept in FY 2027&ndash;28 instead of refunded <span class="tag tag-state">State document</span></p>
+        <p><strong>Where it must go:</strong> for the first ten years, K-12 education and programs for children,
+        after reimbursing local governments for property tax exemptions.</p>
+        <p><strong>The catch:</strong> in FY27 and again in FY28 it moves $153.1M that would have
+        been available for the general state budget into the new children's account. That general budget is
+        where university funding comes from.</p>
+      </article>
+      <article class="card">
+        <h3>Proposition 137 <span class="cardsub">sporting goods sales tax to conservation</span></h3>
+        <p class="cardnum">$175M</p>
+        <p class="cardcap">estimated transfer in FY 2027&ndash;28 <span class="tag tag-state">State document</span></p>
+        <p><strong>Where it must go:</strong> parks and open space, wildfire and forest work, watersheds, outdoor
+        recreation. Up to $36.5M goes to the Colorado State Forest Service, which CSU operates.</p>
+        <p><strong>The catch:</strong> Forest Service money is for forest and wildfire programs. It is budgeted
+        separately from teaching and cannot close a gap in the general fund.</p>
+      </article>
+    </div>
+    <p class="fine">Source for all three: <a href="https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible.pdf">2026 State Ballot Information Booklet (Blue Book)</a>, pp. 33&ndash;47 and 64&ndash;68. The booklet also
+    notes that Proposition 137 may reduce the amount actually kept under Proposition NN.</p>
+
+    <h3 class="sub">Meanwhile, the state's own budget is still short</h3>
+    <p>The governor's November 2 proposal was released against a projected state shortfall of about
+    $1.6 billion for FY 2027&ndash;28, driven largely by Medicaid. It would let universities raise
+    tuition 3% for residents and 4% for nonresidents. A new governor and a new Joint Budget Committee take over in
+    January, and the final budget is usually not settled until April or May. The governor has also told
+    legislators that without changes to Medicaid, that program would absorb the Amendment 87 money within about
+    three years. <span class="tag tag-news">News report</span></p>
+
+    <figure class="chart">
+  <figcaption class="chart-title">What a state funding increase is worth to CSU, next to the gap</figcaption>
+  <div class="hbars big" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="A 1% increase on $211.1M of state support = $2.1M"><div class="hb-label"><span class="hb-name">State funding +1%</span><span class="hb-sub">all state-funded CSU Fort Collins units</span></div><div class="hb-track"><span class="bar c-s3" style="width:2.81%"></span><span class="hb-val">$2.1M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="A 3% increase = $6.3M"><div class="hb-label"><span class="hb-name">State funding +3%</span><span class="hb-sub">the most optimistic scenario CSU modeled</span></div><div class="hb-track"><span class="bar c-s3" style="width:8.44%"></span><span class="hb-val">$6.3M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY28 projected gap: $61.3M to $70.7M"><div class="hb-label"><span class="hb-name">FY28 gap</span><span class="hb-sub">low end of the range</span></div><div class="hb-track"><span class="bar c-gap" style="width:81.73%"></span><span class="bar range c-gap" style="width:12.53%"></span><span class="hb-val">$61.3M–$70.7M</span></div></div>
+</div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Item</th><th>Amount</th></tr></thead><tbody><tr><th scope='row'>State funding to CSU Fort Collins, FY27</th><td>$211.052M</td></tr><tr><th scope='row'>A 1% increase</th><td>$2.11M</td></tr><tr><th scope='row'>A 3% increase</th><td>$6.33M</td></tr><tr><th scope='row'>FY28 gap</th><td>$61.3M–$70.7M</td></tr></tbody></table></div></details>
+  <p class="chart-note">The state sent CSU Fort Collins $211.1M in FY27, across the general campus, the veterinary program, Extension, the Agricultural Experiment Station and the Forest Service. Each 1% is worth $2.1M at most; the general campus share is about half of that ($1.1M per 1%). Closing the gap with state money alone would take an increase of 29%&ndash;33%.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://www.budgets.colostate.edu/Forms/OperatingBudgetSummaries/FY27_Operating_Budget_Summary.pdf">Operating Budget Summary, FY 2026-27</a>; <a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a>; <a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a></span></p>
+</figure>
+
+    <div class="callout">
+      <h3>Could the new money help indirectly?</h3>
+      <p>At the margins, possibly. The legislature decides the details, and if Amendment 87 survives in court
+      and takes pressure off schools and Medicaid, lawmakers may have more room elsewhere. That is a hope, not a
+      line in any budget. What the documents establish is narrower: no measure dedicates money to university
+      operations, the largest one must add to spending rather than replace it, and CSU's best-case scenario for
+      state funding is worth about $6M against a gap of $61M or more.
+      <span class="tag tag-calc">Our arithmetic</span> <span class="tag tag-infer">Our inference</span></p>
+    </div>
+  </div>
+</section>
+
+
+<section id="flashpoints">
+  <div class="wrap">
+    <p class="secnum">4</p>
+    <h2>What about administration, athletics, debt and payouts?</h2>
+    <p class="answer">They are real costs and fair questions. None is large enough, or growing fast enough, to be
+    the cause.</p>
+
+    <figure class="chart">
+  <figcaption class="chart-title">Common explanations, drawn to the same scale as the gap</figcaption>
+  <div class="hbars big" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY28 projected gap: $61.3M to $70.7M"><div class="hb-label"><span class="hb-name">FY28 gap</span><span class="hb-sub">projected, recurring</span></div><div class="hb-track"><span class="bar c-gap" style="width:81.73%"></span><span class="bar range c-gap" style="width:12.53%"></span><span class="hb-val">$61.3M–$70.7M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="&#x27;Institutional Support&#x27; (executive, finance, HR, legal, general administration): $47.5M, 239 FTE"><div class="hb-label"><span class="hb-name">All central administration</span><span class="hb-sub">general campus, FY26 actual spending</span></div><div class="hb-track"><span class="bar c-gray" style="width:63.33%"></span><span class="hb-val">$47.5M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Debt service in the general-fund budget, FY26: $31.9M"><div class="hb-label"><span class="hb-name">Debt payments from the general fund</span><span class="hb-sub">FY26 budget</span></div><div class="hb-track"><span class="bar c-gray" style="width:42.49%"></span><span class="hb-val">$31.9M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Athletics general-fund allocation, FY26: $17.2M"><div class="hb-label"><span class="hb-name">Athletics' general-fund allocation</span><span class="hb-sub">FY26 budget</span></div><div class="hb-track"><span class="bar c-gray" style="width:22.87%"></span><span class="hb-val">$17.2M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Reported payouts: Parsons $1.1M, Norvell $1.5M, Underwood $325K"><div class="hb-label"><span class="hb-name">Three separation payouts</span><span class="hb-sub">reported; one-time, not yearly</span></div><div class="hb-track"><span class="bar c-gray" style="width:3.90%"></span><span class="hb-val">$2.9M</span></div></div>
+</div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Item</th><th>Amount</th><th>Basis</th></tr></thead><tbody><tr><th scope='row'>FY28 gap</th><td>$61.3M–$70.7M</td><td>CSU projection</td></tr><tr><th scope='row'>All central administration (Institutional Support), FY26</th><td>$47.495M</td><td>State filing, actual</td></tr><tr><th scope='row'>Debt service in the general fund, FY26</th><td>$31.864M</td><td>CSU budget</td></tr><tr><th scope='row'>Athletics general-fund allocation, FY26</th><td>$17.151M</td><td>CSU budget</td></tr><tr><th scope='row'>Reported separation payouts (Parsons, Norvell, Underwood)</th><td>$2.925M</td><td>News reports</td></tr></tbody></table></div></details>
+  <p class="chart-note">Each gray bar is the entire amount, not a plausible saving. The gap recurs every year; the payouts happened once.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-state">State document</span> <span class="tag tag-news">News report</span> <span class="srcline">Source: <a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a>; <a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY26_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2025-26</a>; <a href="https://collegian.com/articles/news/2026/11/category-news-students-faculty-react-to-parsons-resignation-express-concerns-around-transparency-accountability/">Faculty, students react to Parsons&#x27; resignation (Nov. 2026)</a></span></p>
+</figure>
+
+    <div class="qa">
+      <details open>
+        <summary>Executive payouts</summary>
+        <p>News reports put the payment to departing President Amy Parsons at $1.1M, the
+        settlement with former Provost Marion Underwood at $325,000 and the
+        settlement with former football coach Jay Norvell at $1.5M. Together that is
+        $2.9M, paid once. It equals 5% of one year of the gap. The questions these
+        raise about transparency are legitimate. They are questions about governance, and answering them would
+        not change the budget arithmetic. <span class="tag tag-news">News report</span> <span class="tag tag-calc">Our arithmetic</span></p>
+      </details>
+      <details>
+        <summary>Athletics</summary>
+        <p>Athletics receives $17.2M from the general fund (FY26), up from
+        $9.7M in FY15. In FY25 the department reported $74.7M of revenue, of
+        which $26.0M was direct and indirect university support and $6.1M was student
+        fees; together those are 43% of its revenue. About $10.9M of its
+        spending was athletes' scholarships, which return to CSU as tuition, fees, room and board. The
+        department carries $207.0M of debt, and paid $10.9M on its bonds in FY25;
+        those payments continue whatever sports are played. <span class="tag tag-csu">CSU document</span> <span class="tag tag-state">State document</span></p>
+        <p>Removing the entire general-fund allocation would cover about
+        24%&ndash;28% of the gap, once. It would not
+        stop the gap from re-forming the following year. <span class="tag tag-calc">Our arithmetic</span></p>
+      </details>
+      <details>
+        <summary>Administration and staffing</summary>
+        <p>All central administration on the general campus budget (the president's and vice presidents'
+        offices, finance, human resources, legal and similar functions) cost $47.5M in FY26 and
+        employed 239 FTE. Eliminating every one of those jobs would not close the gap.
+        <span class="tag tag-csu">CSU document</span></p>
+        <p>Did staffing grow faster than enrollment? Two official counts give different answers, and we could
+        not fully reconcile them.</p>
+        <div class="tablewrap"><table><thead><tr><th>Count</th><th>Period</th><th>General-fund employees</th><th>Students (FTE)</th></tr></thead><tbody><tr><th scope='row'>State filing: all faculty and staff</th><td>FY15–FY26</td><td>3,506 → 3,752 (+7.0%)</td><td>+6.6%</td></tr><tr><th scope='row'>Fact Book: faculty</th><td>FY15–FY25</td><td>1,167.3 → 1,319.1 (+13.0%)</td><td>+6.9%</td></tr><tr><th scope='row'>Fact Book: administrative professional + state classified</th><td>FY15–FY25</td><td>1,429.4 → 1,709.3 (+19.6%)</td><td>+6.9%</td></tr></tbody></table></div>
+        <p>The two sources count part-time and temporary instructors differently. On the Fact Book count,
+        staffing did grow faster than enrollment, and that added cost was paid for at the time by rising
+        nonresident tuition. It built up over ten years; it did not open a new $61M hole in one.
+        One common confusion is worth clearing up: of CSU's 4,598 administrative professional FTE,
+        only 30% are paid from the general fund. The rest are paid by research grants, fees and
+        self-funded operations. <span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="tag tag-infer">Our inference</span></p>
+      </details>
+      <details>
+        <summary>Debt</summary>
+        <p>Debt service charged to the general fund rose from $10.2M in FY15 to
+        $31.9M in FY26. That is a real, permanent claim on the budget, and it is why past
+        building decisions matter. It is also a legal obligation, so it cannot be cut to close a gap.
+        <span class="tag tag-csu">CSU document</span></p>
+      </details>
+    </div>
+    <p>Each of these deserves scrutiny on its own terms. The point of the chart is narrower: none of them is
+    growing by $61M a year, so none of them explains why the gap comes back every year.</p>
+  </div>
+</section>
+
+
+<section id="unknowns">
+  <div class="wrap">
+    <p class="secnum">5</p>
+    <h2>What we do not know</h2>
+    <p class="answer">The size of the gap is CSU's first estimate. Several things could move it.</p>
+    <ul class="unknowns">
+      <li><strong>The line items.</strong> CSU has published the total and the enrollment figure. The two slides
+      that showed the detailed scenarios are blank in the posted file, so the split in section 2 rests partly
+      on our inference.</li>
+      <li><strong>The state budget.</strong> CSU's projection assumed nothing about the ballot measures and
+      was made before the governor's proposal. A new governor and budget committee take office in January. The
+      Board of Governors is scheduled to see updated versions in December, February and May.</li>
+      <li><strong>Amendment 87.</strong> It faces a lawsuit, and the legislature has not yet decided how to
+      spend its revenue.</li>
+      <li><strong>Raises.</strong> The range reflects 0%, 1% and 3% compensation scenarios. A working group on
+      compensation is due to report in mid-December.</li>
+      <li><strong>Next fall's class.</strong> Enrollment drives the largest known piece of the gap, and fall
+      2027 enrollment is not knowable yet.</li>
+      <li><strong>Staffing counts.</strong> The state filing and the Fact Book disagree about how fast the
+      general-fund workforce grew. We show both rather than pick one.</li>
+      <li><strong>CSU's own slides disagree in places.</strong> For example, two slides in the October 14 deck
+      give different figures for the drop in international students. We used the summary slide.</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="agree">
+  <div class="wrap">
+    <p class="secnum">6</p>
+    <h2>What the evidence supports</h2>
+    <p class="answer">Five statements to agree or disagree with before anyone argues about solutions.</p>
+    <ol class="agree">
+      <li><strong>The gap is structural.</strong> It appears in every scenario CSU modeled, it follows a
+      $54M gap this year, and part of it is one-time money from this year coming due.</li>
+      <li><strong>The largest identified driver is enrollment mix.</strong> CSU attributes about
+      $25M to enrollment, and the losses are concentrated among nonresident and international
+      students, who had supplied most of the past decade's revenue growth.</li>
+      <li><strong>Normal cost growth outruns normal revenue growth.</strong> In FY27, pay, benefits and
+      mandatory costs rose $42.3M while tuition rate increases raised $24.0M.</li>
+      <li><strong>The state is not positioned to close it.</strong> State support is 16% of the
+      general campus budget, the state has its own shortfall, and the new taxes are dedicated to other
+      purposes.</li>
+      <li><strong>The most visible grievances are not the cause.</strong> Payouts, athletics, administration and
+      debt are all smaller than the gap and none is growing at its pace.</li>
+    </ol>
+    <p>This page takes no position on what CSU should do. If any of the five statements is wrong, the place to
+    show it is in the <a href="sources.html#ledger">figure ledger</a>, where every number is tied to a document
+    and page.</p>
+    <p>A separate page, <a href="csu-2030.html">CSU in 2030: two scenarios</a>, sketches where two different
+    responses could lead. It is a thought experiment built on stated assumptions and is marked as such; it is
+    not part of the evidence on this page.</p>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Independent analysis by Matthew R. V. Ross. Not affiliated with, reviewed by, or speaking for
+    Colorado State University or the CSU System.</strong> AI tools read the source documents and drafted this
+    site; see <a href="sources.html#disclosure">how this was made</a>. Figures as of November 20, 2026; CSU's projection
+    will change as the state budget develops.</p>
+    <p>Found an error? <a href="https://github.com/matthewross07/csu_budget_context/issues">Report it</a>. Every number on this site is listed with its
+    source in the <a href="sources.html#ledger">figure ledger</a>.</p>
+  </div>
+</footer>
+<div id="tip" role="tooltip" hidden></div>
+<script>
+(function () {
+  var tip = document.getElementById('tip');
+  if (!tip) return;
+  function show(el, x, y) {
+    tip.textContent = el.getAttribute('data-tip');
+    tip.hidden = false;
+    var r = tip.getBoundingClientRect();
+    var left = Math.min(Math.max(8, x + 14), window.innerWidth - r.width - 8);
+    var top = y + 18;
+    if (top + r.height > window.innerHeight - 8) top = y - r.height - 12;
+    tip.style.left = left + 'px';
+    tip.style.top = Math.max(8, top) + 'px';
+  }
+  function hide() { tip.hidden = true; }
+  document.addEventListener('mousemove', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-tip]') : null;
+    if (el) show(el, ev.clientX, ev.clientY); else hide();
+  });
+  document.addEventListener('focusin', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-tip]') : null;
+    if (el) { var b = el.getBoundingClientRect(); show(el, b.left + b.width / 2, b.bottom - 10); }
+  });
+  document.addEventListener('focusout', hide);
+  document.addEventListener('scroll', hide, { passive: true });
+})();
+
+</script>
+</body>
+</html>
