@@ -1,1771 +1,821 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Understanding CSU’s FY27–28 Operating Budget Gap – Understanding CSU's FY27–28 Budget Gap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>CSU&#x27;s FY28 budget gap: scale and causes</title>
+<meta name="description" content="An independent, source-linked look at Colorado State University&#x27;s projected FY 2027-28 budget gap: how big it is, where it comes from, and why new state taxes do not close it.">
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb;
+  --surface-2: #f3f2ee;
+  --surface-3: #e9e7e1;
+  --text: #0b0b0b;
+  --text-2: #52514e;
+  --text-3: #6f6e69;
+  --rule: #dcdad3;
+  --link: #1c5cab;
+  --s1: #2a78d6;      /* nonresident */
+  --s2: #eb6834;      /* resident */
+  --s3: #1baf7a;      /* state */
+  --gap: #c9403f;     /* the gap */
+  --gap-soft: #efb1ae;
+  --gap-done: #9a9892;
+  --gray: #a9a79f;
+  --cost: #184f95;
+  --g1: #8f2423; --g2: #c9403f; --g3: #e89b97;
+  --a1: #2a78d6; --b1: #eb6834;
+  --tag-csu-bg: #e3edf9; --tag-csu-fg: #123f78;
+  --tag-state-bg: #e2f2ea; --tag-state-fg: #0d5a3d;
+  --tag-news-bg: #f4e9d4; --tag-news-fg: #6b4a05;
+  --tag-calc-bg: #ebe9f8; --tag-calc-fg: #3b2f8f;
+  --tag-infer-bg: #f8e4e0; --tag-infer-fg: #8a2a1c;
 }
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-</style>
-
-
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-712fc07207195ea870e7a55f04e61b6b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #1a1a19; --surface-2: #242422; --surface-3: #30302d;
+    --text: #f0efec; --text-2: #c3c2b7; --text-3: #a09f95; --rule: #3a3a36; --link: #86b6ef;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    --gap: #e66767; --gap-soft: #7a3534; --gap-done: #77756e; --gray: #6b6a64; --cost: #6da7ec;
+    --g1: #f0a3a3; --g2: #e66767; --g3: #8e3d3c;
+    --a1: #3987e5; --b1: #d95926;
+    --tag-csu-bg: #1b304b; --tag-csu-fg: #b7d3f6;
+    --tag-state-bg: #173528; --tag-state-fg: #a9dcc5;
+    --tag-news-bg: #3a2f17; --tag-news-fg: #ecd49a;
+    --tag-calc-bg: #2a2650; --tag-calc-fg: #cdc8f5;
+    --tag-infer-bg: #472220; --tag-infer-fg: #f3c2ba;
   }
-}</script>
-<style>html{ scroll-behavior: smooth; }</style>
-<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #1a1a19; --surface-2: #242422; --surface-3: #30302d;
+  --text: #f0efec; --text-2: #c3c2b7; --text-3: #a09f95; --rule: #3a3a36; --link: #86b6ef;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  --gap: #e66767; --gap-soft: #7a3534; --gap-done: #77756e; --gray: #6b6a64; --cost: #6da7ec;
+  --g1: #f0a3a3; --g2: #e66767; --g3: #8e3d3c;
+  --a1: #3987e5; --b1: #d95926;
+  --tag-csu-bg: #1b304b; --tag-csu-fg: #b7d3f6;
+  --tag-state-bg: #173528; --tag-state-fg: #a9dcc5;
+  --tag-news-bg: #3a2f17; --tag-news-fg: #ecd49a;
+  --tag-calc-bg: #2a2650; --tag-calc-fg: #cdc8f5;
+  --tag-infer-bg: #472220; --tag-infer-fg: #f3c2ba;
+}
 
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--surface); color: var(--text);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--link); text-underline-offset: 2px; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; font-size: .92em; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+p { margin: 0 0 1em; }
 
+/* top bars */
+.disclosure-bar {
+  background: var(--text); color: var(--surface); font-size: 13.5px; line-height: 1.4;
+  padding: 8px 20px; text-align: center;
+}
+.disclosure-bar a { color: inherit; margin-left: 6px; }
+header.site { border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: var(--surface); z-index: 5; }
+header.site .wrap { display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: center; padding-top: 10px; padding-bottom: 10px; }
+.sitename { font-weight: 700; font-size: 15px; margin-right: auto; }
+header.site nav { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 14.5px; }
+header.site nav a { color: var(--text-2); text-decoration: none; padding: 2px 0; border-bottom: 2px solid transparent; }
+header.site nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--text); }
+header.site nav a:hover { color: var(--text); }
+
+/* hero */
+.hero { padding: 44px 0 28px; }
+.hero.small { padding-bottom: 6px; }
+.eyebrow { font-size: 13.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+h1 { font-size: clamp(30px, 5.2vw, 46px); margin: 0 0 18px; letter-spacing: -0.015em; }
+.lede { font-size: clamp(18px, 2.2vw, 20.5px); color: var(--text-2); max-width: 46em; }
+.herofig { margin: 30px 0 28px; padding: 22px 0 20px; border-top: 3px solid var(--gap); border-bottom: 1px solid var(--rule); }
+.heronum { font-size: clamp(44px, 10vw, 92px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.02; }
+.herocap { color: var(--text-2); margin-top: 10px; max-width: 40em; }
+
+.disclosure { background: var(--surface-2); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 22px 12px; }
+.disclosure h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 10px; color: var(--text-2); }
+.disclosure ul { margin: 0 0 10px; padding-left: 1.1em; font-size: 15.5px; }
+.disclosure li { margin-bottom: 7px; }
+.taglegend { font-size: 14px; color: var(--text-2); margin: 0 0 6px; line-height: 2; }
+
+/* sections */
+section { padding: 38px 0 14px; }
+section + section { border-top: 1px solid var(--rule); }
+.secnum {
+  display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px;
+  border-radius: 50%; background: var(--text); color: var(--surface); font-weight: 700; font-size: 15px; margin: 0 0 10px;
+}
+h2 { font-size: clamp(25px, 3.6vw, 32px); margin: 0 0 8px; letter-spacing: -0.01em; }
+.answer { font-size: clamp(18px, 2.3vw, 21px); font-weight: 600; margin-bottom: 22px; max-width: 36em; }
+h3.sub { font-size: 20px; margin: 34px 0 10px; }
+
+/* tags */
+.tag {
+  display: inline-block; font-size: 11.5px; font-weight: 600; line-height: 1.2; letter-spacing: .01em;
+  padding: 2px 7px 3px; border-radius: 99px; white-space: nowrap; vertical-align: 1px;
+}
+.tag-csu { background: var(--tag-csu-bg); color: var(--tag-csu-fg); }
+.tag-state { background: var(--tag-state-bg); color: var(--tag-state-fg); }
+.tag-news { background: var(--tag-news-bg); color: var(--tag-news-fg); }
+.tag-calc { background: var(--tag-calc-bg); color: var(--tag-calc-fg); }
+.tag-infer { background: var(--tag-infer-bg); color: var(--tag-infer-fg); }
+.tag-assume { background: var(--tag-infer-bg); color: var(--tag-infer-fg); }
+
+/* stat tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 0 0 26px; }
+.tile { background: var(--surface-2); border-radius: 10px; padding: 16px 16px 12px; display: flex; flex-direction: column; }
+.tv { font-size: 27px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.tl { font-size: 14.5px; color: var(--text-2); margin: 8px 0 10px; line-height: 1.4; flex: 1; }
+
+/* figures */
+figure.chart { margin: 26px 0 28px; padding: 20px 20px 12px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+.chart-title { font-weight: 700; font-size: 17.5px; margin-bottom: 16px; line-height: 1.3; }
+.chart-note { font-size: 14.5px; color: var(--text-2); margin: 14px 0 8px; }
+.chart-src { font-size: 12.5px; color: var(--text-3); margin: 0 0 6px; line-height: 1.9; }
+.chart-src a { color: var(--text-3); }
+.srcline { margin-left: 4px; }
+
+/* horizontal bars */
+.hbars { display: grid; gap: 12px; }
+.hb-row { display: grid; grid-template-columns: minmax(120px, 230px) 1fr; gap: 6px 14px; align-items: center; border-radius: 6px; outline-offset: 3px; }
+.hb-label { display: flex; flex-direction: column; line-height: 1.25; }
+.hb-name { font-weight: 600; font-size: 15px; }
+.hb-sub { font-size: 12.5px; color: var(--text-3); }
+.hb-track { display: flex; align-items: center; min-width: 0; padding-right: 118px; position: relative; }
+.bar { display: block; height: 22px; border-radius: 0 4px 4px 0; flex: none; }
+.hbars.compact .bar { height: 14px; }
+.hbars.compact { gap: 7px; }
+.hbars.compact .hb-row { grid-template-columns: 78px 1fr; }
+.hbars.compact .hb-name { font-weight: 500; font-size: 14px; }
+.bar.range { margin-left: 2px; opacity: .38; }
+.bar + .bar.range { border-radius: 0 4px 4px 0; }
+.bar:has(+ .bar.range) { border-radius: 0; }
+.hb-val { margin-left: 8px; font-size: 14.5px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.c-gap { background: var(--gap); } .c-gap-done { background: var(--gap-done); }
+.c-gray { background: var(--gray); } .c-rev { background: var(--s3); } .c-cost { background: var(--cost); }
+.c-s1 { background: var(--s1); } .c-s3 { background: var(--s3); } .c-a { background: var(--a1); } .c-b { background: var(--b1); }
+@media (max-width: 600px) {
+  .hb-row { grid-template-columns: 1fr; gap: 3px; }
+  .hbars.compact .hb-row { grid-template-columns: 70px 1fr; }
+  .hb-track { padding-right: 104px; }
+}
+
+/* segmented bar */
+.segbar { display: flex; gap: 2px; height: 28px; margin: 10px 0 4px; }
+.seg { display: flex; align-items: center; border-radius: 4px; min-width: 2px; outline-offset: 2px; }
+.seg-val { font-size: 13px; font-weight: 600; padding-left: 8px; white-space: nowrap; }
+.seg.g1 { background: var(--g1); color: #fff; } .seg.g2 { background: var(--g2); color: #fff; } .seg.g3 { background: var(--g3); color: #0b0b0b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .seg.g1 { color: #0b0b0b; } :root:not([data-theme="light"]) .seg.g3 { color: #fff; } }
+.legend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 0; margin: 0 0 8px; font-size: 13.5px; color: var(--text-2); }
+.legend li { display: flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: none; }
+.sw.g1 { background: var(--g1); } .sw.g2 { background: var(--g2); } .sw.g3 { background: var(--g3); }
+.sw.s1 { background: var(--s1); } .sw.s2 { background: var(--s2); } .sw.s3 { background: var(--s3); }
+.sw.a1 { background: var(--a1); } .sw.b1 { background: var(--b1); } .sw.gapc { background: var(--gap); } .sw.grayc { background: var(--gray); }
+
+/* line chart */
+.lc svg { width: 100%; height: auto; display: block; }
+.lc svg.compact { display: none; }
+@media (max-width: 600px) { .lc svg.wide { display: none; } .lc svg.compact { display: block; } }
+svg .grid { stroke: var(--rule); stroke-width: 1; }
+svg .axis { fill: var(--text-3); font-variant-numeric: tabular-nums; }
+svg .line { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+svg .line.s1, svg .line.a1 { stroke: var(--s1); } svg .line.s2, svg .line.b1 { stroke: var(--s2); } svg .line.s3 { stroke: var(--s3); }
+svg .line.hist { stroke: var(--text-2); }
+svg .line.dash { stroke-dasharray: 2 5; }
+svg .dot { stroke: var(--surface); stroke-width: 2; }
+svg .dot.s1, svg .dot.a1 { fill: var(--s1); } svg .dot.s2, svg .dot.b1 { fill: var(--s2); } svg .dot.s3 { fill: var(--s3); } svg .dot.hist { fill: var(--text-2); }
+svg .endlabel { fill: var(--text); font-weight: 600; }
+svg .endval, svg .note { fill: var(--text-2); }
+svg .hit { fill: transparent; outline: none; }
+svg .hit:hover, svg .hit:focus { fill: var(--text); fill-opacity: .05; }
+svg .band { fill: var(--text); fill-opacity: .04; }
+
+/* tables */
+.tablewrap { overflow-x: auto; margin: 10px 0 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+caption { text-align: left; font-size: 13px; color: var(--text-3); padding-bottom: 6px; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+thead th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); font-weight: 600; }
+tbody th { font-weight: 500; }
+td { font-variant-numeric: tabular-nums; }
+details.datatable { margin: 10px 0 0; font-size: 14px; }
+details.datatable summary { cursor: pointer; color: var(--text-2); }
+
+/* point cards */
+.points, .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 22px 0; }
+.point { border-top: 3px solid var(--text); padding-top: 12px; }
+.point h3 { font-size: 18px; margin: 0 0 6px; }
+.point p { font-size: 15.5px; color: var(--text-2); margin: 0; }
+.card { border: 1px solid var(--rule); border-radius: 12px; padding: 18px 18px 8px; background: var(--surface); }
+.card h3 { font-size: 18px; margin: 0 0 10px; }
+.cardsub { display: block; font-size: 13px; font-weight: 500; color: var(--text-3); margin-top: 3px; }
+.cardnum { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 0; line-height: 1.1; }
+.cardcap { font-size: 13.5px; color: var(--text-2); margin: 4px 0 12px; }
+.card p { font-size: 15px; }
+.fine { font-size: 13.5px; color: var(--text-3); }
+.fine a { color: var(--text-3); }
+
+.rootbox { background: var(--text); color: var(--surface); border-radius: 12px; padding: 22px 24px 10px; margin: 28px 0 18px; }
+.rootbox h3 { margin: 0 0 8px; font-size: 15px; text-transform: uppercase; letter-spacing: .05em; opacity: .8; }
+.rootbox p { font-size: clamp(17px, 2.1vw, 19.5px); line-height: 1.5; }
+.callout { background: var(--surface-2); border-left: 4px solid var(--text-2); border-radius: 0 10px 10px 0; padding: 16px 20px 6px; margin: 22px 0; }
+.callout h3 { margin: 0 0 6px; font-size: 17px; }
+.callout p { font-size: 15.5px; }
+
+.qa details { border-top: 1px solid var(--rule); padding: 12px 0 4px; }
+.qa details:last-child { border-bottom: 1px solid var(--rule); }
+.qa summary { font-weight: 700; font-size: 17.5px; cursor: pointer; padding: 2px 0 8px; }
+.qa p { font-size: 15.5px; }
+
+ul.unknowns, ol.agree { padding-left: 1.2em; }
+ul.unknowns li, ol.agree li { margin-bottom: 10px; }
+ol.agree { font-size: 17px; }
+ol.agree li::marker { font-weight: 700; }
+ol.corrections { font-size: 15.5px; }
+
+/* scenario page */
+.scen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 22px 0; }
+.scen { border: 1px solid var(--rule); border-radius: 12px; padding: 20px 20px 8px; border-top: 5px solid var(--a1); }
+.scen.b { border-top-color: var(--b1); }
+.scen h3 { margin: 0 0 4px; font-size: 21px; }
+.scen .scen-tag { font-size: 13px; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 12px; }
+.scen ul { padding-left: 1.1em; font-size: 15.5px; }
+.scen li { margin-bottom: 7px; }
+.scen dl { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; font-size: 15px; margin: 14px 0; }
+.scen dt { color: var(--text-2); } .scen dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.warnbox { border: 2px solid var(--gap); border-radius: 12px; padding: 16px 20px 6px; margin: 20px 0; }
+.warnbox h2, .warnbox h3 { font-size: 16px; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 8px; }
+.warnbox p, .warnbox li { font-size: 15.5px; }
+
+footer.site { border-top: 1px solid var(--rule); margin-top: 30px; padding: 24px 0 40px; font-size: 14px; color: var(--text-2); }
+
+#tip {
+  position: fixed; z-index: 20; max-width: 300px; background: var(--text); color: var(--surface);
+  font-size: 13px; line-height: 1.4; padding: 7px 10px; border-radius: 6px; pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+}
+@media print {
+  .disclosure-bar { background: none; color: #000; border-bottom: 1px solid #000; }
+  header.site { position: static; }
+  details { display: block; } details > * { display: block !important; }
+  figure.chart, .card, .scen { break-inside: avoid; }
+}
+.tag-ext { background: var(--tag-news-bg); color: var(--tag-news-fg); }
+.tag-scen { background: var(--surface-3); color: var(--text); }
+
+</style>
 </head>
-
-<body class="nav-fixed quarto-light">
-
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Understanding CSU’s FY27–28 Budget Gap</span>
-    </a>
+<body>
+<div class="disclosure-bar" role="note">
+  <strong>Independent analysis, not a CSU publication.</strong>
+  Drafted with AI tools from public documents. Figures as of November 20, 2026.
+  <a href="sources.html#disclosure">How this was made</a>
+</div>
+<header class="site">
+  <div class="wrap">
+    <span class="sitename">CSU budget, FY 2027&ndash;28</span>
+    <nav aria-label="Pages"><a href="index.html" aria-current="page">The budget gap</a><a href="csu-2030.html">CSU in 2030: two scenarios</a><a href="sources.html">Sources and corrections</a></nav>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Overview</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./ledger-a-fy28-cliff.html"> 
-<span class="menu-text">Ledger A: FY28 Gap</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./ledger-b-structural.html"> 
-<span class="menu-text">Ledger B: Structural Context</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./athletics-audit.html"> 
-<span class="menu-text">Athletics &amp; Debt</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./governance-and-peers.html"> 
-<span class="menu-text">Governance &amp; Peers</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./methodology-sources.html"> 
-<span class="menu-text">How This Was Built</span></a>
-  </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./outputs/pdf/CSU_Budget_Context_FY27_28.pdf"> <i class="bi bi-file-earmark-pdf" role="img">
-</i> 
-<span class="menu-text">PDF Brief</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://github.com/matthewross07/csu_budget_context"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text">GitHub</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
 </header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#topline-scale-headline-flashpoints-vs.-total-eg-the-fy28-gap" id="toc-topline-scale-headline-flashpoints-vs.-total-eg-the-fy28-gap" class="nav-link active" data-scroll-target="#topline-scale-headline-flashpoints-vs.-total-eg-the-fy28-gap">Topline Scale: Headline Flashpoints vs.&nbsp;Total E&amp;G &amp; the FY28 Gap</a></li>
-  <li><a href="#two-ledgers-near-term-variance-vs.-multi-year-structure" id="toc-two-ledgers-near-term-variance-vs.-multi-year-structure" class="nav-link" data-scroll-target="#two-ledgers-near-term-variance-vs.-multi-year-structure">Two Ledgers: Near-Term Variance vs.&nbsp;Multi-Year Structure</a></li>
-  <li><a href="#verification-architecture-primary-source-safeguards" id="toc-verification-architecture-primary-source-safeguards" class="nav-link" data-scroll-target="#verification-architecture-primary-source-safeguards">Verification Architecture &amp; Primary-Source Safeguards</a></li>
-  <li><a href="#guide-to-sections" id="toc-guide-to-sections" class="nav-link" data-scroll-target="#guide-to-sections">Guide to Sections</a></li>
-  </ul>
-</nav>
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Colorado State University, Fort Collins &middot; budget for July 2027 &ndash; June 2028</p>
+    <h1>CSU projects a $61&ndash;71 million gap next year. Here is where it comes from.</h1>
+    <p class="lede">CSU cut $54 million to balance this year's budget. Its first projection for
+    next year shows a bigger gap, and it shows that gap in every scenario it modeled, including one with no
+    raises. This page uses CSU's and the State of Colorado's own documents to show how large the problem is,
+    what drives it, and why the taxes Colorado voters just approved do not fix it.</p>
+
+    <div class="herofig">
+      <div class="heronum">$61.3M&ndash;$70.7M</div>
+      <div class="herocap">Projected gap in CSU's general-fund budget for fiscal year 2028,
+      as CSU announced it on October 7, 2026. <span class="tag tag-csu">CSU document</span></div>
     </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Understanding CSU’s FY27–28 Operating Budget Gap</h1>
-<p class="subtitle lead">A Primary-Source Reference Separating Immediate FY28 Drivers, Multi-Year Structural Context, and Headline Flashpoints</p>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
+    <aside class="disclosure" aria-label="About this page">
+      <h2>Read this first</h2>
+      <ul>
+        <li><strong>Who made this.</strong> Matthew R. V. Ross, as an individual. It is not a CSU publication
+        and has not been reviewed by the university.</li>
+        <li><strong>How.</strong> AI tools read the public source documents, checked the numbers against them,
+        and drafted the text and charts. The first version was built with Google's Gemini (Antigravity); this
+        version is a re-audit and rewrite done with Anthropic's Claude on November 20, 2026.
+        <a href="sources.html#corrections">What the re-audit changed</a>.</li>
+        <li><strong>How to check it.</strong> Every figure carries a label saying whether it is printed in a
+        CSU or state document, reported by a news outlet, our own arithmetic, or our inference.
+        The <a href="sources.html#ledger">figure ledger</a> lists each one with its document and page.</li>
+        <li><strong>What it cannot tell you.</strong> CSU has published the size of the gap but not the line
+        items behind it. The projection was made before the election and before the governor's budget, and CSU
+        says it will change. <a href="#unknowns">What we do not know</a>.</li>
+      </ul>
+      <p class="taglegend">Labels used on this page: <span class="tag tag-csu">CSU document</span> <span class="tag tag-state">State document</span> <span class="tag tag-news">News report</span> <span class="tag tag-calc">Our arithmetic</span> <span class="tag tag-infer">Our inference</span></p>
+    </aside>
   </div>
-  
-
-
-</header>
-
-
-<div class="callout-context">
-<p><strong>Topline Takeaway:</strong> Structural debt, executive transition payouts (<strong>$1.10M</strong> presidential + <strong>$325k</strong> provost = <strong>$1.43M</strong> one-time), and Athletics institutional support (<strong>~$15.57M/yr</strong> net operating, <strong>$206.96M</strong> bonded debt) are material components of Colorado State University’s fiscal picture. Yet on CSU’s <strong>$885.16M FY26 Education &amp; General (E&amp;G) budget</strong>, Athletics E&amp;G base support (<code>B2</code>: <strong>$17.15M</strong>, <strong>1.9%</strong>) and central debt service (<code>XA</code>: <strong>$31.86M</strong>, <strong>3.6%</strong>) represent <strong>5.5% of the operating budget</strong> and <strong>8.0% of 10-year E&amp;G growth (<code>FY15–FY26</code>)</strong>. Eliminating 100% of net Athletics support and executive transition payouts would still leave <strong>roughly <code>~$49M–$50M/yr</code> (~76%) of the projected <code>$66.0M</code> FY28 shortfall unresolved</strong>, pointing toward broader structural drivers: non-resident enrollment mix (<code>-$25.0M</code>), expiring one-time stopgaps (<code>$15.11M</code>), rising tuition discounting (<code>21.3%</code>), flat state support prior to Nov.&nbsp;2026 ballot reforms (<code>Amendment 87</code> / <code>Prop NN</code> relieve Medicaid and K-12 crowding on the General Fund though earmarked outside E&amp;G), and cumulative per-employee compensation/benefit inflation (<code>$33.7M/yr</code> per <code>3%</code> pool) across an E&amp;G workforce whose total headcount scaled in line with enrollment (+7.0% E&amp;G FTE vs.&nbsp;+6.6% Student FTE, <code>FY15–FY26</code>) while shifting toward academic/student support (<code>+39.9%</code>) and non-tenure-track instruction (<code>CCA +40.6%</code>, <code>Tenured -13.8%</code>).</p>
-</div>
-<p>Ahead of the Nov.&nbsp;30 AAUP chapter meeting, Dec.&nbsp;1 Faculty Council, and Dec.&nbsp;3–4 Board of Governors meetings, this reference separates <strong>near-term FY28 operating mechanics (Ledger A)</strong> from <strong>multi-year structural context (Ledger B)</strong> using <strong>71 archived primary public documents</strong> logged in <a href="data/sources_manifest.csv"><code>data/sources_manifest.csv</code></a>. High-level budget files cannot capture the operational value of specific campus services or teaching units; rather, these figures provide a common factual baseline across faculty, staff, deans, central administration, and the Board.</p>
-<div class="kpi-grid">
-<div class="kpi-card alert">
-<div class="kpi-label">
-FY28 Projected E&amp;G Gap
-</div>
-<div class="kpi-value">
-$61.3M–$70.7M
-</div>
-<div class="kpi-sub">
-Pre-election Oct.&nbsp;7 projection ($25M enrollment mix, $15.11M 1x cliff, $21–$31M cost/state); Nov.&nbsp;3 Amend. 87 eases state General Fund pressure.
-</div>
-</div>
-<div class="kpi-card gold">
-<div class="kpi-label">
-Athletics B2 + Debt in FY26 E&amp;G
-</div>
-<div class="kpi-value">
-5.5% ($49.0M)
-</div>
-<div class="kpi-sub">
-Of $885.16M FY26 E&amp;G: $17.15M B2 Athletics (1.9%) + $31.86M XA Debt (3.6%); 8.0% of 10-yr E&amp;G growth; ~$50M/yr of FY28 gap remains even at $0.
-</div>
-</div>
-<div class="kpi-card">
-<div class="kpi-label">
-Total E&amp;G FTE &amp; General Admin
-</div>
-<div class="kpi-value">
-+7.0% | 6.4%
-</div>
-<div class="kpi-sub">
-Total E&amp;G FTE grew +7.0% FY15–26 (matching +6.6% Student FTE). Central General Admin (Fmt 1600) is 6.4% of E&amp;G FTE (239.1 FTE; $47.5M; 187.4 in FY27 Est.).
-</div>
-</div>
-<div class="kpi-card">
-<div class="kpi-label">
-Non-E&amp;G Admin Pro Share
-</div>
-<div class="kpi-value">
-69.7%
-</div>
-<div class="kpi-sub">
-Of 4,597.7 FY25 AP FTE, 3,205.5 work outside E&amp;G; even inside E&amp;G, 85.5% of AP staff work in advising, instruction, student &amp; research support.
-</div>
-</div>
-</div>
-<hr>
-<section id="topline-scale-headline-flashpoints-vs.-total-eg-the-fy28-gap" class="level2">
-<h2 class="anchored" data-anchor-id="topline-scale-headline-flashpoints-vs.-total-eg-the-fy28-gap">Topline Scale: Headline Flashpoints vs.&nbsp;Total E&amp;G &amp; the FY28 Gap</h2>
-<div class="figure-panel">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="outputs/figures/fig00_topline_takeaway.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Topline Takeaway: Audited General-Fund Budget Shares (FY26) and Scale Comparison Against CSU’s Projected FY28 Shortfall</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell">
-<div id="tbl-topline-eg" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-topline-eg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1
-</figcaption>
-<div aria-describedby="tbl-topline-eg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<div id="slcmmpamia" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#slcmmpamia table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#slcmmpamia thead, #slcmmpamia tbody, #slcmmpamia tfoot, #slcmmpamia tr, #slcmmpamia td, #slcmmpamia th {
-  border-style: none;
-}
-
-#slcmmpamia p {
-  margin: 0;
-  padding: 0;
-}
-
-#slcmmpamia .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 13px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: 100%;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #1E4D2B;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #1E4D2B;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#slcmmpamia .gt_title {
-  color: #FFFFFF;
-  font-size: 15px;
-  font-weight: bold;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#slcmmpamia .gt_subtitle {
-  color: #FFFFFF;
-  font-size: 12px;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#slcmmpamia .gt_heading {
-  background-color: #1E4D2B;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_col_heading {
-  color: #333333;
-  background-color: #EFF3F0;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#slcmmpamia .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #EFF3F0;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#slcmmpamia .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#slcmmpamia .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#slcmmpamia .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#slcmmpamia .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#slcmmpamia .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#slcmmpamia .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#slcmmpamia .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#slcmmpamia .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#slcmmpamia .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#slcmmpamia .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#slcmmpamia .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#slcmmpamia .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#slcmmpamia .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#slcmmpamia .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#slcmmpamia .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#slcmmpamia .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#slcmmpamia .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#slcmmpamia .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#slcmmpamia .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#slcmmpamia .gt_sourcenote {
-  font-size: 11px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#slcmmpamia .gt_left {
-  text-align: left;
-}
-
-#slcmmpamia .gt_center {
-  text-align: center;
-}
-
-#slcmmpamia .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#slcmmpamia .gt_font_normal {
-  font-weight: normal;
-}
-
-#slcmmpamia .gt_font_bold {
-  font-weight: bold;
-}
-
-#slcmmpamia .gt_font_italic {
-  font-style: italic;
-}
-
-#slcmmpamia .gt_super {
-  font-size: 65%;
-}
-
-#slcmmpamia .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#slcmmpamia .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#slcmmpamia .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#slcmmpamia .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#slcmmpamia .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#slcmmpamia .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#slcmmpamia .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#slcmmpamia .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#slcmmpamia div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_heading header">
-<td colspan="5" class="gt_heading gt_title gt_font_normal">Topline Fiscal Context: FY26 E&amp;G Partition ($885.16M) &amp; FY28 Gap Offset Ceiling ($66.0M Midpoint)</td>
-</tr>
-<tr class="gt_heading even">
-<td colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Quantifying Both Valid Governance Flashpoints and the Remaining Unsolved Structural Gap</td>
-</tr>
-<tr class="gt_col_headings header">
-<th id="Component" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Component</th>
-<th id="Amount-($M)" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Amount ($M)</th>
-<th id="Share" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Share</th>
-<th id="a10-Yr-E&amp;G-Growth-Share" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">10-Yr E&amp;G Growth Share</th>
-<th id="Source" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Source</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="gt_group_heading_row odd">
-<th colspan="5" id="Panel-A:-Complete-FY26-E&amp;amp;G-Operating-Budget-Partition-($885.16M)" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Panel A: Complete FY26 E&amp;G Operating Budget Partition ($885.16M)</th>
-</tr>
-<tr class="gt_row_group_first even">
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Component">Academic Colleges, Agencies &amp; Student Support (incl. fringe)</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Amount-($M)">$588.25M</td>
-<td class="gt_row gt_right" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Share">66.5%</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  a10-Yr-E&amp;G-Growth-Share">—</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Source">ColOBS FY26</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Component">Campus Operations, Facilities, IT &amp; Central Admin (incl. fringe)</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Amount-($M)">$125.60M</td>
-<td class="gt_row gt_right" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Share">14.2%</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  a10-Yr-E&amp;G-Growth-Share">—</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Source">ColOBS FY26 (Fmt 1600 Gen Admin = $47.50M / 5.4%)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Component">Institutional Financial Aid (E&amp;G Discounting)</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Amount-($M)">$83.75M</td>
-<td class="gt_row gt_right" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Share">9.5%</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  a10-Yr-E&amp;G-Growth-Share">—</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Source">ColOBS FY26</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Component">Central Utilities, Insurance &amp; Reserves</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Amount-($M)">$38.55M</td>
-<td class="gt_row gt_right" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Share">4.4%</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  a10-Yr-E&amp;G-Growth-Share">—</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Source">ColOBS FY26</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Component">Central E&amp;G Capital Debt Service (XA)</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Amount-($M)">$31.86M</td>
-<td class="gt_row gt_right" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Share">3.6%</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  a10-Yr-E&amp;G-Growth-Share">6.0%</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Source">ColOBS FY15 &amp; FY26</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Component">Athletics E&amp;G Base Allocation (B2)</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Amount-($M)">$17.15M</td>
-<td class="gt_row gt_right" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Share">1.9%</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  a10-Yr-E&amp;G-Growth-Share">2.0%</td>
-<td class="gt_row gt_left" headers="Panel-A:-Complete-FY26-E&amp;G-Operating-Budget-Partition-($885.16M)  Source">ColOBS FY15 &amp; FY26</td>
-</tr>
-<tr class="gt_group_heading_row even">
-<th colspan="5" id="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Panel B: Scale Against Projected FY28 Midpoint Shortfall ($66.0M)</th>
-</tr>
-<tr class="gt_row_group_first odd">
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Component">Combined Exec Transition Payouts (Pres $1.10M + Prov $0.33M, 1x)</td>
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Amount-($M)">$1.43M</td>
-<td class="gt_row gt_right" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Share">2.2%</td>
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  a10-Yr-E&amp;G-Growth-Share">—</td>
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Source">Public Settlements (2026)</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Component">Net Institutional Athletics Operating Support (FY25 OSA)</td>
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Amount-($M)">$15.57M</td>
-<td class="gt_row gt_right" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Share">23.6%</td>
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  a10-Yr-E&amp;G-Growth-Share">—</td>
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Source">Colorado OSA 2516F-B</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Component">Remaining Recurring FY28 Operating Gap</td>
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Amount-($M)">$50.43M</td>
-<td class="gt_row gt_right" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Share">76.4%</td>
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  a10-Yr-E&amp;G-Growth-Share">—</td>
-<td class="gt_row gt_left" headers="Panel-B:-Scale-Against-Projected-FY28-Midpoint-Shortfall-($66.0M)  Source">Oct 7 Memo ($66M mid) less Net Ath</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<hr>
-</section>
-<section id="two-ledgers-near-term-variance-vs.-multi-year-structure" class="level2">
-<h2 class="anchored" data-anchor-id="two-ledgers-near-term-variance-vs.-multi-year-structure">Two Ledgers: Near-Term Variance vs.&nbsp;Multi-Year Structure</h2>
-<p>Campus discussions often conflate <strong>annual operating variances</strong> with <strong>decade-scale cost structure</strong>. Separating the two ledgers clarifies how each factor contributes:</p>
-<div class="cell">
-<div id="tbl-two-ledgers" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-two-ledgers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2
-</figcaption>
-<div aria-describedby="tbl-two-ledgers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<div id="ivckrnnbjp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ivckrnnbjp table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#ivckrnnbjp thead, #ivckrnnbjp tbody, #ivckrnnbjp tfoot, #ivckrnnbjp tr, #ivckrnnbjp td, #ivckrnnbjp th {
-  border-style: none;
-}
-
-#ivckrnnbjp p {
-  margin: 0;
-  padding: 0;
-}
-
-#ivckrnnbjp .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 13px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: 100%;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #1E4D2B;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #1E4D2B;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#ivckrnnbjp .gt_title {
-  color: #FFFFFF;
-  font-size: 15px;
-  font-weight: bold;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#ivckrnnbjp .gt_subtitle {
-  color: #FFFFFF;
-  font-size: 12px;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#ivckrnnbjp .gt_heading {
-  background-color: #1E4D2B;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_col_heading {
-  color: #333333;
-  background-color: #EFF3F0;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#ivckrnnbjp .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #EFF3F0;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#ivckrnnbjp .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#ivckrnnbjp .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#ivckrnnbjp .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#ivckrnnbjp .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#ivckrnnbjp .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#ivckrnnbjp .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#ivckrnnbjp .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#ivckrnnbjp .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#ivckrnnbjp .gt_row {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#ivckrnnbjp .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ivckrnnbjp .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#ivckrnnbjp .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#ivckrnnbjp .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#ivckrnnbjp .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ivckrnnbjp .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#ivckrnnbjp .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ivckrnnbjp .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#ivckrnnbjp .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ivckrnnbjp .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#ivckrnnbjp .gt_sourcenote {
-  font-size: 11px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#ivckrnnbjp .gt_left {
-  text-align: left;
-}
-
-#ivckrnnbjp .gt_center {
-  text-align: center;
-}
-
-#ivckrnnbjp .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#ivckrnnbjp .gt_font_normal {
-  font-weight: normal;
-}
-
-#ivckrnnbjp .gt_font_bold {
-  font-weight: bold;
-}
-
-#ivckrnnbjp .gt_font_italic {
-  font-style: italic;
-}
-
-#ivckrnnbjp .gt_super {
-  font-size: 65%;
-}
-
-#ivckrnnbjp .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#ivckrnnbjp .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#ivckrnnbjp .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#ivckrnnbjp .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#ivckrnnbjp .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#ivckrnnbjp .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#ivckrnnbjp .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#ivckrnnbjp .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#ivckrnnbjp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_heading header">
-<td colspan="3" class="gt_heading gt_title gt_font_normal">Two Separate Ledgers for Examining CSU's Budget Position</td>
-</tr>
-<tr class="gt_heading even">
-<td colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Distinguishing Near-Term FY28 Drivers from Multi-Year Structural Pressures</td>
-</tr>
-<tr class="gt_col_headings header">
-<th id="Dimension" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Dimension</th>
-<th id="Ledger-A:-Immediate-FY28-Gap" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Ledger A: Immediate FY28 Gap</th>
-<th id="Ledger-B:-Multi-Year-Structural-Context" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Ledger B: Multi-Year Structural Context</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_left" headers="Dimension">Core Question</td>
-<td class="gt_row gt_left" headers="Ledger-A:-Immediate-FY28-Gap">What changes CSU's E&amp;G budget from FY27 ($901.0M) to FY28?</td>
-<td class="gt_row gt_left" headers="Ledger-B:-Multi-Year-Structural-Context">Why is CSU's general fund tightly constrained during a -2.5% enrollment dip?</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Dimension">Dollar Scale</td>
-<td class="gt_row gt_left" headers="Ledger-A:-Immediate-FY28-Gap">$61.3M – $70.7M ($66.0M midpoint pre-election)</td>
-<td class="gt_row gt_left" headers="Ledger-B:-Multi-Year-Structural-Context">Illustrative: ~45% E&amp;G Payroll/Model; ~22% Debt; ~17% Athletics Net; ~16% State/Aid</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Dimension">Primary Drivers</td>
-<td class="gt_row gt_left" headers="Ledger-A:-Immediate-FY28-Gap">1) Enrollment/NR tuition drop (~$25.0M); 2) Expiring FY27 one-time bridges ($15.11M); 3) Comp/utilities vs. state funding ($21.2M–$30.6M; Nov. 3 Amend. 87 eases state GF crowding).</td>
-<td class="gt_row gt_left" headers="Ledger-B:-Multi-Year-Structural-Context">Cumulative comp/benefit inflation on incremental bases ($33.7M per 3% pool), Academic/Student Support expansion (+39.9%), doubled System debt ($1.33B), and a 21.3% discount rate—despite flat total E&amp;G FTE (+7.0% vs. +6.6% Student FTE).</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Dimension">Executive Payouts ($1.43M Combined)</td>
-<td class="gt_row gt_left" headers="Ledger-A:-Immediate-FY28-Gap">One-time $1.10M presidential + $0.325M provost settlements equal 2.2% of one year's midpoint gap ($0 recurring).</td>
-<td class="gt_row gt_left" headers="Ledger-B:-Multi-Year-Structural-Context">Material governance &amp; transparency issue rather than a core recurring financial driver.</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Dimension">Athletics ($75.2M Gross Budget)</td>
-<td class="gt_row gt_left" headers="Ledger-A:-Immediate-FY28-Gap">Minimal year-over-year change unless net university transfers expand.</td>
-<td class="gt_row gt_left" headers="Ledger-B:-Multi-Year-Structural-Context">Meaningful ~17% structural pressure (~$15.6M net operating support) + $206.96M bonded debt.</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Dimension">Externally &amp; Self-Funded Staff</td>
-<td class="gt_row gt_left" headers="Ledger-A:-Immediate-FY28-Gap">Do not drive the E&amp;G shortfall; funded by grants, contracts, clinical fees &amp; auxiliaries (incl. up to $36.5M CSFS from Prop 137).</td>
-<td class="gt_row gt_left" headers="Ledger-B:-Multi-Year-Structural-Context">Account for 69.7% of all AP FTE; inside E&amp;G, 85.5% of AP staff work outside Central General Admin (Fmt 1600 = 239.1 FTE).</td>
-</tr>
-</tbody><tfoot>
-<tr class="gt_sourcenotes odd">
-<td colspan="3" class="gt_sourcenote">Sources: Oct. 7, 2026 Budget Update; May 13, 2026 V4 Forum; CDHE BDBs FY15–27; Fact Book FY26/FY27; OSA Report 2516F-B; 2026 CO Blue Book.</td>
-</tr>
-</tfoot>
-
-</table>
-
-</div>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<hr>
-</section>
-<section id="verification-architecture-primary-source-safeguards" class="level2">
-<h2 class="anchored" data-anchor-id="verification-architecture-primary-source-safeguards">Verification Architecture &amp; Primary-Source Safeguards</h2>
-<div class="callout-audit">
-<p><strong>Reproducibility &amp; Methodological Verification:</strong> This reference site and companion PDF brief run on an open-source, deterministic <strong>R (<code>4.5.2</code>) + Quarto (<code>1.10</code>)</strong> pipeline (<a href="./methodology-sources.html"><code>src/00</code>–<code>src/05</code></a>), initiated and reviewed with <strong>Google DeepMind’s Antigravity</strong> coding agent. Five substantive engineering and accounting safeguards anchor every calculation:</p>
-<ol type="1">
-<li><strong>Deterministic Code Over Checksummed Filings:</strong> Zero numbers come from language-model memory or manual guesswork. Every figure is computed programmatically from <strong>71 archived primary public filings, ballot fiscal notes, and federal/BLS API extracts</strong> logged with exact URLs and SHA-256 digests in <a href="data/sources_manifest.csv"><code>data/sources_manifest.csv</code></a>.</li>
-<li><strong>Isolating General-Fund (<code>E&amp;G</code>) Positions From Self-Supporting Grants &amp; Auxiliaries:</strong> Federal and service enterprises account for <strong>69.7% (<code>3,205.5</code> of <code>4,597.7</code>)</strong> of Campus Administrative Professional FTE (<code>Fact Book Table 123–124</code>) and are funded outside E&amp;G tuition and state appropriations.</li>
-<li><strong>Disaggregating HR Job Codes by Actual Function &amp; Controlling Title Shifts:</strong> Rather than reading raw <code>"Admin Pro"</code> or active-rank counts at face value, the pipeline cross-checks <code>CDHE Formats 20, 25, 30 &amp; 1100–1700</code> and continuous <code>Fact Book FY26</code> series—isolating <code>-254.6</code> <code>State Classified -&gt; AP/Recharge</code> conversions, <code>2018–19</code> <code>Special/Temporary -&gt; CCA</code> faculty rank formalization, and the actual functional distribution of E&amp;G AP staff (<code>326.4</code> FTE directly in <code>Instruction</code>, <code>484.1</code> in <code>Academic Support</code>, and <code>204.8</code> in <code>Student Services</code> vs.&nbsp;<code>213.2</code> AP / <code>239.1</code> total FTE in <code>Format 1600</code> Central General Administration).</li>
-<li><strong>Controlling Accounting Transfers &amp; Gross-vs.-Net Offsets:</strong> Historical <code>ColOBS</code> division tables control explicitly for FY19’s <strong>$41.64M</strong> aid move (<code>XA</code> to <code>P1</code>) and FY26’s <strong>~$111.26M</strong> pooled fringe decentralization, while statutory Colorado OSA reports (<code>2516F-B</code>) reconcile <code>$75.24M</code> gross Athletics spending down to <code>~$15.57M</code> net institutional operating support.</li>
-<li><strong>Cross-Ledger Triangulation, Post-Election Context &amp; Automated Build Assertions (<code>src/05_verify_audit.R</code>):</strong> Claims across campus stakeholders are verified against primary records—including the Nov.&nbsp;3, 2026 Colorado Blue Book fiscal notes (<code>Amendment 87</code>, <code>Prop NN</code>, <code>Prop 137</code>), <code>$1.43M</code> combined transition settlements, and zero CSU employment record tying external Title IX consultant Jeff Lamoureux to Fort Collins—while automated assertions check every balance and functional identity on every build. Full details appear on <strong><a href="./methodology-sources.html">Verification &amp; Primary Sources</a></strong>.</li>
-</ol>
-</div>
-<hr>
-</section>
-<section id="guide-to-sections" class="level2">
-<h2 class="anchored" data-anchor-id="guide-to-sections">Guide to Sections</h2>
-<ol type="1">
-<li><strong><a href="./ledger-a-fy28-cliff.html">Ledger A: FY28 Gap</a></strong> audits the pre-election <code>$61.3M–$70.7M</code> projection against Fall 2026 census shifts (<code>-2.5%</code> RI enrollment, <code>-9.7%</code> Domestic Non-Resident UG), FY27 V4 closeout actions (<code>$15.112M</code> expiring one-time stopgaps and <code>160.58</code> permanent FTE cuts), and <strong>November 3, 2026 Colorado ballot fiscal impacts</strong> (<code>Amendment 87 +$1.97B</code>, <code>Prop NN +$521M</code>, <code>Prop 137 $175M</code>).</li>
-<li><strong><a href="./ledger-b-structural.html">Ledger B: Structural Context</a></strong> presents the full E&amp;G vs.&nbsp;Non-E&amp;G separation (<code>69.7%</code> outside E&amp;G), continuous E&amp;G workforce vs.&nbsp;enrollment balance (<code>+7.0%</code> vs.&nbsp;<code>+6.6%</code>), <strong>functional disaggregation of E&amp;G staff who teach (<code>326.4</code> AP FTE in <code>Instruction</code>) vs.&nbsp;Central General Admin (<code>239.1</code> FTE = <code>6.4%</code> in <code>Format 1600</code>)</strong>, tuition discounting (<code>21.3%</code>), and state TABOR constraints.</li>
-<li><strong><a href="./athletics-audit.html">Athletics &amp; Debt</a></strong> reconciles the <code>$75.24M</code> gross Athletics budget down to <code>~$15.57M</code> net institutional support, details CSU’s <code>$206.96M</code> Athletics bonded debt (<code>18.5%</code> of campus debt), and evaluates football discontinuation and NCAA postseason scenarios.</li>
-<li><strong><a href="./governance-and-peers.html">Governance &amp; Peers</a></strong> reviews the <code>$1.10M</code> presidential and <code>$325k</code> provost transition settlements, football contract scale (<code>$2.4M</code> base + UConn buyout/assistant pool), the Title IX verification note on Jeff Lamoureux, and IPEDS FY23 peer benchmarks across 7 Colorado and land-grant institutions.</li>
-<li><strong><a href="./methodology-sources.html">Verification &amp; Primary Sources</a></strong> documents the verification pipeline, accounting scope rules, <code>DATA_GAPS.md</code>, and all 71 archived primary sources.</li>
-</ol>
-<div class="callout-audit">
-<p><strong>Downloadable Brief:</strong> A formatted <strong><a href="outputs/pdf/CSU_Budget_Context_FY27_28.pdf">PDF Brief (Understanding CSU’s FY27–28 Budget Gap)</a></strong> is available for committee packets or offline reference.</p>
-</div>
-
-
 </section>
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
-      } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
-      }
-    }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
-          }
-        } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
-            if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
-        });
-      }
-    }
-  });
-  </script>
-</div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>Reproducible R + Quarto Analysis · Independent Primary-Source Reference (Nov.&nbsp;2026)</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
+
+<section id="scale">
+  <div class="wrap">
+    <p class="secnum">1</p>
+    <h2>How big is it?</h2>
+    <p class="answer">Bigger than last year's, which already took 161 permanent positions.</p>
+
+    <div class="tiles">
+      <div class="tile"><div class="tv">$61.3M&ndash;$70.7M</div>
+        <div class="tl">Projected gap for FY28</div><div class="tt"><span class="tag tag-csu">CSU document</span></div></div>
+      <div class="tile"><div class="tv">$54.3M</div>
+        <div class="tl">Gap closed for FY27: $39.2M in permanent cuts and
+        $15.1M of one-time money</div><div class="tt"><span class="tag tag-csu">CSU document</span></div></div>
+      <div class="tile"><div class="tv">11%&ndash;13%</div>
+        <div class="tl">FY28 gap as a share of the $551M CSU called its
+        &ldquo;reducible&rdquo; budget</div><div class="tt"><span class="tag tag-calc">Our arithmetic</span></div></div>
+      <div class="tile"><div class="tv">160.58</div>
+        <div class="tl">Permanent positions (FTE) eliminated to balance FY27</div><div class="tt"><span class="tag tag-csu">CSU document</span></div></div>
     </div>
-    <div class="nav-footer-right">
-<p>All figures traced to <code>data/sources_manifest.csv</code> · Corrections welcomed on GitHub</p>
+
+    <figure class="chart">
+  <figcaption class="chart-title">Two budget gaps, back to back</figcaption>
+  <div class="hbars big" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY27 gap closed: $54.3M = $39.2M permanent cuts + $15.1M one-time money"><div class="hb-label"><span class="hb-name">This year (FY27)</span><span class="hb-sub">gap that was closed</span></div><div class="hb-track"><span class="bar c-gap-done" style="width:72.36%"></span><span class="hb-val">$54.3M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY28 projected gap: $61.3M to $70.7M depending on scenario"><div class="hb-label"><span class="hb-name">Next year (FY28)</span><span class="hb-sub">projected, not yet closed</span></div><div class="hb-track"><span class="bar c-gap" style="width:81.73%"></span><span class="bar range c-gap" style="width:12.53%"></span><span class="hb-val">$61.3M–$70.7M</span></div></div>
 </div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Year</th><th>Gap</th><th>How it was or would be closed</th></tr></thead><tbody><tr><th scope='row'>FY27 (current year)</th><td>$54.272M</td><td>$39.160M permanent; $15.112M one-time</td></tr><tr><th scope='row'>FY28 (projected)</th><td>$61.3M–$70.7M</td><td>Not yet decided</td></tr></tbody></table></div></details>
+  <p class="chart-note">The FY27 gap was closed with $39.2M of permanent cuts and $15.1M of one-time money. The lighter end of the FY28 bar is the range across CSU's three scenarios.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a>; <a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a></span></p>
+</figure>
+
+    <div class="points">
+      <div class="point">
+        <h3>No scenario avoids it</h3>
+        <p>CSU modeled state funding rising 0%, 1% or 3%, each paired with a matching assumption for raises
+        (0%, 1%, 3%). The gap is at least $61.3M in all three. <span class="tag tag-csu">CSU document</span></p>
+      </div>
+      <div class="point">
+        <h3>It is larger than any one college</h3>
+        <p>The low end of the range exceeds the entire FY26 general-fund budget of the College of Liberal Arts
+        ($57.8M), the largest college budget at CSU. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+      <div class="point">
+        <h3>Two years, about a fifth of the base</h3>
+        <p>If FY28 is closed with permanent cuts alone, CSU will have removed $100M&ndash;$110M
+        in two years, or 18%&ndash;20% of the
+        $551M it considered reducible. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+    </div>
+    <p class="fine">Sources: <a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a>; <a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a>; <a href="https://operations.colostate.edu/media/sites/109/2026/04/Budget-Forum-4-13-2026.pdf">FY27 Budget Update, Draft V4 (forum slides, April 13, 2026)</a>; <a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY26_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2025-26</a>.
+    &ldquo;General fund&rdquo; here means CSU's Education and General budget: tuition and state support, the
+    money that pays for teaching and campus operations. It does not include research grants, housing, or
+    other self-funded operations.</p>
+  </div>
+</section>
+
+
+<section id="causes">
+  <div class="wrap">
+    <p class="secnum">2</p>
+    <h2>Where does it come from?</h2>
+    <p class="answer">Costs rise every year. The out-of-state tuition that used to cover the increase has stopped
+    growing and started shrinking.</p>
+
+    <h3 class="sub">What CSU has said about next year</h3>
+    <figure class="chart">
+  <figcaption class="chart-title">What is inside the FY28 gap (low end of the range, $61.3M)</figcaption>
+  <ul class="legend"><li><span class="sw g1"></span>Enrollment shifts (CSU&#x27;s figure)</li><li><span class="sw g2"></span>FY27 one-time money that expires (our inference)</li><li><span class="sw g3"></span>Everything else: cost growth beyond new revenue (remainder)</li></ul><div class="segbar" role="img" aria-label="Enrollment shifts $25.0M; One-time money from FY27 that expires $15.1M; Everything else $21.2M">
+<span class="seg g1" style="width:40.78%" tabindex="0" data-tip="Enrollment shifts: about $25M (stated by CSU)"><span class="seg-val">$25.0M</span></span>
+<span class="seg g2" style="width:24.65%" tabindex="0" data-tip="One-time FY27 savings that expire: $15.1M (our inference that this is inside the total)"><span class="seg-val">$15.1M</span></span>
+<span class="seg g3" style="width:34.56%" tabindex="0" data-tip="Everything else: $21.2M at the low end (what is left over; not a published line)"><span class="seg-val">$21.2M</span></span>
+</div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Piece</th><th>Amount</th><th>Basis</th></tr></thead><tbody><tr><th scope='row'>Enrollment shifts</th><td>about $25M</td><td>Stated by CSU</td></tr><tr><th scope='row'>FY27 one-time money that expires</th><td>$15.112M</td><td>Our inference that it is inside the total</td></tr><tr><th scope='row'>Everything else</th><td>$21.2M–$30.6M</td><td>Remainder, not a published line</td></tr><tr><th scope='row'>Total</th><td>$61.3M–$70.7M</td><td>Stated by CSU</td></tr></tbody></table></div></details>
+  <p class="chart-note">CSU has published two numbers: the total and the roughly $25M from enrollment. Its budget notes say FY27's one-time funds expire in FY28, so we infer that $15.1M is inside the total. The last block is simply what is left; the high end of the range adds $9.4M to it. The slides that held CSU's own breakdown are blank in the posted file.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-infer">Our inference</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a>; <a href="https://operations.colostate.edu/media/sites/109/2026/10/Fall-Budget-Forum-Slides-10.14.26.pdf">FY 2027-28 Budget Kickoff, Version 1.0 (forum slides, Oct. 14, 2026)</a>; <a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></span></p>
+</figure>
+    <p>The enrollment piece is specific. At the fall 2026 census CSU had 27,491 on-campus
+    students, 703 fewer than a year earlier. Colorado resident undergraduates were
+    <em>up</em> 184. The losses were students who pay the most: domestic nonresident
+    undergraduates fell by 685 (9.7%), international undergraduates by
+    42 and international graduate students by 113. Part of the
+    decline is good news with a cost attached: the four-year graduation rate rose from
+    51.1% to 55.1%, so fewer students stayed to pay for a fifth year.
+    <span class="tag tag-csu">CSU document</span></p>
+
+    <h3 class="sub">The mechanism, using this year's published line items</h3>
+    <p>CSU has not released line items for FY28, but it did for FY27, and they show how the gap forms.</p>
+    <figure class="chart">
+  <figcaption class="chart-title">This year's budget shows the mechanism: new money versus new costs</figcaption>
+  <div class="hbars big" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY27 net new resources: $6.831M"><div class="hb-label"><span class="hb-name">New money coming in</span><span class="hb-sub">after financial aid</span></div><div class="hb-track"><span class="bar c-rev" style="width:9.11%"></span><span class="hb-val">$6.8M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY27 new expenses: $61.103M"><div class="hb-label"><span class="hb-name">New costs</span><span class="hb-sub">before any cuts</span></div><div class="hb-track"><span class="bar c-cost" style="width:81.47%"></span><span class="hb-val">$61.1M</span></div></div>
+</div><div class="tablewrap"><table><caption>CSU&#x27;s FY27 budget, as presented May 13, 2026</caption><thead><tr><th>FY27 budget line</th><th>Amount</th></tr></thead><tbody><tr><th scope='row'>Tuition rate increases (3.5% resident, 4% nonresident, 3% graduate, plus vet med and differential)</th><td>+$24.0M</td></tr><tr><th scope='row'>Fewer students</th><td>&minus;$12.7M</td></tr><tr><th scope='row'>State funding</th><td>&minus;$0.9M</td></tr><tr><th scope='row'>Other new resources</th><td>+$1.4M</td></tr><tr><th scope='row'>More financial aid</th><td>&minus;$5.0M</td></tr><tr><th scope='row'><strong>New money available</strong></th><td><strong>$6.8M</strong></td></tr><tr><th scope='row'>Pay and benefits (3% pool, classified raises, promotions, fringe)</th><td>$33.7M</td></tr><tr><th scope='row'>Mandatory costs (bond payments, new buildings, insurance, utilities, library)</th><td>$8.7M</td></tr><tr><th scope='row'>Multi-year strategic investments</th><td>$8.8M</td></tr><tr><th scope='row'>Academic incentive funding (differential tuition, tuition sharing)</th><td>$8.1M</td></tr><tr><th scope='row'>Other</th><td>$1.8M</td></tr><tr><th scope='row'><strong>New costs</strong></th><td><strong>$61.1M</strong></td></tr><tr><th scope='row'><strong>Gap that had to be closed</strong></th><td><strong>$54.3M</strong></td></tr></tbody></table></div>
+  
+  <p class="chart-note">Tuition rates went up and raised $24.0M. Falling enrollment, flat state funding and added financial aid took most of that back. Pay and benefits alone ($33.7M) cost about five times the new money that was left.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://operations.colostate.edu/media/sites/109/2026/05/Campus-V4-5-13-2026_a-1.pdf">FY27 Budget Update, V4 Incremental Budget (forum slides, May 13, 2026)</a></span></p>
+</figure>
+    <p>Pay and benefits plus mandatory costs came to $42.3M in FY27. Tuition rate increases at the
+    allowed pace raised $24.0M. So even in a year with no enrollment loss at all, a 3% raise would
+    cost more than a 3&ndash;4% tuition increase brings in. <span class="tag tag-calc">Our arithmetic</span> CSU's budget office put it this way
+    in January 2026: expenditures are growing faster than revenues, and
+    &ldquo;we cannot solely cut our way out of this challenge.&rdquo; <span class="tag tag-csu">CSU document</span></p>
+
+    <h3 class="sub">The root: what paid for the last ten years</h3>
+    <figure class="chart">
+  <figcaption class="chart-title">For a decade, out-of-state tuition paid for CSU's growth. In FY26 it turned down.</figcaption>
+  <ul class="legend"><li><span class="sw s1"></span>Nonresident tuition</li><li><span class="sw s2"></span>Resident tuition (paid by students)</li><li><span class="sw s3"></span>State support (fee-for-service + College Opportunity Fund)</li></ul><div class="lc"><svg viewBox="0 0 760 380" class="linechart wide" role="img" aria-label="Line chart: nonresident tuition, resident tuition and state support, fiscal years 2015 to 2026. Values are in the table below.">
+<line class="grid" x1="44" x2="628" y1="346.0" y2="346.0"/>
+<text class="axis" x="38" y="350.0" text-anchor="end" font-size="13">$0</text>
+<line class="grid" x1="44" x2="628" y1="236.0" y2="236.0"/>
+<text class="axis" x="38" y="240.0" text-anchor="end" font-size="13">$100M</text>
+<line class="grid" x1="44" x2="628" y1="126.0" y2="126.0"/>
+<text class="axis" x="38" y="130.0" text-anchor="end" font-size="13">$200M</text>
+<line class="grid" x1="44" x2="628" y1="16.0" y2="16.0"/>
+<text class="axis" x="38" y="20.0" text-anchor="end" font-size="13">$300M</text>
+<text class="axis" x="44.0" y="368" text-anchor="middle" font-size="13">FY15</text>
+<text class="axis" x="97.1" y="368" text-anchor="middle" font-size="13">FY16</text>
+<text class="axis" x="150.2" y="368" text-anchor="middle" font-size="13">FY17</text>
+<text class="axis" x="203.3" y="368" text-anchor="middle" font-size="13">FY18</text>
+<text class="axis" x="256.4" y="368" text-anchor="middle" font-size="13">FY19</text>
+<text class="axis" x="309.5" y="368" text-anchor="middle" font-size="13">FY20</text>
+<text class="axis" x="362.5" y="368" text-anchor="middle" font-size="13">FY21</text>
+<text class="axis" x="415.6" y="368" text-anchor="middle" font-size="13">FY22</text>
+<text class="axis" x="468.7" y="368" text-anchor="middle" font-size="13">FY23</text>
+<text class="axis" x="521.8" y="368" text-anchor="middle" font-size="13">FY24</text>
+<text class="axis" x="574.9" y="368" text-anchor="middle" font-size="13">FY25</text>
+<text class="axis" x="628.0" y="368" text-anchor="middle" font-size="13">FY26</text>
+<polyline class="line s1" points="44.0,188.8 97.1,169.8 150.2,140.1 203.3,123.6 256.4,103.2 309.5,86.6 362.5,107.2 415.6,88.3 468.7,75.3 521.8,56.8 574.9,39.0 628.0,50.2"/>
+<polyline class="line s2" points="44.0,156.1 97.1,145.7 150.2,135.1 203.3,127.1 256.4,124.3 309.5,123.2 362.5,133.5 415.6,130.8 468.7,126.9 521.8,118.4 574.9,109.1 628.0,91.4"/>
+<polyline class="line s3" points="44.0,280.3 97.1,274.3 150.2,274.3 203.3,273.2 256.4,264.5 309.5,255.9 362.5,317.1 415.6,247.3 468.7,239.0 521.8,226.8 574.9,224.7 628.0,224.9"/>
+<circle class="dot s1" cx="628.0" cy="50.2" r="5"/>
+<text class="endlabel" x="638.0" y="48.2" font-size="13">Nonresident tuition</text>
+<text class="endval" x="638.0" y="64.2" font-size="13">$268.9M</text>
+<circle class="dot s2" cx="628.0" cy="91.4" r="5"/>
+<text class="endlabel" x="638.0" y="89.4" font-size="13">Resident tuition</text>
+<text class="endval" x="638.0" y="105.4" font-size="13">$231.5M</text>
+<circle class="dot s3" cx="628.0" cy="224.9" r="5"/>
+<text class="endlabel" x="638.0" y="222.9" font-size="13">State support</text>
+<text class="endval" x="638.0" y="238.9" font-size="13">$110.1M</text>
+<circle class="dot s1" cx="574.9" cy="39.0" r="5"/>
+<text class="note" x="566.9" y="29.0" text-anchor="end" font-size="13">Peak: $279.1M (FY25)</text>
+<text class="note" x="362.5" y="337.1" text-anchor="middle" font-size="12">FY21: pandemic year</text>
+<rect class="hit" x="17.5" y="16" width="53.1" height="330" tabindex="0" data-tip="FY15 — Nonresident tuition $142.9M · Resident tuition $172.6M · State support $59.7M"/>
+<rect class="hit" x="70.5" y="16" width="53.1" height="330" tabindex="0" data-tip="FY16 — Nonresident tuition $160.2M · Resident tuition $182.1M · State support $65.2M"/>
+<rect class="hit" x="123.6" y="16" width="53.1" height="330" tabindex="0" data-tip="FY17 — Nonresident tuition $187.2M · Resident tuition $191.7M · State support $65.2M"/>
+<rect class="hit" x="176.7" y="16" width="53.1" height="330" tabindex="0" data-tip="FY18 — Nonresident tuition $202.2M · Resident tuition $199.0M · State support $66.2M"/>
+<rect class="hit" x="229.8" y="16" width="53.1" height="330" tabindex="0" data-tip="FY19 — Nonresident tuition $220.7M · Resident tuition $201.6M · State support $74.1M"/>
+<rect class="hit" x="282.9" y="16" width="53.1" height="330" tabindex="0" data-tip="FY20 — Nonresident tuition $235.8M · Resident tuition $202.5M · State support $81.9M"/>
+<rect class="hit" x="336.0" y="16" width="53.1" height="330" tabindex="0" data-tip="FY21 — Nonresident tuition $217.1M · Resident tuition $193.2M · State support $26.3M"/>
+<rect class="hit" x="389.1" y="16" width="53.1" height="330" tabindex="0" data-tip="FY22 — Nonresident tuition $234.3M · Resident tuition $195.6M · State support $89.8M"/>
+<rect class="hit" x="442.2" y="16" width="53.1" height="330" tabindex="0" data-tip="FY23 — Nonresident tuition $246.1M · Resident tuition $199.1M · State support $97.3M"/>
+<rect class="hit" x="495.3" y="16" width="53.1" height="330" tabindex="0" data-tip="FY24 — Nonresident tuition $262.9M · Resident tuition $206.9M · State support $108.3M"/>
+<rect class="hit" x="548.4" y="16" width="53.1" height="330" tabindex="0" data-tip="FY25 — Nonresident tuition $279.1M · Resident tuition $215.4M · State support $110.3M"/>
+<rect class="hit" x="601.5" y="16" width="53.1" height="330" tabindex="0" data-tip="FY26 — Nonresident tuition $268.9M · Resident tuition $231.5M · State support $110.1M"/>
+</svg><svg viewBox="0 0 390 330" class="linechart compact" role="img" aria-label="Line chart: nonresident tuition, resident tuition and state support, fiscal years 2015 to 2026. Values are in the table below.">
+<line class="grid" x1="52" x2="374" y1="296.0" y2="296.0"/>
+<text class="axis" x="46" y="300.0" text-anchor="end" font-size="12">$0</text>
+<line class="grid" x1="52" x2="374" y1="202.7" y2="202.7"/>
+<text class="axis" x="46" y="206.7" text-anchor="end" font-size="12">$100M</text>
+<line class="grid" x1="52" x2="374" y1="109.3" y2="109.3"/>
+<text class="axis" x="46" y="113.3" text-anchor="end" font-size="12">$200M</text>
+<line class="grid" x1="52" x2="374" y1="16.0" y2="16.0"/>
+<text class="axis" x="46" y="20.0" text-anchor="end" font-size="12">$300M</text>
+<text class="axis" x="52.0" y="318" text-anchor="middle" font-size="12">FY15</text>
+<text class="axis" x="139.8" y="318" text-anchor="middle" font-size="12">FY18</text>
+<text class="axis" x="227.6" y="318" text-anchor="middle" font-size="12">FY21</text>
+<text class="axis" x="374.0" y="318" text-anchor="middle" font-size="12">FY26</text>
+<polyline class="line s1" points="52.0,162.6 81.3,146.5 110.5,121.3 139.8,107.3 169.1,90.0 198.4,75.9 227.6,93.4 256.9,77.3 286.2,66.3 315.5,50.6 344.7,35.5 374.0,45.0"/>
+<polyline class="line s2" points="52.0,134.9 81.3,126.1 110.5,117.0 139.8,110.3 169.1,107.9 198.4,107.0 227.6,115.7 256.9,113.4 286.2,110.1 315.5,102.9 344.7,95.0 374.0,79.9"/>
+<polyline class="line s3" points="52.0,240.2 81.3,235.1 110.5,235.1 139.8,234.3 169.1,226.9 198.4,219.5 227.6,271.5 256.9,212.2 286.2,205.2 315.5,194.9 344.7,193.1 374.0,193.2"/>
+<circle class="dot s1" cx="374.0" cy="45.0" r="5"/>
+<circle class="dot s2" cx="374.0" cy="79.9" r="5"/>
+<circle class="dot s3" cx="374.0" cy="193.2" r="5"/>
+<circle class="dot s1" cx="344.7" cy="35.5" r="5"/>
+<text class="note" x="336.7" y="25.5" text-anchor="end" font-size="12">Peak: $279.1M (FY25)</text>
+<text class="note" x="227.6" y="291.5" text-anchor="middle" font-size="11">FY21: pandemic year</text>
+<rect class="hit" x="37.4" y="16" width="29.3" height="280" tabindex="0" data-tip="FY15 — Nonresident tuition $142.9M · Resident tuition $172.6M · State support $59.7M"/>
+<rect class="hit" x="66.6" y="16" width="29.3" height="280" tabindex="0" data-tip="FY16 — Nonresident tuition $160.2M · Resident tuition $182.1M · State support $65.2M"/>
+<rect class="hit" x="95.9" y="16" width="29.3" height="280" tabindex="0" data-tip="FY17 — Nonresident tuition $187.2M · Resident tuition $191.7M · State support $65.2M"/>
+<rect class="hit" x="125.2" y="16" width="29.3" height="280" tabindex="0" data-tip="FY18 — Nonresident tuition $202.2M · Resident tuition $199.0M · State support $66.2M"/>
+<rect class="hit" x="154.5" y="16" width="29.3" height="280" tabindex="0" data-tip="FY19 — Nonresident tuition $220.7M · Resident tuition $201.6M · State support $74.1M"/>
+<rect class="hit" x="183.7" y="16" width="29.3" height="280" tabindex="0" data-tip="FY20 — Nonresident tuition $235.8M · Resident tuition $202.5M · State support $81.9M"/>
+<rect class="hit" x="213.0" y="16" width="29.3" height="280" tabindex="0" data-tip="FY21 — Nonresident tuition $217.1M · Resident tuition $193.2M · State support $26.3M"/>
+<rect class="hit" x="242.3" y="16" width="29.3" height="280" tabindex="0" data-tip="FY22 — Nonresident tuition $234.3M · Resident tuition $195.6M · State support $89.8M"/>
+<rect class="hit" x="271.5" y="16" width="29.3" height="280" tabindex="0" data-tip="FY23 — Nonresident tuition $246.1M · Resident tuition $199.1M · State support $97.3M"/>
+<rect class="hit" x="300.8" y="16" width="29.3" height="280" tabindex="0" data-tip="FY24 — Nonresident tuition $262.9M · Resident tuition $206.9M · State support $108.3M"/>
+<rect class="hit" x="330.1" y="16" width="29.3" height="280" tabindex="0" data-tip="FY25 — Nonresident tuition $279.1M · Resident tuition $215.4M · State support $110.3M"/>
+<rect class="hit" x="359.4" y="16" width="29.3" height="280" tabindex="0" data-tip="FY26 — Nonresident tuition $268.9M · Resident tuition $231.5M · State support $110.1M"/>
+</svg></div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><caption>CSU general campus, actuals reported to the state</caption><thead><tr><th>Year</th><th>Nonresident tuition</th><th>Resident tuition</th><th>State support</th><th>Nonresident student FTE</th><th>Resident student FTE</th></tr></thead><tbody><tr><th scope='row'>FY15</th><td>$142.9M</td><td>$172.6M</td><td>$59.7M</td><td>5,829</td><td>17,535</td></tr><tr><th scope='row'>FY16</th><td>$160.2M</td><td>$182.1M</td><td>$65.2M</td><td>6,570</td><td>17,850</td></tr><tr><th scope='row'>FY17</th><td>$187.2M</td><td>$191.7M</td><td>$65.2M</td><td>7,064</td><td>17,894</td></tr><tr><th scope='row'>FY18</th><td>$202.2M</td><td>$199.0M</td><td>$66.2M</td><td>7,464</td><td>17,884</td></tr><tr><th scope='row'>FY19</th><td>$220.7M</td><td>$201.6M</td><td>$74.1M</td><td>7,958</td><td>17,392</td></tr><tr><th scope='row'>FY20</th><td>$235.8M</td><td>$202.5M</td><td>$81.9M</td><td>8,181</td><td>17,146</td></tr><tr><th scope='row'>FY21</th><td>$217.1M</td><td>$193.2M</td><td>$26.3M</td><td>7,661</td><td>16,229</td></tr><tr><th scope='row'>FY22</th><td>$234.3M</td><td>$195.6M</td><td>$89.8M</td><td>8,193</td><td>15,719</td></tr><tr><th scope='row'>FY23</th><td>$246.1M</td><td>$199.1M</td><td>$97.3M</td><td>8,522</td><td>15,724</td></tr><tr><th scope='row'>FY24</th><td>$262.9M</td><td>$206.9M</td><td>$108.3M</td><td>8,675</td><td>15,838</td></tr><tr><th scope='row'>FY25</th><td>$279.1M</td><td>$215.4M</td><td>$110.3M</td><td>8,928</td><td>16,046</td></tr><tr><th scope='row'>FY26</th><td>$268.9M</td><td>$231.5M</td><td>$110.1M</td><td>8,242</td><td>16,664</td></tr></tbody></table></div></details>
+  <p class="chart-note">General campus budget, actual dollars, not adjusted for inflation. From FY15 to FY25 nonresident tuition grew $136.1M (95%), resident tuition $42.7M (25%) and state support $50.5M (85%). Prices rose 34% over the same years.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a>; inflation from <a href="https://www.bls.gov/cpi/">Consumer Price Index, All Urban Consumers (CUUR0000SA0)</a></span></p>
+</figure>
+    <div class="points">
+      <div class="point">
+        <h3>59% of the growth</h3>
+        <p>Of all the new tuition and state money CSU's general campus gained between FY15 and FY25,
+        59% came from nonresident students. Their numbers grew 53%;
+        resident student numbers fell 8.5%. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+      <div class="point">
+        <h3>$32.6K versus $20.5K</h3>
+        <p>In FY26 each nonresident full-time student brought in about $32,600 of tuition.
+        Each resident brought about $13,900 of tuition plus roughly
+        $6,600 of state support. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+      <div class="point">
+        <h3>The state is 16% of this budget</h3>
+        <p>Students paid 71% of the general campus budget in FY26; nonresidents alone paid
+        38%. State support was 16%. <span class="tag tag-calc">Our arithmetic</span></p>
+      </div>
+    </div>
+    <figure class="chart">
+  <figcaption class="chart-title">Nonresident students on campus: down 15.8% in two years</figcaption>
+  <div class="hbars compact" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2019: 9,220 nonresident students; 19,644 resident"><div class="hb-label"><span class="hb-name">Fall 2019</span></div><div class="hb-track"><span class="bar c-s1" style="width:87.81%"></span><span class="hb-val">9,220</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2020: 8,861 nonresident students; 18,974 resident"><div class="hb-label"><span class="hb-name">Fall 2020</span></div><div class="hb-track"><span class="bar c-s1" style="width:84.39%"></span><span class="hb-val">8,861</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2021: 9,531 nonresident students; 18,423 resident"><div class="hb-label"><span class="hb-name">Fall 2021</span></div><div class="hb-track"><span class="bar c-s1" style="width:90.77%"></span><span class="hb-val">9,531</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2022: 9,756 nonresident students; 18,200 resident"><div class="hb-label"><span class="hb-name">Fall 2022</span></div><div class="hb-track"><span class="bar c-s1" style="width:92.91%"></span><span class="hb-val">9,756</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2023: 9,751 nonresident students; 18,082 resident"><div class="hb-label"><span class="hb-name">Fall 2023</span></div><div class="hb-track"><span class="bar c-s1" style="width:92.87%"></span><span class="hb-val">9,751</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2024: 9,997 nonresident students; 18,211 resident"><div class="hb-label"><span class="hb-name">Fall 2024</span></div><div class="hb-track"><span class="bar c-s1" style="width:95.21%"></span><span class="hb-val">9,997</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2025: 9,330 nonresident students; 18,864 resident"><div class="hb-label"><span class="hb-name">Fall 2025</span></div><div class="hb-track"><span class="bar c-s1" style="width:88.86%"></span><span class="hb-val">9,330</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Fall 2026: 8,422 nonresident students; 19,069 resident"><div class="hb-label"><span class="hb-name">Fall 2026</span></div><div class="hb-track"><span class="bar c-s1" style="width:80.21%"></span><span class="hb-val">8,422</span></div></div>
+</div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Fall</th><th>Nonresident</th><th>Resident</th></tr></thead><tbody><tr><th scope='row'>2019</th><td>9,220</td><td>19,644</td></tr><tr><th scope='row'>2020</th><td>8,861</td><td>18,974</td></tr><tr><th scope='row'>2021</th><td>9,531</td><td>18,423</td></tr><tr><th scope='row'>2022</th><td>9,756</td><td>18,200</td></tr><tr><th scope='row'>2023</th><td>9,751</td><td>18,082</td></tr><tr><th scope='row'>2024</th><td>9,997</td><td>18,211</td></tr><tr><th scope='row'>2025</th><td>9,330</td><td>18,864</td></tr><tr><th scope='row'>2026</th><td>8,422</td><td>19,069</td></tr></tbody></table></div></details>
+  <p class="chart-note">Resident Instruction students at fall census. Over the same two years resident enrollment rose from 18,211 to 19,069, but a resident student brings CSU much less revenue.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://www.ir.colostate.edu/wp-content/uploads/sites/21/2026/10/CSU_Factbook_FY27_2026-10-22.pdf">CSU Fact Book FY 2026-27 (Oct. 22, 2026)</a>, Table 3</span></p>
+</figure>
+    <p>The cost side moved in step with that revenue. CSU's reported cost per student rose from
+    $18,137 in FY15 to $27,815 in FY26, an increase of
+    53% while consumer prices rose 38%. Tuition and state revenue per student rose
+    53%, almost exactly as much, and most of that came from the shift toward nonresident
+    students. <span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span></p>
+
+    <div class="rootbox">
+      <h3>The root problem, in one paragraph</h3>
+      <p>CSU's general-fund costs go up by tens of millions of dollars every year, mostly pay and benefits for
+      the people who teach and run the university. For a decade, enrolling more out-of-state students paid for
+      that. Out-of-state enrollment peaked in fall 2024 and has fallen 15.8% since. Resident
+      tuition and state support are too small and grow too slowly to replace it. Each budget year therefore
+      opens with a gap before anyone has made a decision.</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="taxes">
+  <div class="wrap">
+    <p class="secnum">3</p>
+    <h2>Colorado just passed new taxes. Doesn't that fix it?</h2>
+    <p class="answer">No. None of the new money is for university operating budgets, and one measure takes money
+    out of the pool higher education is funded from.</p>
+
+    <p>On November 3, 2026, voters approved three measures that change how much money the state keeps and where
+    it goes. Results are unofficial until certified. Amendment 87 passed with about 51.72% of the vote
+    and was challenged in court on November 19. <span class="tag tag-news">News report</span></p>
+
+    <div class="cards">
+      <article class="card">
+        <h3>Amendment 87 <span class="cardsub">graduated income tax</span></h3>
+        <p class="cardnum">$1.97 billion</p>
+        <p class="cardcap">estimated new revenue in FY 2027&ndash;28 <span class="tag tag-state">State document</span></p>
+        <p><strong>Where it must go:</strong> K-12 education, health care, and early childhood care and
+        education. Higher education is not on the list.</p>
+        <p><strong>The catch:</strong> the state's ballot booklet says of the new money,
+        &ldquo;It must add to, and not replace, spending on those services.&rdquo; So it cannot simply be swapped
+        in to free up existing state dollars for other uses.</p>
+      </article>
+      <article class="card">
+        <h3>Proposition NN <span class="cardsub">keep revenue above the TABOR cap</span></h3>
+        <p class="cardnum">$521M</p>
+        <p class="cardcap">estimated revenue kept in FY 2027&ndash;28 instead of refunded <span class="tag tag-state">State document</span></p>
+        <p><strong>Where it must go:</strong> for the first ten years, K-12 education and programs for children,
+        after reimbursing local governments for property tax exemptions.</p>
+        <p><strong>The catch:</strong> in FY27 and again in FY28 it moves $153.1M that would have
+        been available for the general state budget into the new children's account. That general budget is
+        where university funding comes from.</p>
+      </article>
+      <article class="card">
+        <h3>Proposition 137 <span class="cardsub">sporting goods sales tax to conservation</span></h3>
+        <p class="cardnum">$175M</p>
+        <p class="cardcap">estimated transfer in FY 2027&ndash;28 <span class="tag tag-state">State document</span></p>
+        <p><strong>Where it must go:</strong> parks and open space, wildfire and forest work, watersheds, outdoor
+        recreation. Up to $36.5M goes to the Colorado State Forest Service, which CSU operates.</p>
+        <p><strong>The catch:</strong> Forest Service money is for forest and wildfire programs. It is budgeted
+        separately from teaching and cannot close a gap in the general fund.</p>
+      </article>
+    </div>
+    <p class="fine">Source for all three: <a href="https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible.pdf">2026 State Ballot Information Booklet (Blue Book)</a>, pp. 33&ndash;47 and 64&ndash;68. The booklet also
+    notes that Proposition 137 may reduce the amount actually kept under Proposition NN.</p>
+
+    <h3 class="sub">Meanwhile, the state's own budget is still short</h3>
+    <p>The governor's November 2 proposal was released against a projected state shortfall of about
+    $1.6 billion for FY 2027&ndash;28, driven largely by Medicaid. It would let universities raise
+    tuition 3% for residents and 4% for nonresidents. A new governor and a new Joint Budget Committee take over in
+    January, and the final budget is usually not settled until April or May. The governor has also told
+    legislators that without changes to Medicaid, that program would absorb the Amendment 87 money within about
+    three years. <span class="tag tag-news">News report</span></p>
+
+    <figure class="chart">
+  <figcaption class="chart-title">What a state funding increase is worth to CSU, next to the gap</figcaption>
+  <div class="hbars big" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="A 1% increase on $211.1M of state support = $2.1M"><div class="hb-label"><span class="hb-name">State funding +1%</span><span class="hb-sub">all state-funded CSU Fort Collins units</span></div><div class="hb-track"><span class="bar c-s3" style="width:2.81%"></span><span class="hb-val">$2.1M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="A 3% increase = $6.3M"><div class="hb-label"><span class="hb-name">State funding +3%</span><span class="hb-sub">the most optimistic scenario CSU modeled</span></div><div class="hb-track"><span class="bar c-s3" style="width:8.44%"></span><span class="hb-val">$6.3M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY28 projected gap: $61.3M to $70.7M"><div class="hb-label"><span class="hb-name">FY28 gap</span><span class="hb-sub">low end of the range</span></div><div class="hb-track"><span class="bar c-gap" style="width:81.73%"></span><span class="bar range c-gap" style="width:12.53%"></span><span class="hb-val">$61.3M–$70.7M</span></div></div>
+</div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Item</th><th>Amount</th></tr></thead><tbody><tr><th scope='row'>State funding to CSU Fort Collins, FY27</th><td>$211.052M</td></tr><tr><th scope='row'>A 1% increase</th><td>$2.11M</td></tr><tr><th scope='row'>A 3% increase</th><td>$6.33M</td></tr><tr><th scope='row'>FY28 gap</th><td>$61.3M–$70.7M</td></tr></tbody></table></div></details>
+  <p class="chart-note">The state sent CSU Fort Collins $211.1M in FY27, across the general campus, the veterinary program, Extension, the Agricultural Experiment Station and the Forest Service. Each 1% is worth $2.1M at most; the general campus share is about half of that ($1.1M per 1%). Closing the gap with state money alone would take an increase of 29%&ndash;33%.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="srcline">Source: <a href="https://www.budgets.colostate.edu/Forms/OperatingBudgetSummaries/FY27_Operating_Budget_Summary.pdf">Operating Budget Summary, FY 2026-27</a>; <a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a>; <a href="https://source.colostate.edu/an-early-look-at-next-years-budget/">An early look at next year&#x27;s budget (campus message, Oct. 7, 2026)</a></span></p>
+</figure>
+
+    <div class="callout">
+      <h3>Could the new money help indirectly?</h3>
+      <p>At the margins, possibly. The legislature decides the details, and if Amendment 87 survives in court
+      and takes pressure off schools and Medicaid, lawmakers may have more room elsewhere. That is a hope, not a
+      line in any budget. What the documents establish is narrower: no measure dedicates money to university
+      operations, the largest one must add to spending rather than replace it, and CSU's best-case scenario for
+      state funding is worth about $6M against a gap of $61M or more.
+      <span class="tag tag-calc">Our arithmetic</span> <span class="tag tag-infer">Our inference</span></p>
+    </div>
+  </div>
+</section>
+
+
+<section id="flashpoints">
+  <div class="wrap">
+    <p class="secnum">4</p>
+    <h2>What about administration, athletics, debt and payouts?</h2>
+    <p class="answer">They are real costs and fair questions. None is large enough, or growing fast enough, to be
+    the cause.</p>
+
+    <figure class="chart">
+  <figcaption class="chart-title">Common explanations, drawn to the same scale as the gap</figcaption>
+  <div class="hbars big" role="list">
+<div class="hb-row" role="listitem" tabindex="0" data-tip="FY28 projected gap: $61.3M to $70.7M"><div class="hb-label"><span class="hb-name">FY28 gap</span><span class="hb-sub">projected, recurring</span></div><div class="hb-track"><span class="bar c-gap" style="width:81.73%"></span><span class="bar range c-gap" style="width:12.53%"></span><span class="hb-val">$61.3M–$70.7M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="&#x27;Institutional Support&#x27; (executive, finance, HR, legal, general administration): $47.5M, 239 FTE"><div class="hb-label"><span class="hb-name">All central administration</span><span class="hb-sub">general campus, FY26 actual spending</span></div><div class="hb-track"><span class="bar c-gray" style="width:63.33%"></span><span class="hb-val">$47.5M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Debt service in the general-fund budget, FY26: $31.9M"><div class="hb-label"><span class="hb-name">Debt payments from the general fund</span><span class="hb-sub">FY26 budget</span></div><div class="hb-track"><span class="bar c-gray" style="width:42.49%"></span><span class="hb-val">$31.9M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Athletics general-fund allocation, FY26: $17.2M"><div class="hb-label"><span class="hb-name">Athletics' general-fund allocation</span><span class="hb-sub">FY26 budget</span></div><div class="hb-track"><span class="bar c-gray" style="width:22.87%"></span><span class="hb-val">$17.2M</span></div></div>
+<div class="hb-row" role="listitem" tabindex="0" data-tip="Reported payouts: Parsons $1.1M, Norvell $1.5M, Underwood $325K"><div class="hb-label"><span class="hb-name">Three separation payouts</span><span class="hb-sub">reported; one-time, not yearly</span></div><div class="hb-track"><span class="bar c-gray" style="width:3.90%"></span><span class="hb-val">$2.9M</span></div></div>
+</div>
+  <details class="datatable"><summary>View these numbers as a table</summary><div class="tablewrap"><table><thead><tr><th>Item</th><th>Amount</th><th>Basis</th></tr></thead><tbody><tr><th scope='row'>FY28 gap</th><td>$61.3M–$70.7M</td><td>CSU projection</td></tr><tr><th scope='row'>All central administration (Institutional Support), FY26</th><td>$47.495M</td><td>State filing, actual</td></tr><tr><th scope='row'>Debt service in the general fund, FY26</th><td>$31.864M</td><td>CSU budget</td></tr><tr><th scope='row'>Athletics general-fund allocation, FY26</th><td>$17.151M</td><td>CSU budget</td></tr><tr><th scope='row'>Reported separation payouts (Parsons, Norvell, Underwood)</th><td>$2.925M</td><td>News reports</td></tr></tbody></table></div></details>
+  <p class="chart-note">Each gray bar is the entire amount, not a plausible saving. The gap recurs every year; the payouts happened once.</p>
+  <p class="chart-src"><span class="tag tag-csu">CSU document</span> <span class="tag tag-state">State document</span> <span class="tag tag-news">News report</span> <span class="srcline">Source: <a href="https://www.budgets.colostate.edu/Forms/BudgetDataBooks/FINAL_BDB_FY26-27.pdf">Budget Data Books, FY15-16 through FY26-27 (Formats 20 and 30, general campus)</a>; <a href="https://www.budgets.colostate.edu/Forms/CollegeDivisionOperating/FY26_College_Division_OBS.pdf">Colleges and Divisions Operating Budget Summary, FY 2025-26</a>; <a href="https://collegian.com/articles/news/2026/11/category-news-students-faculty-react-to-parsons-resignation-express-concerns-around-transparency-accountability/">Faculty, students react to Parsons&#x27; resignation (Nov. 2026)</a></span></p>
+</figure>
+
+    <div class="qa">
+      <details open>
+        <summary>Executive payouts</summary>
+        <p>News reports put the payment to departing President Amy Parsons at $1.1M, the
+        settlement with former Provost Marion Underwood at $325,000 and the
+        settlement with former football coach Jay Norvell at $1.5M. Together that is
+        $2.9M, paid once. It equals 5% of one year of the gap. The questions these
+        raise about transparency are legitimate. They are questions about governance, and answering them would
+        not change the budget arithmetic. <span class="tag tag-news">News report</span> <span class="tag tag-calc">Our arithmetic</span></p>
+      </details>
+      <details>
+        <summary>Athletics</summary>
+        <p>Athletics receives $17.2M from the general fund (FY26), up from
+        $9.7M in FY15. In FY25 the department reported $74.7M of revenue, of
+        which $26.0M was direct and indirect university support and $6.1M was student
+        fees; together those are 43% of its revenue. About $10.9M of its
+        spending was athletes' scholarships, which return to CSU as tuition, fees, room and board. The
+        department carries $207.0M of debt, and paid $10.9M on its bonds in FY25;
+        those payments continue whatever sports are played. <span class="tag tag-csu">CSU document</span> <span class="tag tag-state">State document</span></p>
+        <p>Removing the entire general-fund allocation would cover about
+        24%&ndash;28% of the gap, once. It would not
+        stop the gap from re-forming the following year. <span class="tag tag-calc">Our arithmetic</span></p>
+      </details>
+      <details>
+        <summary>Administration and staffing</summary>
+        <p>All central administration on the general campus budget (the president's and vice presidents'
+        offices, finance, human resources, legal and similar functions) cost $47.5M in FY26 and
+        employed 239 FTE. Eliminating every one of those jobs would not close the gap.
+        <span class="tag tag-csu">CSU document</span></p>
+        <p>Did staffing grow faster than enrollment? Two official counts give different answers, and we could
+        not fully reconcile them.</p>
+        <div class="tablewrap"><table><thead><tr><th>Count</th><th>Period</th><th>General-fund employees</th><th>Students (FTE)</th></tr></thead><tbody><tr><th scope='row'>State filing: all faculty and staff</th><td>FY15–FY26</td><td>3,506 → 3,752 (+7.0%)</td><td>+6.6%</td></tr><tr><th scope='row'>Fact Book: faculty</th><td>FY15–FY25</td><td>1,167.3 → 1,319.1 (+13.0%)</td><td>+6.9%</td></tr><tr><th scope='row'>Fact Book: administrative professional + state classified</th><td>FY15–FY25</td><td>1,429.4 → 1,709.3 (+19.6%)</td><td>+6.9%</td></tr></tbody></table></div>
+        <p>The two sources count part-time and temporary instructors differently. On the Fact Book count,
+        staffing did grow faster than enrollment, and that added cost was paid for at the time by rising
+        nonresident tuition. It built up over ten years; it did not open a new $61M hole in one.
+        One common confusion is worth clearing up: of CSU's 4,598 administrative professional FTE,
+        only 30% are paid from the general fund. The rest are paid by research grants, fees and
+        self-funded operations. <span class="tag tag-csu">CSU document</span> <span class="tag tag-calc">Our arithmetic</span> <span class="tag tag-infer">Our inference</span></p>
+      </details>
+      <details>
+        <summary>Debt</summary>
+        <p>Debt service charged to the general fund rose from $10.2M in FY15 to
+        $31.9M in FY26. That is a real, permanent claim on the budget, and it is why past
+        building decisions matter. It is also a legal obligation, so it cannot be cut to close a gap.
+        <span class="tag tag-csu">CSU document</span></p>
+      </details>
+    </div>
+    <p>Each of these deserves scrutiny on its own terms. The point of the chart is narrower: none of them is
+    growing by $61M a year, so none of them explains why the gap comes back every year.</p>
+  </div>
+</section>
+
+
+<section id="unknowns">
+  <div class="wrap">
+    <p class="secnum">5</p>
+    <h2>What we do not know</h2>
+    <p class="answer">The size of the gap is CSU's first estimate. Several things could move it.</p>
+    <ul class="unknowns">
+      <li><strong>The line items.</strong> CSU has published the total and the enrollment figure. The two slides
+      that showed the detailed scenarios are blank in the posted file, so the split in section 2 rests partly
+      on our inference.</li>
+      <li><strong>The state budget.</strong> CSU's projection assumed nothing about the ballot measures and
+      was made before the governor's proposal. A new governor and budget committee take office in January. The
+      Board of Governors is scheduled to see updated versions in December, February and May.</li>
+      <li><strong>Amendment 87.</strong> It faces a lawsuit, and the legislature has not yet decided how to
+      spend its revenue.</li>
+      <li><strong>Raises.</strong> The range reflects 0%, 1% and 3% compensation scenarios. A working group on
+      compensation is due to report in mid-December.</li>
+      <li><strong>Next fall's class.</strong> Enrollment drives the largest known piece of the gap, and fall
+      2027 enrollment is not knowable yet.</li>
+      <li><strong>Staffing counts.</strong> The state filing and the Fact Book disagree about how fast the
+      general-fund workforce grew. We show both rather than pick one.</li>
+      <li><strong>CSU's own slides disagree in places.</strong> For example, two slides in the October 14 deck
+      give different figures for the drop in international students. We used the summary slide.</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="agree">
+  <div class="wrap">
+    <p class="secnum">6</p>
+    <h2>What the evidence supports</h2>
+    <p class="answer">Five statements to agree or disagree with before anyone argues about solutions.</p>
+    <ol class="agree">
+      <li><strong>The gap is structural.</strong> It appears in every scenario CSU modeled, it follows a
+      $54M gap this year, and part of it is one-time money from this year coming due.</li>
+      <li><strong>The largest identified driver is enrollment mix.</strong> CSU attributes about
+      $25M to enrollment, and the losses are concentrated among nonresident and international
+      students, who had supplied most of the past decade's revenue growth.</li>
+      <li><strong>Normal cost growth outruns normal revenue growth.</strong> In FY27, pay, benefits and
+      mandatory costs rose $42.3M while tuition rate increases raised $24.0M.</li>
+      <li><strong>The state is not positioned to close it.</strong> State support is 16% of the
+      general campus budget, the state has its own shortfall, and the new taxes are dedicated to other
+      purposes.</li>
+      <li><strong>The most visible grievances are not the cause.</strong> Payouts, athletics, administration and
+      debt are all smaller than the gap and none is growing at its pace.</li>
+    </ol>
+    <p>This page takes no position on what CSU should do. If any of the five statements is wrong, the place to
+    show it is in the <a href="sources.html#ledger">figure ledger</a>, where every number is tied to a document
+    and page.</p>
+    <p>A separate page, <a href="csu-2030.html">CSU in 2030: two scenarios</a>, sketches where two different
+    responses could lead. It is a thought experiment built on stated assumptions and is marked as such; it is
+    not part of the evidence on this page.</p>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Independent analysis by Matthew R. V. Ross. Not affiliated with, reviewed by, or speaking for
+    Colorado State University or the CSU System.</strong> AI tools read the source documents and drafted this
+    site; see <a href="sources.html#disclosure">how this was made</a>. Figures as of November 20, 2026; CSU's projection
+    will change as the state budget develops.</p>
+    <p>Found an error? <a href="https://github.com/matthewross07/csu_budget_context/issues">Report it</a>. Every number on this site is listed with its
+    source in the <a href="sources.html#ledger">figure ledger</a>.</p>
   </div>
 </footer>
+<div id="tip" role="tooltip" hidden></div>
+<script>
+(function () {
+  var tip = document.getElementById('tip');
+  if (!tip) return;
+  function show(el, x, y) {
+    tip.textContent = el.getAttribute('data-tip');
+    tip.hidden = false;
+    var r = tip.getBoundingClientRect();
+    var left = Math.min(Math.max(8, x + 14), window.innerWidth - r.width - 8);
+    var top = y + 18;
+    if (top + r.height > window.innerHeight - 8) top = y - r.height - 12;
+    tip.style.left = left + 'px';
+    tip.style.top = Math.max(8, top) + 'px';
+  }
+  function hide() { tip.hidden = true; }
+  document.addEventListener('mousemove', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-tip]') : null;
+    if (el) show(el, ev.clientX, ev.clientY); else hide();
+  });
+  document.addEventListener('focusin', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-tip]') : null;
+    if (el) { var b = el.getBoundingClientRect(); show(el, b.left + b.width / 2, b.bottom - 10); }
+  });
+  document.addEventListener('focusout', hide);
+  document.addEventListener('scroll', hide, { passive: true });
+})();
 
-
-
-
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
-</body></html>
+</script>
+</body>
+</html>
