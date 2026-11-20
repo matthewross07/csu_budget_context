@@ -1,42 +1,85 @@
-# Understanding CSU's FY27–28 Operating Budget Gap (`csu_budget_context`)
+# CSU's FY28 budget gap (`csu_budget_context`)
 
-A reproducible **R (`4.5.2`) + Quarto (`1.10`)** primary-source financial reference examining Colorado State University’s (Fort Collins) projected **\$61.3M–\$70.7M FY27–28 operating budget gap** across two ledgers: near-term FY28 operating drivers (**Ledger A**, including Nov. 3, 2026 Colorado ballot fiscal impacts) and multi-year structural cost and revenue context (**Ledger B**).
+An independent, source-linked look at Colorado State University's projected budget gap for fiscal year
+2027–28: how large it is, where it comes from, and why the taxes Colorado voters approved in November 2026
+do not close it.
 
-## Topline Finding
+**Live site: <https://matthewross07.github.io/csu_budget_context/>**
 
-In official FY26 E&G budgets (`$885.16M`), Athletics general-fund support (`B2`: `$17.15M`, `1.9%`) and central capital debt service (`XA`: `$31.86M`, `3.6%`) together represent **5.5% (`$49.02M`) of CSU's annual E&G budget** and **8.0% (`+$29.16M` of `+$364.50M`) of 10-year E&G growth (`FY15–FY26`)**. Combined with recent one-time executive transition payouts (`$1.10M` presidential + `$0.325M` provost = `$1.43M`, or `2.2%` of one year's midpoint FY28 gap), eliminating 100% of those headline items would still leave **roughly `~$49M–$50M/yr` (~76% of the `$66.0M` FY28 gap)** unresolved. At the same time, continuous `CDHE Format 20/1100–1700` data establish that total E&G Faculty and Staff FTE grew **`+7.0%` (`FY15–FY26`)**, matching total Student FTE growth (`+6.6%`), while `85.5%` of E&G Non-Classified (`Admin Pro`) staff sit in Academic Support (`484.1` FTE), Instruction (`326.4` FTE staff who teach/run labs), Student Services (`204.8`), Research/Public Service (`190.6`), and Plant (`50.1`) rather than Central General Administration (`Format 1600`: `239.1` total FTE, `6.4%` of E&G FTE, declining to `187.4` in `FY27 Estimate`). Post-election passage of Colorado **Amendment 87 (`+$1.97B` FY28)** and **Proposition NN (`+$521M` FY28)** eases pre-election Medicaid/K-12 crowding on the State General Fund without directly funding E&G instruction.
+| Page | What it covers |
+|---|---|
+| [The budget gap](https://matthewross07.github.io/csu_budget_context/) | Scale of the gap, its causes, the new state taxes, and common explanations drawn to the same scale |
+| [CSU in 2030: two scenarios](https://matthewross07.github.io/csu_budget_context/csu-2030.html) | A thought experiment on two responses. Built on stated assumptions; not a forecast |
+| [Sources and corrections](https://matthewross07.github.io/csu_budget_context/sources.html) | Disclosure, every figure with its source document and page, and corrections to the first version |
 
-## Verification & Reproducibility Safeguards
+## Disclosure
 
-This repository was assembled with **Google DeepMind’s Antigravity** coding agent in R and Quarto, anchored by five verification checks:
+- **Author.** Matthew R. V. Ross, as an individual. This is not a publication of Colorado State University
+  or the CSU System, and no one at the university reviewed it.
+- **Use of AI.** AI coding agents did most of the work under the author's direction. The first version
+  (November 19–20, 2026) was built with Google's Gemini in the Antigravity agent. On November 20, 2026,
+  Anthropic's Claude re-read the source documents, checked each claim against them, removed what could not
+  be supported, and rebuilt the site.
+- **What "checked" means.** For each figure, the AI located the number in the source document, or computed
+  it from numbers located there, and recorded the page. A person has not independently re-keyed every
+  figure. The ledger exists so anyone can check any number quickly.
+- **Limits.** The analysis uses public documents only. CSU has not published the line items behind its FY28
+  projection, and that projection predates the election and the governor's budget.
+- **No recommendation.** The site describes the problem. It does not propose or endorse a solution.
 
-1. **Deterministic code over checksummed filings:** Every chart and table is computed programmatically by R scripts (`src/02`–`src/04`) from 71 archived primary public filings, ballot fiscal notes, and federal API extracts (`data/sources_manifest.csv` with SHA-256 hashes).
-2. **Isolating E&G general-fund positions from self-supporting grants & auxiliaries:** Separates the `69.7%` of Administrative Professional FTE funded outside E&G (`Sponsored Programs`, `Other Funds`, `Recharge Centers`, `Auxiliaries` in `Table 123–124`)—alongside `Proposition 137`'s dedicated non-E&G `CSFS` wildfire funds (`up to $36.5M–$42.8M/yr`).
-3. **Functional E&G disaggregation & HR title reconciliation:** Cross-checks `CDHE Formats 20, 25, 30 & 1100–1700` and continuous `Fact Book FY26` series (`pp. 107–113`) to control for `-254.6` `State Classified -> AP/Recharge` shifts, `2018–19` `Special/Temporary -> CCA` rank formalization, and instructional/advising AP roles (`85.5%` of E&G AP) versus `Format 1600` Central General Administration (`6.4%` of E&G FTE).
-4. **Normalizing accounting transfers & gross-vs.-net offsets:** Controls for FY19's `$41.64M` aid move (`XA` to `P1`) and FY26's `$111.26M` fringe decentralization in `ColOBS`, and reconciles `$75.24M` gross Athletics outlays (`OSA 2516F-B`) down to `~$15.57M` net operating support.
-5. **Open code & programmatic assertions (`src/05_verify_audit.R`):** Automated verification assertions check every bridge sum, functional E&G identity, and fund partition on every build.
+## What the site finds
 
-## Repository Structure
+- CSU projects a gap of $61.3M–$70.7M for FY28, after closing $54.3M for FY27.
+- CSU attributes about $25M of the FY28 gap to enrollment. The losses are concentrated among nonresident and
+  international students.
+- From FY15 to FY25, nonresident tuition supplied 59% of the growth in tuition and state revenue on the
+  general campus budget. Nonresident headcount has fallen 15.8% since fall 2024.
+- None of the three fiscal measures passed in November 2026 dedicates money to university operating budgets.
+- Executive payouts, athletics, central administration and debt service are each smaller than the gap.
+
+Each of these is tied to a document and page in the
+[figure ledger](https://matthewross07.github.io/csu_budget_context/sources.html#ledger).
+
+## Repository layout
 
 ```text
-CSU_finance/
-├── _quarto.yml                 # Multi-page Quarto website config -> docs/ (non-indexed)
-├── robots.txt                  # Disallow: / (crawler exclusion)
-├── .nojekyll                   # Direct static serving on GitHub Pages
-├── styles.scss                 # Visual theme
-├── index.qmd                   # Overview, Topline Takeaway & Verification Summary
-├── ledger-a-fy28-cliff.qmd     # Ledger A: Immediate FY28 Operating Gap Decomposition
-├── ledger-b-structural.qmd     # Ledger B: Reconciled E&G Workforce, Non-E&G Separation & State Limits
-├── athletics-audit.qmd         # Athletics Gross-vs.-Net Support, Bonded Debt & Counterfactuals
-├── governance-and-peers.qmd    # Governance Transitions, Source Checks & IPEDS FY23 Peers
-├── methodology-sources.qmd     # Verification Framework, Accounting Scope & 70-Source Ledger
-├── report.qmd                  # Standalone 12-page PDF Brief -> outputs/pdf/CSU_Budget_Context_FY27_28.pdf
-├── src/                        # Reproducible R scripts (00_setup..05_verify + report_helpers.R)
-├── data/
-│   ├── raw/                    # Gitignored locally (re-fetched via src/01_fetch_sources.R)
-│   ├── processed/              # Analysis-ready CSVs tracked in repo
-│   └── sources_manifest.csv    # Exact URLs, SHA-256 hashes, timestamps, page/table citations
-├── outputs/                    # 300-DPI PNG + SVG figures & compiled PDF brief
-├── docs/                       # Rendered static GitHub Pages site (non-indexed)
-└── DATA_GAPS.md                # Portal restrictions & scope documentation
+docs/        The published site (GitHub Pages serves this folder)
+site_v2/     Source for the published site
+  data.py      Every figure, with source, page and kind; also the 2030 scenario assumptions
+  build.py     Builds the three pages and figures.csv (Python 3, standard library only)
+  style.css, tooltip.js
+  README.md    Build and publish notes
+data/        Source manifest and processed tables from the first version
+src/, *.qmd, _quarto.yml, styles.scss, outputs/
+             The first version's R + Quarto pipeline and outputs (superseded, see below)
+DATA_GAPS.md Notes on source access from the first version
 ```
+
+## Rebuild and publish
+
+```bash
+python3 site_v2/build.py
+```
+
+```bash
+cp site_v2/index.html site_v2/csu-2030.html site_v2/sources.html site_v2/figures.csv docs/
+```
+
+Then commit and push. To change a scenario assumption, edit the `SCEN` dictionary in `site_v2/data.py` and
+rebuild.
+
+## Status of the first version
+
+The R + Quarto pipeline in the repository root produced the site that was first published on November 19, 2026.
+A re-audit found errors and unsupported claims in it; they are listed under
+[What the re-audit changed](https://matthewross07.github.io/csu_budget_context/sources.html#corrections).
+Its pages were removed from `docs/` on November 20, 2026 and remain in git history at commit `27bb3e8`.
+
+The pipeline files are kept for reference. Do not treat their outputs, or `DATA_GAPS.md`, as verified.
+
+**Do not run `quarto render`.** `_quarto.yml` still writes to `docs/` and would overwrite the published
+site with the first version's pages.
+
+## Corrections
+
+Report errors at <https://github.com/matthewross07/csu_budget_context/issues>.

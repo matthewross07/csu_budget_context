@@ -939,7 +939,7 @@ def build_sources():
     <ul class="unknowns">
       <li><strong>Author.</strong> Matthew R. V. Ross, acting as an individual. This is not a publication of
       Colorado State University or the CSU System, and no one at the university reviewed it.</li>
-      <li><strong>Use of AI.</strong> AI coding agents did most of the work. The first version (November 19,
+      <li><strong>Use of AI.</strong> AI coding agents did most of the work. The first version (November 19&ndash;20,
       2026) was built with Google's Gemini in the Antigravity agent: it downloaded the source documents, wrote
       the code that reads them, and drafted the pages. On {AS_OF}, Anthropic's Claude re-read the source
       documents, checked each claim against them, searched news coverage for facts not in the archive, removed
