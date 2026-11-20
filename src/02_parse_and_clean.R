@@ -310,6 +310,221 @@ write_csv(bdb_records, file.path(proc_dir, "bdb_eg_summary_fy17_fy27.csv"))
 message("  Saved bdb_eg_summary_fy17_fy27.csv (", nrow(bdb_records), " fiscal years)")
 
 # ==============================================================================
+# 3B. CDHE BUDGET DATA BOOKS (FY15-FY27): FUNCTIONAL & OBJECT E&G FTE / DOLLARS
+# ==============================================================================
+message("--- Parsing 3B: CDHE BDB Format 20/25/1100-1700 Functional E&G Split ---")
+
+get_bdb_fmt_row <- function(page_txt, ln_num) {
+  if (is.na(page_txt) || !nzchar(page_txt)) return(rep(NA_real_, 4))
+  lines <- strsplit(page_txt, "\n")[[1]]
+  pat <- paste0("^\\s*", ln_num, "\\s+[A-Za-z]")
+  idx <- grep(pat, lines, perl = TRUE)
+  if (length(idx) == 0) return(rep(NA_real_, 4))
+  ln <- lines[idx[1]]
+  m <- regexec(paste0("^\\s*", ln_num, "\\s+.*?\\s{2,}", ln_num, "\\s{2,}(.*)$"), ln, perl = TRUE)
+  reg <- regmatches(ln, m)[[1]]
+  tail_str <- if (length(reg) == 2) reg[2] else ln
+  padded <- paste0("  ", tail_str, "  ")
+  toks <- regmatches(padded, gregexpr(
+    "\\([0-9,]+(?:\\.[0-9]+)?\\)|-?[0-9][0-9,]*(?:\\.[0-9]+)?|(?<=\\s)-(?=\\s)",
+    padded, perl = TRUE
+  ))[[1]]
+  toks <- trimws(toks)
+  num <- sapply(toks, function(x) {
+    if (x == "-") return(0)
+    neg <- grepl("^\\(", x)
+    v <- as.numeric(gsub("[,()]", "", x))
+    if (neg) -v else v
+  })
+  if (length(num) >= 4) return(unname(num[1:4]))
+  c(unname(num), rep(NA_real_, 4 - length(num)))
+}
+
+bdb_func_records <- map_dfr(bdb_files, function(f) {
+  bn <- basename(f)
+  fy1 <- 2000L + as.integer(substr(bn, 13, 14))
+  txt <- pdf_text(f)
+  pvm_idx <- which(grepl("Professional Veterinary Medicine", txt))[1]
+  if (!is.na(pvm_idx)) txt <- txt[1:(pvm_idx - 1)]
+
+  get_page <- function(fmt) {
+    i <- which(grepl(paste0("Format\\s+", fmt, "([^0-9]|$)"), txt, perl = TRUE))[1]
+    if (is.na(i)) NA_character_ else txt[i]
+  }
+  f20 <- get_page("20")
+  f25 <- get_page("25")
+  f11 <- get_page("1100")
+  f12 <- get_page("1200")
+  f13 <- get_page("1300")
+  f14 <- get_page("1400")
+  f15 <- get_page("1500")
+  f16 <- get_page("1600")
+  f17 <- get_page("1700")
+
+  r_inst <- get_bdb_fmt_row(f20, 1); r_res <- get_bdb_fmt_row(f20, 2); r_pub <- get_bdb_fmt_row(f20, 3)
+  r_acad <- get_bdb_fmt_row(f20, 4); r_stud <- get_bdb_fmt_row(f20, 5); r_admn <- get_bdb_fmt_row(f20, 6)
+  r_plnt <- get_bdb_fmt_row(f20, 7); r_aid <- get_bdb_fmt_row(f20, 8); r_tot <- get_bdb_fmt_row(f20, 11)
+
+  o_ft_fac <- get_bdb_fmt_row(f25, 1); o_pt_fac <- get_bdb_fmt_row(f25, 3); o_fac <- get_bdb_fmt_row(f25, 5)
+  o_ap     <- get_bdb_fmt_row(f25, 6); o_ga     <- get_bdb_fmt_row(f25, 10); o_cl  <- get_bdb_fmt_row(f25, 11)
+
+  i_fac   <- get_bdb_fmt_row(f11, 5); i_ap   <- get_bdb_fmt_row(f11, 6); i_sa <- get_bdb_fmt_row(f11, 10); i_cl <- get_bdb_fmt_row(f11, 11)
+  r12_fac <- get_bdb_fmt_row(f12, 5); r12_ap <- get_bdb_fmt_row(f12, 6); r12_cl <- get_bdb_fmt_row(f12, 11)
+  r13_ap  <- get_bdb_fmt_row(f13, 6); r13_cl <- get_bdb_fmt_row(f13, 11)
+  r14_ap  <- get_bdb_fmt_row(f14, 6); r14_cl <- get_bdb_fmt_row(f14, 11)
+  r15_ap  <- get_bdb_fmt_row(f15, 6); r15_cl <- get_bdb_fmt_row(f15, 11)
+  r16_ap  <- get_bdb_fmt_row(f16, 6); r16_cl <- get_bdb_fmt_row(f16, 11)
+  r17_ap  <- get_bdb_fmt_row(f17, 6); r17_cl <- get_bdb_fmt_row(f17, 11)
+
+  pairs <- list(list(fy = fy1, st = "Actual", i1 = 1L, i2 = 2L))
+  if (bn == "FINAL_BDB_FY26-27.pdf") {
+    pairs[[2]] <- list(fy = 2027L, st = "Estimate", i1 = 3L, i2 = 4L)
+  }
+
+  map_dfr(pairs, function(cp) {
+    k1 <- cp$i1; k2 <- cp$i2
+    tibble(
+      fiscal_year = cp$fy,
+      status = cp$st,
+      source_file = bn,
+      tot_eg_fte = r_tot[k1],
+      tot_eg_usd = r_tot[k2],
+      inst_fte = r_inst[k1],
+      inst_usd = r_inst[k2],
+      inst_fac_fte = i_fac[k1],
+      inst_ap_fte = i_ap[k1],
+      inst_sa_fte = i_sa[k1],
+      inst_cl_fte = i_cl[k1],
+      res_fte = r_res[k1],
+      res_usd = r_res[k2],
+      res_fac_fte = r12_fac[k1],
+      res_ap_fte = r12_ap[k1],
+      res_cl_fte = r12_cl[k1],
+      pub_fte = r_pub[k1],
+      pub_usd = r_pub[k2],
+      pub_ap_fte = r13_ap[k1],
+      pub_cl_fte = r13_cl[k1],
+      acad_fte = r_acad[k1],
+      acad_usd = r_acad[k2],
+      acad_ap_fte = r14_ap[k1],
+      acad_cl_fte = r14_cl[k1],
+      stud_fte = r_stud[k1],
+      stud_usd = r_stud[k2],
+      stud_ap_fte = r15_ap[k1],
+      stud_cl_fte = r15_cl[k1],
+      inst_supp_fte = r_admn[k1],
+      inst_supp_usd = r_admn[k2],
+      inst_supp_ap_fte = r16_ap[k1],
+      inst_supp_cl_fte = r16_cl[k1],
+      plant_fte = r_plnt[k1],
+      plant_usd = r_plnt[k2],
+      plant_ap_fte = r17_ap[k1],
+      plant_cl_fte = r17_cl[k1],
+      aid_usd = r_aid[k2],
+      obj_ft_fac_fte = o_ft_fac[k1],
+      obj_pt_fac_fte = o_pt_fac[k1],
+      obj_fac_fte = o_fac[k1],
+      obj_ap_nonfac_fte = o_ap[k1],
+      obj_support_asst_fte = o_ga[k1],
+      obj_classified_fte = o_cl[k1]
+    )
+  })
+}) |>
+  arrange(fiscal_year)
+
+write_csv(bdb_func_records, file.path(proc_dir, "bdb_format20_functional_eg_fy15_fy27.csv"))
+message("  Saved bdb_format20_functional_eg_fy15_fy27.csv (", nrow(bdb_func_records), " rows)")
+
+# ==============================================================================
+# 3C. FACT BOOK FY26 CONTINUOUS E&G SERIES (INCLUDING PRE-2019 CCA & FY21-24 CLASSIFIED)
+# ==============================================================================
+message("--- Parsing 3C: Fact Book FY26 Continuous E&G Workforce Series ---")
+
+fb26_continuous <- bind_rows(
+  parse_fb_fund_over_time(fb26_txt[107], "Tenured Faculty"),
+  parse_fb_fund_over_time(fb26_txt[108], "Tenure-Track Faculty"),
+  parse_fb_fund_over_time(fb26_txt[109], "CCA Faculty"),
+  parse_fb_fund_over_time(fb26_txt[110], "Transitional Faculty"),
+  parse_fb_fund_over_time(fb26_txt[111], "Administrative Professional"),
+  parse_fb_fund_over_time(fb26_txt[112], "State Classified"),
+  parse_fb_fund_over_time(fb26_txt[113], "Graduate Assistant")
+) |>
+  select(fiscal_year, employee_group, eg_fte, other_funds_fte, total_fte) |>
+  pivot_wider(
+    names_from = employee_group,
+    values_from = c(eg_fte, other_funds_fte, total_fte),
+    names_sep = "__"
+  ) |>
+  transmute(
+    fiscal_year,
+    eg_tenured = `eg_fte__Tenured Faculty`,
+    eg_tt = `eg_fte__Tenure-Track Faculty`,
+    eg_ttt = `eg_fte__Tenured Faculty` + `eg_fte__Tenure-Track Faculty`,
+    eg_cca = `eg_fte__CCA Faculty`,
+    eg_trans = `eg_fte__Transitional Faculty`,
+    eg_fac_total_cont = `eg_fte__Tenured Faculty` + `eg_fte__Tenure-Track Faculty` + `eg_fte__CCA Faculty` + `eg_fte__Transitional Faculty`,
+    eg_ap = `eg_fte__Administrative Professional`,
+    eg_classified = `eg_fte__State Classified`,
+    eg_nonfac_combined = `eg_fte__Administrative Professional` + `eg_fte__State Classified`,
+    eg_ga = `eg_fte__Graduate Assistant`,
+    eg_all_incl_ga_cont = eg_fac_total_cont + eg_nonfac_combined + eg_ga,
+    tot_all_funds_cca = `total_fte__CCA Faculty`,
+    tot_all_funds_ap = `total_fte__Administrative Professional`,
+    tot_all_funds_classified = `total_fte__State Classified`,
+    tot_all_funds_ga = `total_fte__Graduate Assistant`,
+    source_id = "factbook_fy26"
+  ) |>
+  arrange(fiscal_year)
+
+write_csv(fb26_continuous, file.path(proc_dir, "factbook_continuous_eg_fte_fy13_fy25.csv"))
+message("  Saved factbook_continuous_eg_fte_fy13_fy25.csv (", nrow(fb26_continuous), " fiscal years)")
+
+# ==============================================================================
+# 3D. NOVEMBER 2026 COLORADO BALLOT PROPOSITIONS & STATE FISCAL IMPACT TABLE
+# ==============================================================================
+message("--- Parsing 3D: Colorado 2026 Legislative Council Blue Book Fiscal Impacts ---")
+bb_path <- file.path(raw_dir, "budgets", "co_2026_bluebook_lcs.pdf")
+bb_txt <- paste(pdf_text(bb_path), collapse = "\n")
+stopifnot(
+  grepl("958\\.4 million", bb_txt),
+  grepl("1\\.972 billion", bb_txt),
+  grepl("521\\.0 million", bb_txt),
+  grepl("153\\.1 million", bb_txt),
+  grepl("175\\.0 million", bb_txt),
+  grepl("36\\.5 million", bb_txt)
+)
+
+co_2026_ballot <- tribble(
+  ~measure, ~title, ~nov_2026_result, ~fy27_state_impact, ~fy28_state_impact, ~tabor_and_fund_channel, ~csu_budget_implication, ~bluebook_pages,
+  "Amendment 87", "Graduated State Income Tax (3.7%-8.4%; lowers taxes <$510.8k)", "PASSED (~51.4%-51.7% Yes)", "+$958.4M (half-yr)", "+$1,972.0M (up to $2.70B cap)",
+  "100% TABOR-exempt in Colorado Future's Account; supplements K-12, health care (Medicaid) & early childhood.",
+  "Indirectly brightens Higher Ed General Fund outlook by absorbing K-12 and Medicaid growth that crowded out FFS/COF appropriations (+1% state = ~$2.1M to CSU); earmarked outside E&G.",
+  "pp. 10, 33-40",
+  "Proposition NN", "Keep & Spend TABOR Surplus for K-12 & Children's Programs", "PASSED (~57.1% Yes)", "+$329.9M net retained", "+$521.0M net retained (incl. -$153.1M GF shift)",
+  "Raises TABOR cap up to $4.6B above baseline; first 10 yrs split between K-12 teacher pay/CTE, children's programs & senior property-tax backfill.",
+  "Eases long-term K-12 budget pressure, though FY27 & FY28 each shift $153.1M from General Government Purposes into the Children's Account; Prop 137 reduces retained TABOR dollars.",
+  "pp. 11, 41-47",
+  "Proposition 137", "Direct Sporting-Goods Sales Tax Revenue to Conservation & Wildfire", "PASSED (~52% Yes)", "$0", "$175.0M ($180.2M FY29)",
+  "TABOR-exempt transfer from General Fund / TABOR surplus; up to $36.5M (FY28) and $42.8M (FY29) allocated to CSU's Colorado State Forest Service (CSFS).",
+  "Major dedicated expansion for wildfire mitigation at CSU's CSFS Non-E&G state agency; legally restricted outside Fort Collins Resident Instruction E&G operations.",
+  "pp. 14, 64-68",
+  "Proposition 136", "Cap Individual & Corporate Income Tax Rate at 4.4%", "DEFEATED (~52.8% No)", "$0", "$0 (Rejected)",
+  "Designed as conflicting countermeasure to cap income tax at 4.4% and block Amendment 87's upper brackets.",
+  "Rejection clears legal path for Amendment 87 implementation without a 4.4% statutory rate ceiling.",
+  "pp. 13, 62-63",
+  "Proposition 132", "Increase Criminal Penalties for Fentanyl Crimes", "PASSED", "-$0.9M General Fund", "-$8.9M GF (rising to -$68.2M/yr Yr 5)",
+  "Unfunded state court, public defender & prison mandates drawn from the State General Fund.",
+  "Blue Book notes General Fund prison costs compete directly against Health Care, K-12, and Higher Education.",
+  "pp. 11, 48-51",
+  "Proposition 134", "Biological Sex Designations for School & Collegiate Sports", "PASSED", "Indeterminate", "Minimal / institutional policy cost",
+  "Requires institutional policy updates funded from student fees, tuition, or athletics revenue.",
+  "Administrative compliance duty for public athletics and intramural departments without direct General Fund support.",
+  "pp. 12, 55-58"
+)
+write_csv(co_2026_ballot, file.path(proc_dir, "co_2026_ballot_fiscal_impacts.csv"))
+message("  Saved co_2026_ballot_fiscal_impacts.csv (", nrow(co_2026_ballot), " measures)")
+
+# ==============================================================================
 # 4. FACT BOOK FALL CENSUS ENROLLMENT (2015-2026) & FALL 2026 RI BREAKDOWN
 # ==============================================================================
 message("--- Parsing 4: Fact Book & BOG Fall Census Enrollment ---")

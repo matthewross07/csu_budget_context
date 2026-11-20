@@ -9,6 +9,9 @@ proc_dir <- file.path(PROJECT_ROOT, "data", "processed")
 fy28_bridge <- read_csv(file.path(proc_dir, "fy28_shortfall_bridge.csv"), show_col_types = FALSE)
 blame_pie   <- read_csv(file.path(proc_dir, "structural_blame_pie.csv"), show_col_types = FALSE)
 wf_cohorts  <- read_csv(file.path(proc_dir, "workforce_cohorts_fy15_fy25.csv"), show_col_types = FALSE)
+fb26_cont   <- read_csv(file.path(proc_dir, "factbook_continuous_eg_fte_fy13_fy25.csv"), show_col_types = FALSE)
+bdb_func    <- read_csv(file.path(proc_dir, "bdb_format20_functional_eg_fy15_fy27.csv"), show_col_types = FALSE)
+ap_func_spl <- read_csv(file.path(proc_dir, "eg_ap_functional_split_fy15_fy26.csv"), show_col_types = FALSE)
 ap_summary  <- read_csv(file.path(proc_dir, "cemml_ap_unit_summary_fy25.csv"), show_col_types = FALSE)
 bdb_real    <- read_csv(file.path(proc_dir, "bdb_real_fy17_fy27.csv"), show_col_types = FALSE)
 real_aud    <- read_csv(file.path(proc_dir, "real_audits_fy15_fy25.csv"), show_col_types = FALSE)
@@ -33,15 +36,15 @@ eg_p0 <- top_summary |>
         item == "Central E&G Capital Debt Service (XA)" ~ "Central E&G Debt Service ($31.9M | 3.6%)",
         item == "Institutional Financial Aid (E&G Discounting)" ~ "Inst. Financial Aid ($83.7M | 9.5%)",
         item == "Central Utilities, Insurance & Reserves" ~ "Utilities & Central ($38.5M | 4.4%)",
-        item == "Central Admin, VP Ops, IT, HR & Pres. (incl. fringe)" ~ "Central Admin & VP Units ($125.6M | 14.2%)",
+        item == "Campus Operations, Facilities, IT & Central Admin (incl. fringe)" ~ "Campus Ops, Facilities, IT & Admin ($125.6M | 14.2%)",
         TRUE ~ "Academic Colleges, Agencies & Student Support ($588.3M | 66.5%)"
       ),
       levels = c(
         "Athletics E&G Base ($17.2M | 1.9%)",
         "Central E&G Debt Service ($31.9M | 3.6%)",
         "Utilities & Central ($38.5M | 4.4%)",
-        "Institutional Financial Aid ($83.7M | 9.5%)" |> (\(x) "Inst. Financial Aid ($83.7M | 9.5%)")(),
-        "Central Admin & VP Units ($125.6M | 14.2%)",
+        "Inst. Financial Aid ($83.7M | 9.5%)",
+        "Campus Ops, Facilities, IT & Admin ($125.6M | 14.2%)",
         "Academic Colleges, Agencies & Student Support ($588.3M | 66.5%)"
       )
     )
@@ -71,7 +74,7 @@ p0a <- ggplot(eg_p0) +
     "Central E&G Debt Service ($31.9M | 3.6%)"                        = csu_colors$gold,
     "Utilities & Central ($38.5M | 4.4%)"                             = "#9AA5AC",
     "Inst. Financial Aid ($83.7M | 9.5%)"                             = csu_colors$steel,
-    "Central Admin & VP Units ($125.6M | 14.2%)"                      = csu_colors$slate,
+    "Campus Ops, Facilities, IT & Admin ($125.6M | 14.2%)"            = csu_colors$slate,
     "Academic Colleges, Agencies & Student Support ($588.3M | 66.5%)" = csu_colors$forest
   ), name = NULL) +
   scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, 20), labels = function(x) paste0(x, "%"), expand = expansion(mult = c(0.01, 0.01))) +
@@ -98,7 +101,7 @@ gap_cmp_df <- tribble(
   2, "Projected FY28 Gap\n($66.0M Midpoint)",   "Cost/Comp vs Flat State ($25.9M)", 40.11, 66.00, csu_colors$rust_light, "Cost/Comp & State\n$25.9M",
   1, "If Headline Items Were\nZeroed Out Today", "Exec Payouts (1x: $1.43M)",       0.00,  1.425, csu_colors$gold,      "",
   1, "If Headline Items Were\nZeroed Out Today", "Net Athletics Support ($15.57M)", 1.425, 16.995, csu_colors$rust,    "Net Athletics\n$15.6M (23.6%)",
-  1, "If Headline Items Were\nZeroed Out Today", "Still Unresolved (~$49M-$50M/yr)",16.995, 66.00, "#E9ECEF",            "~$49M-$50M/yr (~76% of gap) REMAINS UNRESOLVED\n(Mix shifts, E&G payroll growth, incremental model & state caps)"
+  1, "If Headline Items Were\nZeroed Out Today", "Still Unresolved (~$49M-$50M/yr)",16.995, 66.00, "#E9ECEF",            "~$49M-$50M/yr (~76% of gap) REMAINS UNRESOLVED\n(Enrollment mix, per-employee cost inflation, discounting & state caps)"
 )
 
 p0b <- ggplot(gap_cmp_df) +
@@ -231,24 +234,24 @@ bp_df <- blame_pie |>
   mutate(
     driver_wrap = factor(
       case_when(
-        bucket_order == 1L ~ "1. E&G Workforce Growth &\n    Incremental Budgeting (General Fund Only)",
+        bucket_order == 1L ~ "1. E&G Payroll Cost Inflation, Support Mix &\n    Incremental Budgeting (General Fund Only)",
         bucket_order == 2L ~ "2. Long-Term Capital Commitments &\n    Debt Service (Canvas, Spur, Campus)",
         bucket_order == 3L ~ "3. Athletics Net Operating Subsidy\n    (Excl. Stadium Debt to Avoid Double-Count)",
-        bucket_order == 4L ~ "4. State Funding Constraints, Tuition\n    Discounting & Research F&A Limits"
+        bucket_order == 4L ~ "4. State Funding Limits, Tuition Discounting\n    & Post-2026 Ballot Context"
       ),
       levels = rev(c(
-        "1. E&G Workforce Growth &\n    Incremental Budgeting (General Fund Only)",
+        "1. E&G Payroll Cost Inflation, Support Mix &\n    Incremental Budgeting (General Fund Only)",
         "2. Long-Term Capital Commitments &\n    Debt Service (Canvas, Spur, Campus)",
         "3. Athletics Net Operating Subsidy\n    (Excl. Stadium Debt to Avoid Double-Count)",
-        "4. State Funding Constraints, Tuition\n    Discounting & Research F&A Limits"
+        "4. State Funding Limits, Tuition Discounting\n    & Post-2026 Ballot Context"
       ))
     ),
     bar_col = c(csu_colors$forest, csu_colors$slate, csu_colors$rust, csu_colors$gold),
     anchor_short = c(
-      "40-50%  |  E&G Admin Pro +62% (+31% post-FY22) vs. CDHE Faculty +7%\nResident FTE -5%; every 3% campus comp pool = $33.7M/yr",
+      "40-50%  |  Total E&G FTE +7.0% (matching +6.6% Student FTE); Gen. Admin = 6.4%\nAcad./Student Support +39.9%; every 3% comp/fringe pool = $33.7M/yr",
       "20-25%  |  System debt doubled $672M (FY13) -> $1.33B (FY25)\nE&G Central Debt Service more than tripled ($10.2M -> $31.9M)",
       "15-20%  |  $75.2M gross -> $26.0M Univ support - $10.9M aid flow-back\n= ~$15.6M net operating support ($17.2M B2 E&G base)",
-      "15-20%  |  State FFS+COF flat at $211M (23.4% of state-approp)\nSystem discount rate rose 17.9% -> 21.3% ($174.1M allowance)"
+      "15-20%  |  FY27 State FFS+COF flat at $211M; Discount rate 21.3% ($174.1M)\nNov. '26 Amend. 87 (+$1.97B) eases K-12/Medicaid General Fund crowding"
     )
   )
 
@@ -260,7 +263,7 @@ fig2 <- ggplot(bp_df, aes(y = driver_wrap, x = mid_pct)) +
   geom_text(aes(x = high_pct + 1.8, label = anchor_short),
             hjust = 0, size = 2.95, fontface = "bold", color = csu_colors$slate, lineheight = 1.15) +
   scale_x_continuous(
-    limits = c(0, 108),
+    limits = c(0, 118),
     breaks = seq(0, 60, 15),
     labels = function(x) paste0(x, "%"),
     expand = expansion(mult = c(0, 0.02))
@@ -285,121 +288,121 @@ fig2 <- ggplot(bp_df, aes(y = driver_wrap, x = mid_pct)) +
 save_csu_fig(fig2, "fig02_structural_blame_pie", width = 11.8, height = 6.0)
 
 # ==============================================================================
-# FIGURE 3: CONTINUOUS E&G WORKFORCE TRENDS (FY17=100) + NON-E&G STAFF SPLIT
+# FIGURE 3: E&G FUNCTIONAL WORKFORCE DISAGGREGATION & NON-E&G SEPARATION
 # ==============================================================================
-message("--- Building Figure 3: Continuous E&G Workforce Trends & Non-E&G Distinction ---")
+message("--- Building Figure 3: Continuous E&G Functional Workforce, Inside Admin Pro & Non-E&G ---")
 
-eg_emp_17 <- wf_cohorts |>
-  filter(cohort %in% c("Admin Professional", "Tenured & TT Faculty", "State Classified Staff"),
-         fiscal_year >= 2017L, fiscal_year <= 2025L) |>
-  group_by(cohort) |>
-  mutate(
-    idx_val = ifelse(cohort == "State Classified Staff" & fiscal_year %in% 2021:2024,
-                     NA_real_,
-                     100 * eg_fte / eg_fte[fiscal_year == 2017L]),
-    series = case_when(
-      cohort == "Admin Professional" ~ "E&G Admin Professional FTE",
-      cohort == "Tenured & TT Faculty" ~ "E&G Tenured & TT Faculty FTE",
-      cohort == "State Classified Staff" ~ "E&G State Classified FTE"
-    )
-  ) |>
-  ungroup() |>
-  select(fiscal_year, series, idx_val)
+func_act <- bdb_func |>
+  filter(status == "Actual", fiscal_year >= 2015L, fiscal_year <= 2026L) |>
+  mutate(acad_stud_fte = acad_fte + stud_fte)
 
-cdhe_fac_17 <- bdb_real |>
-  filter(fiscal_year >= 2017L, fiscal_year <= 2026L, status == "Actual") |>
-  mutate(
-    idx_val = 100 * eg_faculty_fte / eg_faculty_fte[fiscal_year == 2017L],
-    series = "CDHE E&G Total Faculty FTE"
-  ) |>
-  select(fiscal_year, series, idx_val)
+b15 <- func_act |> filter(fiscal_year == 2015L)
 
-stu_series_17 <- bdb_real |>
-  filter(fiscal_year >= 2017L, fiscal_year <= 2026L, status == "Actual") |>
-  mutate(
-    idx17_res = 100 * resident_fte / resident_fte[fiscal_year == 2017L],
-    idx17_nr  = 100 * nonresident_fte / nonresident_fte[fiscal_year == 2017L]
-  ) |>
-  select(fiscal_year, idx17_res, idx17_nr) |>
-  pivot_longer(-fiscal_year, names_to = "k", values_to = "idx_val") |>
-  mutate(series = ifelse(k == "idx17_res", "Resident Student FTE", "Non-Resident Student FTE")) |>
-  select(fiscal_year, series, idx_val)
+cdhe_lines <- bind_rows(
+  func_act |> transmute(fiscal_year, series = "E&G Academic & Student Support (Fmt 1400+1500)", idx_val = 100 * acad_stud_fte / b15$acad_stud_fte),
+  func_act |> transmute(fiscal_year, series = "E&G General Admin / Inst. Support (Fmt 1600)",   idx_val = 100 * inst_supp_fte / b15$inst_supp_fte),
+  func_act |> transmute(fiscal_year, series = "Total E&G Workforce (CDHE Format 20)",             idx_val = 100 * tot_eg_fte / b15$tot_eg_fte),
+  func_act |> transmute(fiscal_year, series = "E&G Instruction Total (Fac + Staff/GA, Fmt 1100)", idx_val = 100 * inst_fte / b15$inst_fte)
+)
 
-tuition_series_17 <- real_aud |>
-  filter(fiscal_year >= 2017L, fiscal_year <= 2025L) |>
-  mutate(
-    idx_val = 100 * real_net_tuition_fy25m / real_net_tuition_fy25m[fiscal_year == 2017L],
-    series = "Real System Net Tuition (FY25 $)"
-  ) |>
-  select(fiscal_year, series, idx_val)
+fb_lines <- bind_rows(
+  fb26_cont |> filter(fiscal_year >= 2015L, fiscal_year <= 2025L) |>
+    transmute(fiscal_year, series = "E&G Non-Faculty Staff Combined (AP + Class., FB26)", idx_val = 100 * eg_nonfac_combined / eg_nonfac_combined[fiscal_year == 2015L]),
+  fb26_cont |> filter(fiscal_year >= 2015L, fiscal_year <= 2025L) |>
+    transmute(fiscal_year, series = "Continuous E&G Faculty All Ranks (FB26)",            idx_val = 100 * eg_fac_total_cont / eg_fac_total_cont[fiscal_year == 2015L])
+)
 
-panel_a_df <- bind_rows(eg_emp_17, cdhe_fac_17, stu_series_17, tuition_series_17)
-sc_bridge <- panel_a_df |>
-  filter(series == "E&G State Classified FTE", fiscal_year %in% c(2020L, 2025L))
+stu_line <- bdb_real |>
+  filter(fiscal_year >= 2015L, fiscal_year <= 2026L, status == "Actual") |>
+  transmute(
+    fiscal_year,
+    series = "Total Student FTE (CDHE Format 30)",
+    idx_val = 100 * total_student_fte / total_student_fte[fiscal_year == 2015L]
+  )
+
+panel_a_df <- bind_rows(cdhe_lines, fb_lines, stu_line)
 
 end_labels_a <- panel_a_df |>
-  filter(!is.na(idx_val)) |>
   group_by(series) |>
   slice_max(fiscal_year, n = 1) |>
   ungroup() |>
   mutate(
-    lbl = sprintf("%s: %.0f (%+.1f%%)",
-                  recode(series,
-                    "E&G Admin Professional FTE" = "E&G Admin Pro",
-                    "Non-Resident Student FTE" = "Non-Resident Student FTE",
-                    "CDHE E&G Total Faculty FTE" = "CDHE E&G All Faculty",
-                    "E&G Tenured & TT Faculty FTE" = "E&G Tenured/TT",
-                    "Resident Student FTE" = "Resident Student FTE",
-                    "Real System Net Tuition (FY25 $)" = "Real Net Tuition",
-                    "E&G State Classified FTE" = "E&G State Classified"
-                  ),
-                  idx_val, idx_val - 100),
+    lbl = case_when(
+      series == "E&G Academic & Student Support (Fmt 1400+1500)" ~ sprintf("Acad/Student Support (Fmt 1400-1500): %+.1f%%", idx_val - 100),
+      series == "E&G Non-Faculty Staff Combined (AP + Class., FB26)" ~ sprintf("E&G Non-Fac AP+Class. (FB26, '25): %+.1f%%", idx_val - 100),
+      series == "E&G General Admin / Inst. Support (Fmt 1600)" ~ sprintf("Central General Admin (Fmt 1600): %+.1f%%", idx_val - 100),
+      series == "Continuous E&G Faculty All Ranks (FB26)" ~ sprintf("Continuous E&G Faculty (FB26, '25): %+.1f%%", idx_val - 100),
+      series == "Total E&G Workforce (CDHE Format 20)" ~ sprintf("Total E&G Workforce (Fmt 20): %+.1f%%", idx_val - 100),
+      series == "Total Student FTE (CDHE Format 30)" ~ sprintf("Total Student FTE (Fmt 30): %+.1f%%", idx_val - 100),
+      TRUE ~ sprintf("E&G Instruction Total (Fmt 1100): %+.1f%%", idx_val - 100)
+    ),
     y_nudge = case_when(
-      series == "E&G Admin Professional FTE" ~ 145.1,
-      series == "Non-Resident Student FTE" ~ 117.5,
-      series == "CDHE E&G Total Faculty FTE" ~ 108.5,
-      series == "E&G Tenured & TT Faculty FTE" ~ 100.8,
-      series == "Resident Student FTE" ~ 92.8,
-      series == "Real System Net Tuition (FY25 $)" ~ 84.5,
-      series == "E&G State Classified FTE" ~ 58.3
+      series == "E&G Academic & Student Support (Fmt 1400+1500)" ~ 139.9,
+      series == "E&G Non-Faculty Staff Combined (AP + Class., FB26)" ~ 122.0,
+      series == "E&G General Admin / Inst. Support (Fmt 1600)" ~ 116.0,
+      series == "Continuous E&G Faculty All Ranks (FB26)" ~ 110.8,
+      series == "Total E&G Workforce (CDHE Format 20)" ~ 105.0,
+      series == "Total Student FTE (CDHE Format 30)" ~ 99.6,
+      TRUE ~ 94.2
     )
   )
 
 pal_a <- c(
-  "E&G Admin Professional FTE"       = csu_colors$rust,
-  "CDHE E&G Total Faculty FTE"       = csu_colors$forest,
-  "Non-Resident Student FTE"         = csu_colors$steel,
-  "Real System Net Tuition (FY25 $)" = csu_colors$gold,
-  "E&G Tenured & TT Faculty FTE"     = csu_colors$forest_mid,
-  "Resident Student FTE"             = csu_colors$slate,
-  "E&G State Classified FTE"         = csu_colors$gray_mid
+  "E&G Academic & Student Support (Fmt 1400+1500)"    = csu_colors$rust,
+  "E&G Non-Faculty Staff Combined (AP + Class., FB26)"= csu_colors$rust_light,
+  "E&G General Admin / Inst. Support (Fmt 1600)"      = csu_colors$gold,
+  "Continuous E&G Faculty All Ranks (FB26)"           = csu_colors$forest,
+  "Total E&G Workforce (CDHE Format 20)"              = csu_colors$slate,
+  "Total Student FTE (CDHE Format 30)"                = csu_colors$steel,
+  "E&G Instruction Total (Fac + Staff/GA, Fmt 1100)" = csu_colors$forest_mid
 )
 
 p3a <- ggplot(panel_a_df, aes(x = fiscal_year, y = idx_val, color = series)) +
-  annotate("segment", x = 2017, xend = 2026.05, y = 100, yend = 100,
+  annotate("segment", x = 2015, xend = 2026.05, y = 100, yend = 100,
            linetype = "dotted", color = csu_colors$gray_mid, linewidth = 0.6) +
-  geom_line(data = sc_bridge, linetype = "dashed", linewidth = 0.9, alpha = 0.7) +
-  geom_line(linewidth = 1.25, na.rm = TRUE) +
-  geom_point(data = panel_a_df |> filter(fiscal_year %in% c(2017, 2020, 2025, 2026) & !is.na(idx_val)),
-             size = 2.0) +
+  geom_line(linewidth = 1.2) +
+  geom_point(data = panel_a_df |> filter(fiscal_year %in% c(2015, 2020, 2024, 2026)), size = 1.9) +
   geom_text(
     data = end_labels_a,
     aes(x = 2026.25, y = y_nudge, label = lbl, color = series),
-    hjust = 0, size = 3.0, fontface = "bold", show.legend = FALSE
+    hjust = 0, size = 2.8, fontface = "bold", show.legend = FALSE
   ) +
-  annotate("label", x = 2019.6, y = 138,
-           label = "Key Reconciled Finding:\nUsing continuous CDHE Format 30 definitions (removing 2018-19 rank\nrenaming), E&G Faculty rose +7.2% (FY17-26), while E&G Admin Pro\njumped +45.1% (incl. +30.6% after FY22, partially from Classified shifts).",
-           size = 2.75, fill = "#FAFBF9", color = csu_colors$slate, linewidth = 0.3, hjust = 0.5, lineheight = 1.15) +
+  annotate("label", x = 2015.1, y = 148,
+           label = "Audit Reconciliation (FY15-FY26):\nTotal E&G FTE grew +7.0% (3,506 -> 3,752), matching Student FTE (+6.6%).\nRaw AP counts conflate -255 Classified shifts & teaching/advising roles;\nCentral General Admin (Fmt 1600) = 239.1 FTE (6.4%) after peaking in FY24.",
+           size = 2.55, fill = "#FAFBF9", color = csu_colors$slate, linewidth = 0.3, hjust = 0, lineheight = 1.15) +
   scale_color_manual(values = pal_a, guide = "none") +
-  scale_x_continuous(breaks = 2017:2026, limits = c(2017, 2030.2)) +
-  scale_y_continuous(limits = c(50, 154), breaks = seq(60, 160, 20)) +
+  scale_x_continuous(breaks = 2015:2026, limits = c(2015, 2032.4), expand = expansion(mult = c(0.01, 0.01))) +
+  scale_y_continuous(limits = c(86, 162), breaks = seq(90, 160, 15)) +
   labs(
-    title = "A. General-Fund Workforce & Enrollment Trends (FY2017 = 100, Continuous CDHE + Fact Book Series)",
-    subtitle = "Reconciling continuous **CDHE E&G Faculty (+7.2%, FY17-26)** alongside **E&G Admin Pro (+45.1% since FY17; +30.6% post-FY22)**,<br>Non-Resident FTE (+16.7%, -7.7% FY26 drop), Resident FTE (-6.9%), and Real System Net Tuition (-12.0% since FY17).",
+    title = "A. Continuous E&G Workforce & Enrollment Trends (FY2015 = 100, Removing Title-Code Shifts)",
+    subtitle = "Total E&G FTE (**+7.0%**) tracked Total Student FTE (**+6.6%**); growth concentrated in **Academic/Student Support (+39.9%)**,<br>while Tenured Faculty fell **-13.8%** and CCA rose **+40.6%**.",
     x = "Fiscal Year",
-    y = "Index (FY2017 = 100)"
+    y = "Index (FY2015 = 100)"
   ) +
-  theme_csu(base_size = 10.5, grid_axis = "y")
+  theme_csu(base_size = 10, grid_axis = "y")
+
+ap_func_plot <- ap_func_spl |>
+  mutate(
+    is_gen_admin = cdhe_format == "Fmt 1600",
+    func_lbl = factor(paste0(nacubo_function, " [", cdhe_format, "]"),
+                      levels = rev(paste0(nacubo_function[order(-ap_fy26)], " [", cdhe_format[order(-ap_fy26)], "]"))),
+    bar_fill = ifelse(is_gen_admin, csu_colors$gold, csu_colors$steel),
+    lbl_txt = sprintf("%.1f FTE (%.1f%% of E&G AP | %+.1f AP vs FY15)", ap_fy26, 100 * ap_share_fy26, ap_delta_15_26)
+  )
+
+p3b <- ggplot(ap_func_plot, aes(y = func_lbl, x = ap_fy26, fill = I(bar_fill))) +
+  geom_col(width = 0.62, alpha = 0.90) +
+  geom_text(aes(x = ap_fy26 + 10, label = lbl_txt),
+            hjust = 0, size = 2.85, fontface = "bold", color = csu_colors$slate) +
+  scale_x_continuous(limits = c(0, 820), breaks = seq(0, 500, 100), labels = comma) +
+  labs(
+    title = "B. Inside E&G \"Admin Pro\": Functional Roles of CSU's 1,469.2 E&G Non-Classified FTE (FY26 Actual, CDHE Fmts 1100-1700)",
+    subtitle = "**85.5% (1,256.0 FTE)** work in Academic Advising/Support (33.0%), **Instruction & Teaching Labs (22.2%)**, Student Services (13.9%),<br>Research/Public Service (13.0%) & Plant (3.4%); **14.5% (213.2 AP / 239.1 total FTE)** sit in Central General Admin (Fmt 1600).",
+    x = "FY2026 Actual E&G Non-Classified Staff FTE",
+    y = NULL
+  ) +
+  theme_csu(base_size = 10, grid_axis = "x") +
+  theme(axis.text.y = element_text(size = 8.9, face = "bold", color = csu_colors$slate))
 
 ap_plot_df <- ap_summary |>
   mutate(macro_bucket = fct_reorder(macro_bucket, total_fte)) |>
@@ -416,14 +419,14 @@ ap_plot_df <- ap_summary |>
     "Education & General (Tuition/State Base)"
   )))
 
-p3b <- ggplot(ap_plot_df, aes(y = macro_bucket, x = fte, fill = fund_type)) +
-  geom_col(width = 0.65) +
+p3c <- ggplot(ap_plot_df, aes(y = macro_bucket, x = fte, fill = fund_type)) +
+  geom_col(width = 0.62) +
   geom_text(
     data = ap_summary |> mutate(macro_bucket = fct_reorder(macro_bucket, total_fte)),
     aes(x = total_fte + 18, y = macro_bucket,
         label = sprintf("%.0f total  (%.0f E&G / %.0f Non-E&G | %.0f%% non-E&G)",
                         total_fte, eg_fte, other_funds_fte, 100 * non_eg_share)),
-    inherit.aes = FALSE, hjust = 0, size = 2.95, fontface = "bold", color = csu_colors$slate
+    inherit.aes = FALSE, hjust = 0, size = 2.85, fontface = "bold", color = csu_colors$slate
   ) +
   scale_fill_manual(
     values = c(
@@ -432,23 +435,23 @@ p3b <- ggplot(ap_plot_df, aes(y = macro_bucket, x = fte, fill = fund_type)) +
     ),
     name = "FY25 Funding Source:"
   ) +
-  scale_x_continuous(limits = c(0, 2350), breaks = seq(0, 1500, 300), labels = comma) +
+  scale_x_continuous(limits = c(0, 2380), breaks = seq(0, 1500, 300), labels = comma) +
   labs(
-    title = "B. Disaggregating Campus Staff by Funding Source: 69.7% of Admin Pro FTE Are Non-E&G (FY25)",
-    subtitle = "Externally and self-funded units—across **Natural Resources (96.3% non-E&G)**, **Ag/Ext/CSFS (92.1%)**, **CVMBS (91.4%)**, and **Engineering (82.1%)**—<br>scale with sponsored awards and service revenue rather than E&G tuition; **62.1% of E&G Admin Pro** sit in Central VP & Admin units.",
+    title = "C. Campus-Wide Funding Split: 69.7% of All Admin Pro FTE Work Outside E&G (FY25 Fact Book Table 124)",
+    subtitle = "Externally and self-funded units across **Natural Resources (96.3% non-E&G)**, **Ag/Ext/CSFS (92.1%)**, **CVMBS (91.4%)**, and **Engineering (82.1%)** scale with external awards & service revenue.",
     x = "FY2025 Administrative Professional FTE (by Actual Salary Distribution)",
     y = NULL,
     caption = paste(
-      "Sources: CSU Fact Book FY27 (Tables 107-128 & Table 124, pp. 114-140); CDHE Budget Data Books Format 30 (FY17-FY26); CSU System Audits (FY15-FY25) CPI-U adjusted.",
-      "Note: Continuous CDHE E&G Faculty avoids Fact Book FY27's 2018-19 Special/Temp-to-CCA rank migration artifact. E&G Classified FY21-24 omitted in Table 128 (dashed to FY25 Table 126 = 316.7).",
+      "Sources: CDHE Budget Data Books Formats 20, 25, 30 & 1100-1700 (FINAL_BDB FY15-16 through FY26-27); CSU Fact Book FY26 (pp.107-112 continuous E&G); Fact Book FY27 (Tables 123-124).",
+      "Note: FY27 CDHE Estimate drops Institutional Support (Fmt 1600) to 187.4 FTE (-10.4% vs FY15) and Total E&G FTE to 3,402.5 (-9.3% vs FY26).",
       sep = "\n"
     )
   ) +
-  theme_csu(base_size = 10.5, grid_axis = "x") +
-  theme(axis.text.y = element_text(size = 9.2, face = "bold", color = csu_colors$slate))
+  theme_csu(base_size = 10, grid_axis = "x") +
+  theme(axis.text.y = element_text(size = 8.9, face = "bold", color = csu_colors$slate))
 
-fig3 <- p3a / p3b + plot_layout(heights = c(1.15, 1.0))
-save_csu_fig(fig3, "fig03_workforce_overshoot_and_cemml", width = 12.2, height = 10.8)
+fig3 <- p3a / p3b / p3c + plot_layout(heights = c(1.25, 0.85, 0.95))
+save_csu_fig(fig3, "fig03_workforce_overshoot_and_cemml", width = 12.2, height = 11.8)
 
 # ==============================================================================
 # FIGURE 4: ATHLETICS GROSS VS. NET REALITY CHECK & DEBT PEERS

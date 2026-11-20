@@ -12,6 +12,8 @@ cpi_fy    <- read_csv(file.path(proc_dir, "macro_cpiu_fy.csv"), show_col_types =
 fte_fund  <- read_csv(file.path(proc_dir, "fte_by_fund_fy13_fy25.csv"), show_col_types = FALSE)
 ap_unit   <- read_csv(file.path(proc_dir, "ap_fte_by_unit_fy25.csv"), show_col_types = FALSE)
 bdb       <- read_csv(file.path(proc_dir, "bdb_eg_summary_fy17_fy27.csv"), show_col_types = FALSE)
+bdb_func  <- read_csv(file.path(proc_dir, "bdb_format20_functional_eg_fy15_fy27.csv"), show_col_types = FALSE)
+fb26_cont <- read_csv(file.path(proc_dir, "factbook_continuous_eg_fte_fy13_fy25.csv"), show_col_types = FALSE)
 eg_div    <- read_csv(file.path(proc_dir, "eg_division_budgets_fy17_fy26.csv"), show_col_types = FALSE)
 audits    <- read_csv(file.path(proc_dir, "audits_system_fy15_fy25.csv"), show_col_types = FALSE)
 ath_csu   <- read_csv(file.path(proc_dir, "athletics_ncaa_csu_fy19_fy25.csv"), show_col_types = FALSE)
@@ -143,6 +145,50 @@ ap_unit_summary <- ap_unit |>
 write_csv(ap_unit_summary, file.path(proc_dir, "cemml_ap_unit_summary_fy25.csv"))
 
 # ==============================================================================
+# 1B. FUNCTIONAL E&G DISAGGREGATION (STAFF WHO TEACH VS. CENTRAL GENERAL ADMIN)
+# ==============================================================================
+message("--- Computing 1B: CDHE Functional E&G AP & Workforce Split (FY15-FY27) ---")
+
+f15_fn <- bdb_func |> filter(fiscal_year == 2015L)
+f24_fn <- bdb_func |> filter(fiscal_year == 2024L)
+f26_fn <- bdb_func |> filter(fiscal_year == 2026L, status == "Actual")
+f27_fn <- bdb_func |> filter(fiscal_year == 2027L, status == "Estimate")
+
+eg_ap_func_split <- tribble(
+  ~func_order, ~cdhe_format, ~nacubo_function, ~role_scope, ~ap_fy15, ~ap_fy24, ~ap_fy26, ~ap_fy27_est, ~tot_fy15, ~tot_fy26, ~tot_fy27_est, ~usd_fy26_m,
+  1L, "Fmt 1400", "Academic Support", "Advising, student-success coordinators, libraries & instructional tech",
+      f15_fn$acad_ap_fte, f24_fn$acad_ap_fte, f26_fn$acad_ap_fte, f27_fn$acad_ap_fte,
+      f15_fn$acad_fte, f26_fn$acad_fte, f27_fn$acad_fte, round(f26_fn$acad_usd / 1e6, 2),
+  2L, "Fmt 1100", "Instruction (Non-Faculty AP)", "Staff who teach, teaching-lab coordinators, clinical & dept. instructional roles",
+      f15_fn$inst_ap_fte, f24_fn$inst_ap_fte, f26_fn$inst_ap_fte, f27_fn$inst_ap_fte,
+      f15_fn$inst_fte, f26_fn$inst_fte, f27_fn$inst_fte, round(f26_fn$inst_usd / 1e6, 2),
+  3L, "Fmt 1600", "Institutional Support (General Admin)", "Central executive, finance/budget, HR, legal & general administration",
+      f15_fn$inst_supp_ap_fte, f24_fn$inst_supp_ap_fte, f26_fn$inst_supp_ap_fte, f27_fn$inst_supp_ap_fte,
+      f15_fn$inst_supp_fte, f26_fn$inst_supp_fte, f27_fn$inst_supp_fte, round(f26_fn$inst_supp_usd / 1e6, 2),
+  4L, "Fmt 1500", "Student Services", "Admissions, financial aid, registrar & student counseling/support",
+      f15_fn$stud_ap_fte, f24_fn$stud_ap_fte, f26_fn$stud_ap_fte, f27_fn$stud_ap_fte,
+      f15_fn$stud_fte, f26_fn$stud_fte, f27_fn$stud_fte, round(f26_fn$stud_usd / 1e6, 2),
+  5L, "Fmt 1200-1300", "Research & Public Service (State E&G)", "State-supported E&G research centers & public service staff",
+      f15_fn$res_ap_fte + f15_fn$pub_ap_fte, f24_fn$res_ap_fte + f24_fn$pub_ap_fte,
+      f26_fn$res_ap_fte + f26_fn$pub_ap_fte, f27_fn$res_ap_fte + f27_fn$pub_ap_fte,
+      f15_fn$res_fte + f15_fn$pub_fte, f26_fn$res_fte + f26_fn$pub_fte, f27_fn$res_fte + f27_fn$pub_fte,
+      round((f26_fn$res_usd + f26_fn$pub_usd) / 1e6, 2),
+  6L, "Fmt 1700", "Operation & Maintenance of Plant", "Facilities engineering, maintenance & E&G physical plant operations",
+      f15_fn$plant_ap_fte, f24_fn$plant_ap_fte, f26_fn$plant_ap_fte, f27_fn$plant_ap_fte,
+      f15_fn$plant_fte, f26_fn$plant_fte, f27_fn$plant_fte, round(f26_fn$plant_usd / 1e6, 2)
+) |>
+  mutate(
+    ap_share_fy26 = ap_fy26 / sum(ap_fy26),
+    ap_delta_15_26 = ap_fy26 - ap_fy15,
+    tot_delta_15_26 = tot_fy26 - tot_fy15,
+    tot_pct_15_26 = (tot_fy26 - tot_fy15) / tot_fy15,
+    tot_share_fy26 = tot_fy26 / sum(tot_fy26),
+    source_id = "cdhe_bdb_fy15_fy27"
+  )
+
+write_csv(eg_ap_func_split, file.path(proc_dir, "eg_ap_functional_split_fy15_fy26.csv"))
+
+# ==============================================================================
 # 2. REAL FINANCIAL SERIES (AUDITED + E&G BDB)
 # ==============================================================================
 message("--- Computing 2: CPI-Adjusted Real Tuition, State Support, & Debt ---")
@@ -245,9 +291,9 @@ message("--- Computing 5: Ledger B Structural Attribution Ranges ---")
 # Separates AUDITED BASELINE FACTS from ILLUSTRATIVE WEIGHTS (sum of midpoints = 100%)
 structural_blame <- tribble(
   ~bucket_order, ~driver, ~low_pct, ~mid_pct, ~high_pct, ~audited_anchor, ~methodology_note,
-  1L, "E&G Workforce Growth & Incremental Budgeting", 40, 45, 50,
-      "E&G Admin Pro FTE +62.3% (858 -> 1,393, FY15-25; +326 FTE post-FY22) while continuous CDHE E&G Faculty grew +7.2% (FY17-26) & Resident FTE fell -5.0% (FY15-26). Excludes externally/self-funded staff. 3% comp pool = $33.7M/yr.",
-      "Order-of-magnitude illustration reflecting permanent payroll share of E&G expenditures (~70%+) shaped by legacy incremental budgeting.",
+  1L, "E&G Payroll Cost Inflation, Support Mix & Incremental Budgeting", 40, 45, 50,
+      "Total E&G FTE grew +7.0% (3,506 -> 3,752, FY15-26, matching +6.6% Student FTE; Central General Admin Fmt 1600 = 239.1 FTE / 6.4% of E&G FTE, budgeted at 187.4 in FY27), while Academic + Student Support rose +39.9% (+224 FTE) and each 3% comp/fringe pool adds ~$33.7M/yr.",
+      "Order-of-magnitude illustration reflecting the ~70%+ personnel share of E&G expenditures, cumulative benefit/wage inflation, and fixed base carry-forwards.",
   2L, "Long-Term Capital Commitments & Debt Service", 20, 22, 25,
       "CSU System Debt doubled from $671.9M (FY13) to $1,449.3M peak (FY23) / $1,330.7M (FY25) + $79.1M FY25 STRATA Laser bond. E&G Central Debt Service more than tripled from $10.2M (FY15) to $31.9M (FY26).",
       "Captures hard bond covenants, debt service, and new building O&M/utilities that remain fixed during enrollment dips.",
@@ -255,8 +301,8 @@ structural_blame <- tribble(
       "Gross spending $75.24M (FY25), Direct+Indirect Univ Support $26.00M + $6.14M student fees, minus $10.93M athletic aid flow-back = ~$15.6M net institutional operating support (B2 E&G = $17.15M in FY26).",
       "Excludes $206.96M bonded athletic debt (counted in Bucket 2 to prevent double-counting) and student fees paid outside E&G.",
   4L, "State Funding Limits, Tuition Discounting & F&A Scope", 15, 16, 20,
-      "Flat State FFS+COF ($211.1M = 23.4% of FY27 State Approp); System tuition discount rate rose 17.9% (FY17) -> 21.3% (FY25, $174.1M allowance); $76M IDCR does not cover E&G instructional deficits.",
-      "Reflects state structural cap under TABOR/Medicaid crowding + institutional merit aid competition for non-resident students."
+      "FY27 State FFS+COF flat at $211.1M (23.4% of State Approp); System discount rate rose 17.9% (FY17) -> 21.3% (FY25, $174.1M); Nov. 2026 Amend. 87 (+$1.97B FY28) & Prop NN relieve K-12/Medicaid General Fund crowding but remain earmarked outside E&G instruction.",
+      "Reflects state TABOR/Medicaid crowding prior to Nov. 2026 reforms + institutional merit aid competition for non-resident students."
 )
 write_csv(structural_blame, file.path(proc_dir, "structural_blame_pie.csv"))
 
@@ -287,7 +333,7 @@ rem_recur_m    <- fy28_mid_m - net_ath_sup_m
 topline_tbl <- tribble(
   ~section, ~item, ~amount_m, ~share_pct, ~growth_share_pct, ~source_citation,
   "FY26 E&G Budget", "Academic Colleges, Agencies & Student Support (incl. fringe)", fy26_acad_m,    fy26_acad_m / fy26_total_m, NA_real_, "ColOBS FY26",
-  "FY26 E&G Budget", "Central Admin, VP Ops, IT, HR & Pres. (incl. fringe)",       fy26_admin_m,   fy26_admin_m / fy26_total_m, NA_real_, "ColOBS FY26",
+  "FY26 E&G Budget", "Campus Operations, Facilities, IT & Central Admin (incl. fringe)", fy26_admin_m, fy26_admin_m / fy26_total_m, NA_real_, "ColOBS FY26 (Fmt 1600 Gen Admin = $47.50M / 5.4%)",
   "FY26 E&G Budget", "Institutional Financial Aid (E&G Discounting)",             fy26_aid_m,     fy26_aid_m / fy26_total_m, NA_real_, "ColOBS FY26",
   "FY26 E&G Budget", "Central Utilities, Insurance & Reserves",                   fy26_central_m, fy26_central_m / fy26_total_m, NA_real_, "ColOBS FY26",
   "FY26 E&G Budget", "Central E&G Capital Debt Service (XA)",                     fy26_debt_m,    fy26_debt_m / fy26_total_m, debt_grow_m / tot_grow_m, "ColOBS FY15 & FY26",

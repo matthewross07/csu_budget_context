@@ -94,17 +94,17 @@
 <text x='693.76' y='270.52' text-anchor='middle' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='16.80px' lengthAdjust='spacingAndGlyphs'>80%</text>
 <text x='835.49' y='270.52' text-anchor='middle' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='21.47px' lengthAdjust='spacingAndGlyphs'>100%</text>
 <rect x='125.59' y='94.03' width='9.07' height='9.07' style='stroke-width: 1.28; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C04B35;' />
-<rect x='312.98' y='94.03' width='9.07' height='9.07' style='stroke-width: 1.28; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9A7B1C;' />
+<rect x='349.35' y='94.03' width='9.07' height='9.07' style='stroke-width: 1.28; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9A7B1C;' />
 <rect x='125.59' y='109.78' width='9.07' height='9.07' style='stroke-width: 1.28; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9AA5AC;' />
-<rect x='312.98' y='109.78' width='9.07' height='9.07' style='stroke-width: 1.28; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #3E6B89;' />
+<rect x='349.35' y='109.78' width='9.07' height='9.07' style='stroke-width: 1.28; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #3E6B89;' />
 <rect x='125.59' y='125.53' width='9.07' height='9.07' style='stroke-width: 1.28; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #2C3539;' />
-<rect x='312.98' y='125.53' width='9.07' height='9.07' style='stroke-width: 1.28; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1E4D2B;' />
+<rect x='349.35' y='125.53' width='9.07' height='9.07' style='stroke-width: 1.28; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1E4D2B;' />
 <text x='140.49' y='101.56' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='135.11px' lengthAdjust='spacingAndGlyphs'>Athletics E&amp;G Base ($17.2M | 1.9%)</text>
-<text x='327.88' y='101.56' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='159.38px' lengthAdjust='spacingAndGlyphs'>Central E&amp;G Debt Service ($31.9M | 3.6%)</text>
+<text x='364.25' y='101.56' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='159.38px' lengthAdjust='spacingAndGlyphs'>Central E&amp;G Debt Service ($31.9M | 3.6%)</text>
 <text x='140.49' y='117.32' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='126.22px' lengthAdjust='spacingAndGlyphs'>Utilities &amp; Central ($38.5M | 4.4%)</text>
-<text x='327.88' y='117.32' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='127.64px' lengthAdjust='spacingAndGlyphs'>Inst. Financial Aid ($83.7M | 9.5%)</text>
-<text x='140.49' y='133.07' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='166.66px' lengthAdjust='spacingAndGlyphs'>Central Admin &amp; VP Units ($125.6M | 14.2%)</text>
-<text x='327.88' y='133.07' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='252.73px' lengthAdjust='spacingAndGlyphs'>Academic Colleges, Agencies &amp; Student Support ($588.3M | 66.5%)</text>
+<text x='364.25' y='117.32' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='127.64px' lengthAdjust='spacingAndGlyphs'>Inst. Financial Aid ($83.7M | 9.5%)</text>
+<text x='140.49' y='133.07' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='203.03px' lengthAdjust='spacingAndGlyphs'>Campus Ops, Facilities, IT &amp; Admin ($125.6M | 14.2%)</text>
+<text x='364.25' y='133.07' style='font-size: 8.40px;fill: #495057; font-family: "Arial";' textLength='252.73px' lengthAdjust='spacingAndGlyphs'>Academic Colleges, Agencies &amp; Student Support ($588.3M | 66.5%)</text>
 <text x='19.43' y='74.30' style='font-size: 9.20px;fill: #495057; font-family: "Arial";' textLength='34.72px' lengthAdjust='spacingAndGlyphs'>Athletics</text>
 <text x='56.69' y='74.30' style='font-size: 9.20px;fill: #495057; font-family: "Arial";' textLength='19.39px' lengthAdjust='spacingAndGlyphs'>E&amp;G</text>
 <text x='78.63' y='74.30' style='font-size: 9.20px;fill: #495057; font-family: "Arial";' textLength='30.14px' lengthAdjust='spacingAndGlyphs'>funding</text>
@@ -153,7 +153,7 @@
 <text x='219.11' y='417.49' text-anchor='middle' style='font-size: 8.11px; font-weight: bold;fill: #FFFFFF; font-family: "Arial";' textLength='49.14px' lengthAdjust='spacingAndGlyphs'>Net Athletics</text>
 <text x='219.11' y='427.71' text-anchor='middle' style='font-size: 8.11px; font-weight: bold;fill: #FFFFFF; font-family: "Arial";' textLength='57.56px' lengthAdjust='spacingAndGlyphs'>$15.6M (23.6%)</text>
 <text x='542.80' y='417.25' text-anchor='middle' style='font-size: 8.11px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='210.33px' lengthAdjust='spacingAndGlyphs'>~$49M-$50M/yr (~76% of gap) REMAINS UNRESOLVED</text>
-<text x='542.80' y='427.95' text-anchor='middle' style='font-size: 8.11px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='248.61px' lengthAdjust='spacingAndGlyphs'>(Mix shifts, E&amp;G payroll growth, incremental model &amp; state caps)</text>
+<text x='542.80' y='427.95' text-anchor='middle' style='font-size: 8.11px; font-weight: bold;fill: #2C3539; font-family: "Arial";' textLength='273.73px' lengthAdjust='spacingAndGlyphs'>(Enrollment mix, per-employee cost inflation, discounting &amp; state caps)</text>
 <text x='133.79' y='396.93' style='font-size: 7.97px; font-weight: bold;fill: #7A5E10; font-family: "Arial";' textLength='257.17px' lengthAdjust='spacingAndGlyphs'>Pres. ($1.10M) + Provost ($0.33M) 1x payouts = $1.43M (2.2% of 1 yr)</text>
 <line x1='133.79' y1='398.01' x2='133.79' y2='404.52' style='stroke-width: 1.17; stroke: #7A5E10; stroke-linecap: butt;' />
 </g>

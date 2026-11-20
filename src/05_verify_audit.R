@@ -11,10 +11,11 @@ message("=== Running Automated Audit Verification Checks ===")
 
 # 1. Manifest integrity
 manifest <- read_csv(file.path(PROJECT_ROOT, "data", "sources_manifest.csv"), show_col_types = FALSE)
-stopifnot(nrow(manifest) >= 65)
+stopifnot(nrow(manifest) >= 71)
 stopifnot(all(manifest$status == "OK"))
 stopifnot(all(!is.na(manifest$sha256) & nzchar(manifest$sha256)))
-message("[PASS] Manifest: ", nrow(manifest), " primary sources verified OK with SHA-256 hashes.")
+stopifnot("co_bluebook_2026" %in% manifest$source_id)
+message("[PASS] Manifest: ", nrow(manifest), " primary sources verified OK with SHA-256 hashes (incl. 2026 CO Blue Book).")
 
 # 2. FY27 V4 bridge & FY28 bridge reconciliation
 fy27_b <- read_csv(file.path(proc_dir, "fy27_v4_budget_bridge.csv"), show_col_types = FALSE)
@@ -74,4 +75,26 @@ for (fn in expected_figs) {
   stopifnot(file.exists(p_svg) && file.info(p_svg)$size > 5000)
 }
 message("[PASS] All 7 PNG and 7 SVG figures exist and are non-empty.")
+
+# 8. Continuous E&G Functional Split, Fact Book FY26 Continuity & 2026 Ballot Table
+bdb_f <- read_csv(file.path(proc_dir, "bdb_format20_functional_eg_fy15_fy27.csv"), show_col_types = FALSE)
+func_sum <- bdb_f$inst_fte + bdb_f$res_fte + bdb_f$pub_fte + bdb_f$acad_fte + bdb_f$stud_fte + bdb_f$inst_supp_fte + bdb_f$plant_fte
+stopifnot(all(abs(func_sum - bdb_f$tot_eg_fte) < 0.05))
+b26_f <- bdb_f |> filter(fiscal_year == 2026L, status == "Actual")
+stopifnot(abs(b26_f$tot_eg_fte - 3751.79) < 0.02)
+stopifnot(abs(b26_f$inst_ap_fte - 326.37) < 0.02)
+stopifnot(abs(b26_f$inst_supp_fte - 239.14) < 0.02)
+stopifnot(abs(b26_f$obj_ap_nonfac_fte - 1469.16) < 0.02)
+
+fb_c <- read_csv(file.path(proc_dir, "factbook_continuous_eg_fte_fy13_fy25.csv"), show_col_types = FALSE)
+fb15 <- fb_c |> filter(fiscal_year == 2015L)
+fb25 <- fb_c |> filter(fiscal_year == 2025L)
+stopifnot(abs(fb15$eg_nonfac_combined - 1429.4) < 0.1)
+stopifnot(abs(fb25$eg_nonfac_combined - 1709.3) < 0.1)
+stopifnot(abs(fb15$eg_fac_total_cont - 1167.3) < 0.1)
+stopifnot(abs(fb25$eg_fac_total_cont - 1319.1) < 0.1)
+
+ballot26 <- read_csv(file.path(proc_dir, "co_2026_ballot_fiscal_impacts.csv"), show_col_types = FALSE)
+stopifnot(nrow(ballot26) >= 5, "Amendment 87" %in% ballot26$measure, "Proposition 137" %in% ballot26$measure)
+message("[PASS] CDHE Format 20/1100-1700 functional E&G sums, continuous Fact Book series, and 2026 Ballot table verified.")
 message("ALL AUDIT CHECKS PASSED")

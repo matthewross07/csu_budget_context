@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Why Trust This Analysis? Verification Checks &amp; Primary Sources – Understanding CSU’s FY27–28 Budget Gap</title>
+<title>Verification Architecture &amp; Primary Sources – Understanding CSU’s FY27–28 Budget Gap</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -185,10 +185,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ai-tooling-disclosure-five-substantive-reasons-to-verify-these-numbers-independently" id="toc-ai-tooling-disclosure-five-substantive-reasons-to-verify-these-numbers-independently" class="nav-link active" data-scroll-target="#ai-tooling-disclosure-five-substantive-reasons-to-verify-these-numbers-independently">1. AI Tooling Disclosure &amp; Five Substantive Reasons to Verify These Numbers Independently</a></li>
+  <li><a href="#reproducibility-architecture-five-substantive-verification-checks" id="toc-reproducibility-architecture-five-substantive-verification-checks" class="nav-link active" data-scroll-target="#reproducibility-architecture-five-substantive-verification-checks">1. Reproducibility Architecture &amp; Five Substantive Verification Checks</a></li>
   <li><a href="#accounting-scope-deflation-notes" id="toc-accounting-scope-deflation-notes" class="nav-link" data-scroll-target="#accounting-scope-deflation-notes">2. Accounting Scope &amp; Deflation Notes</a></li>
   <li><a href="#documented-data-gaps-portal-blocks-data_gaps.md" id="toc-documented-data-gaps-portal-blocks-data_gaps.md" class="nav-link" data-scroll-target="#documented-data-gaps-portal-blocks-data_gaps.md">3. Documented Data Gaps &amp; Portal Blocks (<code>DATA_GAPS.md</code>)</a></li>
-  <li><a href="#complete-primary-source-manifest-70-verified-files-apis" id="toc-complete-primary-source-manifest-70-verified-files-apis" class="nav-link" data-scroll-target="#complete-primary-source-manifest-70-verified-files-apis">4. Complete Primary Source Manifest (70 Verified Files &amp; APIs)</a></li>
+  <li><a href="#complete-primary-source-manifest-71-verified-files-apis" id="toc-complete-primary-source-manifest-71-verified-files-apis" class="nav-link" data-scroll-target="#complete-primary-source-manifest-71-verified-files-apis">4. Complete Primary Source Manifest (71 Verified Files &amp; APIs)</a></li>
   <li><a href="#reproducibility-commands" id="toc-reproducibility-commands" class="nav-link" data-scroll-target="#reproducibility-commands">5. Reproducibility Commands</a></li>
   </ul>
 </nav>
@@ -198,8 +198,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why Trust This Analysis? Verification Checks &amp; Primary Sources</h1>
-<p class="subtitle lead">AI Tooling Disclosure, Five Substantive Analytical Checks, Accounting Scope, Data Gaps, and All 70 Archived Sources</p>
+<h1 class="title">Verification Architecture &amp; Primary Sources</h1>
+<p class="subtitle lead">Reproducibility Disclosure, Five Analytical Safeguards, Accounting Scope, Data Gaps, and All 71 Archived Sources</p>
 </div>
 
 
@@ -217,19 +217,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <hr>
-<section id="ai-tooling-disclosure-five-substantive-reasons-to-verify-these-numbers-independently" class="level2">
-<h2 class="anchored" data-anchor-id="ai-tooling-disclosure-five-substantive-reasons-to-verify-these-numbers-independently">1. AI Tooling Disclosure &amp; Five Substantive Reasons to Verify These Numbers Independently</h2>
-<p>This reference site and companion PDF brief were initiated and reviewed by <strong>Matthew R.V. Ross</strong> using <strong>Google DeepMind’s Antigravity</strong> coding agent to execute an open-source, reproducible <strong>R (<code>4.5.2</code>) + Quarto (<code>1.10</code>)</strong> pipeline (<code>src/00_setup_theme.R</code> through <code>src/05_verify_audit.R</code>). When evaluating an AI-assisted fiscal analysis on a contested campus topic, readers appropriately ask: <em>“Why should anyone trust these numbers?”</em> Five concrete analytical safeguards—and two places where cross-checking overturned initial assumptions—anchor the answers:</p>
+<section id="reproducibility-architecture-five-substantive-verification-checks" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility-architecture-five-substantive-verification-checks">1. Reproducibility Architecture &amp; Five Substantive Verification Checks</h2>
+<p>This reference site and companion PDF brief were initiated and reviewed by <strong>Matthew R.V. Ross</strong> using <strong>Google DeepMind’s Antigravity</strong> coding agent to execute an open-source, reproducible <strong>R (<code>4.5.2</code>) + Quarto (<code>1.10</code>)</strong> pipeline (<code>src/00_setup_theme.R</code> through <code>src/05_verify_audit.R</code>). Five concrete engineering and accounting checks anchor every calculation:</p>
 <ol type="1">
-<li><strong>Zero Unverified LLM Memory (Deterministic R Computation From 70 Archived Filings):</strong> Not a single dollar amount, headcount, or percentage in any chart or table originates from language-model recall. Script <code>01_fetch_sources.R</code> downloaded and SHA-256 hashed 70 primary public PDFs, governance memos, and federal/BLS API tables across CSU Office of Budgets, CSU IRP&amp;E Fact Books, CDHE Format 30/20 Budget Data Books, CSU System Audited Financial Statements (<code>FY15–FY25</code>), Colorado Office of the State Auditor (OSA) statutory NCAA Agreed-Upon Procedures reports (<code>2516F-B</code>, <code>2505F-B</code>), BLS CPI-U (<code>CUUR0000SA0</code>), and Urban Institute IPEDS (<code>2015–2023</code>), logging exact source URLs and page/table references in <a href="data/sources_manifest.csv"><code>data/sources_manifest.csv</code></a>.</li>
-<li><strong>Multi-Ledger Accounting Triangulation Across Independent Entities:</strong> Every headline claim is cross-checked across at least two independent reporting systems—reconciling CSU internal <code>ColOBS</code> division budgets (<code>B2 Athletics $16.91M</code> FY25 / <code>$17.15M</code> FY26) against Colorado State Auditor NCAA filings (<code>2516F-B</code>), <code>Fact Book FY27</code> workforce tables against continuous <code>CDHE Format 30</code> Budget Data Books (<code>FINAL_BDB</code>), and CSU System Financial Statements against U.S. Department of Education IPEDS series.</li>
-<li><strong>Testing and Overturning Initial Premises When Primary Data Disagreed:</strong>
+<li><strong>Deterministic Computation From 71 Checksummed Primary Filings:</strong> Zero dollar amounts, headcounts, or percentages come from language-model memory. Script <code>01_fetch_sources.R</code> downloaded and SHA-256 hashed 71 primary public PDFs, governance memos, Colorado Legislative Council Blue Book fiscal notes, and federal/BLS API tables across CSU Office of Budgets, CSU IRP&amp;E Fact Books, CDHE Budget Data Books (<code>Formats 20, 25, 30 &amp; 1100–1700</code>), CSU System Audited Financial Statements (<code>FY15–FY25</code>), Colorado Office of the State Auditor (OSA) statutory NCAA Agreed-Upon Procedures reports (<code>2516F-B</code>, <code>2505F-B</code>), BLS CPI-U (<code>CUUR0000SA0</code>), and Urban Institute IPEDS (<code>2015–2023</code>), logging exact source URLs and page/table references in <a href="data/sources_manifest.csv"><code>data/sources_manifest.csv</code></a>.</li>
+<li><strong>Multi-Ledger Accounting Triangulation Across Independent Entities:</strong> Every headline figure is cross-checked across independent reporting systems—reconciling CSU internal <code>ColOBS</code> division budgets (<code>B2 Athletics $16.91M</code> FY25 / <code>$17.15M</code> FY26) against Colorado State Auditor NCAA filings (<code>2516F-B</code>), <code>Fact Book</code> workforce tables against <code>CDHE Formats 20, 25 &amp; 30</code>, Nov.&nbsp;3, 2026 Colorado Blue Book fiscal notes (<code>Amendment 87</code>, <code>Prop NN</code>, <code>Prop 137</code>) against pre-election OSPB forecasts, and CSU System Financial Statements against U.S. Department of Education IPEDS series.</li>
+<li><strong>Separating E&amp;G Function, Title Conversions &amp; Scale Constraints:</strong>
 <ul>
-<li><strong>What overturned the initial “faculty + admin grew equally” premise:</strong> Fact Book FY27 (<code>Table 128</code>) makes E&amp;G Faculty appear to jump <code>+43.3%</code> (<code>901.0 → 1,291.0</code> FTE, FY15–FY25) because pre-2019 <code>"Special"</code> and <code>"Temporary"</code> instructors vanish from active rank tables and reappear in FY19–FY20 as newly formalised <code>"Contract"</code> and <code>"Continuing"</code> (<code>CCA</code>) faculty under the April 2018 Faculty Manual Section E reform. Triangulating against continuous <code>CDHE Format 30</code> Budget Data Books shows true continuous <strong>E&amp;G Faculty FTE grew <code>+7.2%</code> over nine years (<code>1,528.6</code> in FY17 → <code>1,638.5</code> in FY26, <code>-0.8%</code> vs.&nbsp;FY20)</strong> and Tenured/TT grew <code>+2.2%</code>, whereas <strong>E&amp;G Administrative Professional FTE rose <code>+62.3%</code> (<code>FY15–FY25</code>), including <code>+30.6%</code> (<code>+326.3</code> FTE) after FY22</strong> (<code>62.1%</code> in Central VP/Admin/Spur units).</li>
-<li><strong>Where headline-only critiques fall short mathematically:</strong> Simultaneously, testing headline flashpoints against CSU’s <code>$885.16M</code> FY26 E&amp;G budget and <code>$66.0M</code> FY28 midpoint gap shows <code>B2 Athletics ($17.15M)</code> + <code>XA Debt Service ($31.86M)</code> equal <strong>5.5% of E&amp;G (<code>8.0%</code> of 10-year E&amp;G growth)</strong>, and cutting 100% of net Athletics support (<code>~$15.57M</code>) plus <code>$1.43M</code> in recent transition payouts still leaves <strong>~76% (<code>~$50M/yr</code>)</strong> of the FY28 shortfall unresolved.</li>
+<li><strong>Isolating HR reclassifications and functional roles (<code>CDHE Formats 1100–1700</code> &amp; continuous <code>FB26</code>):</strong> Cross-checking <code>CDHE Format 20</code> and <code>CSU_Factbook_FY26.pdf</code> (<code>pp. 107–112</code>) controls simultaneously for <code>-254.6</code> <code>State Classified -&gt; AP/Recharge</code> conversions, <code>2018–19</code> <code>Special/Temporary -&gt; CCA</code> faculty rank formalization, and where E&amp;G Non-Classified (<code>Admin Pro</code>) staff actually work—establishing that total E&amp;G workforce (<code>+7.0%</code>, <code>3,506 -&gt; 3,752</code>) tracked Student FTE (<code>+6.6%</code>), that <code>85.5%</code> of E&amp;G AP staff sit in <code>Academic Support</code> (<code>484.1</code> FTE), <code>Instruction</code> (<code>326.4</code> FTE staff who teach and support labs), <code>Student Services</code> (<code>204.8</code>), <code>Research/Public Service</code> (<code>190.6</code>), and <code>Plant</code> (<code>50.1</code>), and that <code>Institutional Support</code> general admin equals <code>239.1</code> total FTE (<code>6.4%</code> of E&amp;G FTE / <code>$47.50M</code>, falling to <code>187.4</code> FTE in <code>FY27 Estimate</code>).</li>
+<li><strong>Testing headline cuts against <code>$885.16M</code> E&amp;G and <code>$66.0M</code> FY28 math:</strong> Across CSU’s official FY26 E&amp;G budget (<code>$885.16M</code>), <code>B2 Athletics</code> (<code>$17.15M</code>, <code>1.9%</code>) + <code>XA Debt Service</code> (<code>$31.86M</code>, <code>3.6%</code>) equal <strong>5.5% of E&amp;G (<code>8.0%</code> of 10-year E&amp;G growth)</strong>, and eliminating 100% of net Athletics support (<code>~$15.57M</code>) plus <code>$1.43M</code> in recent transition payouts still leaves <strong>~76% (<code>~$49M–$50M/yr</code>)</strong> of the projected FY28 shortfall unresolved.</li>
 </ul></li>
-<li><strong>Disaggregating Self-Supporting Grants &amp; Controlling Accounting Transfers:</strong> Rather than treating all-funds staff ratios (<code>~3:1</code>) as uniform E&amp;G overhead, <code>Fact Book Table 123–124</code> isolates <strong>69.7% (<code>3,205.5</code> of <code>4,597.7</code>) of FY25 Administrative Professional FTE funded outside E&amp;G</strong> (<code>Sponsored Programs</code>, <code>Other Funds</code>, <code>Recharge Centers</code>, <code>Auxiliaries</code> across units such as CIRA, CEMML, VTH, AES, Extension, and CSFS). Likewise, <code>ColOBS</code> division analyses adjust explicitly for FY19’s <strong>$41.64M</strong> aid shift (<code>XA</code> to <code>P1</code>) and FY26’s <strong>~$111.26M</strong> pooled fringe decentralization so accounting transfers are never mislabeled as organic spending spikes.</li>
-<li><strong>Independent Two-Way Verification &amp; Open Programmatic Assertions (<code>src/05_verify_audit.R</code>):</strong> Claims circulating from both administration and faculty critics were independently verified against public filings and press archives—confirming the <code>$1.10M</code> Parsons and <code>$325k</code> Underwood settlements (<code>$1.43M</code> combined), Coach Mora’s <code>$2.4M</code>–<code>$2.8M</code> base / <code>$1.5M</code> UConn buyout package, and zero CSU employment tie for Title IX consultant Jeff Lamoureux. Seven programmatic checks in <code>src/05_verify_audit.R</code> verify all ledger balances and partitions on every build, and all source scripts and processed tables are published openly so any reader can inspect or challenge every calculation.</li>
+<li><strong>Disaggregating Non-E&amp;G Research/Clinical/Agency Funds &amp; Controlling Budget Transfers:</strong> <code>Fact Book Table 123–124</code> isolates <strong>69.7% (<code>3,205.5</code> of <code>4,597.7</code>) of FY25 Administrative Professional FTE funded outside E&amp;G</strong> (<code>Sponsored Programs</code>, <code>Other Funds</code>, <code>Recharge Centers</code>, <code>Auxiliaries</code>—plus <code>Prop 137</code>’s dedicated non-E&amp;G <code>CSFS</code> wildfire funds). Likewise, <code>ColOBS</code> division analyses control explicitly for FY19’s <strong>$41.64M</strong> aid shift (<code>XA</code> to <code>P1</code>) and FY26’s <strong>~$111.26M</strong> pooled fringe decentralization.</li>
+<li><strong>Public-Record Verification &amp; Open Programmatic Assertions (<code>src/05_verify_audit.R</code>):</strong> Claims across campus viewpoints are verified against primary public records—confirming the <code>$1.10M</code> Parsons and <code>$325k</code> Underwood settlements (<code>$1.43M</code> combined), Coach Mora’s <code>$2.4M–$2.8M</code> base / <code>$1.5M</code> UConn buyout package, zero CSU employment record tying external Title IX consultant Jeff Lamoureux to Fort Collins, and post-election <code>Amendment 87</code> (<code>+$1.972B</code> FY28) / <code>Prop NN</code> (<code>+$521M</code> retained / <code>-$153.1M</code> near-term GF) impacts. Eight programmatic test groups in <code>src/05_verify_audit.R</code> verify all ledger balances, functional FTE identities, and fund partitions on every build.</li>
 </ol>
 <p><em>Corrections, missing primary citations, or alternative accounting interpretations from any member of the CSU community are welcomed via <a href="https://github.com/matthewross07/csu_budget_context"><code>github.com/matthewross07/csu_budget_context</code></a>.</em></p>
 <hr>
@@ -259,23 +259,23 @@ Table&nbsp;1
 </figcaption>
 <div aria-describedby="tbl-gaps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="ayvopxfjod" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ayvopxfjod table {
+<div id="doggvgyhkp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#doggvgyhkp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ayvopxfjod thead, #ayvopxfjod tbody, #ayvopxfjod tfoot, #ayvopxfjod tr, #ayvopxfjod td, #ayvopxfjod th {
+#doggvgyhkp thead, #doggvgyhkp tbody, #doggvgyhkp tfoot, #doggvgyhkp tr, #doggvgyhkp td, #doggvgyhkp th {
   border-style: none;
 }
 
-#ayvopxfjod p {
+#doggvgyhkp p {
   margin: 0;
   padding: 0;
 }
 
-#ayvopxfjod .gt_table {
+#doggvgyhkp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -301,12 +301,12 @@ Table&nbsp;1
   border-left-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_caption {
+#doggvgyhkp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ayvopxfjod .gt_title {
+#doggvgyhkp .gt_title {
   color: #FFFFFF;
   font-size: 15px;
   font-weight: bold;
@@ -318,7 +318,7 @@ Table&nbsp;1
   border-bottom-width: 0;
 }
 
-#ayvopxfjod .gt_subtitle {
+#doggvgyhkp .gt_subtitle {
   color: #FFFFFF;
   font-size: 12px;
   font-weight: initial;
@@ -330,7 +330,7 @@ Table&nbsp;1
   border-top-width: 0;
 }
 
-#ayvopxfjod .gt_heading {
+#doggvgyhkp .gt_heading {
   background-color: #1E4D2B;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -342,13 +342,13 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_bottom_border {
+#doggvgyhkp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_col_headings {
+#doggvgyhkp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -363,7 +363,7 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_col_heading {
+#doggvgyhkp .gt_col_heading {
   color: #333333;
   background-color: #EFF3F0;
   font-size: 12px;
@@ -383,7 +383,7 @@ Table&nbsp;1
   overflow-x: hidden;
 }
 
-#ayvopxfjod .gt_column_spanner_outer {
+#doggvgyhkp .gt_column_spanner_outer {
   color: #333333;
   background-color: #EFF3F0;
   font-size: 12px;
@@ -395,15 +395,15 @@ Table&nbsp;1
   padding-right: 4px;
 }
 
-#ayvopxfjod .gt_column_spanner_outer:first-child {
+#doggvgyhkp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ayvopxfjod .gt_column_spanner_outer:last-child {
+#doggvgyhkp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ayvopxfjod .gt_column_spanner {
+#doggvgyhkp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -415,11 +415,11 @@ Table&nbsp;1
   width: 100%;
 }
 
-#ayvopxfjod .gt_spanner_row {
+#doggvgyhkp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ayvopxfjod .gt_group_heading {
+#doggvgyhkp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -445,7 +445,7 @@ Table&nbsp;1
   text-align: left;
 }
 
-#ayvopxfjod .gt_empty_group_heading {
+#doggvgyhkp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -460,15 +460,15 @@ Table&nbsp;1
   vertical-align: middle;
 }
 
-#ayvopxfjod .gt_from_md > :first-child {
+#doggvgyhkp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ayvopxfjod .gt_from_md > :last-child {
+#doggvgyhkp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ayvopxfjod .gt_row {
+#doggvgyhkp .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -487,7 +487,7 @@ Table&nbsp;1
   overflow-x: hidden;
 }
 
-#ayvopxfjod .gt_stub {
+#doggvgyhkp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -500,7 +500,7 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#ayvopxfjod .gt_stub_row_group {
+#doggvgyhkp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -514,15 +514,15 @@ Table&nbsp;1
   vertical-align: top;
 }
 
-#ayvopxfjod .gt_row_group_first td {
+#doggvgyhkp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ayvopxfjod .gt_row_group_first th {
+#doggvgyhkp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ayvopxfjod .gt_summary_row {
+#doggvgyhkp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -532,16 +532,16 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#ayvopxfjod .gt_first_summary_row {
+#doggvgyhkp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_first_summary_row.thick {
+#doggvgyhkp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ayvopxfjod .gt_last_summary_row {
+#doggvgyhkp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -551,7 +551,7 @@ Table&nbsp;1
   border-bottom-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_grand_summary_row {
+#doggvgyhkp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -561,7 +561,7 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#ayvopxfjod .gt_first_grand_summary_row {
+#doggvgyhkp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -571,7 +571,7 @@ Table&nbsp;1
   border-top-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_last_grand_summary_row_top {
+#doggvgyhkp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -581,11 +581,11 @@ Table&nbsp;1
   border-bottom-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_striped {
+#doggvgyhkp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ayvopxfjod .gt_table_body {
+#doggvgyhkp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -594,7 +594,7 @@ Table&nbsp;1
   border-bottom-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_footnotes {
+#doggvgyhkp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -608,7 +608,7 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_footnote {
+#doggvgyhkp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -617,7 +617,7 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#ayvopxfjod .gt_sourcenotes {
+#doggvgyhkp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -631,7 +631,7 @@ Table&nbsp;1
   border-right-color: #D3D3D3;
 }
 
-#ayvopxfjod .gt_sourcenote {
+#doggvgyhkp .gt_sourcenote {
   font-size: 11px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -639,72 +639,72 @@ Table&nbsp;1
   padding-right: 5px;
 }
 
-#ayvopxfjod .gt_left {
+#doggvgyhkp .gt_left {
   text-align: left;
 }
 
-#ayvopxfjod .gt_center {
+#doggvgyhkp .gt_center {
   text-align: center;
 }
 
-#ayvopxfjod .gt_right {
+#doggvgyhkp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ayvopxfjod .gt_font_normal {
+#doggvgyhkp .gt_font_normal {
   font-weight: normal;
 }
 
-#ayvopxfjod .gt_font_bold {
+#doggvgyhkp .gt_font_bold {
   font-weight: bold;
 }
 
-#ayvopxfjod .gt_font_italic {
+#doggvgyhkp .gt_font_italic {
   font-style: italic;
 }
 
-#ayvopxfjod .gt_super {
+#doggvgyhkp .gt_super {
   font-size: 65%;
 }
 
-#ayvopxfjod .gt_footnote_marks {
+#doggvgyhkp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ayvopxfjod .gt_asterisk {
+#doggvgyhkp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ayvopxfjod .gt_indent_1 {
+#doggvgyhkp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ayvopxfjod .gt_indent_2 {
+#doggvgyhkp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ayvopxfjod .gt_indent_3 {
+#doggvgyhkp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ayvopxfjod .gt_indent_4 {
+#doggvgyhkp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ayvopxfjod .gt_indent_5 {
+#doggvgyhkp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ayvopxfjod .katex-display {
+#doggvgyhkp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ayvopxfjod div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#doggvgyhkp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -752,7 +752,7 @@ Table&nbsp;1
 <tr class="odd">
 <td class="gt_row gt_left" headers="Source-/-Dataset">CSU Fact Book FY27 Table 128</td>
 <td class="gt_row gt_left" headers="Observed-Constraint">Omits FY21–FY24 E&amp;G-only State Classified FTE rows (reports FY15–FY20 and FY25).</td>
-<td class="gt_row gt_left" headers="Primary-Fallback-/-Mitigation-Used">Left uninterpolated (NA); longitudinal comparisons anchor on FY15 vs. FY25 E&amp;G endpoints alongside all-funds Table 122/123.</td>
+<td class="gt_row gt_left" headers="Primary-Fallback-/-Mitigation-Used">Left uninterpolated in FB27 tables; continuous FY13–FY25 E&amp;G State Classified rows (389.5, 362.2, 352.1, 339.2) cross-checked in archived CSU_Factbook_FY26.pdf (p. 112) alongside CDHE Format 25.</td>
 <td class="gt_row gt_left" headers="Manual-Reference-/-Verification">CSU_Factbook_FY27_2026-10-22.pdf (pp. 142–147)</td>
 </tr>
 <tr class="even">
@@ -772,8 +772,8 @@ Table&nbsp;1
 </div>
 <hr>
 </section>
-<section id="complete-primary-source-manifest-70-verified-files-apis" class="level2">
-<h2 class="anchored" data-anchor-id="complete-primary-source-manifest-70-verified-files-apis">4. Complete Primary Source Manifest (70 Verified Files &amp; APIs)</h2>
+<section id="complete-primary-source-manifest-71-verified-files-apis" class="level2">
+<h2 class="anchored" data-anchor-id="complete-primary-source-manifest-71-verified-files-apis">4. Complete Primary Source Manifest (71 Verified Files &amp; APIs)</h2>
 <div class="cell">
 <div id="tbl-manifest" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -782,23 +782,23 @@ Table&nbsp;2
 </figcaption>
 <div aria-describedby="tbl-manifest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="jarchakmco" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jarchakmco table {
+<div id="frrssostty" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#frrssostty table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jarchakmco thead, #jarchakmco tbody, #jarchakmco tfoot, #jarchakmco tr, #jarchakmco td, #jarchakmco th {
+#frrssostty thead, #frrssostty tbody, #frrssostty tfoot, #frrssostty tr, #frrssostty td, #frrssostty th {
   border-style: none;
 }
 
-#jarchakmco p {
+#frrssostty p {
   margin: 0;
   padding: 0;
 }
 
-#jarchakmco .gt_table {
+#frrssostty .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -824,12 +824,12 @@ Table&nbsp;2
   border-left-color: #D3D3D3;
 }
 
-#jarchakmco .gt_caption {
+#frrssostty .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jarchakmco .gt_title {
+#frrssostty .gt_title {
   color: #FFFFFF;
   font-size: 15px;
   font-weight: bold;
@@ -841,7 +841,7 @@ Table&nbsp;2
   border-bottom-width: 0;
 }
 
-#jarchakmco .gt_subtitle {
+#frrssostty .gt_subtitle {
   color: #FFFFFF;
   font-size: 12px;
   font-weight: initial;
@@ -853,7 +853,7 @@ Table&nbsp;2
   border-top-width: 0;
 }
 
-#jarchakmco .gt_heading {
+#frrssostty .gt_heading {
   background-color: #1E4D2B;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -865,13 +865,13 @@ Table&nbsp;2
   border-right-color: #D3D3D3;
 }
 
-#jarchakmco .gt_bottom_border {
+#frrssostty .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jarchakmco .gt_col_headings {
+#frrssostty .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -886,7 +886,7 @@ Table&nbsp;2
   border-right-color: #D3D3D3;
 }
 
-#jarchakmco .gt_col_heading {
+#frrssostty .gt_col_heading {
   color: #333333;
   background-color: #EFF3F0;
   font-size: 12px;
@@ -906,7 +906,7 @@ Table&nbsp;2
   overflow-x: hidden;
 }
 
-#jarchakmco .gt_column_spanner_outer {
+#frrssostty .gt_column_spanner_outer {
   color: #333333;
   background-color: #EFF3F0;
   font-size: 12px;
@@ -918,15 +918,15 @@ Table&nbsp;2
   padding-right: 4px;
 }
 
-#jarchakmco .gt_column_spanner_outer:first-child {
+#frrssostty .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jarchakmco .gt_column_spanner_outer:last-child {
+#frrssostty .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jarchakmco .gt_column_spanner {
+#frrssostty .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -938,11 +938,11 @@ Table&nbsp;2
   width: 100%;
 }
 
-#jarchakmco .gt_spanner_row {
+#frrssostty .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jarchakmco .gt_group_heading {
+#frrssostty .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -968,7 +968,7 @@ Table&nbsp;2
   text-align: left;
 }
 
-#jarchakmco .gt_empty_group_heading {
+#frrssostty .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -983,15 +983,15 @@ Table&nbsp;2
   vertical-align: middle;
 }
 
-#jarchakmco .gt_from_md > :first-child {
+#frrssostty .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jarchakmco .gt_from_md > :last-child {
+#frrssostty .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jarchakmco .gt_row {
+#frrssostty .gt_row {
   padding-top: 6px;
   padding-bottom: 6px;
   padding-left: 5px;
@@ -1010,7 +1010,7 @@ Table&nbsp;2
   overflow-x: hidden;
 }
 
-#jarchakmco .gt_stub {
+#frrssostty .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1023,7 +1023,7 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#jarchakmco .gt_stub_row_group {
+#frrssostty .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1037,15 +1037,15 @@ Table&nbsp;2
   vertical-align: top;
 }
 
-#jarchakmco .gt_row_group_first td {
+#frrssostty .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jarchakmco .gt_row_group_first th {
+#frrssostty .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jarchakmco .gt_summary_row {
+#frrssostty .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1055,16 +1055,16 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#jarchakmco .gt_first_summary_row {
+#frrssostty .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jarchakmco .gt_first_summary_row.thick {
+#frrssostty .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jarchakmco .gt_last_summary_row {
+#frrssostty .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1074,7 +1074,7 @@ Table&nbsp;2
   border-bottom-color: #D3D3D3;
 }
 
-#jarchakmco .gt_grand_summary_row {
+#frrssostty .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1084,7 +1084,7 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#jarchakmco .gt_first_grand_summary_row {
+#frrssostty .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1094,7 +1094,7 @@ Table&nbsp;2
   border-top-color: #D3D3D3;
 }
 
-#jarchakmco .gt_last_grand_summary_row_top {
+#frrssostty .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1104,11 +1104,11 @@ Table&nbsp;2
   border-bottom-color: #D3D3D3;
 }
 
-#jarchakmco .gt_striped {
+#frrssostty .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jarchakmco .gt_table_body {
+#frrssostty .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1117,7 +1117,7 @@ Table&nbsp;2
   border-bottom-color: #D3D3D3;
 }
 
-#jarchakmco .gt_footnotes {
+#frrssostty .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1131,7 +1131,7 @@ Table&nbsp;2
   border-right-color: #D3D3D3;
 }
 
-#jarchakmco .gt_footnote {
+#frrssostty .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1140,7 +1140,7 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#jarchakmco .gt_sourcenotes {
+#frrssostty .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1154,7 +1154,7 @@ Table&nbsp;2
   border-right-color: #D3D3D3;
 }
 
-#jarchakmco .gt_sourcenote {
+#frrssostty .gt_sourcenote {
   font-size: 11px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1162,72 +1162,72 @@ Table&nbsp;2
   padding-right: 5px;
 }
 
-#jarchakmco .gt_left {
+#frrssostty .gt_left {
   text-align: left;
 }
 
-#jarchakmco .gt_center {
+#frrssostty .gt_center {
   text-align: center;
 }
 
-#jarchakmco .gt_right {
+#frrssostty .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jarchakmco .gt_font_normal {
+#frrssostty .gt_font_normal {
   font-weight: normal;
 }
 
-#jarchakmco .gt_font_bold {
+#frrssostty .gt_font_bold {
   font-weight: bold;
 }
 
-#jarchakmco .gt_font_italic {
+#frrssostty .gt_font_italic {
   font-style: italic;
 }
 
-#jarchakmco .gt_super {
+#frrssostty .gt_super {
   font-size: 65%;
 }
 
-#jarchakmco .gt_footnote_marks {
+#frrssostty .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jarchakmco .gt_asterisk {
+#frrssostty .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jarchakmco .gt_indent_1 {
+#frrssostty .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jarchakmco .gt_indent_2 {
+#frrssostty .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jarchakmco .gt_indent_3 {
+#frrssostty .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jarchakmco .gt_indent_4 {
+#frrssostty .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jarchakmco .gt_indent_5 {
+#frrssostty .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jarchakmco .katex-display {
+#frrssostty .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jarchakmco div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#frrssostty div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1235,7 +1235,7 @@ Table&nbsp;2
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<td colspan="8" class="gt_heading gt_title gt_font_normal">Complete Primary Source Ledger (N = 70 Verified Files &amp; APIs)</td>
+<td colspan="8" class="gt_heading gt_title gt_font_normal">Complete Primary Source Ledger (N = 71 Verified Files &amp; APIs)</td>
 </tr>
 <tr class="gt_heading even">
 <td colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Every archived source is SHA-256 checksummed in data/sources_manifest.csv</td>
@@ -1893,6 +1893,16 @@ Table&nbsp;2
 <td class="gt_row gt_left" headers="Status">OK</td>
 </tr>
 <tr class="odd">
+<td class="gt_row gt_left" headers="ID">co_bluebook_2026</td>
+<td class="gt_row gt_left" headers="Category">budgets</td>
+<td class="gt_row gt_left" headers="Title">Colorado General Assembly Legislative Council: 2026 State Ballot Information Booklet (Blue Book, Research Pub. No. 842)</td>
+<td class="gt_row gt_left" headers="Fiscal-Years">FY27-FY29</td>
+<td class="gt_row gt_left" headers="Local-Path">data/raw/budgets/co_2026_bluebook_lcs.pdf</td>
+<td class="gt_row gt_right" headers="Size-(KB)">1,901.5</td>
+<td class="gt_row gt_left" headers="SHA-256-(Prefix)">c160d5ea9ef6</td>
+<td class="gt_row gt_left" headers="Status">OK</td>
+</tr>
+<tr class="even">
 <td class="gt_row gt_left" headers="ID">bls_cpiu</td>
 <td class="gt_row gt_left" headers="Category">macro</td>
 <td class="gt_row gt_left" headers="Title">U.S. Bureau of Labor Statistics CPI-U All Urban Consumers (CUUR0000SA0)</td>
@@ -1902,7 +1912,7 @@ Table&nbsp;2
 <td class="gt_row gt_left" headers="SHA-256-(Prefix)">5a655f568874</td>
 <td class="gt_row gt_left" headers="Status">OK</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="ID">ipeds_finance</td>
 <td class="gt_row gt_left" headers="Category">peers</td>
 <td class="gt_row gt_left" headers="Title">IPEDS Institutional Finance (2015-2023) - 8 Peer Universities</td>
@@ -1912,7 +1922,7 @@ Table&nbsp;2
 <td class="gt_row gt_left" headers="SHA-256-(Prefix)">d71424c741cc</td>
 <td class="gt_row gt_left" headers="Status">OK</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="ID">ipeds_fte</td>
 <td class="gt_row gt_left" headers="Category">peers</td>
 <td class="gt_row gt_left" headers="Title">IPEDS Full-Time Equivalent Enrollment (2015-2023) - 8 Peer Universities</td>
@@ -1922,7 +1932,7 @@ Table&nbsp;2
 <td class="gt_row gt_left" headers="SHA-256-(Prefix)">8ab20b310ab8</td>
 <td class="gt_row gt_left" headers="Status">OK</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="ID">ipeds_sal_inst</td>
 <td class="gt_row gt_left" headers="Category">peers</td>
 <td class="gt_row gt_left" headers="Title">IPEDS Instructional Staff Headcount &amp; Salaries (2015-2023) - 8 Peer Universities</td>
@@ -1932,7 +1942,7 @@ Table&nbsp;2
 <td class="gt_row gt_left" headers="SHA-256-(Prefix)">243a519958bb</td>
 <td class="gt_row gt_left" headers="Status">OK</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="ID">ipeds_sal_noninst</td>
 <td class="gt_row gt_left" headers="Category">peers</td>
 <td class="gt_row gt_left" headers="Title">IPEDS Non-Instructional Staff Headcount &amp; Outlays (2015-2023) - 8 Peer Universities</td>
@@ -1942,7 +1952,7 @@ Table&nbsp;2
 <td class="gt_row gt_left" headers="SHA-256-(Prefix)">762d3551caf7</td>
 <td class="gt_row gt_left" headers="Status">OK</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="ID">ipeds_sfr</td>
 <td class="gt_row gt_left" headers="Category">peers</td>
 <td class="gt_row gt_left" headers="Title">IPEDS Student-to-Faculty Ratio (2015-2023) - 8 Peer Universities</td>

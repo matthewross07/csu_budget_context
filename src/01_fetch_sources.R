@@ -291,7 +291,12 @@ source_catalog <- tribble(
 
   "gao_nocap_athletics", "athletics", "NoCap Sports Summary of GAO-26-108640 College Athletics Debt & Revenue Report (Oct. 2026)", "FY24",
   "https://nocapsports.io/post/college-athletics-debt-revenue-strategies/",
-  "data/raw/athletics/nocap_gao_26_108640_summary.html", "Secondary verified citation of GAO-26-108640: Power conf median debt $120.3M, Other FBS (G5) median debt $21.0M, 330/352 DI programs deficit median $20.6M."
+  "data/raw/athletics/nocap_gao_26_108640_summary.html", "Secondary verified citation of GAO-26-108640: Power conf median debt $120.3M, Other FBS (G5) median debt $21.0M, 330/352 DI programs deficit median $20.6M.",
+
+  # --- 8. Colorado Legislative Council Staff 2026 Ballot Information Booklet ---
+  "co_bluebook_2026", "budgets", "Colorado General Assembly Legislative Council: 2026 State Ballot Information Booklet (Blue Book, Research Pub. No. 842)", "FY27-FY29",
+  "https://content.leg.colorado.gov/sites/default/files/2026-bluebook-english-accessible.pdf",
+  "data/raw/budgets/co_2026_bluebook_lcs.pdf", "Official nonpartisan fiscal impact statements for Nov. 3, 2026 Colorado ballot measures: Amendment 87 (pp.33-40), Prop NN (pp.41-47), Prop 132-136 (pp.48-63), and Prop 137 incl. CSFS up to $36.5M-$42.8M/yr (pp.64-68)."
 )
 
 download_one <- function(url, dest_path, force = FALSE) {

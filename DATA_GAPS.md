@@ -1,6 +1,6 @@
 # Data Gaps, Portal Blocks, and Accounting Scope Notes
 
-Every figure, table, and claim in this project traces back to a primary source archived and SHA-256 hashed in `data/sources_manifest.csv` (`70/70` downloaded sources, `0` failed downloads after fallback routing). In keeping with strict auditability rules—no guessing, no silent interpolation, and no bypassing access controls—all upstream portal blocks, blank slide exports, and cross-year accounting breaks are documented below alongside exact manual download URLs where relevant.
+Every figure, table, and claim in this project traces back to a primary source archived and SHA-256 hashed in `data/sources_manifest.csv` (`71/71` downloaded sources, `0` failed downloads after fallback routing). In keeping with strict auditability rules—no guessing, no silent interpolation, and no bypassing access controls—all upstream portal blocks, blank slide exports, and cross-year accounting breaks are documented below alongside exact manual download URLs where relevant.
 
 ---
 
@@ -20,9 +20,9 @@ Every figure, table, and claim in this project traces back to a primary source a
 2. **Oct. 14, 2026 Fall Budget Forum Slides (`Fall-Budget-Forum-Slides-10.14.26.pdf`, Slides 14–15):**
    - Visual inspection of rendered page images confirmed that Slides 14–15 in the publicly posted PDF contain blank white table placeholders where the FY28 scenario table sat during the live presentation.
    - *Mitigation:* Rather than reconstructing hidden slide pixels, the FY28 shortfall bridge (`$61.30M–$70.70M`, midpoint `$66.00M`), enrollment/tuition drop (`~$25.00M`), and Fall 2026 Resident Instruction headcount/credit-hour deltas rely strictly on the **Oct. 7, 2026 CSU Source Budget Update Memo** and the **May 13, 2026 Campus V4 Forum Slide 6** (`$15,112,000` in expiring one-time stopgap savings).
-3. **CSU Fact Book FY27 Table 128 (`State Classified` E&G FTE Gap FY21–FY24):**
-   - Table 128 in `CSU_Factbook_FY27_2026-10-22.pdf` omits E&G-only State Classified FTE rows for FY21–FY24 while reporting FY15–FY20 (`571.3` in FY15) and FY25 (`316.7`, a `-44.6%` decline vs. FY15).
-   - *Mitigation:* FY21–FY24 E&G State Classified values are left uninterpolated (`NA`), and longitudinal workforce comparisons either anchor on FY15 vs. FY25 E&G endpoints or show all-funds Table 122/123 totals explicitly.
+3. **CSU Fact Book FY27 Table 128 (`State Classified` E&G FTE Gap FY21–FY24 & Retired Faculty Ranks):**
+   - Table 128 in `CSU_Factbook_FY27_2026-10-22.pdf` omits E&G-only State Classified FTE rows for FY21–FY24 while reporting FY15–FY20 (`571.3` in FY15) and FY25 (`316.7`, a `-44.6%` decline vs. FY15). Likewise, active faculty rank tables in `FB27` omit retired pre-2019 `"Special"` and `"Temporary"` instructor codes.
+   - *Mitigation:* `FB27` FY21–FY24 E&G State Classified values remain uninterpolated (`NA`), while archived `CSU_Factbook_FY26.pdf` (`pp. 107–113`) provides continuous historical E&G `State Classified` (`389.5`, `362.2`, `352.1`, `339.2` in FY21–FY24) and continuous `CCA` (`pre-2019 Special + CCA`) rows alongside continuous `CDHE Formats 20, 25, 30, and 1100–1700` Budget Data Books (`FY15–FY27`).
 
 ---
 

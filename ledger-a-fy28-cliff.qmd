@@ -12,6 +12,7 @@ cuts   <- load_proc("fy27_fte_cuts_by_unit.csv")
 census <- load_proc("fall_census_enrollment_2019_2026.csv")
 bdb    <- load_proc("bdb_real_fy17_fy27.csv")
 obs    <- load_proc("obs_state_approp_fy24_fy27.csv")
+ballot <- load_proc("co_2026_ballot_fiscal_impacts.csv")
 
 c25 <- census |> dplyr::filter(fall_year == 2025)
 c26 <- census |> dplyr::filter(fall_year == 2026)
@@ -106,11 +107,39 @@ fy27 |>
 
 ---
 
-## 3. Mandatory Cost Escalation, Compensation & State Budget Context (\$21.19M–\$30.59M)
+## 3. Mandatory Cost Escalation, Compensation & Post-Election State Budget Context (\$21.19M–\$30.59M)
 
-Under the Board of Governors' three initial FY28 scenarios (modeling 0%, 1%, and 3% state funding increases alongside matching compensation assumptions), health insurance, utilities, classified step mandates, and salary pools on a **\$900.98M** State Appropriated / E&G base add **\$21.19M to \$30.59M** net of anticipated state support.
+Under the Board of Governors' three October 2026 FY28 planning scenarios (modeling 0%, 1%, and 3% state funding increases alongside matching compensation assumptions), health insurance, utilities, classified step mandates, and salary pools on a **\$900.98M** State Appropriated / E&G base add **\$21.19M to \$30.59M** net of anticipated state support.
 
-Meanwhile, Colorado's September 2026 OSPB economic forecast projects a state general-fund shortfall of up to **\$1.5B** in FY28, largely absorbed by Medicaid obligations (`Oct. 7 Memo`), keeping CSU's state Fee-for-Service and COF support essentially flat at **\$211.05M (23.4% of State Appropriated / E&G revenue in FY27)**.
+CSU's October 7 memo cited Colorado's September 2026 OSPB economic forecast of up to a **-\$1.5B state FY28 general-fund shortfall**—driven heavily by Medicaid growth (`~$600M+` in Gov. Polis's November executive budget request)—leaving CSU's state Fee-for-Service and COF support essentially flat at **\$211.05M (23.4% of State Appropriated / E&G revenue in FY27)**.
+
+### Post-October Update: November 3, 2026 Colorado Ballot Propositions & State Tax Implications
+
+On **November 3, 2026**—after CSU published the October 7–14 FY28 gap projections—Colorado voters approved **7 of 14 statewide ballot measures**, materially changing the state General Fund and TABOR outlook detailed in Colorado Legislative Council Staff's **2026 Blue Book (Research Pub. No. 842)**:
+
+```{r tbl-ballot-2026}
+ballot |>
+  dplyr::select(
+    Measure = measure,
+    Proposal = title,
+    Result = nov_2026_result,
+    `FY28 State Impact` = fy28_state_impact,
+    `TABOR & Fund Channel` = tabor_and_fund_channel,
+    `CSU Fiscal Implication` = csu_budget_implication,
+    `Blue Book` = bluebook_pages
+  ) |>
+  csu_gt(
+    title = "November 3, 2026 Colorado Ballot Measures: Verified Blue Book Fiscal Impacts & CSU Implications",
+    subtitle = "Amendment 87 (+$1.97B) and Prop NN (+$521M) Ease Pre-Election State General Fund Crowding Without Directly Funding University E&G",
+    source_note = "Source: Colorado General Assembly Legislative Council Staff, 2026 State Ballot Information Booklet (co_2026_bluebook_lcs.pdf) & certified Nov. 2026 election results."
+  )
+```
+
+Three mechanisms summarize why November 2026 state tax results improve Colorado's higher-education backdrop without closing CSU's internal gap on their own:
+
+1. **Indirect General Fund Relief Under `Amendment 87` (+\$1.972B FY28):** By replacing Colorado's `4.4%` flat income tax with graduated brackets (`3.7%–8.4%`, lowering taxes below `$510,834` and raising them above) while rejecting `Proposition 136`'s `4.4%` statutory ceiling, voters approved **\$1.972B** in TABOR-exempt FY28 revenue (up to the `$2.70B` ballot cap estimate; `$958.4M` half-year in FY27). Although the `Colorado Future's Account` must supplement **K-12 schools, health care/Medicaid, and early childhood** rather than fund university E&G instruction directly, absorbing K-12 and Medicaid obligations removes much of the zero-sum General Fund squeeze ahead of `HB26-1345` Results-Informed Funding in FY28. On CSU's **\$211.05M** state base, shifting legislative appropriations from a `0%` freeze toward `+3%–5%` adds **~\$6.3M–\$10.6M/yr** (`~$2.11M` per `+1%`).
+2. **TABOR Cap Flexibility vs. Near-Term General Fund Shift Under `Proposition NN`:** Retaining **\$521.0M** in FY28 TABOR surplus supports multi-year K-12 obligations and opens to general legislative priorities in FY 2036–37, though `Blue Book Table 2` notes **-\$153.1M/yr** moves out of General Government Purposes in FY27 and FY28 (`Prop 132` fentanyl penalties also add **-\$8.9M** FY28 / `-$68.2M` Yr-5 General Fund prison costs).
+3. **Dedicated CSFS Wildfire Funding (`Proposition 137`) Remains Separate From E&G:** Retaining **\$175.0M** in FY28 (`$180.2M` FY29) of sporting-goods sales tax directs **up to \$36.5M (FY28) and \$42.8M (FY29)** to CSU's **Colorado State Forest Service (`CSFS`)**—a major boost for statewide wildfire mitigation that stays legally restricted to `CSFS` Non-E&G operations rather than offsetting Resident Instruction deficits.
 
 ---
 

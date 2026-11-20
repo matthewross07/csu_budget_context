@@ -12,6 +12,9 @@ ap_fund   <- load_proc("ap_fte_by_detailed_fund_fy25.csv")
 cemml     <- load_proc("cemml_ap_unit_summary_fy25.csv")
 ap_units  <- load_proc("ap_fte_by_unit_fy25.csv")
 bdb       <- load_proc("bdb_real_fy17_fy27.csv")
+bdb_fn    <- load_proc("bdb_format20_functional_eg_fy15_fy27.csv")
+ap_func   <- load_proc("eg_ap_functional_split_fy15_fy26.csv")
+fb26_c    <- load_proc("factbook_continuous_eg_fte_fy13_fy25.csv")
 obs       <- load_proc("obs_state_approp_fy24_fy27.csv")
 divs      <- load_proc("division_budget_shares_fy17_fy26.csv")
 audits    <- load_proc("real_audits_fy15_fy25.csv")
@@ -20,8 +23,15 @@ f15 <- wf |> dplyr::filter(fiscal_year == 2015)
 f20 <- wf |> dplyr::filter(fiscal_year == 2020)
 f22 <- wf |> dplyr::filter(fiscal_year == 2022)
 f25 <- wf |> dplyr::filter(fiscal_year == 2025)
-b17 <- bdb |> dplyr::filter(fiscal_year == 2017)
-b26 <- bdb |> dplyr::filter(fiscal_year == 2026, status == "Actual")
+fc15 <- fb26_c |> dplyr::filter(fiscal_year == 2015)
+fc25 <- fb26_c |> dplyr::filter(fiscal_year == 2025)
+b15  <- bdb |> dplyr::filter(fiscal_year == 2015)
+b17  <- bdb |> dplyr::filter(fiscal_year == 2017)
+b26  <- bdb |> dplyr::filter(fiscal_year == 2026, status == "Actual")
+fn15 <- bdb_fn |> dplyr::filter(fiscal_year == 2015)
+fn24 <- bdb_fn |> dplyr::filter(fiscal_year == 2024)
+fn26 <- bdb_fn |> dplyr::filter(fiscal_year == 2026, status == "Actual")
+fn27 <- bdb_fn |> dplyr::filter(fiscal_year == 2027, status == "Estimate")
 ```
 
 While Ledger A tracks year-over-year changes entering FY28, **Ledger B** examines the longer-term trends between FY15 and FY26 that narrowed CSU's Education & General (E&G) operating flexibility. The illustrative weights below serve strictly as **order-of-magnitude context** paired with audited baseline figures; reasonable observers may assign different relative importance to each factor.
@@ -86,103 +96,135 @@ cemml |>
 ```
 
 ::: {.callout-context}
-**Accounting Note on Sponsored & Clinical Units:** Across research-intensive colleges and state service divisions—Warner College of Natural Resources (`96.3%` non-E&G), Ag Sciences / AES / Extension / CSFS (`92.1%` non-E&G), Veterinary Medicine & Biomedical Sciences (`91.4%` non-E&G), Student Affairs / Housing / Rec (`95.2%` non-E&G), and Walter Scott, Jr. College of Engineering (`82.1%` non-E&G)—most AP personnel are self-supporting outside E&G. Conversely, **Central VP Divisions, Administration & CSU Spur house `864.8` of CSU's `1,392.2` E&G AP FTE (`62.1%`)**.
+**Accounting Note on Sponsored & Clinical Units:** Across research-intensive colleges and state service divisions—Warner College of Natural Resources (`96.3%` non-E&G), Ag Sciences / AES / Extension / CSFS (`92.1%` non-E&G), Veterinary Medicine & Biomedical Sciences (`91.4%` non-E&G), Student Affairs / Housing / Rec (`95.2%` non-E&G), and Walter Scott, Jr. College of Engineering (`82.1%` non-E&G)—most AP personnel are self-supporting outside E&G. Even inside the E&G share of Central VP Divisions and Academic Colleges (`1,392.2` FY25 AP FTE; `1,469.2` FY26 CDHE Non-Classified FTE), statutory job codes mix central administration with instructional staff, academic advisors, IT engineers, facilities managers, and student support personnel.
 :::
 
 ---
 
-### Independent Verification Check: Reconciling the `2018–19` Faculty Rank Shift vs. Admin Growth
+### 1.2 Total E&G Workforce vs. Enrollment (`+7.0%` vs. `+6.6%`) & Reconciling HR Title Shifts
 
-::: {.callout-audit}
-**Empirical Finding That Overturned an Initial Assumption:** Reading `CSU Fact Book FY27` (`Table 128` / rank tables) in isolation makes total E&G faculty appear to jump `+43.3%` (`901.0 → 1,291.0` FTE between FY15 and FY25) because E&G Continuing and Contract ranks jumped from `2.2` FTE in FY15 to `332.2` in FY20. **Cross-checking CSU's April 2018 Faculty Manual Section E reform and continuous `CDHE Format 30` Budget Data Books (`FINAL_BDB_FY17-18`–`FY26-27`) reveals that jump was largely an administrative reclassification, not net new faculty hiring:**
+Reading isolated job-classification tables without controlling for CSU's personnel reclassifications creates two symmetrical distortions—making both faculty hiring and `"general administration"` hiring appear far larger than actual general-fund staffing changes:
 
-- In April 2018, Faculty Council replaced legacy `"Special"` and `"Temporary"` non-tenure-track labels with structured **`Contract`, `Continuing`, and `Adjunct` (`CCA`)** tracks; departments migrated existing instructors across FY19–FY20. Because `Fact Book FY27` omits retired `"Special"` and `"Temporary"` codes from its historical trend tables, pre-2019 instructors vanish from `FB27` prior-year columns and reappear in FY19–FY20 as newly minted `Contract`/`Continuing` lines.
-- By contrast, **continuous `CDHE Format 30` E&G Faculty FTE grew `+7.2%` over nine years (`1,528.6` in FY17 → `1,638.5` in FY26, and `-0.8%` from FY20's `1,651.1`)**; **Tenured/Tenure-Track E&G FTE grew `+2.2%` over ten years (`817.3 → 835.4`)**; and **post-reclassification Fact Book E&G Faculty (`FY20 → FY25`) changed `+0.1%` (`1,289.1 → 1,291.0`)**.
-- **Meanwhile, E&G Administrative Professional FTE rose `+62.3%` (`858.1 → 1,392.6`, FY15–FY25), including a `+30.6%` (`+326.3` FTE) expansion between FY22 and FY25 alone**—partially reflecting classified-to-AP transitions (`-254.6` E&G State Classified FTE FY15–FY25) alongside central, student-retention, compliance, IT, and mental-health roles.
-:::
+- **Total E&G Workforce Tracked Enrollment Over 11 Years:** In statutory `CDHE Format 20` filings (`FINAL_BDB_FY15-16` through `FY26-27`), total filled Education & General Faculty and Staff FTE rose **`+7.0%` (`3,506.4 -> 3,751.8` FTE, FY15–FY26 Actual)**, matching **Total Student FTE growth of `+6.6%` (`23,363.6 -> 24,906.6`)**—keeping the ratio virtually unchanged (`6.66 -> 6.64` students per E&G FTE), before dropping to **`3,402.5` E&G FTE (`-9.3%`)** in CSU's `FY27 Estimate` after V4 reductions.
+- **Why Raw `E&G Admin Pro` Counts (`+62.3%`) Overstate Administrative Growth:** Continuous `Fact Book FY26` (`p. 112`, restoring FY21–24 E&G State Classified rows omitted in `FB27 Table 128`) documents a **`-44.6%` (`-254.6` FTE) reduction in E&G State Classified FTE (`571.3 -> 316.7`, FY15–FY25)** as ~160 Facilities/trades roles moved into `Recharge Centers` in FY21 and classified clerical, IT, accounting, and academic-coordinator roles converted to exempt `Administrative Professional` titles. Combined **E&G Non-Faculty Staff (`Admin Pro + State Classified`)** grew **`+19.6%` over ten years (`1,429.4 -> 1,709.3` FTE, FY15–FY25)**—consistent with **CDHE `Format 20/25` E&G Non-Faculty Staff growth of `+18.4%` (`1,785.6 -> 2,113.3` FTE, FY15–FY26; `1,854.4` in FY27 Estimate)**. Meanwhile, `FY22` (`3,435.8` total E&G FTE) was a pandemic hiring-freeze trough below `FY20` (`3,676.6`), inflating post-FY22 percentage comparisons.
+- **Why `Fact Book FY27` Faculty Tables (`+43.3%`) Reflect 2018–19 Rank Formalization—Alongside Tenure-to-CCA Composition Shifts:** Following the April 2018 Faculty Manual Section E overhaul, CSU phased out legacy `"Special"` and `"Temporary"` instructor codes into `Contract`, `Continuing`, and `Adjunct` (`CCA`) tracks; `FB27` active-rank history tables omit the retired codes before FY19. On a continuous **`Fact Book FY26`** basis (`pp. 107–110`), total E&G Faculty grew **`+13.0%` (`1,167.3 -> 1,319.1`, FY15–FY25)** as **Tenured E&G Faculty declined `-13.8%` (`739.0 -> 637.1`; combined Tenured/TT `+2.2%`, `817.3 -> 835.4`)** while **non-tenure-track `CCA` FTE grew `+40.6%` (`336.2 -> 472.7`)** and **E&G Graduate Assistants grew `+35.4%` (`704.6 -> 954.3`)**. On **`CDHE Format 30`**, E&G Instructional/Research Faculty grew **`+7.2%` (`1,528.6 -> 1,638.5`, FY17–FY26)**.
 
 ::: {.figure-panel}
-![Continuous General-Fund Workforce Trends (FY17=100, Removing Rank-Code Migration) and FY25 Non-E&G Separation](outputs/figures/fig03_workforce_overshoot_and_cemml.png){width=100%}
+![Continuous General-Fund Functional Workforce Trends (FY15–FY26), Functional Breakdown of E&G Non-Classified Staff, and FY25 Non-E&G Separation](outputs/figures/fig03_workforce_overshoot_and_cemml.png){width=100%}
 :::
 
-High-level headcount tables cannot judge whether post-FY22 E&G Administrative Professional additions (such as student support, IT security, compliance, or classified-to-AP conversions) were operationally warranted; they establish strictly that **general-fund non-faculty administrative growth (`+30.6%` post-FY22; `+62.3%` FY15–FY25) outpaced continuous E&G faculty growth (`+7.2%` FY17–FY26), Resident Student FTE (`-5.0%` FY15–FY26), and inflation-adjusted System net tuition (`+4.4%` FY15–FY25, `-13.5%` vs. FY20 peak)** under a legacy incremental budgeting model that carried historical bases forward automatically.
+---
+
+### 1.3 Staff Who Teach & Academic Support vs. Central General Administration (`CDHE Formats 1100–1700`)
+
+Because `"Administrative Professional"` at CSU is an **HR exemption category rather than an administrative job function**, statutory `CDHE Format 20` and `Formats 1100–1700` provide the cleaner accounting split of where CSU's **1,469.2 E&G Non-Classified (`Admin Pro`) FTE** and **3,751.8 Total E&G FTE** work in FY26 Actual (plus FY27 Estimate):
+
+```{r tbl-eg-ap-func}
+ap_func |>
+  dplyr::mutate(
+    `FY15 AP` = fmt_n(ap_fy15, 1),
+    `FY24 AP (Peak)` = fmt_n(ap_fy24, 1),
+    `FY26 AP` = fmt_n(ap_fy26, 1),
+    `% of E&G AP` = fmt_pct(ap_share_fy26, 1),
+    `FY27 Est. AP` = fmt_n(ap_fy27_est, 1),
+    `FY15 -> FY26 All E&G FTE` = paste0(fmt_n(tot_fy15, 1), " -> ", fmt_n(tot_fy26, 1), " (", fmt_pct(tot_pct_15_26, 1, TRUE), ")"),
+    `FY26 E&G ($M)` = fmt_m(usd_fy26_m, 1)
+  ) |>
+  dplyr::select(Format = cdhe_format, `Functional Area` = nacubo_function, `Roles Included` = role_scope,
+                `FY15 AP`, `FY24 AP (Peak)`, `FY26 AP`, `% of E&G AP`, `FY27 Est. AP`, `FY15 -> FY26 All E&G FTE`, `FY26 E&G ($M)`) |>
+  csu_gt(
+    title = "Where CSU's 1,469.2 E&G Non-Classified (Admin Pro) FTE & 3,751.8 Total E&G FTE Work (CDHE Formats 20 & 1100–1700)",
+    subtitle = "85.5% of E&G Non-Classified Staff Work in Academic Support, Teaching/Instruction, Student Services, Research & Plant; Central General Admin (Fmt 1600) = 6.4% of E&G FTE",
+    source_note = "Sources: CDHE FINAL_BDB_FY15-16 through FINAL_BDB_FY26-27 (CSU General E&G Formats 20, 25, and 1100–1700)."
+  )
+```
+
+Three findings stand out when separating E&G instructional/support staff from central general administration:
+
+1. **`Academic & Student Support` Led Net Growth (`+39.9%` FTE, FY15–FY26):** Combined `Format 1400` (`Academic Support`: `544.4` total FTE in FY26, including `484.1` AP FTE across college advising, libraries, and instructional technology) and `Format 1500` (`Student Services`: `240.3` total FTE, `204.8` AP FTE across admissions, aid, registrar, and counseling) expanded **`+224.0` FTE (`560.8 -> 784.8`)**—representing **91% of net campus E&G headcount growth** over 11 years.
+2. **Large Block of E&G AP Staff Work Directly in `Instruction` (`326.4` FTE):** `Format 1100` (`Instruction`) employs **`326.4` Non-Classified (`Admin Pro`) FTE (`22.2%` of all E&G AP)** alongside **`1,610.2` Faculty FTE**, **`91.0` Classified FTE**, and **`41.1` Support Assistants**—spanning instructors/staff who teach courses or labs, teaching-laboratory coordinators, clinical educators, and academic department instructional support (`2,068.6` total `Format 1100` FTE, `-1.6%` vs. FY15).
+3. **`Institutional Support` (`Format 1600` General Administration) Is `6.4%` of E&G FTE and Declining Post-FY24:** True central executive, budget/finance, HR, legal, and general administration totaled **`239.1` FTE (`213.2` AP + `26.0` Classified) / \$47.50M (`5.4%` of CSU's `$885.16M` ColOBS E&G budget)** in FY26 Actual—a net **`+30.0` FTE (`+14.4%`)** above FY15 (`209.1`) after offsetting `-45.7` Classified reductions. After peaking at **`324.9` FTE (`$61.02M`)** in FY24, `Institutional Support` fell `-85.8` FTE through FY26 Actual and drops further to **`187.4` FTE (`$44.10M`, `-10.4%` below FY15)** in CSU's `FY27 Estimate`.
 
 ```{r tbl-cdhe-vs-fb}
 cdhe_cmp <- tibble::tibble(
   `Metric & Primary Source` = c(
-    "CDHE Format 30 Continuous E&G Faculty FTE (FY17 → FY26 Actual)",
-    "Fact Book E&G Tenured & Tenure-Track Faculty (FY15 → FY25)",
-    "Fact Book E&G Total Faculty Post-CCA Transition (FY20 → FY25)",
-    "Fact Book E&G Admin Professional FTE (FY15 → FY25)",
-    "   — Post-FY22 E&G Admin Pro Sub-Period (FY22 → FY25)",
-    "Fact Book E&G State Classified Staff FTE* (FY15 → FY25)",
-    "CDHE Resident Student FTE (FY15 → FY26 Actual)",
-    "CDHE Non-Resident Student FTE (FY15 → FY26 Actual)",
-    "CSU System Real Net Tuition (FY25$M, FY15 → FY25)"
+    "Total E&G Faculty & Staff FTE (CDHE Fmt 20, FY15 -> FY26 Actual)",
+    "   — E&G Instruction Total FTE (Fmt 1100: Fac + Teach AP + Class./GA)",
+    "   — E&G Academic + Student Support FTE (Fmt 1400+1500, FY15 -> FY26)",
+    "   — E&G General Admin / Institutional Support (Fmt 1600, FY15 -> FY26)*",
+    "Continuous Fact Book E&G Non-Faculty (AP + Classified, FY15 -> FY25)",
+    "Continuous Fact Book E&G Faculty Total (FB26 pp. 107-110, FY15 -> FY25)",
+    "   — E&G Tenured Faculty Alone / CCA Non-Tenure Track (FY15 -> FY25)",
+    "CDHE Format 30 Total Student FTE (FY15 -> FY26 Actual)",
+    "CSU System Real Net Tuition (FY25$M, FY15 -> FY25)"
   ),
   `Start Period` = c(
-    fmt_n(b17$eg_faculty_fte, 1),
-    fmt_n(f15$eg_faculty_ttt, 1),
-    fmt_n(f20$eg_faculty_total, 1),
-    fmt_n(f15$eg_admin_pro, 1),
-    fmt_n(f22$eg_admin_pro, 1),
-    fmt_n(f15$eg_state_class, 1),
-    fmt_n(17535.0, 1),
-    fmt_n(5828.6, 1),
-    fmt_m(617.9, 1)
+    fmt_n(fn15$tot_eg_fte, 1),
+    fmt_n(fn15$inst_fte, 1),
+    fmt_n(fn15$acad_fte + fn15$stud_fte, 1),
+    fmt_n(fn15$inst_supp_fte, 1),
+    fmt_n(fc15$eg_nonfac_combined, 1),
+    fmt_n(fc15$eg_fac_total_cont, 1),
+    "739.0 / 336.2",
+    fmt_n(b15$total_student_fte, 1),
+    "$617.9M"
   ),
   `End Period` = c(
-    fmt_n(b26$eg_faculty_fte, 1),
-    fmt_n(f25$eg_faculty_ttt, 1),
-    fmt_n(f25$eg_faculty_total, 1),
-    fmt_n(f25$eg_admin_pro, 1),
-    fmt_n(f25$eg_admin_pro, 1),
-    fmt_n(f25$eg_state_class, 1),
-    fmt_n(b26$resident_fte, 1),
-    fmt_n(b26$nonresident_fte, 1),
-    fmt_m(644.9, 1)
+    fmt_n(fn26$tot_eg_fte, 1),
+    fmt_n(fn26$inst_fte, 1),
+    fmt_n(fn26$acad_fte + fn26$stud_fte, 1),
+    fmt_n(fn26$inst_supp_fte, 1),
+    fmt_n(fc25$eg_nonfac_combined, 1),
+    fmt_n(fc25$eg_fac_total_cont, 1),
+    "637.1 / 472.7",
+    fmt_n(b26$total_student_fte, 1),
+    "$644.9M"
   ),
   `Change (%)` = c(
-    fmt_pct((b26$eg_faculty_fte - b17$eg_faculty_fte) / b17$eg_faculty_fte, 1, TRUE),
-    fmt_pct((f25$eg_faculty_ttt - f15$eg_faculty_ttt) / f15$eg_faculty_ttt, 1, TRUE),
-    fmt_pct((f25$eg_faculty_total - f20$eg_faculty_total) / f20$eg_faculty_total, 1, TRUE),
-    fmt_pct((f25$eg_admin_pro - f15$eg_admin_pro) / f15$eg_admin_pro, 1, TRUE),
-    fmt_pct((f25$eg_admin_pro - f22$eg_admin_pro) / f22$eg_admin_pro, 1, TRUE),
-    fmt_pct((f25$eg_state_class - f15$eg_state_class) / f15$eg_state_class, 1, TRUE),
-    fmt_pct((b26$resident_fte - 17535.0) / 17535.0, 1, TRUE),
-    fmt_pct((b26$nonresident_fte - 5828.6) / 5828.6, 1, TRUE),
-    fmt_pct((644.9 - 617.9) / 617.9, 1, TRUE)
+    fmt_pct((fn26$tot_eg_fte - fn15$tot_eg_fte) / fn15$tot_eg_fte, 1, TRUE),
+    fmt_pct((fn26$inst_fte - fn15$inst_fte) / fn15$inst_fte, 1, TRUE),
+    fmt_pct(((fn26$acad_fte + fn26$stud_fte) - (fn15$acad_fte + fn15$stud_fte)) / (fn15$acad_fte + fn15$stud_fte), 1, TRUE),
+    fmt_pct((fn26$inst_supp_fte - fn15$inst_supp_fte) / fn15$inst_supp_fte, 1, TRUE),
+    fmt_pct((fc25$eg_nonfac_combined - fc15$eg_nonfac_combined) / fc15$eg_nonfac_combined, 1, TRUE),
+    fmt_pct((fc25$eg_fac_total_cont - fc15$eg_fac_total_cont) / fc15$eg_fac_total_cont, 1, TRUE),
+    "-13.8% / +40.6%",
+    fmt_pct((b26$total_student_fte - b15$total_student_fte) / b15$total_student_fte, 1, TRUE),
+    "+4.4%"
   )
 )
 
 csu_gt(
   cdhe_cmp,
-  title = "Reconciled E&G Workforce Growth vs. Student Demand and Real Net Tuition",
-  subtitle = "Separating Continuous CDHE Faculty Counts (+7.2%) from Pre-2019 Rank Renaming Artifacts and Post-FY22 E&G Admin Growth (+30.6%)",
-  source_note = "Sources: CDHE Budget Data Books Format 30 (FY15–FY27); CSU Fact Book FY27 (Tables 107–128); CSU System Audits FY15–FY25 CPI-U adjusted."
+  title = "Reconciled E&G Functional Workforce Growth vs. Student Demand and Real Net Tuition",
+  subtitle = "Total E&G FTE (+7.0%) Matched Student FTE (+6.6%), While Resources Shifted Toward Academic/Student Support & Non-Tenure-Track Instruction",
+  source_note = "*Note: Institutional Support (Fmt 1600) peaked at 324.9 FTE ($61.0M) in FY24 and estimates 187.4 FTE (-10.4% vs FY15) in FY27; Total E&G FTE estimates 3,402.5 in FY27."
 )
 ```
 
+High-level headcount totals establish why per-employee compensation, benefits, and healthcare inflation—where a single `3%` campus salary/fringe pool adds **\$33.7M/yr** (`May 13 V4 Slide 6`)—alongside Student/Academic Support expansion and incremental budget carry-forwards tightened general-fund flexibility far more than raw administrative hiring alone.
+
 <details>
-<summary><strong>Expand to view full FY15–FY25 Fact Book Workforce Table &amp; all 42 FY25 Table 124 Admin Pro Units</strong></summary>
+<summary><strong>Expand to view continuous FY13–FY25 Fact Book E&amp;G Workforce Table &amp; all 42 FY25 Table 124 Admin Pro Units</strong></summary>
 
 ```{r tbl-eg-wf-long}
-wf |>
+fb26_c |>
   dplyr::mutate(
-    `E&G Admin Pro` = fmt_n(eg_admin_pro, 1),
-    `E&G Faculty (FB27)*` = fmt_n(eg_faculty_total, 1),
-    `E&G TTT` = fmt_n(eg_faculty_ttt, 1),
-    `E&G NTT/CCA` = fmt_n(eg_faculty_ntt, 1),
-    `E&G Classified**` = fmt_n(eg_state_class, 1),
-    `E&G Total (incl. GA)` = fmt_n(eg_all_incl_ga, 1),
-    `Non-E&G All Funds` = fmt_n(other_all_fte, 1),
-    `All-Funds FTE` = fmt_n(total_all_funds_fte, 1)
+    `E&G Admin Pro` = fmt_n(eg_ap, 1),
+    `E&G Classified` = fmt_n(eg_classified, 1),
+    `E&G AP+Class.` = fmt_n(eg_nonfac_combined, 1),
+    `E&G Tenured` = fmt_n(eg_tenured, 1),
+    `E&G TT` = fmt_n(eg_tt, 1),
+    `E&G CCA (Cont.)` = fmt_n(eg_cca, 1),
+    `E&G All Faculty` = fmt_n(eg_fac_total_cont, 1),
+    `E&G Grad Asst.` = fmt_n(eg_ga, 1),
+    `All E&G Incl. GA` = fmt_n(eg_all_incl_ga_cont, 1)
   ) |>
-  dplyr::select(`Fiscal Year` = fiscal_year, `E&G Admin Pro`, `E&G Faculty (FB27)*`, `E&G TTT`, `E&G NTT/CCA`, `E&G Classified**`, `E&G Total (incl. GA)`, `Non-E&G All Funds`, `All-Funds FTE`) |>
+  dplyr::select(`Fiscal Year` = fiscal_year, `E&G Admin Pro`, `E&G Classified`, `E&G AP+Class.`,
+                `E&G Tenured`, `E&G TT`, `E&G CCA (Cont.)`, `E&G All Faculty`, `E&G Grad Asst.`, `All E&G Incl. GA`) |>
   csu_gt(
-    title = "10-Year CSU Fort Collins Fact Book Workforce Table (FY15–FY25)",
-    subtitle = "*Pre-FY20 FB27 Faculty excludes retired Special/Temporary codes (use CDHE +7.2% for continuous trend); **Table 128 omits FY21–24 Classified E&G rows.",
-    source_note = "Source: CSU_Factbook_FY27_2026-10-22.pdf, Tables 122, 123, and 128."
+    title = "Continuous CSU Fort Collins E&G Employee FTE History (FY13–FY25, Fact Book FY26 pp. 107–113)",
+    subtitle = "Retains Historical Pre-2019 CCA/Special Equivalents and FY21–24 E&G State Classified Rows Omitted in FB27",
+    source_note = "Source: CSU_Factbook_FY26.pdf (pp. 107–113); cross-verified against CSU_Factbook_FY27_2026-10-22.pdf."
   )
 ```
 
@@ -208,7 +250,7 @@ ap_units |>
 
 ---
 
-## 2. State Funding Limits, Tuition Discounting & Research F&A Mechanics
+## 2. State Funding Limits, Nov. 2026 Ballot Reforms, Tuition Discounting & Research F&A Scope
 
 ::: {.figure-panel}
 ![Accounting-Adjusted E&G Division Trends (FY15–FY26), Institutional Discounting Rate, and Non-Resident Mix](outputs/figures/fig05_division_shares_discounting.png){width=100%}
@@ -217,7 +259,7 @@ ap_units |>
 Three structural revenue constraints help explain why active teaching schedules and record external grant volume do not automatically close an E&G operating gap:
 
 1. **Rising Institutional Tuition Discounting:** In CSU System audited financial statements (`audits_system_fy15_fy25`), scholarship allowances increased from \$114.4M (19.9% discount rate in FY15; 17.9% in FY17) to **\$174.1M (21.3% discount rate) in FY25**. Within Fort Collins E&G budgets (`bdb_real_fy17_fy27`), institutional aid grew from \$47.2M (FY15) to \$88.5M (FY26) and **\$96.3M estimated for FY27**, offsetting part of nominal tuition rate increases (`3.5%` resident / `4.0%` NR / `3.5%` differential in FY27).
-2. **State Funding Constraints:** In FY27 (`obs_state_approp_fy24_fy27`), State Fee-for-Service (\$161.60M) and COF stipends (\$49.45M) supply **\$211.05M (23.4% of the \$900.98M State Appropriated / E&G budget)**—virtually flat versus FY26 (\$210.94M) under Colorado's TABOR limits and state Medicaid pressures.
+2. **State Funding Constraints & November 2026 Ballot Reforms:** In FY27 (`obs_state_approp_fy24_fy27`), State Fee-for-Service (\$161.60M) and COF stipends (\$49.45M) supply **\$211.05M (23.4% of the \$900.98M State Appropriated / E&G budget)**—virtually flat versus FY26 (\$210.94M). On November 3, 2026, Colorado voters approved **Amendment 87** (graduated income tax generating an estimated **+\$1.972B** in FY28 for K-12, health care/Medicaid, and early childhood), **Proposition NN** (raising the TABOR cap by **\$521.0M** in FY28 while shifting `-$153.1M` from General Government Purposes into the Children's Account), and **Proposition 137** (directing **\$175.0M** of sporting-goods sales tax into conservation/wildfire programs, including **up to \$36.5M–\$42.8M/yr** for CSU's `Colorado State Forest Service`). While Amendment 87 relieves the Medicaid and K-12 crowding behind Colorado's pre-election `-$1.5B` FY28 state shortfall, all three measures remain earmarked outside university E&G instruction (`CSFS` sits in Non-E&G agency funds).
 3. **Why Sponsored Research Grants Do Not Directly Cross-Subsidize E&G Instruction:** CSU System grants and contracts reached **\$548.0M** in FY25 (`audits`) and Fort Collins Indirect Cost Recovery (IDCR) reached **\$76.0M** (`obs`). Federal F&A recovery only partially reimburses dedicated research compliance, startup packages, cost-share commitments, and laboratory infrastructure rather than generating discretionary cash for general undergraduate instruction.
 
 ```{r tbl-colobs-breaks}
